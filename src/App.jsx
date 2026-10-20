@@ -1834,64 +1834,6 @@ export default function App() {
             </button>
           </div>
         )}
-
-        {hasAnswered && showFeedback && qFb && (
-          <div
-            className={`mt-4 p-4 rounded-xl border-l-4 text-sm ${
-              isCorrect
-                ? 'bg-emerald-50/80 border-emerald-600 text-emerald-950'
-                : 'bg-rose-50/80 border-rose-600 text-rose-950'
-            }`}
-          >
-            <div className="flex items-start gap-2.5">
-              {isCorrect ? (
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-              ) : (
-                <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-              )}
-              <div>
-                <span className="font-extrabold">
-                  {isCorrect
-                    ? 'Doğru Cevap!'
-                    : `Yanlış! Doğru Seçenek: ${LETTERS[qFb.answer]} (${q.options[qFb.answer]})`}
-                </span>{' '}
-                — {qFb.explanation}
-              </div>
-            </div>
-
-            {qFb.optionExplanations && qFb.optionExplanations.length > 0 && (
-              <div className="mt-3 pt-3 border-t border-slate-200/80">
-                <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-slate-700 mb-2">
-                  <ListChecks className="w-4 h-4 text-slate-600" />
-                  Tüm Şıkların Detaylı Açıklaması (A - E Özeti)
-                </div>
-                <div className="grid grid-cols-1 gap-1.5">
-                  {q.options.map((optText, idx) => {
-                    const isRight = idx === qFb.answer;
-                    const isUser = idx === userChoice;
-                    return (
-                      <div
-                        key={idx}
-                        className={`text-xs px-3 py-2 rounded-lg border flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 ${
-                          isRight
-                            ? 'bg-emerald-100/80 border-emerald-400 text-emerald-950 font-semibold'
-                            : isUser
-                            ? 'bg-rose-100/70 border-rose-300 text-rose-950'
-                            : 'bg-white/90 border-slate-200 text-slate-700'
-                        }`}
-                      >
-                        <span className="font-extrabold shrink-0">
-                          {LETTERS[idx]}) {optText}:
-                        </span>
-                        <span className="font-normal">{qFb.optionExplanations[idx]}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
       </div>
     );
   };
@@ -2067,159 +2009,137 @@ export default function App() {
       {renderAdminModal()}
 
       <div>
-        {/* Top Navbar */}
-        <header className="sticky top-0 z-50 bg-slate-900 text-white border-b-4 border-amber-500 shadow-lg">
-          <div className="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <button
+        {/* Sleek Modern Single-Row SaaS Navbar */}
+        <header className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md text-white border-b border-slate-800 shadow-md">
+          <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+            {/* Left: Brand + Primary Nav Links */}
+            <div className="flex items-center gap-6">
+              <div
                 onClick={() => {
                   setActivePage('home');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="bg-amber-500 hover:bg-amber-400 text-slate-950 p-2 rounded-lg transition"
-                title="Anasayfaya Dön"
+                className="flex items-center gap-2.5 cursor-pointer group"
               >
-                <GraduationCap className="w-6 h-6" />
-              </button>
-              <div>
-                <h1 className="text-lg font-extrabold tracking-tight flex items-center gap-2">
-                  SDÜ İSG Yüksek Lisans — Vize Sınav Portalı
-                </h1>
-                <p className="text-xs text-slate-400">
-                  6 Ders × 10 Test = 60 Sınav • {totalAllCoursesMC} Çoktan Seçmeli + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
-                  {totalAllCoursesMC + totalAllCoursesFill} Soru)
-                </p>
+                <div className="bg-amber-500 group-hover:bg-amber-400 text-slate-950 p-2 rounded-xl transition shadow-sm">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <div className="leading-tight">
+                  <span className="font-black text-sm sm:text-base tracking-tight text-white block">
+                    SDÜ İSG <span className="text-amber-400">Akademi</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 hidden sm:block">
+                    60 Deneme Sınavı • 900 Soru
+                  </span>
+                </div>
               </div>
-            </div>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {/* Anasayfa Button */}
-              <button
-                onClick={() => {
-                  setActivePage('home');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition"
-              >
-                <Home className="w-3.5 h-3.5 text-amber-400" />
-                <span>Anasayfa</span>
-              </button>
-
-              {/* Admin Panel Button (Only for Oğuzhan / Admin) */}
-              {isAdmin && (
+              <nav className="hidden md:flex items-center gap-1 bg-slate-900/90 border border-slate-800 p-1 rounded-xl">
                 <button
                   onClick={() => {
-                    setShowAdminModal(true);
-                    fetchAdminUsers();
+                    setActivePage('home');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow transition"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition"
                 >
-                  <Crown className="w-3.5 h-3.5" />
-                  <span>Admin Paneli</span>
+                  <Home className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Anasayfa</span>
                 </button>
-              )}
-
-              {/* Plan Badge for Non-Admin Users */}
-              {!isAdmin && (
-                <button
-                  onClick={() => {
-                    if (!isPro) setShowUpgradeModal(true);
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-extrabold transition ${
-                    isPro
-                      ? 'bg-emerald-950/80 border-emerald-500 text-emerald-300'
-                      : 'bg-amber-500/20 hover:bg-amber-500/30 border-amber-500 text-amber-300'
-                  }`}
-                >
-                  <Crown className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{isPro ? 'PRO Üye (60 Test Açık)' : 'Ücretsiz Plan • PRO\'ya Geç'}</span>
-                </button>
-              )}
-
-              {/* Mode Switcher */}
-              <div className="inline-flex rounded-lg bg-slate-800 p-1 border border-slate-700">
                 <button
                   onClick={() => {
                     setMode('study');
                     setExamSubmitted(false);
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                     mode === 'study'
-                      ? 'bg-amber-500 text-slate-950 shadow'
-                      : 'text-slate-300 hover:text-white'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
                   <BookOpen className="w-3.5 h-3.5" />
-                  Çalışma Modu
+                  <span>Çalışma Modu</span>
                 </button>
                 <button
                   onClick={() => {
                     setMode('exam');
                     setExamSubmitted(false);
                   }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition ${
                     mode === 'exam'
-                      ? 'bg-amber-500 text-slate-950 shadow'
-                      : 'text-slate-300 hover:text-white'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
                   <ClipboardCheck className="w-3.5 h-3.5" />
-                  Sınav Modu
+                  <span>Sınav Modu</span>
                 </button>
-              </div>
+              </nav>
+            </div>
 
-              {/* Timer */}
-              <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
-                <Clock className="w-4 h-4 text-amber-400" />
-                <span className="font-mono font-bold text-sm text-amber-400">
-                  {formatTime(secondsLeft)}
-                </span>
-                <button
-                  onClick={() => setTimerRunning(!timerRunning)}
-                  className="bg-slate-700 hover:bg-slate-600 text-xs px-2 py-1 rounded font-semibold flex items-center gap-1"
-                >
-                  {timerRunning ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
-                  {timerRunning ? 'Duraklat' : 'Başlat'}
-                </button>
+            {/* Right: Compact Exam Timer (only in Exam mode) + Admin/Plan + User Profile */}
+            <div className="flex items-center gap-2.5">
+              {mode === 'exam' && (
+                <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-2.5 py-1.5 rounded-xl">
+                  <Clock className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="font-mono font-bold text-xs text-amber-400">
+                    {formatTime(secondsLeft)}
+                  </span>
+                  <button
+                    onClick={() => setTimerRunning(!timerRunning)}
+                    className="bg-slate-800 hover:bg-slate-700 text-[11px] px-2 py-0.5 rounded-md font-bold text-slate-200"
+                  >
+                    {timerRunning ? 'Duraklat' : 'Başlat'}
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await evaluateAllOnBackend(answers);
+                      setExamSubmitted(true);
+                    }}
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-md transition"
+                  >
+                    Bitir
+                  </button>
+                </div>
+              )}
+
+              {isAdmin ? (
                 <button
                   onClick={() => {
-                    setTimerRunning(false);
-                    setSecondsLeft(45 * 60);
+                    setShowAdminModal(true);
+                    fetchAdminUsers();
                   }}
-                  className="text-slate-400 hover:text-white text-xs px-1"
-                  title="Sayacı Sıfırla"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-xs font-extrabold transition"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
+                  <Crown className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="hidden sm:inline">Admin Paneli</span>
                 </button>
-              </div>
-
-              {mode === 'exam' && (
+              ) : (
                 <button
-                  onClick={async () => {
-                    await evaluateAllOnBackend(answers);
-                    setExamSubmitted(true);
+                  onClick={() => {
+                    if (!isPro) setShowUpgradeModal(true);
                   }}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow transition"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-extrabold transition ${
+                    isPro
+                      ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-300'
+                      : 'bg-amber-500 text-slate-950 border-amber-500 hover:bg-amber-400'
+                  }`}
                 >
-                  Sınavı Bitir
+                  <Crown className="w-3.5 h-3.5" />
+                  <span>{isPro ? 'PRO Üye' : 'PRO\'ya Geç'}</span>
                 </button>
               )}
 
-              {/* User Badge & Logout */}
-              <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 pl-3 pr-2 py-1 rounded-lg">
-                <User className="w-3.5 h-3.5 text-amber-400" />
-                <span className="text-xs font-bold text-slate-200">
+              <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 pl-3 pr-1.5 py-1 rounded-xl">
+                <div className="w-6 h-6 rounded-lg bg-slate-800 text-amber-400 flex items-center justify-center text-xs font-black">
+                  {currentUser.fullName?.[0]?.toUpperCase() || 'U'}
+                </div>
+                <span className="text-xs font-bold text-slate-200 hidden sm:inline max-w-[120px] truncate">
                   {currentUser.fullName}
                 </span>
-                {isAdmin && (
-                  <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-1.5 py-0.5 rounded">
-                    ADMIN
-                  </span>
-                )}
                 <button
                   onClick={handleLogout}
                   title="Çıkış Yap"
-                  className="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white p-1.5 rounded-md transition"
+                  className="text-slate-400 hover:text-rose-400 hover:bg-slate-800 p-1.5 rounded-lg transition"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                 </button>
