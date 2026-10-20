@@ -64,19 +64,41 @@ export default function App() {
     return init;
   });
 
-  // Load from Vercel Storage on initial mount if available
+  // Load from Vercel Cloud Storage (/api/sync or direct cloud KV on localhost) on initial mount
+  const CLOUD_KV_URL = 'https://kvdb.io/XDdUb2W7LRjEjWdzcBhfzB/sdu_isg_vize_state_oguzhan_v2';
+  const [cloudReady, setCloudReady] = useState(false);
+
   useEffect(() => {
-    fetch('/api/sync')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((res) => {
-        if (res && res.configured) {
-          setCloudStatus('synced');
-          if (res.data) {
-            setAnswers(res.data);
+    async function loadCloud() {
+      try {
+        const r = await fetch('/api/sync');
+        if (r.ok) {
+          const res = await r.json();
+          if (res && res.configured) {
+            if (res.data && Object.keys(res.data).length > 0) {
+              setAnswers(res.data);
+            }
+            setCloudStatus('synced');
+            setCloudReady(true);
+            return;
           }
         }
-      })
-      .catch(() => {});
+      } catch (e) {}
+
+      // Fallback for Vite localhost dev server
+      try {
+        const r2 = await fetch(CLOUD_KV_URL);
+        if (r2.ok) {
+          const data = await r2.json();
+          if (data && Object.keys(data).length > 0) {
+            setAnswers(data);
+          }
+        }
+        setCloudStatus('synced');
+        setCloudReady(true);
+      } catch (e) {}
+    }
+    loadCloud();
   }, []);
 
   useEffect(() => {
@@ -84,19 +106,32 @@ export default function App() {
       localStorage.setItem('sdu_isg_react_vize_v2', JSON.stringify(answers));
     } catch (e) {}
 
-    if (cloudStatus === 'local') return;
+    if (!cloudReady) return;
     setCloudStatus('saving');
-    const timer = setTimeout(() => {
-      fetch('/api/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(answers)
-      })
-        .then((r) => (r.ok ? setCloudStatus('synced') : null))
-        .catch(() => {});
-    }, 800);
+    const timer = setTimeout(async () => {
+      try {
+        const r = await fetch('/api/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(answers)
+        });
+        if (r.ok) {
+          setCloudStatus('synced');
+          return;
+        }
+      } catch (e) {}
+
+      try {
+        await fetch(CLOUD_KV_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(answers)
+        });
+        setCloudStatus('synced');
+      } catch (e) {}
+    }, 600);
     return () => clearTimeout(timer);
-  }, [answers]);
+  }, [answers, cloudReady]);
 
   // 45-min Timer
   const [secondsLeft, setSecondsLeft] = useState(45 * 60);
@@ -283,6 +318,32 @@ export default function App() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            {/* Cloud DB Status Badge */}
+            <div
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold ${
+                cloudStatus === 'synced'
+                  ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300'
+                  : cloudStatus === 'saving'
+                  ? 'bg-amber-950/80 border-amber-500 text-amber-300'
+                  : 'bg-slate-800 border-slate-700 text-slate-300'
+              }`}
+            >
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  cloudStatus === 'synced'
+                    ? 'bg-emerald-400'
+                    : cloudStatus === 'saving'
+                    ? 'bg-amber-400 animate-pulse'
+                    : 'bg-slate-400'
+                }`}
+              />
+              {cloudStatus === 'synced'
+                ? '☁️ Bulut DB Senkronize'
+                : cloudStatus === 'saving'
+                ? '⏳ Buluta Kaydediliyor...'
+                : '💾 Yerel Hafıza'}
+            </div>
+
             {/* Mode Switcher */}
             <div className="inline-flex rounded-lg bg-slate-800 p-1 border border-slate-700">
               <button
