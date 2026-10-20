@@ -1,17 +1,167 @@
 export const elektrikTestThemes = [
-  "Akımın İnsan Vücuduna Etkileri & mA Eşikleri",
-  "Ohm Kanunu, Vücut Direnci & Çarpılma Vakaları",
-  "5 Temel Güvenlik Kuralı & LOTO (EKED) Uygulamaları",
-  "Kaçak Akım Rölesi (30/300 mA) & Koruma Elemanları",
-  "Doğrudan / Dolaylı Dokunma & Topraklama Sistemleri",
-  "Yüksek Gerilim, Adım ve Dokunma Gerilimi",
-  "Ark Patlaması (Arc Flash) & Statik Elektrik",
-  "Elektrik Yangınları & Şantiye Pano Güvenliği",
-  "İzole KKD, El Aletleri & Periyodik Kontroller",
-  "Genel Karma Vize Simülasyonu (OSHA / NIOSH Vakaları)"
+  "Elektrik Tarihçesi, Öncü Deneyler & İlk Kazalar (Thales, Franklin, Richmann, Tarsus)",
+  "Elektriğin 3 Temel Özelliği & 5 Tehlike Sınıfı (Çarpma, Ark, Yangın, Patlama, İkincil)",
+  "Kaza İstatistikleri (Van Otopsisi, ESFI) & Güvenlik Kültürü (Reason, Heinrich, Bird)",
+  "Akımın İnsan Biyolojisine Etkileri & mA Eşikleri (Algılama, Tutma, Fibrilasyon)",
+  "Ohm Kanunu, Vücut Direnci & Dokunma/Adım Gerilimi Dinamikleri",
+  "5 Temel Güvenlik Kuralı & LOTO (EKED) Saha Uygulamaları",
+  "Kaçak Akım Röleleri (30 mA / 300 mA), Sigortalar & Selektivite",
+  "Topraklama Şebeke Tipleri (TT, TN-S, TN-C, IT) & Eşpotansiyel Kuşaklama",
+  "Yüksek Gerilim Tesisleri, Kesici/Ayırıcı Ayrımı & Ark Patlaması (Arc Flash)",
+  "Genel Vize Simülasyonu: Şantiye Güvenliği, İzole KKD & OSHA/NIOSH Vaka Analizi"
 ];
 
 export const elektrikConceptGroups = [
+  {
+    groupName: "Elektrik Tarihçesi, Öncü Bilim İnsanları ve İlk Kazalar",
+    items: [
+      {
+        opt: "Thales ve Kehribar (M.Ö. 600 - Sürtünme Elektriği)",
+        desc: "M.Ö. 6. yüzyılda kehribarın kumaşa sürtüldüğünde saman ve tüy gibi hafif cisimleri çektiğini gözlemleyen ve elektrik tarihinin başlangıcı kabul edilen filozoftur.",
+        q: "Kehribarın sürtünmeyle hafif cisimleri çektiğini keşfederek elektriğin temellerini atan ve 'elektron' sözcüğünün kökenini oluşturan Antik Yunan filozofu kimdir?"
+      },
+      {
+        opt: "William Gilbert (1600 - 'De Magnete' ve Electricus Terimi)",
+        desc: "Dünyanın kendisinin dev bir mıknatıs olduğunu açıklayan, kehribar benzeri çekim yapan maddeler için Latince 'electricus' sözcüğünü türeten hekim ve fizikçidir.",
+        q: "1600 yılında yayımladığı 'De Magnete' adlı eseriyle kehribar benzeri maddeleri tanımlamak için 'electricus' terimini ilk kez kullanan bilim insanı kimdir?"
+      },
+      {
+        opt: "Stephen Gray (1729 - İletken / Yalıtkan Ayrımı ve İnsan Vücudu)",
+        desc: "Elektriksel yükün ipek iplerle uzağa taşınabildiğini kanıtlayan, maddeleri iletken ve yalıtkan olarak ayıran ve insan vücudunun iletkenliğini ilk kez gösteren İngiliz bilim insanıdır.",
+        q: "1729 yılında elektriğin maddeler üzerinden aktarılabildiğini keşfederek iletken ve yalıtkan ayrımını yapan, insan vücudunun da iletken olduğunu gösteren bilim insanı kimdir?"
+      },
+      {
+        opt: "Leyden Şişesi (1745-1746 - İlk Kapasitör ve Enerji Depolama)",
+        desc: "Elektrik yükünü cam şişe içindeki ve dışındaki metal tabakalar arasında depolayabilen, devre kesildikten sonra bile artık yük/şok tehlikesi barındıran ilk elektrik depolama aracıdır.",
+        q: "1745-1746 yıllarında icat edilen, elektriği depolayabilen ilk kapasitör sayılan ve kaynak kesilse dahi sert şok tehlikesini ilk kez ortaya koyan düzenek nedir?"
+      },
+      {
+        opt: "Jean-Antoine Nollet (1746 - 180 Kraliyet Muhafızı Şok Deneyi)",
+        desc: "Elektriğin anlık yayılım hızını ve insan bedenindeki iletimini kanıtlamak için 180 askeri birbirine el ele bağlayıp toplu elektrik şoku uygulayan Abbé Nollet lakaplı fizikçidir.",
+        q: "1746 yılında 180 kraliyet muhafızını el ele tutuşturup Leyden şişesiyle şok vererek akımın anlık geçişini ve insan vücudundaki iletimi test eden Fransız fizikçi kimdir?"
+      },
+      {
+        opt: "Benjamin Franklin (1750-1752 - Canlı Şoku ve Uçurtma Deneyi)",
+        desc: "Elektrik akımında artı ve eksi yük kavramlarını ortaya atan, yıldırımın elektrik olduğunu fırtınalı havada uçurtma deneyiyle gösterip paratoneri icat eden Amerikalı bilim insanıdır.",
+        q: "1750'de elektrikle canlıları öldürmeye çalışırken kazara kendisi çarpılan, 1752'de uçurtma deneyiyle yıldırımın elektrik olduğunu kanıtlayan bilim insanı kimdir?"
+      },
+      {
+        opt: "Georg Wilhelm Richmann (1753 - Elektrik Deneyinde Ölen İlk Bilim İnsanı)",
+        desc: "St. Petersburg'da yıldırımın gücünü ölçmek için kurduğu yalıtımsız düzenekte deney yaparken başına isabet eden elektrik deşarjıyla hayatını kaybeden ilk bilim insanıdır.",
+        q: "1753 yılında St. Petersburg'da fırtına sırasında paratoner deneyi yaparken top yıldırımının çarpması sonucu hayatını kaybeden tarihteki ilk elektrik kurbanı bilim insanı kimdir?"
+      },
+      {
+        opt: "1902 Tarsus Berdan Çayı (Türkiye'de İlk Elektrik Üretimi)",
+        desc: "1902 yılında Berdan Çayı üzerindeki un değirmenine bağlanan 2 kW su türbini (dinamo) ile sarı pirinç telli hat üzerinden elektrik üretilip ilk cadde aydınlatması yapılan yerdir.",
+        q: "Türkiye'de modern elektrik üretiminin başlangıcı kabul edilen; 1902 yılında bir un değirmenine bağlı 2 kW'lık su türbini/dinamo ile elektrik üretilen ilk yerleşim yeri neresidir?"
+      },
+      {
+        opt: "Akademik Kaynak Eleştirisi (Birincil vs İkincil Belge Analizi)",
+        desc: "Kaza tutanaklarında ve teknik iddialarda bilginin resmi arşive mi, anıya mı yoksa kulaktan dolma ikincil aktarıma mı dayandığını sorgulayan bilimsel İSG değerlendirme yöntemidir.",
+        q: "Prof. Dr. Mert Şekerci'nin derste işlediği; kaza tutanakları ve teknik iddialarda bilginin arşive mi yoksa anıya mı dayandığını sorgulayan akademik İSG becerisi nedir?"
+      }
+    ]
+  },
+  {
+    groupName: "Elektriğin Doğası, 3 Temel Özelliği ve 5 Zarar Verme Yolu",
+    items: [
+      {
+        opt: "Görünmez Olması (Duyularla Önceden Algılanamama)",
+        desc: "Elektrik akımının kokusu, rengi veya çıplak gözle görünen bir formu olmadığı için iletkende gerilim olup olmadığının sadece ölçüm aletiyle anlaşılabilmesi özelliğidir.",
+        q: "Elektriğin en tehlikeli fiziksel özelliği olan; duyularla varlığının önceden algılanamaması ve enerjili tel ile enerjisiz telin aynı görünmesi durumunu tanımlayan özellik hangisidir?"
+      },
+      {
+        opt: "Meslek Sormaması (%70'ten Fazlası Elektrikçi Olmayanlar)",
+        desc: "Elektrik riskinin yalnızca elektrikçileri değil; havai hatlara yaklaşan boyacı, ağaç budamacı, vinç operatörü ve inşaat işçisi gibi tüm meslekleri tehdit etmesi kuralıdır.",
+        q: "Elektrik kazalarında hayatını kaybedenlerin %70'inden fazlasının boyacı, ağaç budamacı, vinç operatörü gibi elektrikçi olmayan mesleklerden olmasını özetleyen temel prensip nedir?"
+      },
+      {
+        opt: "Sayıca Az Olmasına Rağmen Ağır ve Ölümcül Sonuçlar Doğurması",
+        desc: "Kaza frekansı toplam kazaların %1-2'si kadar düşük olmakla birlikte, kazazedede kalıcı sakatlık, ampütasyon veya ölüm oranının genel kaza ortalamalarından katbekat yüksek olmasıdır.",
+        q: "Elektrik kazalarının genel iş kazaları istatistiklerindeki payı küçük olmasına rağmen, sonuçlarının diğer kaza türlerine göre en belirgin ayırt edici niteliği nedir?"
+      },
+      {
+        opt: "1. Tehlike Sınıfı: Çarpma (Elektrik Şoku / Fibrilasyon / Asfiksi)",
+        desc: "Vücuttan geçen elektrik akımının biyolojik dokularda kas kilitlenmesi, solunum durması (asfiksi) ve kalpte ölümcül ventriküler fibrilasyon yapması tablosudur.",
+        q: "Elektrik akımının vücut dokularından geçerken sinir ve kas sistemini felç etmesi, diyaframı kilitlemesi veya kalbi durdurması ile tanımlanan birinci tehlike sınıfı nedir?"
+      },
+      {
+        opt: "2. Tehlike Sınıfı: Ark ve Yanıklar (Termal Isı ve Plazma)",
+        desc: "Hava boşluğundan geçen akımın 15.000 - 20.000 °C termal ısı enerjisi, erimiş metal sıçraması ve derin doku joule yanıkları oluşturduğu ark patlaması tehlikesidir.",
+        q: "Elektrik devrelerinde hava aralığının iyonize olarak binlerce derecelik sıcaklık, erimiş metal sıçraması ve UV ışınımı yayması ile oluşan tehlike sınıfı nedir?"
+      },
+      {
+        opt: "3. Tehlike Sınıfı: Yangın (Aşırı Yük ve İzolasyon Bozulması)",
+        desc: "Elektrik tesisatındaki aşırı akım, gevşek temas direnci veya 300 mA üzerindeki kaçak akımların yanıcı malzemeleri tutuşturarak oluşturduğu yangın tehlikesidir.",
+        q: "Kabloların kapasitesinden fazla yüklenmesi, klemenslerdeki gevşek temas direncinin aşırı ısınması veya ark parlaması sonucu binalarda ortaya çıkan tehlike sınıfı hangisidir?"
+      },
+      {
+        opt: "4. Tehlike Sınıfı: Patlama (ATEX ve Basınç Şoku)",
+        desc: "Patlayıcı gaz/toz ortamlarında elektrik kıvılcımının patlama zinciri başlatması veya arkın bakırı aniden buharlaştırarak yarattığı şiddetli akustik basınç dalgasıdır.",
+        q: "Elektriksel kıvılcımın yanıcı gaz, buhar veya toz bulunan ortamlarda ortamı ateşlemesi ya da arkın havayı genleştirerek şok dalgası yaratması hangi tehlike sınıfıdır?"
+      },
+      {
+        opt: "5. Tehlike Sınıfı: İkincil Kazalar (Şok İrkilmesiyle Yüksekten Düşme)",
+        desc: "Elektrik akımının kendisi doğrudan öldürmese bile, refleks kas kasılması sonucu çalışanın dengesini kaybederek yüksekten düşmesi veya elindeki aleti fırlatmasıdır.",
+        q: "Elektrik akımına maruz kalan bir çalışanın ölümcül olmayan küçük bir şok (1-5 mA) almasıyla refleks olarak irkilip iskeleden düşmesi hangi tehlike sınıfıdır?"
+      }
+    ]
+  },
+  {
+    groupName: "Kaza İstatistikleri, Rakamlar ve Güvenlik Kültürü Modelleri",
+    items: [
+      {
+        opt: "Van Otopsi Araştırması (%80 Alçak Gerilim Ölümleri)",
+        desc: "Elektrik ölümlerinin %80'inin sanılanın aksine yüksek gerilim değil, ev ve şantiyelerdeki alçak gerilim (220-380 V) çarpılmalarından kaynaklandığını gösteren araştırmadır.",
+        q: "Türkiye'de Van bölgesinde yapılan adli tıp ve otopsi çalışmalarında, elektrik kaynaklı ölümlerin yaklaşık yüzde kaçının ALÇAK GERİLİM (AG - 220V/380V) ile ilişkili olduğu tespit edilmiştir?"
+      },
+      {
+        opt: "ESFI 2011-2012 Araştırması (%70 Elektrikçi Olmayan Meslek Kayıpları)",
+        desc: "Elektrik kaynaklı işyeri ölümlerinin %70'inden fazlasının elektrikçi olmayan çalışanlarda (boyacı, ağaç budama, vinç, inşaat) gerçekleştiğini belgeleyen çalışmadır.",
+        q: "Uluslararası Elektrik Güvenliği Vakfı (ESFI) kaza verilerine göre; elektrik kaynaklı işyeri ölümlerinin yüzde kaçı elektrikçi olmayan çalışanlarda gerçekleşmektedir?"
+      },
+      {
+        opt: "Enerji Nakil Hattı İşçilerinin Ölüm Riski (55 Kat Yüksek Oran)",
+        desc: "Yüksekte çalışma ve yüksek gerilimin birleştiği enerji nakil hatları bakım işçilerinin ölüm riskinin tüm sektörler genel kaza ortalamasının 55 katına ulaştığını gösteren orandır.",
+        q: "İSG istatistiklerine göre yüksek gerilim enerji nakil hatlarının kurulum, bakım ve onarımında çalışan işçilerin ölüm riski, genel kaza ortalamasının yaklaşık kaç katıdır?"
+      },
+      {
+        opt: "100.000 Çalışan Yılı Oranı (Standart Kaza Frekans Hesabı)",
+        desc: "Farklı büyüklükteki sektörler ve ülkeler arasında elektrik kaza sıklığını adil karşılaştırabilmek için verilerin yıllık 100.000 çalışan başına standardize edildiği istatistiki orandır.",
+        q: "OSHA, BLS ve SGK gibi resmi kurumların farklı büyüklükteki sektörler ve ülkeler arasında elektrik kaza sıklığını adil karşılaştırabilmek için kullandığı standart referans taban nedir?"
+      },
+      {
+        opt: "James Reason 'İsviçre Peyniri Modeli' (Swiss Cheese Model)",
+        desc: "Yönetim, bakım, denetim, koruma röleleri ve KKD gibi savunma katmanlarındaki aktif hatalar ile gizli koşulların aynı hatta hizalanması sonucu kazanın oluştuğunu açıklayan modeldir.",
+        q: "Bir kazanın tek bir çalışanın anlık hatasıyla değil; yönetim, bakım, denetim ve koruma rölelerindeki boşlukların üst üste gelmesiyle oluştuğunu açıklayan kaza modeli nedir?"
+      },
+      {
+        opt: "Aktif Hata vs Gizli Koşul (Reason Modelinde Elektrik Analizi)",
+        desc: "Çalışanın anlık dikkatsizliği veya yanlış hamlesi aktif hata iken; panoda 30 mA RCD bulunmaması veya periyodik kontrolün yapılmaması önceden var olan gizli koşullardır.",
+        q: "İsviçre Peyniri Modeli'ne göre teknisyenin panoda faz kalemini yanlış kullanması 'Aktif Hata' ise, panoda 30 mA RCD takılmamış olması ve periyodik bakım yapılmaması neyi ifade eder?"
+      },
+      {
+        opt: "Heinrich Kaza Piramidi (1 - 29 - 300 Kuralı)",
+        desc: "Her 1 ölümlü/ağır kazanın altında 29 uzuv kayıplı/hafif kaza ve 300 ramak kala olayının bulunduğunu, ölümleri önlemenin yolunun ramak kalaları sıfırlamak olduğunu savunan modeldir.",
+        q: "İSG teorisinde her 1 ölümlü veya ağır kazanın altında 29 hafif kaza ve 300 ramak kala olayı bulunduğunu ortaya koyan model nedir?"
+      },
+      {
+        opt: "Frank Bird Kaza Piramidi (1 - 10 - 30 - 600 / 1.7 Milyon Kaza)",
+        desc: "1,7 milyon endüstriyel kaza analizine dayanarak 1 ağır kaza, 10 hafif kaza, 30 maddi hasarlı kaza ve 600 ramak kala oranını ortaya koyan kaza piramididir.",
+        q: "1,7 milyon endüstriyel kaza analizine dayanarak 1 ağır kaza - 10 hafif kaza - 30 hasarlı olay - 600 ramak kala oranını ortaya koyan kaza modeli hangisidir?"
+      },
+      {
+        opt: "Kaza Buzdağı Modeli (Görünen vs Görünmeyen Maliyetler)",
+        desc: "Elektrik kazalarında buzdağının su üstündeki kısmı doğrudan tedavi ve tazminat iken, su altındaki kısmı iş durması, ekipman hasarı ve itibar kaybı gibi 4-10 kat büyük dolaylı maliyetlerdir.",
+        q: "Elektrik kazalarında buzdağının su üstündeki görünen kısmı doğrudan tedavi ve tazminat maliyetleri iken, su altındaki çok daha büyük görünmeyen kısmı neyi temsil eder?"
+      },
+      {
+        opt: "6331 Sayılı Kanunda Ramak Kala Olay (Elektrik Örneği)",
+        desc: "İşyerinde meydana gelen, çalışanı veya ekipmanı zarara uğratma potansiyeli olduğu halde zarara uğratmayan tehlikeli olaydır (örneğin kablo soyulmasının çarpılma olmadan fark edilmesi).",
+        q: "6331 sayılı İSG Kanunu'na göre; işyerinde meydana gelen, çalışanı veya ekipmanı zarara uğratma potansiyeli olduğu halde zarara uğratmayan olaylara ne ad verilir?"
+      }
+    ]
+  },
   {
     groupName: "Akım Eşikleri ve Fizyolojik Etkiler",
     items: [
@@ -68,17 +218,17 @@ export const elektrikConceptGroups = [
     ]
   },
   {
-    groupName: "Gerilim Sınıfları, Direnç ve Ohm Kanunu",
+    groupName: "Gerilim Sınıfları, Şebeke Tipleri (TT, TN, IT) ve Koruma Röleleri",
     items: [
       {
         opt: "50 V AC (Alternatif Akım Tehlikeli Gerilim Sınırı)",
-        desc: "Normal kuru ortamlarda alternatif akımda insan vücudu için kabul edilen güvenli dokunma gerilimi üst sınırıdır (tehlikeli gerilim başlangıcıdır).",
+        desc: "Normal kuru ortamlarda alternatif akımda insan vücudu için kabul edilen güvenli dokunma gerilimi üst sınırıdır.",
         q: "İSG mevzuatı ve standartlarına göre normal kuru çalışma ortamlarında alternatif akım (AC) için 'Tehlikeli Gerilim Sınırı' kaç Volt kabul edilir?"
       },
       {
         opt: "120 V DC (Doğru Akım Tehlikeli Gerilim Sınırı)",
         desc: "Doğru akımda (DC) dalgalanmasız gerilim için insan vücudunda kabul edilen güvenli dokunma gerilimi üst sınırıdır.",
-        q: "Doğru akım (DC) sistemlerinde insan sağlığı açısından kabul edilen güvenli dokunma gerilimi üst sınırı (tehlikeli gerilim sınırı) kaç Volttur?"
+        q: "Doğru akım (DC) sistemlerinde insan sağlığı açısından kabul edilen güvenli dokunma gerilimi üst sınırı kaç Volttur?"
       },
       {
         opt: "24 V (Kazan İçi / Dar İletken Ortam Güvenlik Gerilimi)",
@@ -87,8 +237,8 @@ export const elektrikConceptGroups = [
       },
       {
         opt: "42 V (Çok Düşük Güvenlik Gerilimi Üst Sınırı)",
-        desc: "Yalıtım transformatörü (güvenlik trafosu) üzerinden beslenen küçük gerilimli el aletlerinde izin verilen üst güvenlik gerilimidir.",
-        q: "Güvenlik transformatörü kullanılarak elde edilen 'Küçük Gerilim (Çok Düşük Güvenlik Gerilimi)' uygulamalarında standart üst sınır kaç Volttur?"
+        desc: "Yalıtım transformatörü üzerinden beslenen küçük gerilimli el aletlerinde izin verilen üst güvenlik gerilimidir.",
+        q: "Güvenlik transformatörü kullanılarak elde edilen 'Küçük Gerilim' uygulamalarında standart üst sınır kaç Volttur?"
       },
       {
         opt: "230 V (Şebeke Faz - Nötr Alçak Gerilimi)",
@@ -98,51 +248,71 @@ export const elektrikConceptGroups = [
       {
         opt: "400 V / 380 V (Şebeke Faz - Faz Sanayi Gerilimi)",
         desc: "Üç fazlı (trifaze) sanayi şebekesinde iki faz iletkeni arasındaki (hat gerilimi) standart alçak gerilim değeridir.",
-        q: "Sanayi tesislerinde üç fazlı (trifaze) motor ve makineleri besleyen şebekede iki faz iletkeni arasındaki (Faz - Faz) gerilim değeri nedir?"
+        q: "Sanayi tesislerinde üç fazlı (trifaze) motor ve makineleri besleyen şebekede iki faz iletkeni arasındaki gerilim değeri nedir?"
       },
       {
         opt: "1000 V AC / 1500 V DC (Alçak Gerilim - Yüksek Gerilim Sınırı)",
         desc: "Etkin değeri bu sınırda ve altında olanlar Alçak Gerilim (AG), üzerinde olanlar ise Yüksek Gerilim (YG) olarak tanımlanır.",
-        q: "Elektrik Kuvvetli Akım Tesisleri Yönetmeliği'ne göre Alçak Gerilim (AG) ile Yüksek Gerilim (YG) arasındaki sınır değer AC ve DC'de nedir?"
+        q: "Elektrik Kuvvetli Akım Tesisleri Yönetmeliği'ne göre Alçak Gerilim (AG) ile Yüksek Gerilim (YG) arasındaki sınır değer AC'de nedir?"
       },
       {
         opt: "500 - 1000 Ohm (İnsan Vücudu İç Direnci / Islak Deri Direnci)",
         desc: "Derinin ıslak, terli veya yüksek voltajla delinmiş olduğu durumda kan ve iç dokuların gösterdiği minimum toplam vücut direncidir.",
-        q: "Derinin koruyucu dış tabakasının ıslaklık veya yüksek gerilim nedeniyle devre dışı kaldığı durumda insan vücudunun iç direnci yaklaşık kaç Ohm mertebesindedir?"
+        q: "Derinin koruyucu dış tabakasının ıslaklık veya gerilim delinmesi nedeniyle devre dışı kaldığı durumda insan vücudunun iç direnci yaklaşık kaç Ohm mertebesindedir?"
       },
       {
-        opt: "50.000 - 100.000 Ohm (Kuru ve Nasırlı Dış Deri Direnci)",
-        desc: "Tamamen kuru, sağlam ve kalın/nasırlı üst deri (epidermis) tabakasının düşük gerilim altında gösterdiği yüksek yalıtım direncidir.",
-        q: "Tamamen kuru ve çatlağı olmayan nasırlı bir el derisinin düşük gerilim altında gösterdiği başlangıç temas direnci hangi mertebededir?"
+        opt: "30 mA Kaçak Akım Rölesi (Hayat Koruma RCD)",
+        desc: "İnsan vücudundan geçen kaçak akım 30 mA seviyesine ulaştığında devreyi milisaniyeler içinde keserek solunum felci ve fibrilasyonu önleyen röledir.",
+        q: "Ev ve işyerlerinde priz devrelerine takılarak insanı doğrudan ve dolaylı dokunmaya karşı koruyan hayat koruma kaçak akım rölesi eşiği nedir?"
       },
       {
-        opt: "34,5 kV (34.500 V) Orta/Yüksek Gerilim Dağıtım Şebekesi",
-        desc: "Türkiye'de şehirler içi ve organize sanayi bölgelerinde trafo merkezlerine enerji taşıyan en yaygın yüksek (orta) gerilim seviyesidir.",
-        q: "Türkiye'de sanayi tesislerindeki özel trafolara ve şehir içi dağıtım trafolarına enerji getiren en yaygın Yüksek (Orta) Gerilim seviyesi hangisidir?"
+        opt: "300 mA Kaçak Akım Rölesi (Yangın Koruma RCD)",
+        desc: "Ana dağıtım panolarına takılarak izolasyon kaçağının ark çıkarıp elektrik yangını başlatmasını önleyen koruma rölesidir.",
+        q: "Tesislerde ana panolara monte edilen ve kablo izolasyon kaçaklarının ısınarak yangın çıkarmasını önleyen yangın koruma kaçak akım rölesi eşiği nedir?"
+      },
+      {
+        opt: "TT Şebeke Sistemi",
+        desc: "Trafo nötr noktasının doğrudan topraklandığı, cihazların metal gövdelerinin ise yerel koruma topraklayıcısına bağlandığı sistemdir.",
+        q: "Ev ve işyerlerinde yaygın kullanılan; trafo nötrünün topraklandığı ve tüketici cihaz gövdelerinin ayrı bir koruma topraklamasına bağlandığı şebeke tipi hangisidir?"
+      },
+      {
+        opt: "TN-S Şebeke Sistemi",
+        desc: "Şebeke boyunca Nötr (N) ve Koruma (PE) iletkenlerinin birbirinden tamamen ayrı iki hat olarak çekildiği en güvenli TN sistemidir.",
+        q: "Trafo merkezinden itibaren Nötr (N) iletkeni ile Koruma (PE) topraklama iletkeninin tüm tesisat boyunca ayrı ayrı çekildiği güvenli şebeke sistemi hangisidir?"
+      },
+      {
+        opt: "TN-C Şebeke Sistemi (Klasik Sıfırlama)",
+        desc: "Nötr ve koruma iletkeninin PEN adı altında tek bir iletkende birleştirildiği; PEN hattı koparsa tüm cihaz gövdelerine faz gerilimi binen tehlikeli sistemdir.",
+        q: "Nötr ve koruma fonksiyonlarının tek bir iletkende (PEN) birleştirildiği ve hat kopmasında tüm metal gövdelerin enerjilenmesi tehlikesi taşıyan sistem hangisidir?"
+      },
+      {
+        opt: "IT Şebeke Sistemi (Hastane Ameliyathane Sistemi)",
+        desc: "Trafo yıldız noktasının topraktan izole edildiği, ilk faz-gövde hatasında enerjinin kesilmeyip izolasyon izleme cihazının alarm verdiği kesintisiz sistemdir.",
+        q: "Hastane ameliyathaneleri, yoğun bakım üniteleri ve maden ocakları gibi ilk yalıtım hatasında elektriğin kesilmemesi gereken hayati yerlerde kullanılan şebeke tipi hangisidir?"
       }
     ]
   },
   {
-    groupName: "5 Temel Güvenlik Kuralı, LOTO ve Koruma Yöntemleri",
+    groupName: "5 Temel Güvenlik Kuralı, LOTO (EKED) ve Yüksek Gerilim Güvenliği",
     items: [
       {
         opt: "1. Kural: Gerilimi Her Yönden Kesmek",
-        desc: "Çalışılacak tesisat bölümünü besleyen tüm faz ve nötr kaynaklarının (şebeke, jeneratör, UPS, kompanzasyon) görünür şekilde ayrılmasıdır.",
+        desc: "Çalışılacak tesisat bölümünü besleyen tüm faz ve nötr kaynaklarının görünür şekilde ana şalter ve ayırıcılardan ayrılmasıdır.",
         q: "Elektrik tesislerinde gerilimsiz çalışmaya başlarken uygulanan '5 Temel Güvenlik Kuralı'nın BİRİNCİ adımı aşağıdakilerden hangisidir?"
       },
       {
         opt: "2. Kural: Tekrar Gerilim Verilmesini Önlemek (LOTO / EKED)",
-        desc: "Açılan şalter ve ayırıcıların kişisel asma kilitlerle kilitlenmesi ve üzerine 'Çalışma Var, Enerjiyi Açma' uyarı etiketi asılmasıdır.",
-        q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralı'nın İKİNCİ adımı olan ve habersiz enerjilenmeyi fiziksel olarak engelleyen uygulama hangisidir?"
+        desc: "Açılan şalter ve ayırıcıların kişisel asma kilitlerle kilitlenmesi ve üzerine 'Çalışma Var, Enerjiyi Açma' uyarı kartı takılmasıdır.",
+        q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralı'nın İKİNCİ adımı olan ve habersiz enerjilenmeyi fiziksel kilitle engelleyen uygulama hangisidir?"
       },
       {
         opt: "3. Kural: Gerilimsizliği Kontrol Etmek",
-        desc: "Çalışılacak iletkenlerde enerji kalmadığının kalibrasyonlu çift kutuplu gerilim dedektörü veya ölçü aleti ile doğrulanmasıdır.",
+        desc: "Çalışılacak iletkenlerde enerji kalmadığının kalibrasyonlu çift kutuplu gerilim dedektörü ile doğrulanmasıdır.",
         q: "Enerji kesilip şalter kilitlendikten sonra 5 Temel Güvenlik Kuralı'nın ÜÇÜNCÜ adımı olarak sahada mutlaka yapılması gereken işlem nedir?"
       },
       {
         opt: "4. Kural: Topraklama ve Kısa Devre Yapmak",
-        desc: "Kapasitif yükleri boşaltmak ve indüksiyon/ters besleme riskine karşı önce topraklama ucu toprağa, sonra faz uçları iletkenlere bağlanarak yapılan korumadır.",
+        desc: "Kapasitif kalıntı yükleri boşaltmak ve indüksiyon/ters besleme riskine karşı önce toprak ucunu toprağa, sonra faz uçlarını iletkenlere bağlama kuralıdır.",
         q: "Gerilimsizlik doğrulandıktan sonra kapasitif kalıntı yükleri boşaltmak ve ters beslemeye karşı çalışanı korumak için uygulanan DÖRDÜNCÜ kural nedir?"
       },
       {
@@ -152,93 +322,18 @@ export const elektrikConceptGroups = [
       },
       {
         opt: "Çoklu Kilitleme Çoklayıcısı (LOTO Hasp / Kilit Kıskacı)",
-        desc: "Aynı makine veya panoda birden fazla teknisyen çalışırken her çalışanın kendi kişisel asma kilidini aynı şaltere takabilmesini sağlayan aparatır.",
-        q: "Bir elektrik panosunda aynı anda 4 farklı bakım personeli çalışırken şalterin son kişi işini bitirmeden açılmasını önleyen çok delikli LOTO aparatı nedir?"
+        desc: "Aynı makine veya panoda birden fazla teknisyen çalışırken her çalışanın kendi asma kilidini aynı şaltere takabilmesini sağlayan aparatır.",
+        q: "Bir elektrik panosunda birden fazla bakım personeli çalışırken şalterin son kişi işini bitirmeden açılmasını önleyen çok delikli LOTO aparatı nedir?"
       },
-      {
-        opt: "Koruma Topraklaması",
-        desc: "Normalde gerilim altında olmayan metal gövdelerin (makine şasisi, pano gövdesi) dolaylı dokunmaya karşı toprakla irtibatlandırılmasıdır.",
-        q: "Yalıtım hatası sonucu makine veya pano metal gövdesine faz teması olduğunda çalışanı dolaylı dokunmaya karşı koruyan topraklama türü hangisidir?"
-      },
-      {
-        opt: "İşletme Topraklaması",
-        desc: "Trafo yıldız (nötr) noktasının şebekenin düzgün çalışması için doğrudan veya empedans üzerinden toprağa bağlanmasıdır.",
-        q: "Güç transformatörlerinin yıldız (nötr) noktasının elektrik şebekesinin kararlı çalışması amacıyla toprağa bağlanmasına ne ad verilir?"
-      },
-      {
-        opt: "Fonksiyon (Koruma + İşletme / Yıldırım) Topraklaması",
-        desc: "İletişim tesisleri, otomasyon sistemleri ve paratonerlerin beklenen işlevi güvenli yerine getirmesi için yapılan özel topraklamadır.",
-        q: "Zayıf akım, haberleşme, PLC otomasyon sistemleri veya yıldırımdan korunma tesislerinin işlevini yerine getirmesi için yapılan topraklama türü nedir?"
-      },
-      {
-        opt: "Eşpotansiyel Kuşaklama (Potansiyel Dengeleme)",
-        desc: "Bina içindeki tüm metal boruların (su, doğalgaz, kalorifer), çelik konstrüksiyonun ve topraklama barasının birbirine bağlanarak aralarındaki gerilim farkının sıfırlanmasıdır.",
-        q: "Bir tesis içindeki tüm metal tesisat boruları, yapı çelikleri ve koruma iletkenlerinin ana topraklama barasında birleştirilerek gerilim farklarının yok edilmesine ne denir?"
-      }
-    ]
-  },
-  {
-    groupName: "Topraklama Şebeke Tipleri (TN, TT, IT) ve Ekipman Güvenliği",
-    items: [
-      {
-        opt: "TT Şebeke Sistemi",
-        desc: "Trafo nötr noktasının doğrudan topraklandığı, cihazların metal gövdelerinin ise işletme topraklamasından bağımsız ayrı bir yerel topraklayıcıya bağlandığı sistemdir.",
-        q: "Ev ve işyerlerinde yaygın kullanılan; trafo nötrünün topraklandığı ve tüketici cihaz gövdelerinin ayrı bir koruma topraklamasına bağlandığı şebeke tipi hangisidir?"
-      },
-      {
-        opt: "TN-S Şebeke Sistemi",
-        desc: "Şebeke boyunca Nötr (N) ve Koruma (PE) iletkenlerinin birbirinden tamamen ayrı iki iletken olarak çekildiği en güvenli TN sistemidir.",
-        q: "Trafo merkezinden itibaren Nötr (N) iletkeni ile Koruma (PE) topraklama iletkeninin tüm tesisat boyunca ayrı ayrı çekildiği güvenli şebeke sistemi hangisidir?"
-      },
-      {
-        opt: "TN-C Şebeke Sistemi (Klasik Sıfırlama)",
-        desc: "Nötr ve koruma iletkeninin PEN adı altında tek bir iletkende birleştirildiği; PEN koparsa cihaz gövdelerine 230 V faz binmesi riski taşıyan sistemdir.",
-        q: "Nötr ve koruma fonksiyonlarının tek bir iletkende (PEN) birleştirildiği ve hat kopmasında tüm metal gövdelerin enerjilenmesi tehlikesi taşıyan sistem hangisidir?"
-      },
-      {
-        opt: "IT Şebeke Sistemi (İzole Nötr / Hastane Ameliyathane Sistemi)",
-        desc: "Trafo yıldız noktasının topraktan yalıtıldığı (izole edildiği), ilk faz-gövde hatasında enerjinin kesilmeyip izolasyon izleme cihazının alarm verdiği kesintisiz sistemdir.",
-        q: "Hastane ameliyathaneleri, yoğun bakım üniteleri ve maden ocakları gibi ilk yalıtım hatasında elektriğin kesilmemesi gereken hayati yerlerde kullanılan şebeke tipi hangisidir?"
-      },
-      {
-        opt: "Çift Yalıtımlı (Sınıf II - İç İçe İki Kare Sembollü) Cihaz",
-        desc: "Temel yalıtıma ek olarak takviyeli dış yalıtıma sahip olan ve koruma topraklaması (topraklı fiş) gerektirmeyen elektrikli el aleti sınıfıdır.",
-        q: "Üzerinde 'iç içe geçmiş iki kare' sembolü bulunan ve güvenli yapısı nedeniyle topraklama iletkenine bağlanması gerekmeyen el aleti sınıfı hangisidir?"
-      },
-      {
-        opt: "IP2X Koruma Derecesi (Parmak Temasına Karşı Koruma)",
-        desc: "Elektrik panolarında 12,5 mm çapındaki parmak veya benzeri cisimlerin enerjili baralara temas etmesini engelleyen asgari muhafaza koruma sınıfıdır.",
-        q: "Alçak gerilim elektrik panolarında enerjili aktif bölümlere insan parmağının (>12,5 mm) girmesini önleyen uluslararası muhafaza koruma kodu nedir?"
-      },
-      {
-        opt: "Sarı - Yeşil Çizgili İletken (PE Koruma Topraklama İletkeni)",
-        desc: "Uluslararası standartlara göre yalnızca koruma topraklaması (PE) hattında kullanılması zorunlu olan ve başka amaçla kullanılamayan kablo rengidir.",
-        q: "Elektrik İç Tesisleri Yönetmeliği'ne göre koruma topraklaması (PE) iletkeninin yalıtkan dış kılıf rengi standart olarak ne olmalıdır?"
-      },
-      {
-        opt: "Açık Mavi İletken (Nötr - N İletkeni)",
-        desc: "Elektrik tesisatlarında nötr (N) hattını göstermek için kullanılan standart kablo yalıtım rengidir.",
-        q: "Elektrik panolarında ve bina içi tesisatlarda 'Nötr (N)' iletkenini tanımlamak için kullanılan standart kablo rengi aşağıdakilerden hangisidir?"
-      },
-      {
-        opt: "Meger (Toprak Megeri / Topraklama Direnci Ölçüm Cihazı)",
-        desc: "Topraklama tesisatının yayılma direncini (Ohm) ve kabloların izolasyon (yalıtkanlık) direncini (MegaOhm) ölçmek için kullanılan özel test cihazıdır.",
-        q: "Elektrik tesislerinde yıllık periyodik kontrollerde topraklama geçiş direncini ve kablo yalıtkanlık direncini ölçmek için kullanılan cihazın adı nedir?"
-      },
-      {
-        opt: "Faraday Kafesi ve Paratoner (Yıldırımdan Korunma)",
-        desc: "Binaları ve patlayıcı tesisleri doğrudan yıldırım düşmesine karşı koruyarak yıldırım akımını bina dışından toprağa güvenle aktaran dış yıldırımdan korunma sistemidir.",
-        q: "Yapıları ve yanıcı/patlayıcı madde depolarını yıldırım deşarjına karşı çatıdaki yakalama uçları, iniş iletkenleri ve topraklama ağıyla koruyan kafes sistemine ne denir?"
-      }
-    ]
-  },
-  {
-    groupName: "Yüksek Gerilim, Ark Patlaması, KKD ve İlk Yardım",
-    items: [
       {
         opt: "Dokunma Gerilimi",
-        desc: "Yalıtım hatası bulunan bir makine gövdesine veya direğe elle dokunan kişinin eli ile bastığı zemin (ayakları) arasında oluşan gerilim farkıdır.",
+        desc: "Yalıtım hatası bulunan bir makine gövdesine veya direğe elle dokunan kişinin eli ile bastığı zemin arasında oluşan gerilim farkıdır.",
         q: "Arızalı bir elektrik direğine veya makine gövdesine eliyle temas eden çalışanın eli ile ayakları arasında oluşan potansiyel farkına ne ad verilir?"
+      },
+      {
+        opt: "Adım Gerilimi",
+        desc: "Toprağa yayılan akımın oluşturduğu potansiyel konisinde kişinin iki ayağı (yaklaşık 1 adım / 80 cm) arasında oluşan potansiyel farkıdır.",
+        q: "Yere düşen bir yüksek gerilim iletkeninin yakınında bulunan kişinin, iki ayağı arasındaki potansiyel farkından dolayı maruz kaldığı gerilime ne ad verilir?"
       },
       {
         opt: "İndüksiyon Gerilimi (Elektromanyetik Endüklenme)",
@@ -247,48 +342,33 @@ export const elektrikConceptGroups = [
       },
       {
         opt: "Kapasitif Boşalma (Artık Yük Deşarjı)",
-        desc: "Enerjisi kesilen kompanzasyon kondansatörleri ve uzun yeraltı yüksek gerilim kablolarının içinde depolanmış kalan elektrik yükünün dokunan kişiye boşalmasıdır.",
-        q: "Enerji tamamen kesildiği halde kompanzasyon panolarındaki kondansatörlerde veya uzun yeraltı kablolarında birikmiş kalarak çarpılmaya yol açan tehlike nedir?"
-      },
-      {
-        opt: "Ark Koruyucu Termal Kıyafet (cal/cm² ATPV Değerli Elbise)",
-        desc: "Ark patlaması (Arc Flash) sırasında ortaya çıkan yüksek termal ısı enerjisine (cal/cm²) karşı çalışanı yanıklardan koruyan alev almaz özel KKD'dir.",
-        q: "Yüksek enerjili elektrik panolarında manevra yaparken olası bir 'Ark Patlaması (Arc Flash)' ısısına karşı giyilen ve koruma düzeyi cal/cm² ile ölçülen KKD nedir?"
-      },
-      {
-        opt: "Dielektrik İzole Eldiven (EN 60903 - Sınıflandırılmış)",
-        desc: "Üzerinde Sınıf 00 (500 V)'dan Sınıf 4 (36.000 V)'e kadar dayanım gerilimi yazılı olan ve her kullanım öncesi şişirilerek hava kaçağı kontrol edilen yalıtkan eldivendir.",
-        q: "Elektrik işlerinde kullanılan, gerilim seviyesine göre Sınıf 00'dan Sınıf 4'e kadar ayrılan ve kullanmadan önce delik kontrolü yapılması zorunlu olan KKD nedir?"
-      },
-      {
-        opt: "Yüksek Gerilim İzole Manevra Istakası (Stanga)",
-        desc: "Yüksek gerilim hücrelerinde ayırıcı açma-kapama, sigorta değiştirme ve topraklama takma işlemlerini güvenli mesafeden yapmayı sağlayan fiberglas yalıtkan çubuktur.",
-        q: "Yüksek gerilim (YG) trafo merkezlerinde enerjili veya yakın bölümlerde uzaktan güvenli manevra ve kontrol yapmayı sağlayan yalıtkan çubuğa ne ad verilir?"
+        desc: "Enerjisi kesilen kompanzasyon kondansatörleri ve uzun yeraltı kablolarının içinde depolanmış kalan elektrik yükünün dokunan kişiye boşalmasıdır.",
+        q: "Enerji tamamen kesildiği halde kompanzasyon panolarındaki kondansatörlerde veya uzun kablolarda birikmiş kalarak çarpılmaya yol açan tehlike nedir?"
       },
       {
         opt: "Ayırıcı (Seksiyoner) — Yüksüz Devre Açma Elemanı",
-        desc: "Devreyi gözle görünür şekilde ayıran ancak ark söndürme hücresi olmadığı için KESİNLİKLE YÜK ALTINDA AÇILMAMASI gereken yüksek gerilim elemanıdır.",
-        q: "Yüksek gerilim tesislerinde devrenin açık olduğunu gözle görmeye yarayan, ancak önce kesici (disjonktör) açılmadan yük altında açılırsa büyük ark patlaması yapan eleman nedir?"
+        desc: "Devreyi gözle görünür şekilde ayıran ancak ark söndürme hücresi olmadığı için KESİNLİKLE YÜK ALTINDA AÇILMAMASI gereken YG elemanıdır.",
+        q: "Yüksek gerilim tesislerinde devrenin açık olduğunu gözle görmeye yarayan, ancak kesici açılmadan yük altında açılırsa büyük ark patlaması yapan eleman nedir?"
       },
       {
         opt: "Kesici (Disjonktör) — Yük ve Kısa Devre Açma Elemanı",
-        desc: "Yüksek gerilim devrelerini hem normal yük altında hem de kısa devre arızası anında arkı söndürerek güvenle açıp kapatabilen devre elemanıdır.",
-        q: "Yüksek gerilim trafo merkezlerinde devreyi yük altında ve kısa devre anında oluşan arkı özel hücrede (SF6 gazlı, vakumlu vb.) söndürerek kesen eleman nedir?"
+        desc: "Yüksek gerilim devrelerini hem normal yük altında hem de kısa devre arızası anında arkı özel hücrede söndürerek güvenle kesebilen elemandır.",
+        q: "Yüksek gerilim trafo merkezlerinde devreyi yük altında ve kısa devre anında oluşan arkı söndürerek kesen eleman nedir?"
       },
       {
-        opt: "Otomatik Eksternal Defibrilatör (OED / Şok Cihazı)",
-        desc: "Elektrik çarpması sonucu kalpte gelişen ventriküler fibrilasyonu kontrollü elektrik şoku vererek normal sinüs ritmine döndüren ilk yardım cihazıdır.",
-        q: "Elektrik çarpmasına bağlı gelişen ölümcül 'Ventriküler Fibrilasyon' tablosunu geri döndürmek için temel yaşam desteğinde kullanılan elektro-şok cihazı nedir?"
+        opt: "Ark Koruyucu Termal Kıyafet (cal/cm² ATPV Değerli)",
+        desc: "Ark patlaması (Arc Flash) sırasında ortaya çıkan yüksek termal ısı enerjisine karşı çalışanı yanıklardan koruyan alev almaz özel KKD'dir.",
+        q: "Yüksek enerjili elektrik panolarında manevra yaparken olası bir 'Ark Patlaması' ısısına karşı giyilen ve koruma düzeyi cal/cm² ile ölçülen KKD nedir?"
       },
       {
-        opt: "Ex-Proof (Patlamaya Karşı Korumalı - ATEX) Elektrik Ekipmanı",
-        desc: "Metan, solvent buharı, akaryakıt veya yanıcı toz bulunan patlayıcı ortamlarda kıvılcım ve yüzey sıcaklığını sızdırmayacak şekilde üretilmiş özel elektrik tesisatıdır.",
-        q: "Boyahane, akaryakıt tesisi veya kömür madeni gibi patlayıcı gaz/toz bulunan ortamlarda ark ve kıvılcımın dışarı sızmasını önleyen özel elektrik ekipmanı hangisidir?"
+        opt: "Dielektrik İzole Eldiven (EN 60903 Sınıflı)",
+        desc: "Üzerinde Sınıf 00 (500 V)'dan Sınıf 4 (36.000 V)'e kadar dayanım sınıfı yazılı olan ve her kullanım öncesi hava üflenerek delik kontrolü yapılan eldivendir.",
+        q: "Elektrik işlerinde kullanılan, gerilim seviyesine göre Sınıf 00'dan Sınıf 4'e kadar ayrılan ve kullanmadan önce delik kontrolü yapılan KKD nedir?"
       }
     ]
   },
   {
-    groupName: "Saha Uygulamaları, Şantiye ve Bakım Güvenliği",
+    groupName: "Şantiye Pano Güvenliği, Ekipman ve Saha Standartları",
     items: [
       {
         opt: "Kablo Köprüsü ve Havadan Askıya Alma",
@@ -296,129 +376,49 @@ export const elektrikConceptGroups = [
         q: "İnşaat şantiyelerinde geçici uzatma kablolarının araç geçiş yollarında ezilerek yalıtımının soyulmasını önlemek için hangi yöntem uygulanmalıdır?"
       },
       {
-        opt: "IP65 / IP67 Su ve Toz Geçirmez Kombinasyon Priz Panosu",
-        desc: "Açık hava şantiyelerinde yağmur, çamur ve toza karşı tam sızdırmazlık sağlayan, içinde 30 mA RCD ve sigortalar bulunan kapaklı şantiye panosudur.",
-        q: "Açık hava şantiyelerinde yağmur suyunun ve inşaat tozunun pano içine girerek kısa devre/kaçak yapmasını engelleyen dış ortam pano standardı hangisidir?"
+        opt: "IP2X Muhafaza Standardı (Parmak Teması Koruması)",
+        desc: "Elektrik panolarında 12,5 mm çapındaki parmak veya cisimlerin enerjili aktif baralara temas etmesini fiziksel olarak engelleyen asgari muhafaza kodudur.",
+        q: "Alçak gerilim elektrik panolarında enerjili aktif bölümlere insan parmağının girmesini önleyen uluslararası muhafaza koruma kodu nedir?"
       },
       {
-        opt: "Termal Kamera ile Kestirimci Bakım (Periyodik Kontroller)",
-        desc: "Elektrik panolarında gevşek klemens bağlantılarını ve dengesiz faz yüklenmelerini yangın çıkmadan önce kızılötesi sıcaklık artışıyla tespit eden yöntemdir.",
-        q: "Elektrik panolarında enerjiyi kesmeden gevşek bağlantı noktalarındaki aşırı ısınmaları (sıcak noktaları) yangın çıkmadan önce tespit eden bakım yöntemi nedir?"
+        opt: "IP65 / IP67 Su ve Toz Geçirmez Şantiye Panosu",
+        desc: "Açık hava şantiyelerinde yağmur ve toza karşı sızdırmazlık sağlayan, içinde 30 mA RCD ve sigortalar bulunan kapaklı kombinasyon priz panosudur.",
+        q: "Açık hava şantiyelerinde yağmur suyunun ve inşaat tozunun pano içine girerek kısa devre yapmasını engelleyen dış ortam pano standardı hangisidir?"
+      },
+      {
+        opt: "Termal Kamera ile Kestirimci Bakım Kontrolü",
+        desc: "Elektrik panolarında gevşek klemens bağlantılarını ve dengesiz aşırı yüklenmeleri enerjiyi kesmeden kızılötesi sıcaklık artışıyla tespit eden yöntemdir.",
+        q: "Elektrik panolarında enerjiyi kesmeden gevşek bağlantı noktalarındaki aşırı ısınmaları yangın çıkmadan önce tespit eden kestirimci bakım yöntemi nedir?"
       },
       {
         opt: "Yalıtım (İzolasyon) Transformatörü",
-        desc: "Primer (giriş) ve sekonder (çıkış) sargıları birbirinden elektriksel olarak tamamen ayrılmış olan ve sekonder ucun toprağa göre potansiyel oluşturmasını engelleyen trafodur.",
-        q: "Şebeke gerilimini 1:1 oranında aktarırken çıkış hattının toprakla olan elektriksel bağını kopararak tek iletkene dokunmada çarpılmayı önleyen trafo türü nedir?"
+        desc: "Primer ve sekonder sargıları birbirinden tamamen ayrılmış olan ve çıkış hattının toprakla elektriksel bağını kopararak tek tele dokunmada çarpılmayı önleyen trafodur.",
+        q: "Şebeke gerilimini 1:1 aktarırken çıkış hattının toprakla olan bağını kopararak tek iletkene dokunmada çarpılmayı önleyen trafo türü nedir?"
       },
       {
         opt: "Parafudr (Aşırı Gerilim Sönümleyici / Surge Arrester)",
-        desc: "Yıldırım düşmesi veya şebeke manevraları sonucu oluşan anlık yüksek gerilim darbelerini toprağa deşarj ederek iç tesisatı ve cihazları koruyan elemandır.",
-        q: "Enerji nakil hatlarına yıldırım düşmesi sonucu tesisata gelen binlerce voltluk aşırı gerilim darbelerini toprağa akıtarak panoyu koruyan eleman nedir?"
-      },
-      {
-        opt: "Kuru Tahta, Plastik veya İzole Halat (Kurtarma Aracı)",
-        desc: "Enerjinin şalterden hemen kesilemediği acil bir elektrik çarpması vakasında, kazazedeyi iletkenden ayırmak için kullanılan yalıtkan malzemedir.",
-        q: "Elektrik akımına kapılmış bir kişiyi kurtarırken şaltere ulaşılamıyorsa, kazazedeyi enerjili kablodan ayırmak için aşağıdakilerden hangisi kullanılmalıdır?"
+        desc: "Yıldırım düşmesi veya şebeke darbeleri sonucu oluşan anlık yüksek gerilim piklerini toprağa deşarj ederek iç tesisatı koruyan elemandır.",
+        q: "Enerji hatlarına yıldırım düşmesi sonucu tesisata gelen binlerce voltluk aşırı gerilim darbelerini toprağa akıtarak panoyu koruyan eleman nedir?"
       },
       {
         opt: "Ayakları Birbirine Bitiştirerek Sıçrama veya Sürüyerek Uzaklaşma",
-        desc: "Kopmuş bir yüksek gerilim iletkeninin düştüğü bölgeden 'Adım Gerilimi'ne kapılmadan güvenli şekilde çıkabilmek için uygulanması gereken hareket tekniğidir.",
-        q: "Yüksek gerilim hattının kopup yere düştüğü 20 metrelik tehlike çemberi içinde kalan bir çalışan, adım gerilimine maruz kalmamak için bölgeden nasıl çıkmalıdır?"
+        desc: "Kopmuş bir yüksek gerilim iletkeninin düştüğü bölgeden Adım Gerilimine kapılmadan güvenli şekilde çıkabilmek için uygulanan hareket tekniğidir.",
+        q: "Yüksek gerilim hattının kopup yere düştüğü tehlike çemberi içinde kalan bir çalışan, adım gerilimine maruz kalmamak için bölgeden nasıl çıkmalıdır?"
       },
       {
-        opt: "Trafo Odası Kapılarının Dışarıya Doğru Açılması ve Kilitli Tutulması",
-        desc: "İçeride olası bir ark veya patlama anında personelin panikle kaçabilmesi için kapının dışa açılması ve yetkisiz kişilerin girmemesi için kilitli olması kuralıdır.",
-        q: "Yüksek gerilim trafo ve pano odalarının kapıları acil kaçış güvenliği açısından hangi yöne açılmalı ve nasıl tutulmalıdır?"
+        opt: "Akü Şarj Odalarında Hidrojen (H2) Gazı Tahliyesi",
+        desc: "UPS ve forklift akülerinin şarjı sırasında açığa çıkan ve havada %4 oranında patlayıcı olan hidrojen gazının tavanda birikmesini önleyen ex-proof havalandırmadır.",
+        q: "Akü şarj odalarında şarj esnasında açığa çıkarak patlama riski yaratan gaz ve alınması gereken önlem nedir?"
       },
       {
-        opt: "Akü Şarj Odalarında Hidrojen (H2) Gazı Havalandırması",
-        desc: "Kurşun-asit akümülatörlerin şarjı sırasında açığa çıkan ve %4 oranında patlayıcı olan hidrojen gazının tavanda birikmesini önleyen ex-proof cebri havalandırmadır.",
-        q: "Kesintisiz güç kaynağı (UPS) ve forklift akü şarj odalarında şarj esnasında açığa çıkarak patlama riski yaratan gaz ve alınması gereken önlem nedir?"
+        opt: "Acil Durum Enerji Kesme (EPO) Butonu",
+        desc: "Laboratuvar, pano odası veya atölyelerde elektrik çarpması ya da yangın anında tüm enerjiyi dışarıdan tek hamlede kesen mantar başlı butondur.",
+        q: "Elektrik test laboratuvarları ve atölye çıkışlarında acil bir çarpılma veya yangın anında tüm elektriği tek hamlede kesen buton nedir?"
       },
       {
-        opt: "Yetkili Elektrikçi (EKAT Belgeli / Mesleki Yeterlilik Belgeli Personel)",
-        desc: "Mevzuata göre elektrik tesislerinde bakım, onarım ve manevra işlemlerini yapmaya yetkili, gerilim kademesine uygun eğitim ve belgesi olan uzman personeldir.",
-        q: "İSG mevzuatına göre işyerlerinde elektrik panolarına müdahale, arıza onarımı ve yüksek gerilim manevraları yalnızca kimler tarafından yapılabilir?"
-      }
-    ]
-  },
-  {
-    groupName: "Ek Elektriksel Güvenlik ve Kaza Analizi Prensipleri",
-    items: [
-      {
-        opt: "C Sınıfı / Elektrik (E) Yangınları",
-        desc: "Enerjili elektrik tesisatı, pano, motor ve trafolarda meydana gelen; müdahalede önce enerjinin kesilmesi ve CO2 / KKT kullanılması gereken yangınlardır.",
-        q: "Yangın sınıflandırmasında enerjili elektrik panoları, kablolar ve elektronik cihazlarda çıkan yangınlar hangi kapsamda değerlendirilir?"
-      },
-      {
-        opt: "Kaçak Akım Rölesi 'TEST (T)' Butonu Kontrolü",
-        desc: "Kaçak akım rölesinin mekanik açma mekanizmasının yapışıp bozulmadığını doğrulamak için ayda bir kez üzerindeki T butonuna basılarak yapılan kontroldür.",
-        q: "Panolardaki 30 mA kaçak akım rölesinin arıza anında gerçekten atıp atmayacağını kullanıcıların ayda bir kez kendi kendine kontrol etmesini sağlayan parça nedir?"
-      },
-      {
-        opt: "Selektivite (Seçicilik) İlkesi",
-        desc: "Bir elektrik arızasında tüm fabrikanın enerjisinin kesilmesi yerine yalnızca arızalı linyeye en yakın koruma elemanının (sigorta/RCD) devreyi açması prensibidir.",
-        q: "Elektrik koruma sistemlerinde arıza olduğunda ana panonun değil, sadece arızanın olduğu en uç noktadaki sigorta veya rölenin açması ilkesine ne ad verilir?"
-      },
-      {
-        opt: "Gecikmeli (S Tipi / Selektif) 300 mA Yangın Rölesi",
-        desc: "Alt panolardaki 30 mA rölelerle aynı anda atmaması için kısa süreli gecikmeyle çalışan ana pano yangın koruma kaçak akım rölesidir.",
-        q: "Ana dağıtım panosundaki 300 mA yangın koruma rölesinin, tali panodaki 30 mA hayat koruma rölesinden önce açmasını engellemek için kullanılan röle tipi nedir?"
-      },
-      {
-        opt: "Temas Süresinin Kısaltılması (IEC 60364 - En Fazla 0,4 sn / 0,2 sn)",
-        desc: "230 V alternatif akım devrelerinde dolaylı dokunma hatası oluştuğunda koruma elemanının fibrilasyon başlamadan devreyi en geç 0,4 saniyede kesmesi şartıdır.",
-        q: "IEC 60364 standardına göre 230 V AC son kullanıcı priz devrelerinde bir gövde kaçağı oluştuğunda otomatik açma süresi en fazla kaç saniye olmalıdır?"
-      },
-      {
-        opt: "Seyyar El Aletlerinde Gövde ve Kablo Giriş Rekoru Kontrolü",
-        desc: "Avuç taşlama ve matkap gibi el aletlerinde kablonun gövdeye girdiği boyun kısmındaki bükülme koruyucusunun sağlam olmasını gerektiren kontroldür.",
-        q: "Taşınabilir elektrikli el aletlerinde faz iletkeninin soyularak kullanıcının eline temas etmesi en sık hangi noktadaki hasardan kaynaklanır?"
-      },
-      {
-        opt: "Jeneratör Enversör (Transfer) Şalteri Koruması",
-        desc: "Şebeke elektriği kesildiğinde devreye giren jeneratörün, şebeke hattına ters enerji basarak dışarıda çalışan hat bakım işçisini çarpmasını önleyen kilitlemeli şalterdir.",
-        q: "Fabrikadaki yedek jeneratör çalıştığında, enerjinin ana şebekeye geri basılarak sokaktaki trafo/hat işçisini elektriğe çarpmasını engelleyen zorunlu şalter nedir?"
-      },
-      {
-        opt: "Hava Hattı Emniyet (Yaklaşma) Mesafesi (154 kV için en az 3 - 5 metre)",
-        desc: "Yüksek gerilim iletkenlerine fiziksel temas olmasa dahi havadan ark atlamaması için iş makineleri ve vinçlerin girmemesi gereken asgari güvenlik mesafesidir.",
-        q: "154 kV yüksek gerilim enerji nakil hatlarının altında çalışan vinç ve ekskavatörlerin, havadan ark atlamasını önlemek için koruyacağı emniyet mesafesi nedir?"
-      },
-      {
-        opt: "İzole Tabanlı (Dielektrik - Metal İçermeyen) İş Ayakkabısı",
-        desc: "Elektrikçilerin kullandığı, burun koruyucusu çelik yerine kompozit olan ve tabanı toprağa elektrik akımı geçişini engelleyen özel yalıtkan iş ayakkabısıdır.",
-        q: "Elektrik bakım teknisyenlerinin giydiği iş ayakkabılarında standart çelik burunlu antistatik ayakkabılardan farklı olarak hangi özellik aranır?"
-      },
-      {
-        opt: "Ark Koruyucu Polikarbonat Yüz Siperi",
-        desc: "Pano manevralarında yüzü ve gözleri ark patlamasının UV ışınımından, erimiş metal damlacıklarından ve termal ısı dalgasından koruyan KKD'dir.",
-        q: "Elektrik panolarında şalter açma-kapama ve ölçü aletiyle test sırasında yüz ve gözleri ark parlaması ile erimiş metal sıçramasından koruyan KKD nedir?"
-      },
-      {
-        opt: "İki Kutuplu Gerilim Dedektörü (Faz Kalemi Yerine Güvenli Ölçüm)",
-        desc: "Tek uçlu neon kontrol kalemleri eldiven veya yalıtkan zeminde yanıltıcı olabildiği için gerilimsizliği kesin doğrulayan profesyonel test cihazıdır.",
-        q: "Profesyonel İSG uygulamalarında tek uçlu basit kontrol kalemi yerine 'Gerilimsizliği Kontrol Etme' adımında neden iki kutuplu gerilim dedektörü tercih edilir?"
-      },
-      {
-        opt: "Topraklama Levhası / Çubuğu ve Bakır İletken (En az 16 mm²)",
-        desc: "Mekanik dayanım ve iletkenlik açısından koruma topraklaması ana bağlantı hatlarında kullanılan standart bakır iletken ve elektrot yapısıdır.",
-        q: "Topraklama tesisatlarında mekanik kopmalara karşı koruma sağlamak amacıyla toprağa gömülen bakır topraklama iletkenlerinde aranan temel yapısal özellik nedir?"
-      },
-      {
-        opt: "Kompanzasyon Panosu Deşarj Direnci",
-        desc: "Şalter kapatıldığında kondansatörlerin içinde kalan tehlikeli gerilimi 1 dakika içinde 50 V'un altına düşürerek bakım personelini koruyan dirençtir.",
-        q: "Kompanzasyon panolarında enerji kesildikten sonra kondansatörlerin üzerinde kalan tehlikeli yükü otomatik olarak boşaltan güvenlik elemanı nedir?"
-      },
-      {
-        opt: "Elektrikli Kaynak Makinesi Boşta Çalışma Gerilimi Sınırlandırıcısı",
-        desc: "Elektrik ark kaynak makinelerinde kaynak yapılmadığı (boşta) anlarda pense ucundaki gerilimi güvenli seviyeye düşürerek kaynakçının çarpılmasını önleyen devredir.",
-        q: "Dar ve nemli alanlarda yapılan elektrik ark kaynağında, kaynakçının elektrot değiştirirken boşta çalışma gerilimine kapılmasını önleyen güvenlik donanımı nedir?"
-      },
-      {
-        opt: "Acil Durum Enerji Kesme (EPO - Emergency Power Off) Butonu",
-        desc: "Laboratuvar, pano odası veya üretim hattında elektrik çarpması ya da yangın anında tüm enerjiyi dışarıdan tek tuşla kesen acil durdurma butonudur.",
-        q: "Elektrik test laboratuvarları, bilgi işlem merkezleri ve atölye çıkışlarında acil bir çarpılma veya yangın anında tüm elektriği tek hamlede kesen buton nedir?"
+        opt: "Meger (Toprak Megeri ve İzolasyon Test Cihazı)",
+        desc: "Topraklama tesisatının yayılma direncini (Ohm) ve kabloların yalıtkanlık direncini (MegaOhm) periyodik kontrollerde ölçen test cihazıdır.",
+        q: "Elektrik tesislerinde yıllık periyodik kontrollerde topraklama geçiş direncini ve kablo yalıtkanlık direncini ölçmek için kullanılan cihazın adı nedir?"
       }
     ]
   }
@@ -426,213 +426,213 @@ export const elektrikConceptGroups = [
 
 export const elektrikExtraFills = [
   {
+    q: "Kehribarın sürtünmeyle kumaş ve saman parçalarını çektiğini keşfederek elektriğin temellerini atan Antik Yunan filozofu ________'tir.",
+    answers: ["thales", "tales"],
+    hint: "M.Ö. 600'lerde yaşamış Miletli filozof",
+    explanation: "Thales, kehribarın (Yunanca elektron) sürtünme elektriği özelliğini keşfeden ilk düşünürdür."
+  },
+  {
+    q: "1600 yılında yayımladığı 'De Magnete' adlı eserinde kehribar benzeri çekim yapan maddeler için ilk kez ________ (Latincesi electricus) terimini William Gilbert türetmiştir.",
+    answers: ["elektrik", "electricus"],
+    hint: "Gilbert'ın türettiği terim",
+    explanation: "William Gilbert kehribardan türeterek 'electricus' (elektrik) sözcüğünü literatüre kazandırmıştır."
+  },
+  {
+    q: "1729 yılında elektriğin maddeler üzerinden aktarılabildiğini bularak iletken ve yalıtkan ayrımını yapan bilim insanı Stephen ________'dir.",
+    answers: ["gray", "grey"],
+    hint: "İngiliz bilim insanının soyadı",
+    explanation: "Stephen Gray elektrik yükünün iletkenlerle taşınabildiğini ve insan vücudunun iletken olduğunu kanıtlamıştır."
+  },
+  {
+    q: "1745-1746'da icat edilen, elektriği depolayan ilk kapasitör sayılan ve kaynak kesilse bile artık yük tehlikesi barındıran düzeneğe ________ Şişesi denir.",
+    answers: ["leyden"],
+    hint: "Hollanda'daki üniversite şehrinin adını taşıyan şişe",
+    explanation: "Leyden Şişesi ilk elektrik kapasitörüdür; enerji depolayarak kaynak kesildikten sonra bile sert şok verir."
+  },
+  {
+    q: "1746 yılında 180 kraliyet muhafızını el ele tutuşturup Leyden şişesiyle aynı anda elektrik şoku vererek akımın hızını test eden fizikçi Abbé ________'tir.",
+    answers: ["nollet", "nolet"],
+    hint: "180 muhafıza toplu şok veren Fransız fizikçi",
+    explanation: "Jean-Antoine Nollet 180 askere el ele tutuşturup toplu elektrik şoku deneyi yapmıştır."
+  },
+  {
+    q: "1753 yılında St. Petersburg'da fırtınada paratoner deneyi yaparken top yıldırımının çarpması sonucu hayatını kaybeden ilk bilim insanı Georg Wilhelm ________'dır.",
+    answers: ["richmann", "rihman", "rikman"],
+    hint: "Yıldırım deneyinde ölen fizikçinin soyadı",
+    explanation: "Georg Wilhelm Richmann, tarihe elektrik deneyi sırasında hayatını kaybeden ilk bilim insanı olarak geçmiştir."
+  },
+  {
+    q: "Türkiye'de modern elektrik üretiminin başlangıcı; 1902 yılında Berdan Çayı un değirmenine bağlı 2 kW su türbiniyle Mersin'in ________ ilçesinde gerçekleşmiştir.",
+    answers: ["tarsus"],
+    hint: "Berdan Çayı'nın geçtiği tarihi ilçe",
+    explanation: "Türkiye'de ilk elektrik 1902'de Tarsus'ta un değirmenine bağlanan 2 kW dinamo ile üretilmiştir."
+  },
+  {
+    q: "Van'da yapılan adli tıp otopsi araştırmasına göre elektrik kaynaklı iş kazası ölümlerinin yaklaşık %________'i ALÇAK GERİLİM (220-380 V) kaynaklıdır.",
+    answers: ["80", "seksen"],
+    hint: "Yüzde seksen oranı (sayısal)",
+    explanation: "Otopsi çalışmaları elektrik ölümlerinin %80'inin alçak gerilimden kaynaklandığını kanıtlamaktadır."
+  },
+  {
+    q: "ESFI araştırmasına göre işyerlerinde elektrik çarpması sonucu hayatını kaybedenlerin %________'inden fazlası elektrikçi OLMAYAN çalışanlardır.",
+    answers: ["70", "yetmiş", "yetmis"],
+    hint: "Yüzde yetmiş oranı (sayısal)",
+    explanation: "Elektrik ölümlerinin %70'inden fazlası boyacı, ağaç budama, vinç operatörü ve inşaat işçileridir."
+  },
+  {
+    q: "Yüksek gerilim enerji nakil hatlarında bakım ve onarım yapan işçilerin ölüm riski, tüm sektörler genel iş kazası ortalamasının yaklaşık ________ katıdır.",
+    answers: ["55", "elli beş", "ellibes"],
+    hint: "50'den büyük katsayı (sayısal)",
+    explanation: "Enerji nakil hattı çalışanlarının ölüm riski genel kaza ortalamasının 55 katına ulaşmaktadır."
+  },
+  {
+    q: "Farklı sektörlerin ve ülkelerin elektrik kaza risklerini adil karşılaştırabilmek için veriler yıllık ________ çalışan yılı başına standardize edilir.",
+    answers: ["100000", "100.000", "yüz bin", "yuz bin"],
+    hint: "Yüz bin çalışan tabanı",
+    explanation: "OSHA ve SGK istatistiklerinde kaza sıklık ve ağırlık oranları 100.000 çalışan yılı bazında hesaplanır."
+  },
+  {
+    q: "Bir kazanın tek bir hatayla değil, savunma katmanlarındaki boşlukların üst üste gelmesiyle oluştuğunu açıklayan modele James Reason'ın İsviçre ________ Modeli denir.",
+    answers: ["peyniri", "peynir"],
+    hint: "Delikli İsviçre yiyeceği modeli",
+    explanation: "Reason İsviçre Peyniri Modeli aktif hatalar ile gizli koşulların kesişmesini açıklar."
+  },
+  {
+    q: "İsviçre Peyniri Modeli'nde çalışanın sahadaki anlık dikkatsizliğine 'aktif hata' denirken, panoda RCD olmaması veya bakım yapılmamasına ________ koşul denir.",
+    answers: ["gizli"],
+    hint: "Sistemde önceden var olan sinsi koşul",
+    explanation: "Yönetimsel ve teknik eksiklikler sistemde önceden beri var olan 'gizli koşullar'dır."
+  },
+  {
+    q: "Heinrich kaza piramidine göre her 1 ölümlü veya ağır kazanın tabanında ________ adet ramak kala (hasarsız tehlikeli olay) yer alır.",
+    answers: ["300", "üç yüz", "uc yuz"],
+    hint: "1 - 29 - ... piramidinin taban sayısı",
+    explanation: "Heinrich piramidinde 1 ağır kaza, 29 hafif kaza ve 300 ramak kala ilişkisi vardır."
+  },
+  {
+    q: "1,7 milyon endüstriyel kaza analizine dayanan Frank ________ kaza piramidinde oran 1 - 10 - 30 - 600 olarak tanımlanmıştır.",
+    answers: ["bird"],
+    hint: "İngilizce 'kuş' anlamına gelen araştırmacı soyadı",
+    explanation: "Frank Bird kaza piramidi 1.7 milyon kazayı inceleyerek 600 ramak kalayı belirlemiştir."
+  },
+  {
     q: "Alternatif akımda parmak ucunda hafif karıncalanma olarak hissedilen yaklaşık 0,5 - 1 mA değerine ________ eşiği denir.",
     answers: ["algılama", "algilama", "hissetme"],
     hint: "İlk hissetme sınırı",
     explanation: "0,5 - 1 mA AC akım insan vücudunda ilk hissedilen Algılama Eşiğidir."
   },
   {
-    q: "Doğru akımda (DC) insanlar için tehlikeli gerilim sınırı (güvenli dokunma gerilimi üst sınırı) ________ Volt kabul edilir.",
-    answers: ["120", "yüz yirmi", "yüzyirmi"],
-    hint: "AC'de 50 V olan sınırın DC karşılığı",
-    explanation: "Tehlikeli gerilim sınırı AC'de 50 V, doğru akımda (DC) ise 120 V'tur."
+    q: "Alternatif akımda 10 - 15 mA seviyesinde ön kol kaslarının kasılarak iletkenin elden bırakılamadığı sınıra ________ eşiği denir.",
+    answers: ["tutma", "bırakamama", "birakamama"],
+    hint: "Let-go eşiğinin Türkçesi",
+    explanation: "10-15 mA tutma (bırakamama / let-go) eşiği olup kas kilitlenmesine yol açar."
   },
   {
-    q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 4. adımı: Tesisatı ________ ve kısa devre etmektir.",
-    answers: ["topraklama", "topraklamak"],
-    hint: "Kapasitif yükü ve indüksiyonu toprağa akıtma işlemi",
-    explanation: "4. güvenlik kuralı çalışma yerinin topraklanması ve kısa devre edilmesidir."
+    q: "Akımın 20 - 30 mA seviyesinde diyafram kaslarını kilitleyerek nefes almayı durdurması sonucu gelişen oksijensizliğe bağlı boğulmaya ________ denir.",
+    answers: ["asfiksi", "boğulma", "bogulma"],
+    hint: "Solunum durması tıbbi terimi",
+    explanation: "Solunum kaslarının kasılması asfiksiye (oksijensiz kalarak boğulmaya) neden olur."
   },
   {
-    q: "Normal işletme şartlarında gerilim altında bulunan aktif kısımlara (çıplak faz barasına/kabloya) temas edilmesine ________ dokunma denir.",
-    answers: ["doğrudan", "dogrudan"],
-    hint: "Dolaylı dokunmanın zıttı",
-    explanation: "Enerjili aktif iletkene temasa Doğrudan Dokunma denir."
+    q: "Elektrik çarpmasında kalbin elektriksel ritminin bozularak kan pompalayamaması durumuna ventriküler ________ adı verilir.",
+    answers: ["fibrilasyon", "fibrilasyonu"],
+    hint: "Ölümcül kalp ritim bozukluğu",
+    explanation: "50-100 mA akım ventriküler fibrilasyon oluşturarak ölüme neden olur."
   },
   {
-    q: "Üzerinde 'iç içe geçmiş iki kare' sembolü bulunan ve topraklama ucu gerektirmeyen el aletlerine ________ yalıtımlı (Sınıf II) cihaz denir.",
-    answers: ["çift", "cift"],
-    hint: "İki kat izolasyonlu cihaz",
-    explanation: "Sınıf II cihazlar Çift Yalıtımlı olup koruma topraklaması gerektirmez."
+    q: "Ev ve işyerlerinde insan hayatını solunum felci ve fibrilasyondan koruyan kaçak akım rölesinin nominal açma akımı ________ mA'dir.",
+    answers: ["30", "otuz"],
+    hint: "Hayat koruma kaçak akım eşiği (mA)",
+    explanation: "30 mA kaçak akım rölesi insan hayatını doğrudan korumak için zorunludur."
   },
   {
-    q: "Elektrik tesisatlarında koruma topraklaması (PE) iletkeninin dış kılıf rengi standart olarak ________ - yeşil çizgilidir.",
-    answers: ["sarı", "sari"],
-    hint: "Yeşil ile birlikte kullanılan topraklama kablosu rengi",
-    explanation: "Koruma topraklaması (PE) iletkeni uluslararası standartta Sarı-Yeşil renklidir."
+    q: "Ana elektrik panolarında izolasyon hatalarından kaynaklı yangınları önlemek için kullanılan kaçak akım rölesinin eşiği ________ mA'dir.",
+    answers: ["300", "üç yüz", "uc yuz"],
+    hint: "Yangın koruma kaçak akım eşiği (mA)",
+    explanation: "300 mA kaçak akım rölesi elektrik ark yangınlarını önlemek için kullanılır."
   },
   {
-    q: "Elektrik tesisatlarında Nötr (N) iletkeninin standart yalıtım kılıf rengi açık ________'dir.",
-    answers: ["mavi"],
-    hint: "Nötr kablosu rengi",
-    explanation: "Nötr iletkeni standart olarak açık mavi renkte seçilir."
+    q: "Normal kuru ortamlarda alternatif akım (AC) için insan vücudunda kabul edilen tehlikeli gerilim sınırı ________ Volt'tur.",
+    answers: ["50", "elli"],
+    hint: "AC tehlikeli gerilim sınırı (V)",
+    explanation: "Alternatif akımda tehlikeli dokunma gerilimi sınırı 50 Volt'tur."
   },
   {
-    q: "Hastane ameliyathaneleri ve maden ocakları gibi ilk yalıtım hatasında enerjinin kesilmemesi gereken yerlerde ________ tipi (izole nötrlü) şebeke kullanılır.",
-    answers: ["IT", "it"],
-    hint: "TT ve TN dışındaki 2 harfli şebeke tipi",
-    explanation: "IT şebeke sisteminde trafo nötrü topraktan izoledir ve ilk hatada enerji kesilmez."
+    q: "Doğru akımda (DC) dalgalanmasız gerilim için kabul edilen tehlikeli dokunma gerilimi üst sınırı ________ Volt'tur.",
+    answers: ["120", "yüz yirmi", "yuzyirmi"],
+    hint: "DC tehlikeli gerilim sınırı (V)",
+    explanation: "Doğru akımda güvenli gerilim üst sınırı 120 Volt'tur."
   },
   {
-    q: "Binaları doğrudan yıldırım düşmesine karşı korumak için çatıya kurulan yakalama ucu ve iniş iletkenli sisteme ________ (yıldırımsavar) tesisatı denir.",
-    answers: ["paratoner"],
-    hint: "Yıldırımdan korunma sistemi",
-    explanation: "Paratoner tesisatı yıldırım akımını bina dışından toprağa deşarj eder."
+    q: "Kazan içi veya metal tank gibi dar ve iletken hacimlerde kullanılan seyyar lambalarda azami ________ Volt güvenlik gerilimi uygulanmalıdır.",
+    answers: ["24", "yirmi dört", "yirmidort"],
+    hint: "Kazan içi küçük gerilim (V)",
+    explanation: "Dar iletken kazan içlerinde güvenlik gerilimi 24 Volt (en fazla 42 V) olmalıdır."
   },
   {
-    q: "Topraklama tesisatının yayılma direncini ve kabloların yalıtkanlık direncini ölçmek için kullanılan cihaza ________ denir.",
-    answers: ["meger", "megger"],
-    hint: "Topraklama ölçüm cihazı",
-    explanation: "Topraklama ve izolasyon direnci Meger cihazı ile ölçülür."
+    q: "Mevzuata göre etkin değeri ________ Volt ve altındaki gerilimler Alçak Gerilim (AG), üzerindekiler ise Yüksek Gerilim (YG) kabul edilir.",
+    answers: ["1000", "1.000", "bin"],
+    hint: "AG ile YG arasındaki sınır (V)",
+    explanation: "AC'de 1000 V ve altı Alçak Gerilim (AG), 1000 V üzeri Yüksek Gerilim (YG)'dir."
   },
   {
-    q: "Yüksek gerilim tesislerinde devreyi gözle görünür şekilde ayıran ancak KESİNLİKLE yük altında açılmaması gereken elemana ________ (seksiyoner) denir.",
+    q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 2. adımı; şalteri kilitleyip etiketleyerek tekrar gerilim verilmesini ________ (LOTO/EKED) adımıdır.",
+    answers: ["önlemek", "onlemek", "engellemek"],
+    hint: "Şalteri asma kilitle kitleme amacı",
+    explanation: "2. kural şalterin başkası tarafından habersiz açılmasını önlemektir."
+  },
+  {
+    q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 4. adımı: Tesisatı topraklamak ve ________ devre etmektir.",
+    answers: ["kısa", "kisa"],
+    hint: "Topraklama ile birlikte yapılan işlem",
+    explanation: "4. adım çalışma sahasını topraklamak ve kısa devre etmektir."
+  },
+  {
+    q: "Yüksek gerilim trafo merkezlerinde devreyi gözle görülür şekilde ayıran ancak yük altında KESİNLİKLE açılmaması gereken elemana ________ (seksiyoner) denir.",
     answers: ["ayırıcı", "ayirici", "seksiyoner"],
-    hint: "Önce kesici açıldıktan sonra açılan YG elemanı",
-    explanation: "Ayırıcı (seksiyoner) yüksüz devreyi ayırır; yük altında açılırsa büyük ark patlaması oluşur."
+    hint: "Kesici açıldıktan sonra açılan YG elemanı",
+    explanation: "Ayırıcı yüksüz devreyi ayırır; yük altında açılırsa büyük ark patlaması oluşturur."
   },
   {
-    q: "Yüksek gerilim devrelerini hem yük altında hem de kısa devre anında arkı söndürerek güvenle açabilen elemana ________ (disjonktör) denir.",
+    q: "Yüksek gerilim devrelerini hem yük altında hem de kısa devre anında arkı söndürerek güvenle kesebilen elemana ________ (disjonktör) denir.",
     answers: ["kesici", "disjonktör", "disjonktor"],
     hint: "Yük altında açma yapabilen YG elemanı",
-    explanation: "Kesici (disjonktör), ark söndürme hücresi sayesinde yük ve kısa devre akımını kesebilir."
+    explanation: "Kesici (disjonktör) ark söndürme hücresiyle yük ve kısa devre akımını keser."
   },
   {
-    q: "Elektrik panolarında gevşek bağlantılardan kaynaklanan aşırı ısınmaları enerjiyi kesmeden kızılötesi görüntüleme ile tespit eden cihaza ________ kamera denir.",
-    answers: ["termal", "kızılötesi", "kizilotesi"],
-    hint: "Sıcaklık haritası çıkaran kamera",
-    explanation: "Termal kamera panolardaki ısınan gevşek bağlantıları yangın çıkmadan tespit eder."
+    q: "Yere düşen yüksek gerilim hattı çevresinde kişinin iki ayağı arasındaki gerilim farkından dolayı maruz kaldığı gerilime ________ gerilimi denir.",
+    answers: ["adım", "adim"],
+    hint: "Ayakları birleştirerek uzaklaşmayı gerektiren gerilim",
+    explanation: "Adım gerilimi toprağa yayılan akımın iki ayak arasında oluşturduğu potansiyel farktır."
   },
   {
-    q: "Patlayıcı gaz, buhar veya toz bulunan ortamlarda kıvılcım sızdırmayan özel elektrik ekipmanlarına ________ (veya ATEX) ekipman denir.",
-    answers: ["ex-proof", "exproof", "ex"],
-    hint: "Explosion proof kısaltması",
-    explanation: "Patlayıcı ortamlarda Ex-Proof (ATEX uyumlu) elektrik ekipmanları kullanılır."
-  },
-  {
-    q: "Elektrik çarpması sonucu kalpte oluşan ventriküler fibrilasyonu elektro-şok vererek normal ritme döndüren ilk yardım cihazına ________ (OED) denir.",
-    answers: ["defibrilatör", "defibrilator", "şok cihazı"],
-    hint: "Kalp şok cihazı",
-    explanation: "Ventriküler fibrilasyonun tek kesin tedavisi Defibrilatör (OED) ile erken elektro-şoktur."
-  },
-  {
-    q: "Elektrik akımının vücut direnci üzerinden geçerken oluşturduğu ısı enerjisi (Q = I².R.t) nedeniyle meydana gelen yanıklara ________ yanığı (veya elektrik yanığı) denir.",
-    answers: ["joule", "ark"],
-    hint: "I².R.t ısısının fizikteki adı",
-    explanation: "Akımın vücut iç direncinden geçerken ürettiği I².R.t ısısı derin Joule yanıkları oluşturur."
-  },
-  {
-    q: "Bir tesis içindeki tüm metal boruların, çelik yapıların ve topraklama hatlarının birbirine bağlanarak aralarındaki potansiyel farkının sıfırlanmasına ________ kuşaklama denir.",
-    answers: ["eşpotansiyel", "espotansiyel"],
-    hint: "Potansiyel dengeleme",
-    explanation: "Eşpotansiyel kuşaklama bina içi metal aksamlar arasında tehlikeli gerilim farkı oluşmasını önler."
-  },
-  {
-    q: "Şebeke kesildiğinde devreye giren jeneratörün ana şebekeye ters enerji basmasını önleyen kilitlemeli şaltere ________ (transfer) şalteri denir.",
-    answers: ["enversör", "enversor", "transfer"],
-    hint: "Şebeke-jeneratör yön değiştirici şalter",
-    explanation: "Enversör (transfer) şalteri şebeke ile jeneratörün çakışmasını ve ters beslemeyi önler."
-  },
-  {
-    q: "Akü şarj odalarında şarj sırasında açığa çıkan ve tavanda biriktiğinde patlama tehlikesi yaratan yanıcı gaz ________ gazıdır.",
-    answers: ["hidrojen", "H2"],
-    hint: "En hafif patlayıcı gaz",
-    explanation: "Akü şarjı sırasında suyun elektrolizi ile patlayıcı Hidrojen (H2) gazı açığa çıkar."
-  },
-  {
-    q: "Kompanzasyon panolarında şalter kapatıldıktan sonra dahi içinde elektrik yükü depolamaya devam eden devre elemanına ________ denir.",
-    answers: ["kondansatör", "kondansator", "kapasitör"],
-    hint: "Reaktif güç kompanzasyonunda yük depolayan eleman",
-    explanation: "Kondansatörler enerji kesilse bile üzerinde tehlikeli gerilim tutar; deşarj edilmeden dokunulmaz."
-  },
-  {
-    q: "Yüksek gerilim hücrelerinde uzaktan güvenli manevra ve sigorta değişimi yapmayı sağlayan fiberglas yalıtkan çubuğa izole ________ (stanga) denir.",
-    answers: ["ıstaka", "istaka", "stanga"],
-    hint: "Yalıtkan manevra çubuğu",
-    explanation: "YG hücrelerinde güvenli mesafeden işlem yapmak için izole manevra ıstakası (stanga) kullanılır."
-  },
-  {
-    q: "Üç fazlı (trifaze) alçak gerilim sanayi şebekesinde iki faz iletkeni arasındaki (Faz - Faz) gerilim etkin değeri ________ (veya 400) Volttur.",
-    answers: ["380", "400"],
-    hint: "Trifaze sanayi gerilimi (V)",
-    explanation: "Türkiye'de Faz-Nötr arası 220/230 V, Faz-Faz arası ise 380/400 V'tur."
-  },
-  {
-    q: "Alçak gerilim panolarında parmak temasını (>12,5 mm) engelleyen asgari muhafaza koruma sınıfı kodu ________'tir.",
-    answers: ["IP2X", "ip2x", "IP20"],
-    hint: "IP ile başlayan parmak koruma kodu",
-    explanation: "IP2X koruma derecesi parmakların enerjili baralara temasını fiziksel olarak engeller."
-  },
-  {
-    q: "Klasik sıfırlama yapılan ________-C şebeke sisteminde PEN iletkeni koparsa cihazların metal gövdelerine doğrudan faz gerilimi biner.",
-    answers: ["TN", "tn"],
-    hint: "Nötr ve korumanın birleşik olduğu şebeke harf kodu",
-    explanation: "TN-C şebekede PEN hattının kopması metal gövdeleri enerjilendirdiği için tehlikelidir."
-  },
-  {
-    q: "Kaçak akım rölesinin mekanik olarak sağlam çalışıp çalışmadığını doğrulamak için üzerindeki ________ butonuna ayda bir kez basılmalıdır.",
-    answers: ["test", "T"],
-    hint: "Röle üzerindeki kontrol tuşu",
-    explanation: "Röle üzerindeki Test (T) butonu yapay bir kaçak oluşturarak mekanizmanın çalıştığını doğrular."
-  },
-  {
-    q: "Elektrik işlerinde kullanılan dielektrik izole eldivenler her kullanımdan önce içine ________ üflenerek/şişirilerek delik ve çatlak kontrolünden geçirilir.",
-    answers: ["hava"],
-    hint: "Delik kontrolü için eldiveni şişirmede kullanılan şey",
-    explanation: "İzole eldivenlerde iğne deliği kadar kaçak bile ölümcül olacağından kullanım öncesi hava ile şişirilerek kontrol edilir."
-  },
-  {
-    q: "Trafo yıldız (nötr) noktasının şebekenin normal çalışması için toprağa bağlanmasına ________ topraklaması denir.",
-    answers: ["işletme", "isletme"],
-    hint: "Koruma topraklamasından farklı olarak trafo nötrüne yapılan topraklama",
-    explanation: "Trafo nötr noktasının topraklanmasına İşletme Topraklaması, metal gövdelerin topraklanmasına Koruma Topraklaması denir."
-  },
-  {
-    q: "Bir elektrik arızasında tüm tesisin enerjisinin kesilmesi yerine yalnızca arızalı noktaya en yakın sigortanın açması prensibine ________ (seçicilik) denir.",
-    answers: ["selektivite", "seçicilik", "secicilik"],
-    hint: "Kademeli açma / seçicilik terimi",
-    explanation: "Selektivite ilkesi arızanın sadece ilgili linyede izole edilmesini sağlar."
-  },
-  {
-    q: "Yıldırım veya şebeke darbelerinden kaynaklanan anlık aşırı gerilimleri toprağa deşarj ederek panoyu koruyan elemana ________ denir.",
-    answers: ["parafudr"],
-    hint: "Aşırı gerilim sönümleyici",
-    explanation: "Parafudr, iç yıldırımlık olarak aşırı gerilim darbelerini toprağa akıtır."
-  },
-  {
-    q: "Yüksek gerilim panolarında ark patlaması (Arc Flash) riskine karşı giyilen koruyucu kıyafetlerin termal dayanım kapasitesi cal/________ birimiyle ölçülür.",
+    q: "Elektrik ark patlamasına (Arc Flash) karşı kullanılan koruyucu elbiselerin termal koruma kapasitesi cal/________ birimiyle ifade edilir.",
     answers: ["cm2", "cm²"],
     hint: "Santimetrekare başına düşen kalori enerjisi",
-    explanation: "Ark koruyucu kıyafetlerin ATPV termal koruma değeri cal/cm² birimiyle ifade edilir."
+    explanation: "Ark koruyucu KKD'lerin ATPV değeri cal/cm² birimiyle ölçülür."
   },
   {
-    q: "Elektrik ark kaynağında kaynak yapılmadığı anlarda pense ucundaki gerilimi güvenli değere düşüren donanıma ________ çalışma gerilimi sınırlandırıcısı denir.",
-    answers: ["boşta", "bosta"],
-    hint: "Yüksüz / kaynak yapılmayan durum",
-    explanation: "Boşta çalışma gerilimi düşürücü tertibat kaynakçıyı elektrik çarpmasından korur."
+    q: "İzole elektrikçi eldivenleri her kullanım öncesinde içine ________ üflenerek/şişirilerek delik kontrolünden geçirilmelidir.",
+    answers: ["hava"],
+    hint: "Şişirme için kullanılan gaz",
+    explanation: "Dielektrik eldivenler mikroskobik deliklere karşı hava ile şişirilerek test edilir."
   },
   {
-    q: "Trafo ve yüksek gerilim pano odalarının kapıları acil durumda personelin kolayca kaçabilmesi için ________ doğru açılmalıdır.",
-    answers: ["dışarıya", "disariya", "dışa", "disa"],
-    hint: "İçeriye değil hangi yöne?",
-    explanation: "Acil kaçış kapıları ve trafo odası kapıları her zaman dışarıya doğru açılır."
+    q: "Trafo nötrü topraktan izole edilen ve hastane ameliyathaneleri ile madenlerde ilk hatada enerjiyi kesmeyen şebeke tipi ________ şebekedir.",
+    answers: ["IT", "it"],
+    hint: "İzole nötr harf kodu",
+    explanation: "IT şebekede trafo nötrü yalıtılmıştır ve ilk faz-gövde hatasında elektrik kesilmez."
   },
   {
-    q: "50-60 Hz alternatif akım, doğru akıma (DC) kıyasla kalp ritmini bozma açısından yaklaşık 3-4 kat daha ________ kabul edilir.",
-    answers: ["tehlikeli", "riskli"],
-    hint: "Fibrilasyon riski açısından durumu",
-    explanation: "50 Hz AC akım kalbin sinüs düğümü frekansıyla çakıştığı için DC'den 3-4 kat daha tehlikelidir."
+    q: "Topraklama yayılma direncini ve kablo yalıtkanlık direncini ölçmek için kullanılan cihaza toprak ________ (veya Megger) denir.",
+    answers: ["megeri", "meger", "meggeri", "megger"],
+    hint: "Topraklama ölçüm aleti",
+    explanation: "Topraklama geçiş direnci ve yalıtkanlık Meger cihazı ile test edilir."
   },
   {
-    q: "Akaryakıt tankerlerinin dolum ve boşaltımı sırasında statik elektrik kıvılcımını önlemek için tanker gövdesi topraklama ________ ile topraklanır.",
-    answers: ["pensesi", "kelepçesi", "kablosu"],
-    hint: "Tankere tutturulan anti-statik bağlantı aparatı",
-    explanation: "Dolum öncesi statik topraklama pensesi/kelepçesi bağlanarak kıvılcım riski sıfırlanır."
-  },
-  {
-    q: "İnsan vücudunda uygulanan gerilim (Volt) yükseldikçe ve temas süresi uzadıkça derinin yalıtkanlık direnci delinir ve toplam vücut direnci ________.",
-    answers: ["düşer", "duser", "azalır", "azalir"],
-    hint: "Artar mı, düşer mi?",
-    explanation: "Gerilim ve nem arttıkça deri direnci kırılır ve toplam vücut direnci hızla düşer."
+    q: "Patlayıcı gaz, buhar veya toz bulunan ortamlarda kıvılcım sızdırmayan özel korumalı elektrik tesisatına ________ (veya ATEX) tesisat denir.",
+    answers: ["ex-proof", "exproof", "ex"],
+    hint: "Patlamaya karşı korumalı elektrik cihazı",
+    explanation: "Patlayıcı ortamlarda ark ve yüzey sıcaklığı sızdırmayan Ex-Proof ekipmanlar kullanılır."
   }
 ];

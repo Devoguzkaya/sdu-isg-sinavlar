@@ -1,209 +1,194 @@
-// Fiziksel ve Kimyasal Risk Etmenleri (FKRÜ) — 10 Ayrı Test Teması + Ek 75 Çoktan Seçmeli + 35 Boşluk Doldurma
+// Fiziksel ve Kimyasal Risk Unsurları (Dr. Öğr. Üyesi Dicle ÖZDEMİR KÜÇÜKÇAPRAZ — Bölüm 1 Vize PDF [159 Syf] & Bölüm 2 PDF)
 export const fkruTestThemes = [
-  'Gürültü Risk Etmeni: Fiziksel Özellikler, Desibel (dB) ve Maruziyet Sınır/Eylem Değerleri',
-  'Titreşim Risk Etmeni: El-Kol Titreşimi ve Bütün Vücut Titreşimi Mevzuatı',
-  'Termal Konfor (İç Ortam İklimlendirme): Sıcaklık, Nem, Hava Akım Hızı ve Radyant Isı',
-  'Aydınlatma (Lüks), Basınç Değişimleri ve Dekompresyon (Vurgun) Hastalığı',
-  'Radyasyon: İyonlaştırıcı (Alfa, Beta, Gama, X) ve İyonlaştırıcı Olmayan Radyasyon',
-  'Tozlarla Mücadele: Solunabilir Toz, Pnömokonyozlar ve Asbest Sınır Değerleri',
-  'Kimyasal Risk Etmenleri: Toksikoloji, MSDS (GBF) ve Mesleki Maruziyet Sınır Değerleri (TWA / STEL)',
-  'Tehlikeli Gazlar ve Buharlar: Basit Boğucular, Kimyasal Boğucular, Tahriş Ediciler ve Narkotikler',
-  'Kanserojen ve Mutajen Maddeler (Benzen, Vinil Klorür, Sert Odun Tozları) ve Kayıt Saklama',
-  'Patlayıcı Ortamlar (ATEX / PATKÖD): Bölge (Zone 0/1/2 - 20/21/22) Sınıflandırması ve Ex-Proof'
+  'Bölüm 1: Temel İSG Kavramları (İşyeri, İşveren, Tehlike, Risk, Ramak Kala, 6331 ve 5510 m.14) ve Risk Kontrol Hiyerarşisi',
+  'Bölüm 1: İşyeri Risk Unsurları Sınıflandırması (Fiziksel, Kimyasal, Biyolojik, Ergonomik ve Psikososyal Riskler)',
+  'Bölüm 1: Sesin Fiziksel Özellikleri (Dalga Boyu, 20°C Hava 340 m/s - Su 1410 m/s, Subsonik/Ultrasonik, 0-140 dB)',
+  'Bölüm 1: Gürültü Yönetmeliği (80/85/87 dB(A), 112/140/200 Pa Tepe Değeri, +3 dB Kuralı, 4000-4500 Hz ve KKD Azaltma Tablosu)',
+  'Bölüm 1: Titreşim Yönetmeliği (El-Kol: 2,5 ve 5,0 m/s², Bütün Vücut: 0,5 ve 1,15 m/s², Denizde >1 Hz, <2 Hz Hareket Hastalığı)',
+  'Bölüm 1: Basınç Risk Etmeni (4,5 N/cm², Akut 3 Gün / Kronik 10 Yıl Yükümlülük, Dalgıç Odası 40 m³ Hava, 22 m Derinlik ve 5 Saat)',
+  'Bölüm 1: Termal Konfor (Sıcaklık, Nem %30-80 [Higrometre/Psikrometre], Hava Hızı 0,3-0,5 m/s [Anemometre], Radyant Isı [Glob])',
+  'Bölüm 1: Aydınlatma (400-700 nm, Lüks = Lümen/m², Lüksmetre, Direkt/Endirekt, 1/10 Pencere Oranı, %80-90 Göz Algısı)',
+  'Bölüm 1 (14 Ekim Dersi): Radyasyon (Alfa 5 cm, Beta, Nötron, Gama/X, Kızılötesi Katarakt, Surveymetre/Dozimetre) ve Ergonomi Farkları',
+  'Bölüm 2: Kimyasal Maddeler Yönetmeliği (20/10/2023 Güncel RG: 30 cm Solunum Bölgesi, TWA/STEL, Biyolojik Sınır Değer, MGBF/GBF)'
 ];
 
 export const fkruConceptGroups = [
   {
-    groupName: 'Gürültü, Titreşim, Termal Konfor, Aydınlatma ve Radyasyon (Fiziksel Etmenler)',
+    groupName: 'Bölüm 1: Temel Kavramlar, İşyeri Risk Sınıflandırması ve Gürültü Fizik/Mevzuatı (Dicle Hoca Bölüm 1 PDF)',
     items: [
       {
-        opt: 'Gürültü en düşük maruziyet eylem değeri: 80 dB(A) (Kulaklık hazır bulundurulur)',
-        desc: 'Çalışanların Gürültü ile İlgili Risklerden Korunmalarına Dair Yönetmeliğe göre günlük gürültü maruziyeti 80 dB(A)\'ya ulaştığında işveren kulak koruyucuları çalışanların kullanımına hazır bulundurur ve bilgilendirme yapar.',
-        q: 'Gürültü Yönetmeliğine göre işverenin kulak koruyucu donanımları çalışanların kullanımına HAZIR BULUNDURMAK zorunda olduğu "En Düşük Maruziyet Eylem Değeri" kaç dB(A)\'dır?'
+        opt: 'Ramak Kala Olay (Kişilere, işyerinin fiziki bütünlüğüne veya ekipmanlara zarar verme potansiyeli olduğu halde zarar vermeyen olaylar — İş kazalarının habercisidir)',
+        desc: 'Bölüm 1 PDF Slayt 14-15: ILO\'ya göre İş Kazası planlanmamış ve beklenmeyen bir olay sonucu sakatlanmaya ve zarara neden olan durumdur. Ramak Kala Olay ise kişilere, işyerinin fiziki bütünlüğüne veya ekipmanlara zarar verme potansiyeli olduğu halde zarar vermeyen olaylardır ve iş kazalarının habercisidir.',
+        q: 'Dr. Öğr. Üyesi Dicle Özdemir Küçükçapraz\'ın Bölüm 1 sunumuna göre; "kişilere, işyerinin fiziki bütünlüğüne veya ekipmanlara zarar verme potansiyeli olduğu halde zarar vermeyen ve iş kazalarının habercisi olan olaylar" nasıl tanımlanır?'
       },
       {
-        opt: 'Gürültü en yüksek maruziyet eylem değeri: 85 dB(A) (Kulaklık takmak zorunludur)',
-        desc: 'Günlük gürültü maruziyeti 85 dB(A)\'ya ulaştığında veya aştığında kulak koruyucu donanımların çalışanlar tarafından KULLANILMASI ZORUNLUDUR ve işitme muayenesi yapılır.',
-        q: 'Gürültü Yönetmeliğine göre çalışanların kulak koruyucu donanımları TAKMASININ ZORUNLU hale geldiği "En Yüksek Maruziyet Eylem Değeri" kaç dB(A)\'dır?'
+        opt: 'Psikososyal Riskler (Nicel aşırı yük, nitel düşük yük, denetim ve sosyal destek yetersizliği) ve Biyolojik Riskler (Enfeksiyon zincirinin son halkası: Duyarlı Çalışan)',
+        desc: 'Bölüm 1 PDF Slayt 45-51: Yapılan işin gerekleri işçinin bilgi/becerisiyle çatıştığında (nicel aşırı yük, nitel düşük yük) ve sosyal destek yetersizliğinde "Psikososyal riskler" oluşur. Biyolojik risklerde ise enfeksiyon zincirinin son halkası "Duyarlı (Çalışan)"dır (tarım, sağlık ve laboratuvar çalışanları en yoğun risk grubudur).',
+        q: 'Bölüm 1 ders notlarına göre; "nicel aşırı yük ve nitel düşük yük" hangi risk grubuna girer ve biyolojik risklerde "enfeksiyon zincirinin son halkası" nedir?'
       },
       {
-        opt: 'Gürültü maruziyet sınır değeri: 87 dB(A) (Kulaklık koruma etkisi dahil aşılamaz)',
-        desc: 'Kulak koruyucuların sağladığı koruma etkisi (SNR/NRR) düşüldükten sonra çalışanın kulağına ulaşan gürültünün kesinlikle aşmaması gereken sınır değer 87 dB(A)\'dır.',
-        q: 'Gürültü Yönetmeliğine göre kişisel koruyucu donanımın (kulaklığın) koruma etkisi de dikkate alındığında hiçbir koşulda aşılmaması gereken "Maruziyet Sınır Değeri" kaç dB(A)\'dır?'
+        opt: 'Sesin Hızı (20°C havada 340 m/sn, 20°C suda 1410 m/sn; boşlukta yayılmaz, boyuna sıkışma-genleşme dalgasıdır) ve Frekans Türleri (Subsonik <20 Hz, İşitilebilen 20 Hz-20 kHz, Ultrasonik >20 kHz)',
+        desc: 'Bölüm 1 PDF Slayt 57-64: Ses maddesel ortamda boyuna yayılan sıkışma-genleşme dalgasıdır (boşlukta yayılmaz). 20°C havada hızı 340 m/sn, 20°C suda hızı 1410 m/sn\'dir. Frekansı 20 Hz\'den düşük seslere "Subsonik", 20 Hz–20 kHz arasına "İşitilebilen ses", 20 kHz\'den büyüklere ise "Ultrasonik ses" denir.',
+        q: 'Bölüm 1 ders sunumuna göre; sesin 20°C havada ve 20°C sudaki yayılma hızları ile frekansı 20 Hz\'den düşük olan seslere verilen ad hangisinde doğru verilmiştir?'
       },
       {
-        opt: 'Logaritmik desibel (dB) toplamı (80 dB + 80 dB = 83 dB)',
-        desc: 'Ses basınç düzeyi (dB) logaritmik bir büyüklüktür; birbirine eşit iki ses kaynağı aynı anda çalıştığında toplam gürültü düzeyi aritmetik olarak toplanmaz, sadece +3 dB artar.',
-        q: 'Bir atölyede her biri 80 dB(A) gürültü yayan iki özdeş makine aynı anda çalıştırıldığında ortamdaki toplam gürültü seviyesi kaç dB(A) olur?'
+        opt: 'Gürültü Eylem ve Sınır Değerleri: En düşük eylem = 80 dB(A) [112 Pa / 135 dB(C)], En yüksek eylem = 85 dB(A) [140 Pa / 137 dB(C)], Sınır değer = 87 dB(A) [200 Pa / 140 dB(C)]',
+        desc: 'Bölüm 1 PDF Slayt 22 & 68: Çalışanların Gürültü ile İlgili Risklerden Korunmalarına Dair Yönetmeliğe göre; En düşük maruziyet eylem değeri 80 dB(A) (Ptepe = 112 Pa / 135 dB(C)), En yüksek maruziyet eylem değeri 85 dB(A) (Ptepe = 140 Pa / 137 dB(C)), Maruziyet sınır değeri ise 87 dB(A) (Ptepe = 200 Pa / 140 dB(C))\'dir.',
+        q: 'Dicle Hoca\'nın Bölüm 1 (Slayt 22) ders notlarına göre Gürültü Yönetmeliğindeki "En Düşük Eylem", "En Yüksek Eylem" ve "Maruziyet Sınır" değerleri hem dB(A) hem de Tepe Ses Basıncı (Pa / dB(C)) cinsinden hangisinde doğru verilmiştir?'
       },
       {
-        opt: 'El-kol titreşimi (Eylem değeri: 2,5 m/s² — Sınır değer: 5,0 m/s²)',
-        desc: 'Kırıcı, delici ve taşlama gibi el aletlerinden kaynaklanan ve "Beyaz Parmak (Raynaud)" hastalığına yol açan el-kol titreşiminde 8 saatlik günlük maruziyet eylem değeri 2,5 m/s², sınır değer ise 5,0 m/s²\'dir.',
-        q: 'Titreşim Yönetmeliğine göre "El-Kol Titreşimi" için 8 saatlik çalışma süresinde günlük maruziyet EYLEM değeri ve SINIR değeri sırasıyla kaç m/s²\'dir?'
+        opt: 'Kulak Koruyucu Etkisi Kuralı (Maruziyet SINIR değerinde [87 dB] KKD koruyucu etkisi dikkate alınır; Maruziyet EYLEM değerlerinde [80 ve 85 dB] KKD etkisi dikkate ALINMAZ)',
+        desc: 'Bölüm 1 PDF Slayt 22: Maruziyet sınır değerleri (87 dB) uygulanırken çalışanın kullandığı kişisel kulak koruyucu donanımların koruyucu etkisi dikkate alınır; ancak maruziyet eylem değerlerinde (80 ve 85 dB) kulak koruyucularının etkisi dikkate alınmaz.',
+        q: 'Gürültü Yönetmeliğine göre çalışanların gürültü maruziyeti değerlendirilirken "kişisel kulak koruyucu donanımların (KKD) koruyucu etkisi" hangi değerlerin uygulanmasında dikkate alınır, hangilerinde alınmaz?'
       },
       {
-        opt: 'Bütün vücut titreşimi (Eylem değeri: 0,5 m/s² — Sınır değer: 1,15 m/s²)',
-        desc: 'İş makineleri, traktör ve kamyon sürücülerinde bel/omurga hasarına yol açan bütün vücut titreşiminde 8 saatlik günlük maruziyet eylem değeri 0,5 m/s², sınır değer ise 1,15 m/s²\'dir.',
-        q: 'Titreşim Yönetmeliğine göre "Bütün Vücut Titreşimi" için 8 saatlik çalışma süresinde günlük maruziyet EYLEM değeri ve SINIR değeri sırasıyla kaç m/s²\'dir?'
+        opt: 'Pratik Gürültü Tespiti (1 metre uzaklıktaki kişiyle konuşmak için sesi yükseltmek gerekiyorsa zararlı gürültü vardır) ve Özdeş İki Kaynak Toplamı (+3 dB kuralı)',
+        desc: 'Bölüm 1 PDF Slayt 67 & 69: Bir işyerinde 1 metre uzaklıktaki bir kişiyle konuşmak için sesi yükseltmek gerekiyorsa o işyerinde zararlı düzeyde gürültü var demektir. Aynı iki gürültü kaynağının bulunduğu ortamda toplam gürültü düzeyi = Birinci Ses Kaynağı + 3 dB\'dir.',
+        q: 'Bölüm 1 sunumuna göre; bir işyerinde ölçüm cihazı olmadan zararlı düzeyde gürültü olduğunun pratik göstergesi olan konuşma mesafesi ve özdeş iki ses kaynağının birlikte çalışması durumunda gürültü artış miktarı nedir?'
       },
       {
-        opt: 'Termal konfor ölçüm cihazları (Kuru/Islak Termometre, Glob Termometre, Anemometre)',
-        desc: 'Hava sıcaklığı kuru termometre ile, bağıl nem psikrometre/higrometre ile, hava akım hızı anemometre (veya kata termometre) ile, radyant ısı ise siyah küreli Glob termometre ile ölçülür ve WBGT / PMV-PPD indeksleriyle değerlendirilir.',
-        q: 'İşyeri ortamında "Termal Konfor" şartlarını belirleyen 4 temel parametre (hava sıcaklığı, bağıl nem, hava akım hızı ve radyant/ışınım ısısı) içinden "Radyant Isı" ve "Hava Akım Hızı" sırasıyla hangi cihazlarla ölçülür?'
+        opt: 'İşitme Kayıplarında İlk Etkilenen Frekans: 4000–4500 Hz (Günlük konuşma frekansı: 500–2000 Hz; İşitme eşiği 0 dB, Ağrı eşiği 140 dB)',
+        desc: 'Bölüm 1 PDF Slayt 65 & 74: İşitme eşiği 0 dB, ağrı eşiği 140 dB\'dir. Günlük konuşma frekansı 500–2000 Hz aralığı iken, gürültüye bağlı işitme kayıplarında odyometride İLK etkilenen frekans aralığı 4000–4500 Hz aralığıdır (akustik çentik).',
+        q: 'Bölüm 1 Slayt 74\'e göre; insanlarda günlük konuşma frekansı aralığı ile gürültüye bağlı işitme kayıplarında İLK etkilenen frekans aralığı sırasıyla hangileridir?'
       },
       {
-        opt: 'Aydınlatma şiddeti birimi Lüks (Lux) ve Lüksmetre',
-        desc: 'Birim yüzeye (1 m²) düşen ışık akısına (1 lümen) Aydınlatma Şiddeti (Lüks) denir ve işyerlerinde çalışma yüzeyi seviyesinde Lüksmetre ile ölçülür.',
-        q: 'İşyerlerinde aydınlatma yeterliğin tespitinde birim yüzeye (m²) düşen ışık akısını ifade eden ölçü birimi ve ölçüm cihazı hangisidir?'
-      },
-      {
-        opt: 'İyonlaştırıcı radyasyon doz sınırları (Yıllık ortalama 20 mSv, tek yılda en fazla 50 mSv)',
-        desc: 'Radyasyon Güvenliği Yönetmeliğine göre radyasyon görevlileri için etkin doz ardışık 5 yılın ortalaması yılda 20 mSv\'i, herhangi bir tek yılda ise 50 mSv\'i geçemez (halk için yılda 1 mSv).',
-        q: 'Radyasyon Güvenliği Yönetmeliğine göre radyasyonla çalışan görevliler için etkin doz, ardışık 5 yılın ortalamasında yılda kaç mSv\'i ve tek bir yılda en fazla kaç mSv\'i geçemez?'
+        opt: 'KKD Gürültü Azaltma Değerleri (Pamuk: 5–16 dB, Parafinli pamuk: 20–35 dB, Kulak tıkacı: 20–45 dB, Kulaklık: 12–48 dB)',
+        desc: 'Bölüm 1 PDF Slayt 80: Gürültüden korunmada kullanılan malzemelerin ses azaltma düzeyleri: Pamuk 5–16 dB, Parafinli pamuk 20–35 dB, Kulak tıkacı 20–45 dB, Kulaklık 12–48 dB\'dir.',
+        q: 'Bölüm 1 Slayt 80\'deki tabloya göre gürültüden korunmada kullanılan "Pamuk, Parafinli pamuk, Kulak tıkacı ve Kulaklık" malzemelerinin sağladığı desibel (dB) azaltma aralıkları hangisinde doğru verilmiştir?'
       }
     ]
   },
   {
-    groupName: 'Kimyasal Risk Etmenleri, Gazlar, Tozlar ve Sınır Değerler',
+    groupName: 'Bölüm 1: Titreşim, Basınç ve Termal Konfor Risk Etmenleri',
     items: [
       {
-        opt: 'TWA (Zaman Ağırlıklı Ortalama — 8 saatlik referans süre)',
-        desc: 'Günlük 8 saatlik ve haftalık 40 saatlik çalışma süresine göre ölçülen veya hesaplanan zaman ağırlıklı ortalama mesleki maruziyet sınır değeridir.',
-        q: 'Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmeliğe göre "8 saatlik belirlenen referans süre için ölçülen veya hesaplanan zaman ağırlıklı ortalama" sınır değer kısaltması hangisidir?'
+        opt: 'El-Kol Titreşimi (Eylem: 2,5 m/s², Sınır: 5,0 m/s²; TS EN ISO 5349-1/2; çift elle kullanılan aygıtlarda her el ayrı ölçülür ve en yüksek değer esas alınır)',
+        desc: 'Bölüm 1 PDF Slayt 34 & 87: El-kol titreşiminde 8 saatlik A(8) günlük maruziyet eylem değeri 2,5 m/s², sınır değer 5,0 m/s²\'dir. Çift elle kullanılan aygıtlarda ölçümler her el için ayrı ayrı yapılır ve her iki eldeki en yüksek değer esas alınır.',
+        q: 'Titreşim Yönetmeliği ve Bölüm 1 Slayt 34\'e göre; "El-Kol Titreşimi" sınır/eylem değerleri ve çift elle kullanılan makinelerde ölçüm değerlendirme kuralı nedir?'
       },
       {
-        opt: 'STEL (Kısa Süreli Maruziyet Sınır Değeri — 15 dakikalık süre)',
-        desc: 'Başka bir süre belirtilmedikçe, aşılmaması gereken 15 dakikalık kısa süreli mesleki maruziyet sınır değeridir.',
-        q: 'Kimyasal maddelerle çalışmalarda başka bir süre belirtilmedikçe aşılmaması gereken "15 dakikalık kısa süreli maruziyet sınır değeri" kısaltması hangisidir?'
+        opt: 'Bütün Vücut Titreşimi (Eylem: 0,5 m/s², Sınır: 1,15 m/s²; TS ISO 2631-1; bel/omurga travması yapar; deniz taşımacılığında 1 Hz\'in üzerindeki titreşimler değerlendirilir)',
+        desc: 'Bölüm 1 PDF Slayt 35, 41 & 88: Bütün vücut titreşiminde 8 saatlik A(8) günlük maruziyet eylem değeri 0,5 m/s², sınır değer 1,15 m/s²\'dir. Deniz taşımacılığında 1 Hz\'in üzerindeki titreşimler değerlendirmeye alınır.',
+        q: 'Bütün vücut titreşimiyle ilgili olarak 8 saatlik günlük maruziyet eylem/sınır değerleri ve deniz taşımacılığında değerlendirmeye alınan frekans alt sınırı nedir?'
       },
       {
-        opt: 'Kimyasal boğucu gazlar (Karbonmonoksit CO, Hidrojen Sülfür H2S, Hidrojen Siyanür HCN)',
-        desc: 'Havadaki oksijeni azaltmak yerine doğrudan kanın oksijen taşıma kapasitesini (CO -> karboksihemoglobin) veya hücrelerin oksijen kullanma enzimlerini (HCN, H2S) bloke ederek boğulmaya yol açan zehirli gazlardır.',
-        q: 'Solunduğunda kandaki hemoglobinle birleşerek veya hücresel solunum enzimlerini bloke ederek dokuların oksijensiz kalmasına yol açan "Kimyasal Boğucu Gazlar" grubu hangisidir?'
+        opt: 'Çok Düşük Frekanslı Titreşim (f < 2 Hz: Uçak, gemi, otomobil seyahatinde merkezi sinir sistemi etkilenimi — bulantı, kusma, soğuk ter) ve Vibrasyon Detektörü',
+        desc: 'Bölüm 1 PDF Slayt 89 & 91: Frekansı 2 Hz\'den küçük (f < 2 Hz) çok düşük frekanslı titreşimler otomobil, uçak, gemi seyahatlerinde merkezi sinir sistemi şikayetlerine (bulantı, kusma, soğuk ter) yol açar. İşçi sağlığı açısından titreşim frekans bantlarına ayrılarak "vibrasyon detektörü" ile ölçülür.',
+        q: 'Bölüm 1 Slayt 89\'a göre; otomobil, uçak ve gemi gibi araçlarla seyahat sırasında merkezi sinir sistemini etkileyerek bulantı, kusma ve soğuk terlemeye yol açan titreşimlerin frekans aralığı nedir?'
       },
       {
-        opt: 'Basit boğucu gazlar (Karbondioksit CO2, Metan CH4, Azot N2, Argon, LPG)',
-        desc: 'Kendi başlarına fizyolojik olarak zehirli olmayan ancak kapalı ortamlarda birikerek havadaki oksijen oranını (%19,5\'in altına) düşürmek suretiyle hipoksi/boğulmaya yol açan gazlardır.',
-        q: 'Toksik (zehirli) olmadıkları halde kapalı ortamlarda oksijenin yerini alarak ortamdaki oksijen oranını düşürmek suretiyle boğulmaya neden olan "Basit Boğucu Gazlar" grubu hangisidir?'
+        opt: 'Basınç Değişimi Sınırı (4,5 N/cm²\'ye kadar sorun yaratmaz) ve Yükümlülük Süreleri (Akut olaylarda 3 gün, diğer/kronik olaylarda 10 yıl)',
+        desc: 'Bölüm 1 PDF Slayt 93-94: Basınç birim alana yapılan kuvvettir (Bar veya N/m²), barometre ile ölçülür. Normalde 4,5 N/cm² kadar basınç değişimi rahatsızlık hissi dışında sağlık sorunu yaratmaz. Basınç değişikliği nedeniyle görülen akut olaylarda yükümlülük süresi 3 gün, diğer olaylarda ise 10 yıldır.',
+        q: 'Bölüm 1 Slayt 94\'e göre; organizmada sağlık sorunu yaratmayan normal basınç değişimi sınırı ile basınç değişikliğine bağlı "akut olaylarda" ve "diğer (kronik) olaylarda" yükümlülük süreleri sırasıyla nedir?'
       },
       {
-        opt: 'Asbest sınır değeri (0,1 lif/cm³ — 8 saatlik TWA)',
-        desc: 'Asbestle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmeliğe göre havadaki asbest konsantrasyonunun 8 saatlik zaman ağırlıklı ortalama (TWA) sınır değeri 0,1 lif/cm³\'tür.',
-        q: 'Asbestle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmeliğe göre işyeri havasındaki 8 saatlik zaman ağırlıklı ortalama (TWA) asbest sınır değeri kaç lif/cm³\'tür?'
+        opt: 'Dalgıç Odası ve Sualtı Kuralları (Kişi başına saatte en az 40 m³ hava, CO2 en fazla %0,1; 22 metreden fazla derinliğe günde en fazla 2 dalış ve iki dalış arası en az 5 saat)',
+        desc: 'Bölüm 1 PDF Slayt 96: Dalgıç odalarında kişi başına saatte en az 40 m³ hava sağlanacak ve havadaki karbondioksit (CO2) miktarı %0,1\'i geçmeyecektir. Bir dalgıç 22 metreden fazla derinliğe bir günde iki defadan fazla dalamaz ve bu iki dalma arasında en az 5 saat geçmelidir.',
+        q: 'Bölüm 1 Slayt 96\'da yer alan yüksek basınç (dalgıçlık) kurallarına göre; dalgıç odalarında kişi başına saatlik temiz hava miktarı, maksimum derinlik sınırı (günde en fazla 2 dalış için) ve iki dalış arasındaki asgari bekleme süresi nedir?'
       },
       {
-        opt: 'Solunabilir toz (< 10 mikron; alveollere ulaşan < 5 mikron)',
-        desc: 'Aerodinamik eşdeğer çapı 0,1 ile 5,0 mikron arasında olan kristal veya amorf yapıda tozlar ile çapı 3 mikrondan küçük, uzunluğu çapının en az 3 katı olan lifsi tozlardır (akciğer alveollerine kadar ulaşır).',
-        q: 'Tozla Mücadele Yönetmeliğine göre akciğerin en uç noktası olan alveollere (hava keseciklerine) kadar ulaşarak pnömokonyoza neden olan "Solunabilir Toz" parçacıklarının aerodinamik çap aralığı nedir?'
+        opt: 'Termal Konfor 4 Çevresel Faktör (Hava sıcaklığı, Radyant sıcaklık, Hava akım hızı, Nem) ve 2 Kişisel Faktör (Giyim izolasyonu ve İş hızı / Metabolik ısı)',
+        desc: 'Bölüm 1 PDF Slayt 100-108: Termal konforu etkileyen 4 çevresel faktör: Hava sıcaklığı, Radyant sıcaklık, Hava hızı ve Nemdir. Termal konforu etkileyen 2 kişisel faktör ise: Giyim izolasyonu ve İş hızı / metabolik ısıdır (art러스 fiziksel aktivite ve yaş/boy/kilo/cinsiyet).',
+        q: 'İşyerinde termal konforu etkileyen 4 çevresel faktörün yanı sıra, Bölüm 1 Slayt 107-108\'de tanımlanan 2 temel "Kişisel Faktör" aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Benzen (C6H6) — Lösemi (Kan Kanseri) ve TWA: 1 ppm (3,25 mg/m³)',
-        desc: 'Aromatik hidrokarbon olan Benzen, kemik iliğini baskılayarak aplastik anemi ve Lösemi (kan kanseri) yapan Grup 1 kanserojendir; 8 saatlik TWA sınır değeri 1 ppm (3,25 mg/m³)\'tür.',
-        q: 'Kanserojen ve Mutajen Maddeler Yönetmeliğinde yer alan, kemik iliği hasarı ve Lösemiye (kan kanseri) neden olan Benzenin 8 saatlik TWA sınır değeri kaç ppm\'dir?'
+        opt: 'Bağıl Nem (%30–80 aralığında olmalı, Higrometre veya Psikrometre ile ölçülür; sıcaklık arttıkça bağıl nem azalır; mutlak nem 1 m³ havadaki su buharı miktarıdır)',
+        desc: 'Bölüm 1 PDF Slayt 105-106 & 113: Mutlak nem 1 m³ havadaki su buharı miktarıdır; bağıl nem ise aynı sıcaklıkta doymuş havadaki mutlak nemin yüzdesidir (sıcaklık arttıkça bağıl nem azalır). Bir işyerinde bağıl nem %30–80 (ideal %40–70) olmalı ve Higrometre ya da Psikrometre ile ölçülmelidir.',
+        q: 'Bölüm 1 Slayt 106 ve 113\'e göre; bir işyerinde bağıl nem yüzde kaç aralığında olmalıdır, hangi cihazlarla ölçülür ve ortam sıcaklığı arttıkça bağıl nem nasıl değişir?'
       },
       {
-        opt: 'Kurşun (Pb) biyolojik sınır değeri (Kanda en fazla 70 µg Pb/100 ml kan; tıbbi gözetim > 40 µg)',
-        desc: 'Kurşunla çalışmalarda bağlayıcı biyolojik sınır değer 70 µg Pb/100 ml kandır; kanda kurşun seviyesi 40 µg/100 ml\'yi veya havadaki kurşun 0,075 mg/m³\'ü aşarsa tıbbi gözetim başlatılır (sınır değer TWA: 0,15 mg/m³).',
-        q: 'Kimyasal Maddeler Yönetmeliğine göre çalışanların kanındaki "Kurşun (Pb)" düzeyi için bağlayıcı biyolojik sınır değer 100 ml kanda en fazla kaç mikrogram (µg) kurşundur?'
-      },
-      {
-        opt: 'Kanserojen ve Asbest kayıtlarının saklanma süresi (Maruziyet bittikten sonra en az 40 yıl)',
-        desc: 'Kanserojen, mutajen maddeler ve asbestle yapılan çalışmalarda sağlık gözetimi ve maruziyet kayıtları, maruziyetin sona ermesinden itibaren en az 40 yıl süreyle saklanır.',
-        q: 'Kanserojen ve Mutajen Maddeler ile Asbestle yapılan çalışmalarda çalışanların sağlık ve maruziyet kayıtları maruziyet sona erdikten sonra en az kaç yıl saklanmalıdır?'
+        opt: 'Hava Akım Hızı (Saniyede 0,3–0,5 metreyi aşmamalı, Anemometre ile ölçülür) ve Radyant Isı (Ilık/sıcak cisimden yayılan ışıma ısısı, Glob Termometre ile ölçülür)',
+        desc: 'Bölüm 1 PDF Slayt 103-104 & 113: İşyerinde hava akım hızı saniyede 0,3–0,5 metreyi (m/sn) aşmamalıdır (aşarsa ısı stresi/cereyan oluşturur) ve "Anemometre" ile ölçülür. Radyant ısı ise "Glob Termometre" ile ölçülür.',
+        q: 'Bölüm 1 Slayt 113\'e göre; işyerinde termal konforun bozulmaması için "Hava Akım Hızı" saniyede kaç metreyi aşmamalıdır ve "Hava Akım Hızı / Radyant Isı" sırasıyla hangi cihazlarla ölçülür?'
       }
     ]
   },
   {
-    groupName: 'Patlayıcı Ortamlar (ATEX) ve Biyolojik Risk Etmenleri',
+    groupName: 'Bölüm 1: Aydınlatma, Radyasyon, Ergonomi ve Bölüm 2: Kimyasal Risk Unsurları',
     items: [
       {
-        opt: 'Bölge 0 (Zone 0) — Gaz/Buhar/Sis için sürekli veya uzun süreli patlayıcı ortam',
-        desc: 'Gaz, buhar ve sis halindeki yanıcı maddelerin hava ile karışımından oluşan patlayıcı ortamın SÜREKLİ olarak veya uzun süreli ya da sık sık oluştuğu yerlerdir (tozlar için karşılığı Bölge 20\'dir).',
-        q: 'Çalışanların Patlayıcı Ortamların Tehlikelerinden Korunması Hakkında Yönetmeliğe (ATEX) göre gaz, buhar ve sis halindeki patlayıcı ortamın SÜREKLİ veya uzun süreli bulunduğu tehlikeli bölge hangisidir?'
+        opt: 'Görünür Işık (400–700 nm dalga boyu) ve Aydınlatma Türleri (Direkt: Doğrudan çalışma bölgesine, Endirekt: Başka yüzeye çarpıp yansıyarak, Lokal: Sadece çalışılan bölgeye)',
+        desc: 'Bölüm 1 PDF Slayt 116-121: Görünür ışık elektromanyetik spektrumun 400–700 nanometre (nm) aralığındadır. Işık çalışılan bölgeye doğrudan geliyorsa "Direkt", başka bir yüzeye çarpıp geliyorsa "Endirekt", sadece çalışılan bölgeyi aydınlatıyorsa "Lokal (Yarı direkt)" aydınlatma denir.',
+        q: 'Bölüm 1 Slayt 116 ve 118\'e göre; insan gözünün algılayabildiği görünür ışığın dalga boyu aralığı (nm) ile ışığın başka bir yüzeye çarpıp yansıyarak çalışma alanına gelmesiyle oluşan aydınlatma türü nedir?'
       },
       {
-        opt: 'Bölge 1 (Zone 1) ve Bölge 2 (Zone 2) — Gaz/Buhar/Sis bölgeleri',
-        desc: 'Bölge 1: Normal çalışmada patlayıcı ortamın ara sıra oluşma ihtimali olan yerler (Tozda Bölge 21); Bölge 2: Normal çalışmada oluşma ihtimali olmayan, oluşsa bile çok kısa süren yerlerdir (Tozda Bölge 22).',
-        q: 'ATEX Yönetmeliğine göre yanıcı gaz, buhar ve sislerden kaynaklanan patlayıcı ortamın normal çalışma koşullarında ARA SIRA oluşma ihtimali bulunan bölge hangisidir?'
+        opt: 'Aydınlatma Kriterleri (Pencere alanı taban yüzeyinin en az 1/10\'u olmalı; algılamanın %80–90\'ı gözle gerçekleşir; perde ışık geçirme katsayısı >%30; Birim: Lüks, Cihaz: Lüksmetre)',
+        desc: 'Bölüm 1 PDF Slayt 123-130: İşyeri taban yüzeyinin en az 1/10\'u oranında ışık alacak pencereler olmalıdır. İnsanın enformasyon algılamasının %80 ile %90\'ı göz kanalıyla gerçekleşir. Pencerelerde ışık geçirme katsayısı %30\'dan fazla olan açık renk perdeler kullanılır. Aydınlatma şiddeti birimi Lüks (Işık akısı / toplam alan), ölçen alet Lüksmetredir.',
+        q: 'Bölüm 1 Aydınlatma ders notlarına göre; işyeri pencerelerinin taban yüzeyine en az oranı, insan algılamasının yüzde kaçının gözle gerçekleştiği ve aydınlatma ölçüm birimi/cihazı hangisinde doğru verilmiştir?'
       },
       {
-        opt: 'Bölge 20, Bölge 21 ve Bölge 22 — Yanıcı TOZ bulutu bölgeleri',
-        desc: 'Havada bulut halinde bulunan tutuşabilir TOZLAR için sürekli/uzun süreli ortam Bölge 20, ara sıra oluşan ortam Bölge 21, nadir/kısa süreli ortam ise Bölge 22 olarak sınıflandırılır.',
-        q: 'ATEX Yönetmeliğine göre havada bulut halinde bulunan tutuşabilir TOZLARIN sürekli veya uzun süreli patlayıcı ortam oluşturduğu bölge sınıfı hangisidir?'
+        opt: 'Alfa Işınları (Ağır parçacıklardır, havada ~5 cm gider, bir kağıt tabakasını veya alüminyum levhayı geçemez; ancak solunduğu veya yutulduğu takdirde hücreler üzerinde çok zararlıdır)',
+        desc: 'Bölüm 1 PDF Slayt 138 (ve 14 Ekim dersi): Alfa ışınları ağır parçacıklar olup havada yaklaşık 5 cm\'lik mesafedeki bir kağıt tabakasını veya alüminyum levhayı geçemezler; dıştan önemli tehlike yaratmazlar ancak solundukları veya yutuldukları takdirde hücreler üzerinde çok zararlıdırlar.',
+        q: '14 Ekim dersinde ve Bölüm 1 Slayt 138\'de işlenen radyasyon türlerinden; "ağır parçacık yapısı nedeniyle havada yaklaşık 5 cm gidebilen ve bir kağıt tabakasını bile geçemeyen, ancak solunduğunda veya yutulduğunda iç dokulara çok zararlı olan" ışın hangisidir?'
       },
       {
-        opt: 'Biyolojik Risk Grupları (Grup 1, Grup 2, Grup 3 ve Grup 4)',
-        desc: 'Grup 1: İnsanda hastalık yapma ihtimali olmayan; Grup 2: Hastalık yapabilen, tedavisi olan; Grup 3: Ağır hastalık yapan, topluma yayılma riski olan ancak etkili korunma/tedavisi OLAN; Grup 4: Ağır hastalık yapan, yayılma riski yüksek ve etkili korunma/tedavisi OLMAYAN (örn. Ebola) etkenlerdir.',
-        q: 'Biyolojik Etkenlere Maruziyet Risklerinin Önlenmesi Hakkında Yönetmeliğe göre "İnsanda ağır bir hastalığa neden olan, topluma yayılma riski yüksek olan ancak etkili korunma ve tedavi yöntemi BULUNMAYAN" biyolojik etkenler hangi gruptadır?'
+        opt: 'Kızılötesi / İnfrared Işınlar (Aşırı ısı verir, deri yanıkları ve gözde KATARAKT yapar) vs Gama ve X-Işınları (Vücuda derinlemesine nüfuz ederek hücre/DNA tahribatı yapar)',
+        desc: 'Bölüm 1 PDF Slayt 137-138: İyonlaştırıcı olmayan Kızılötesi (infrared) ışınlar vücuda kolayca girip aşırı ısı verir, deri yanıkları ve gözde "katarakt" meydana getirir; mikrodalga ve RF dokuları ısıtır. İyonlaştırıcı Gama ve X-ışınları ise vücuda derinlemesine girerek hücreleri tahrip eder.',
+        q: 'Bölüm 1 Slayt 138\'e göre; vücudun açık kısımlarını ısıtarak deri yanıklarına ve özellikle gözde "Katarakt" hastalığına yol açan ışın türü ile dokulara derinlemesine nüfuz eden elektromanyetik ışınlar hangileridir?'
       },
       {
-        opt: 'Patlamadan Korunma Dokümanı (PKD) ve Ex-Proof (ATEX) Ekipman Kategorileri (Kategori 1, 2 ve 3)',
-        desc: 'Bölge 0 ve 20\'de Kategori 1 (çok yüksek koruma), Bölge 1 ve 21\'de Kategori 1 veya 2 (yüksek koruma), Bölge 2 ve 22\'de ise Kategori 1, 2 veya 3 ekipman kullanılır.',
-        q: 'ATEX Yönetmeliğine göre Bölge 0 veya Bölge 20 olarak sınıflandırılan patlayıcı ortamlarda kullanılacak Ex-Proof ekipmanlar en az hangi kategoride olmalıdır?'
+        opt: 'Radyasyon Ölçüm Yöntemleri: Surveymetreler (Bulunduğu yerdeki radyasyon doz hızını ölçer), Dozimetreler (Belli zaman aralığındaki toplam dozu ölçer) ve Beden Spektrometresi (İç kontaminasyonu ölçer)',
+        desc: 'Bölüm 1 PDF Slayt 139: Dıştan etki yapan ışınlar için parsiyel global dozimetri, iç kontaminasyonun ölçülmesi için ise "total veya parsiyel beden spektrometresi" yapılır. 1) Doz Hızı Ölçerler (Surveymetreler): Ortamdaki anlık radyasyon doz hızını ölçer, 2) Kontaminasyon monitörleri, 3) Dozimetreler: Belli bir zaman aralığındaki toplam radyasyon dozunu ölçer.',
+        q: 'Bölüm 1 Slayt 139\'a göre; "bulunduğu yerdeki anlık radyasyon doz hızını ölçen cihaz", "belli bir zaman aralığındaki toplam radyasyon dozunu ölçen cihaz" ve "iç kontaminasyonu ölçen yöntem" sırasıyla hangileridir?'
       },
       {
-        opt: 'Alt Patlama Sınırı (LEL / Alt Patlama Limiti) ve Üst Patlama Sınırı (UEL)',
-        desc: 'Yanıcı bir gaz veya buharın hava içinde patlama oluşturabileceği en düşük konsantrasyona LEL (Lower Explosive Limit), en yüksek konsantrasyona ise UEL (Upper Explosive Limit) denir.',
-        q: 'Yanıcı gaz veya buharların hava ile karıştığında kıvılcımla patlama oluşturabileceği "En Düşük Konsantrasyon Sınırı" ve "En Yüksek Konsantrasyon Sınırı" kısaltmaları hangileridir?'
+        opt: 'Ergonomi vs Fiziksel Risk Farkı (Ergonomi insanların işleriyle etkileşimini, üretkenliğini ve konforunu artırmak için işyeri tasarımıyla ilgilenirken; fiziksel risk gürültü/titreşim/radyasyon gibi zararlı etmenlerin yaralanma/hastalık potansiyeline odaklanır)',
+        desc: 'Bölüm 1 PDF Slayt 143-144 (ve Çalışma Sorularında vurgulanan soru): Ergonomi ve fiziksel risk kavramları birbirine yakın ancak farklıdır; ergonomi insanların işleriyle etkileşimlerini, üretkenliklerini ve konforlarını artırmak için işyeri tasarımıyla ilgilenirken, fiziksel risk çalışanların maruz kaldığı fiziksel faktörlerin sağlık/güvenlik risklerine odaklanır.',
+        q: 'Bölüm 1 sonu çalışma sorularında da yer aldığı üzere; "Ergonomi" kavramı ile "Fiziksel Risk" kavramı arasındaki temel fark aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Dekompresyon (Vurgun / Caisson) Hastalığı ve Azot (N2) Narkozu',
-        desc: 'Yüksek basınç altında çalışan dalgıç ve tünel işçileri normal basınca hızla çıktığında dokularda çözünmüş Azot (N2) gazının kabarcıklaşarak damarları tıkaması sonucu Vurgun (Dekompresyon) oluşur.',
-        q: 'Dalgıçlarda ve basınçlı tünel (keson) işçilerinde yüksek basınçtan normal atmosfer basıncına hızlı çıkış sırasında kanda hangi gazın kabarcıklaşması "Vurgun (Dekompresyon)" hastalığına neden olur?'
+        opt: 'Kimyasal Maddeler Yönetmeliği (RG: 12.08.2013 - 28733; Güncel Değişiklik: 20/10/2023 - 32345) — Solunum Bölgesi: Kulakları birleştiren çizginin orta noktası merkezli 30 cm yarıçaplı kürenin başın ön kısmında kalan yarısı',
+        desc: 'Bölüm 2 PDF Slayt 3-5: 20/10/2023 tarihli ve 32345 sayılı Resmi Gazete ile güncellenen Kimyasal Maddelerle Çalışmalarda Sağlık ve Güvenlik Önlemleri Hakkında Yönetmeliğe göre "Solunum bölgesi"; merkezi, kişinin kulaklarını birleştiren çizginin orta noktası olan 30 cm yarıçaplı kürenin, başın ön kısmında kalan yarısıdır.',
+        q: 'Bölüm 2 Slayt 3-5\'te yer alan (20/10/2023 güncel değişiklikli) Kimyasal Maddeler Yönetmeliğine göre "Solunum Bölgesi"nin yasal tanımı aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Bruselloz, Şarbon (Antraks) ve Tetanoz (Zoonotik ve Tarımsal Biyolojik Riskler)',
-        desc: 'Hayvancılık, mezbaha, veterinerlik ve deri/yün işlerinde çalışanlarda hayvanlardan bulaşan Şarbon (Bacillus anthracis) ve Bruselloz; paslı/topraklı yaralanmalarda ise Tetanoz (Clostridium tetani) meslek hastalığı görülür.',
-        q: 'Hayvancılık, mezbaha, deri ve yün işleme işlerinde çalışanlarda enfekte hayvanlardan bulaşan başlıca zoonotik meslek hastalıkları hangileridir?'
+        opt: 'Çok Kolay Alevlenir Madde (Parlama noktası < 0°C ve kaynama noktası <= 35°C olan sıvılar) ve Kurşun Biyolojik İzlemesi (Absorbsiyon spektrometri ile kanda kurşun ölçümü)',
+        desc: 'Bölüm 2 PDF Slayt 17 & 51: 0°C\'den düşük parlama noktası ve 35°C\'den düşük kaynama noktasına sahip sıvı hâldeki maddeler "Çok kolay alevlenir madde" olarak tanımlanır. Kurşun ve iyonik kurşun bileşiklerinde biyolojik izleme, absorbsiyon spektrometri veya eşdeğer yöntemle kanda kurşun seviyesinin (PbB) ölçülmesini kapsar.',
+        q: 'Bölüm 2 ders notlarına göre; "0°C\'den düşük parlama noktası ve 35°C\'den düşük kaynama noktasına sahip sıvı maddeler" hangi tehlike sınıfına girer?'
       },
       {
-        opt: 'Güvenlik Bilgi Formu (GBF / MSDS / SDS — 16 Standart Başlık)',
-        desc: 'Tehlikeli kimyasalların fiziksel/kimyasal özelliklerini, sağlık/çevre tehlikelerini, ilk yardım, yangın, depolama ve KKD önlemlerini içeren 16 standart bölümden oluşan yasal bilgi formudur.',
-        q: 'Kimyasal maddelerin tedarikçisi tarafından işverene verilmesi zorunlu olan ve 16 standart bölümden oluşan teknik güvenlik belgesinin adı nedir?'
-      },
-      {
-        opt: 'Pnömokonyoz Türleri: Silikozis (Kuvars/SiO2), Asbestozis (Asbest), Bisinozis (Pamuk), Siderozis (Demir)',
-        desc: 'İnorganik/organik tozların akciğerde birikmesiyle oluşur: Kristal silis -> Silikozis, Kömür tozu -> Antrakozis, Pamuk tozu -> Bisinozis, Demir tozu -> Siderozis, Berilyum -> Berilyozis.',
-        q: 'Mesleki toz maruziyeti sonucu gelişen akciğer hastalıklarından (pnömokonyozlar) Kuvars (Silis), Pamuk tozu ve Demir tozunun neden olduğu hastalıklar sırasıyla hangileridir?'
+        opt: 'Malzeme Güvenlik Bilgi Formu (MGBF / MSDS / GBF) ve H Kodları (H1, H2, H25, H31 gibi maddenin tehlike sınıflarını ve zararlılık/risk özelliklerini belirten kodlar) ile Yeşil Kimya',
+        desc: 'Bölüm 2 PDF Slayt 121-133: MGBF (GBF), kimyasal madde üreten/ithal eden firmaların hazırlamak zorunda olduğu yasal iletişim formudur. Formdaki H kodları (Hazard statements) maddenin tehlike/zararlılık ifadelerini gösterir. Çevre dostu, sürdürülebilir ve insan sağlığına daha az zarar veren kimyasal alternatiflerin tasarımına ise "Yeşil Kimya" denir.',
+        q: 'Bölüm 2 Slayt 125 ve 133\'e göre; Malzeme Güvenlik Bilgi Formu\'nda (MGBF/GBF) maddenin tehlike sınıflarını belirten kod harfi ile çevre dostu/sürdürülebilir kimyasal tasarım yaklaşımına verilen ad nedir?'
       }
     ]
   }
 ];
 
 export const fkruExtraFill = [
-  { q: 'Gürültü Yönetmeliğine göre en düşük maruziyet eylem değeri ____ dB(A)\'dır.', answers: ['80', 'seksen'], hint: 'Kulaklığın hazır bulundurulduğu değer', explanation: 'En düşük maruziyet eylem değeri 80 dB(A)\'dır.' },
-  { q: 'Gürültü Yönetmeliğine göre kulaklık takmanın zorunlu olduğu en yüksek maruziyet eylem değeri ____ dB(A)\'dır.', answers: ['85', 'seksen beş'], hint: 'Kulaklığın zorunlu olduğu değer', explanation: 'En yüksek maruziyet eylem değeri 85 dB(A)\'dır.' },
-  { q: 'Gürültü Yönetmeliğine göre hiçbir koşulda aşılmaması gereken maruziyet sınır değeri ____ dB(A)\'dır.', answers: ['87', 'seksen yedi'], hint: 'Mutlak üst sınır', explanation: 'Maruziyet sınır değeri 87 dB(A)\'dır.' },
-  { q: '80 dB(A) gürültü yayan iki özdeş makine aynı anda çalıştığında toplam gürültü ____ dB(A) olur.', answers: ['83', 'seksen üç'], hint: 'Logaritmik +3 dB kuralı', explanation: 'Eşit iki ses kaynağı birleştiğinde gürültü +3 dB artarak 83 dB olur.' },
-  { q: 'El-kol titreşimi için 8 saatlik günlük maruziyet sınır değeri ____ m/s²\'dir.', answers: ['5', '5,0', '5.0', 'beş'], hint: 'Eylem değeri 2,5 m/s²', explanation: 'El-kol titreşiminde eylem değeri 2,5 m/s², sınır değer 5,0 m/s²\'dir.' },
-  { q: 'El-kol titreşimi için 8 saatlik günlük maruziyet eylem değeri ____ m/s²\'dir.', answers: ['2,5', '2.5'], hint: 'Sınır değerin yarısı', explanation: 'El-kol titreşimi eylem değeri 2,5 m/s²\'dir.' },
-  { q: 'Bütün vücut titreşimi için 8 saatlik günlük maruziyet eylem değeri ____ m/s²\'dir.', answers: ['0,5', '0.5'], hint: 'Sınır değer 1,15 m/s²', explanation: 'Bütün vücut titreşiminde eylem değeri 0,5 m/s²\'dir.' },
-  { q: 'Bütün vücut titreşimi için 8 saatlik günlük maruziyet sınır değeri ____ m/s²\'dir.', answers: ['1,15', '1.15'], hint: 'Eylem değeri 0,5 m/s²', explanation: 'Bütün vücut titreşiminde sınır değer 1,15 m/s²\'dir.' },
-  { q: 'Termal konforda ortamdaki radyant (ışınım) ısısını ölçen siyah küreli cihaza ____ termometre denir.', answers: ['Glob', 'glob', 'Globe'], hint: 'Siyah küre termometresi', explanation: 'Radyant ısı Glob termometre ile ölçülür.' },
-  { q: 'Termal konforda hava akım hızını ölçen cihaza ____ denir.', answers: ['Anemometre', 'anemometre'], hint: 'Rüzgar/hava hızı ölçer', explanation: 'Hava akım hızı anemometre ile ölçülür.' },
-  { q: 'Aydınlatma şiddetinin birimi ____ (Lux) olup Lüksmetre ile ölçülür.', answers: ['Lüks', 'lüks', 'Lux'], hint: 'Lümen / m²', explanation: 'Aydınlatma şiddeti birimi Lüks\'tür.' },
-  { q: 'Radyasyon görevlileri için ardışık 5 yılın ortalama yıllık etkin doz sınırı ____ mSv\'dir.', answers: ['20', 'yirmi'], hint: 'Tek yılda max 50 mSv', explanation: '5 yılın ortalaması yılda 20 mSv\'i, tek yılda 50 mSv\'i geçemez.' },
-  { q: 'Radyasyon görevlileri için herhangi bir tek yılda alınabilecek azami etkin doz sınırı ____ mSv\'dir.', answers: ['50', 'elli'], hint: 'Yıllık mutlak üst sınır', explanation: 'Tek bir yılda etkin doz 50 mSv\'i geçemez.' },
-  { q: 'Toplum üyesi (halk / sivil) kişiler için yıllık etkin radyasyon doz sınırı ____ mSv\'dir.', answers: ['1', 'bir'], hint: 'Halk için yıllık sınır', explanation: 'Halk için yıllık etkin doz sınırı 1 mSv\'dir.' },
-  { q: 'Kimyasal maddelerle çalışmalarda 8 saatlik referans süre için zaman ağırlıklı ortalama sınır değere ____ denir.', answers: ['TWA', 'twa'], hint: 'Time Weighted Average', explanation: '8 saatlik zaman ağırlıklı ortalama sınır değer TWA\'dır.' },
-  { q: 'Kimyasal maddelerle çalışmalarda 15 dakikalık kısa süreli maruziyet sınır değerine ____ denir.', answers: ['STEL', 'stel'], hint: 'Short Term Exposure Limit', explanation: '15 dakikalık kısa süreli maruziyet sınır değeri STEL\'dir.' },
-  { q: 'Kandaki hemoglobinle birleşerek karboksihemoglobin oluşturan renksiz ve kokusuz kimyasal boğucu gaz ____ (CO) gazıdır.', answers: ['Karbonmonoksit', 'karbonmonoksit', 'CO'], hint: 'Soba/egzoz gazı', explanation: 'Karbonmonoksit (CO) hemoglobine oksijenden 200-250 kat hızlı bağlanır.' },
-  { q: 'Çürük yumurta kokulu olan ve koku alma duyusunu felç eden kimyasal boğucu gaz ____ (H2S) gazıdır.', answers: ['Hidrojen sülfür', 'hidrojen sülfür', 'H2S'], hint: 'Kanalizasyon/kuyu gazı', explanation: 'Hidrojen sülfür (H2S) çürük yumurta kokulu kimyasal boğucu gazdır.' },
-  { q: 'Asbestle çalışmalarda 8 saatlik zaman ağırlıklı ortalama (TWA) sınır değer ____ lif/cm³\'tür.', answers: ['0,1', '0.1'], hint: 'Sıfır virgül bir', explanation: 'Asbest TWA sınır değeri 0,1 lif/cm³\'tür.' },
-  { q: 'Akciğer alveollerine kadar ulaşabilen solunabilir tozların aerodinamik çapı ____ mikronun altındadır.', answers: ['5', 'beş', '10'], hint: '0,1 - 5,0 mikron aralığı', explanation: 'Alveollere ulaşan solunabilir tozlar 5 mikronun (genel tanım 10 mikron) altındadır.' },
-  { q: 'Kemik iliğini baskılayarak Lösemi (kan kanseri) yapan aromatik hidrokarbon çözücü ____ (C6H6) maddesidir.', answers: ['Benzen', 'benzen', 'Benzol'], hint: 'TWA sınırı 1 ppm olan kanserojen', explanation: 'Benzen (benzol) Grup 1 kanserojen olup lösemiye yol açar.' },
-  { q: 'Benzenin 8 saatlik zaman ağırlıklı ortalama (TWA) mesleki maruziyet sınır değeri ____ ppm\'dir.', answers: ['1', 'bir'], hint: '3,25 mg/m³ karşılığı', explanation: 'Benzenin TWA sınır değeri 1 ppm\'dir.' },
-  { q: 'Kurşunla çalışmalarda bağlayıcı biyolojik sınır değer 100 ml kanda en fazla ____ mikrogram (µg) kurşundur.', answers: ['70', 'yetmiş'], hint: 'Tıbbi gözetim 40 µg, sınır 70 µg', explanation: 'Kanda bağlayıcı kurşun sınır değeri 70 µg Pb/100 ml kandır.' },
-  { q: 'Kanserojen, mutajen maddeler ve asbest kayıtları maruziyet sona erdikten sonra en az ____ yıl saklanır.', answers: ['40', 'kırk'], hint: 'Uzun latent dönem süresi', explanation: 'Kanserojen ve asbest kayıtları en az 40 yıl saklanır.' },
-  { q: 'Kuvars (kristal silis / SiO2) tozlarının solunması sonucu oluşan pnömokonyoz türüne ____ denir.', answers: ['Silikozis', 'silikozis'], hint: 'Silis tozu hastalığı', explanation: 'Kristal silis (kuvars) tozu Silikozis hastalığına yol açar.' },
-  { q: 'Pamuk, keten ve kenevir tozlarının solunması sonucu oluşan tekstil işçisi akciğer hastalığına ____ denir.', answers: ['Bisinozis', 'bisinozis'], hint: 'Pazartesi ateşi / Pamuk tozu', explanation: 'Pamuk tozu maruziyeti Bisinozis hastalığına neden olur.' },
-  { q: 'Demir oksit tozlarının solunması sonucu akciğerde oluşan iyi huylu toz birikimine ____ denir.', answers: ['Siderozis', 'siderozis'], hint: 'Demir tozu pnömokonyozu', explanation: 'Demir tozları Siderozis hastalığına yol açar.' },
-  { q: 'ATEX Yönetmeliğine göre gaz ve buhar patlayıcı ortamının SÜREKLİ bulunduğu alanlar Bölge ____ (Zone) olarak adlandırılır.', answers: ['0', 'sıfır'], hint: 'Gazlar için 0, 1, 2', explanation: 'Gaz/buhar için sürekli patlayıcı ortam Bölge 0\'dır.' },
-  { q: 'ATEX Yönetmeliğine göre yanıcı TOZ bulutunun SÜREKLİ patlayıcı ortam oluşturduğu alanlar Bölge ____ olarak adlandırılır.', answers: ['20', 'yirmi'], hint: 'Tozlar için 20, 21, 22', explanation: 'Yanıcı tozlar için sürekli patlayıcı ortam Bölge 20\'dir.' },
-  { q: 'ATEX Yönetmeliğine göre patlayıcı ortam oluşabilecek işyerlerinde işveren ____ Korunma Dokümanı (PKD) hazırlamak zorundadır.', answers: ['Patlamadan', 'patlamadan'], hint: 'PKD açılımı', explanation: 'Patlamadan Korunma Dokümanı (PKD) hazırlanması zorunludur.' },
-  { q: 'Dalgıçlarda ve tünel (keson) işçilerinde yüksek basınçtan normal basınca hızlı geçişte kanda ____ gazı kabarcıklarının oluşturduğu hastalığa Vurgun (Dekompresyon) denir.', answers: ['Azot', 'azot', 'Nitrojen'], hint: 'Havanın %78\'ini oluşturan gaz', explanation: 'Vurgun (dekompresyon) hastalığına kandaki çözünmüş Azot (N2) gazının kabarcıklaşması yol açar.' },
-  { q: 'Biyolojik etkenler içinde insanda ağır hastalık yapan ve etkili korunma/tedavisi OLMAYAN etkenler Grup ____ biyolojik etkenlerdir.', answers: ['4', 'dört'], hint: 'En yüksek biyolojik risk grubu', explanation: 'Grup 4 biyolojik etkenlerin etkili tedavisi yoktur.' },
-  { q: 'İyonlaştırıcı radyasyon türlerinden kağıt tabakası veya deri tarafından bile tutulabilen, parçacık yapılı radyasyon ____ ışınıdır.', answers: ['Alfa', 'alfa'], hint: 'Helyum çekirdeği', explanation: 'Alfa parçacıkları kağıtla tutulur; Gama ve X ışınları ise kurşun/beton ile zırhlanır.' },
-  { q: 'Kimyasal maddelerin tehlike ve güvenlik bilgilerini içeren 16 bölümlük forma ____ Bilgi Formu (GBF / MSDS) denir.', answers: ['Güvenlik', 'güvenlik'], hint: 'Safety Data Sheet', explanation: 'Güvenlik Bilgi Formu (GBF / SDS) 16 standart başlıktan oluşur.' },
-  { q: 'Normal temiz atmosfer havasında hacimce yaklaşık % ____ oranında Oksijen bulunur.', answers: ['21', 'yirmi bir', '20,9'], hint: 'Azot %78, Oksijen %...', explanation: 'Temiz havada yaklaşık %21 (%20,9) oksijen ve %78 azot bulunur.' }
+  { q: 'Kişilere, işyerinin fiziki bütünlüğüne veya ekipmanlara zarar verme potansiyeli olduğu halde zarar vermeyen ve iş kazalarının habercisi olan olaylara _______ olay denir.', a: 'ramak kala', alts: ['ramakkala'], exp: 'Bölüm 1 Slayt 15: Zarar verme potansiyeli olduğu halde zarar vermeyen olaylara ramak kala olay denir.' },
+  { q: 'Yapılan işin gerekleri işçinin bilgi ve becerisiyle çatıştığında (nicel aşırı yük, nitel düşük yük) ve sosyal destek yetersiz olduğunda ortaya çıkan risklere _______ risk unsurları denir.', a: 'psikososyal', alts: ['psiko-sosyal'], exp: 'Bölüm 1 Slayt 45: Nicel aşırı yük ve nitel düşük yük psikososyal risk unsurlarıdır.' },
+  { q: 'Biyolojik risk etmenlerinde enfeksiyon zincirinin son halkası, kişisel savunma mekanizmaları veya stres/beslenme yetersizliği nedeniyle etkilenen _______ (çalışan) halkasıdır.', a: 'duyarlı', alts: ['duyarli', 'konakçı', 'çalışan'], exp: 'Bölüm 1 Slayt 50: Enfeksiyon zincirinin son halkası Duyarlı (Çalışan)\'dır.' },
+  { q: 'Sesin 20°C sıcaklıktaki havada yayılma hızı _______ m/sn iken, 20°C sudaki yayılma hızı 1410 m/sn\'dir.', a: '340', alts: ['üç yüz kırk'], exp: 'Bölüm 1 Slayt 59: 20°C havada sesin hızı 340 m/sn\'dir.' },
+  { q: 'Frekansı 20 Hz\'den düşük olan seslere _______ sesler, 20 Hz ile 20 kHz arasına işitilebilen sesler, 20 kHz\'den yüksek olanlara ise ultrasonik sesler denir.', a: 'subsonik', alts: ['infrasonik'], exp: 'Bölüm 1 Slayt 64: 20 Hz altı sesler subsonik seslerdir.' },
+  { q: 'İnsan kulağı için işitme eşiği 0 dB iken, ağrı eşiği düzeyindeki ses şiddeti _______ dB\'dir.', a: '140', alts: ['yüz kırk'], exp: 'Bölüm 1 Slayt 65: İşitme eşiği 0 dB, ağrı eşiği 140 dB\'dir.' },
+  { q: 'Bir işyerinde _______ metre uzaklıktaki bir kişiyle konuşmak için sesi yükseltmek gerekiyorsa, o işyerinde zararlı düzeyde gürültü var demektir.', a: '1', alts: ['bir'], exp: 'Bölüm 1 Slayt 67: 1 metre uzaklıktaki kişiyle konuşmak için sesi yükseltmek gerekiyorsa zararlı gürültü vardır.' },
+  { q: 'Gürültü Yönetmeliğine göre En Düşük Maruziyet Eylem Değeri 80 dB(A), En Yüksek Maruziyet Eylem Değeri 85 dB(A) ve Maruziyet Sınır Değeri _______ dB(A)\'dır.', a: '87', alts: ['seksen yedi'], exp: 'Bölüm 1 Slayt 22 & 68: Maruziyet sınır değeri 87 dB(A)\'dır.' },
+  { q: 'Gürültü Yönetmeliğine göre çalışanın kullandığı kişisel kulak koruyucu donanımların (KKD) koruyucu etkisi sadece maruziyet _______ değerleri (87 dB) uygulanırken dikkate alınır; eylem değerlerinde dikkate alınmaz.', a: 'sınır', alts: ['sinir'], exp: 'Bölüm 1 Slayt 22: KKD koruyucu etkisi maruziyet sınır değerlerinde dikkate alınır.' },
+  { q: 'Aynı (özdeş) iki gürültü kaynağının bulunduğu bir ortamda toplam gürültü düzeyi, birinci ses kaynağının düzeyine +_______ dB eklenerek bulunur.', a: '3', alts: ['üç', 'uc'], exp: 'Bölüm 1 Slayt 69: Toplam Gürültü Düzeyi = Birinci Ses Kaynağı + 3 dB.' },
+  { q: 'İnsanlarda günlük konuşma frekansı 500–2000 Hz aralığı iken, gürültüye bağlı işitme kayıplarında ilk etkilenen frekans aralığı _______ Hz aralığıdır.', a: '4000-4500', alts: ['4000', '4500', '4000 - 4500'], exp: 'Bölüm 1 Slayt 74: İşitme kayıplarında ilk etkilenen frekans aralığı 4000-4500 Hz\'dir.' },
+  { q: 'El-kol titreşiminde 8 saatlik günlük maruziyet eylem değeri 2,5 m/s² iken, maruziyet sınır değeri _______ m/s²\'dir.', a: '5', alts: ['5,0', '5.0', 'beş'], exp: 'Titreşim Yönetmeliği: El-kol titreşimi sınır değeri 5,0 m/s²\'dir.' },
+  { q: 'Bütün vücut titreşiminde 8 saatlik günlük maruziyet eylem değeri 0,5 m/s² iken, maruziyet sınır değeri _______ m/s²\'dir.', a: '1,15', alts: ['1.15'], exp: 'Titreşim Yönetmeliği: Bütün vücut titreşimi sınır değeri 1,15 m/s²\'dir.' },
+  { q: 'Titreşim Yönetmeliğinin özel koşullarına göre deniz taşımacılığında _______ Hz\'in üzerindeki titreşimler değerlendirmeye alınır.', a: '1', alts: ['bir'], exp: 'Bölüm 1 Slayt 35 & 41: Deniz taşımacılığında 1 Hz\'in üzerindeki titreşimler değerlendirilir.' },
+  { q: 'Otomobil, uçak ve gemi seyahatlerinde merkezi sinir sistemini etkileyerek bulantı, kusma ve soğuk terlemeye yol açan çok düşük frekanslı titreşimler frekansı _______ Hz\'den küçük olan titreşimlerdir.', a: '2', alts: ['iki'], exp: 'Bölüm 1 Slayt 89: Çok düşük frekanslı titreşimler (f < 2 Hz) hareket hastalığına yol açar.' },
+  { q: 'İşçi sağlığı bakımından önemli olan mekanik titreşim, frekans bantlarına ayrılarak _______ detektörü ile ölçülür.', a: 'vibrasyon', alts: ['titreşim', 'ivmeölçer'], exp: 'Bölüm 1 Slayt 91: Titreşim vibrasyon detektörü ile ölçülür.' },
+  { q: 'Bölüm 1 Slayt 94\'e göre normalde _______ N/cm² kadar basınç değişimi organizmada rahatsızlık hissi dışında sağlık sorunu yaratmaz.', a: '4,5', alts: ['4.5'], exp: 'Bölüm 1 Slayt 94: Normalde 4,5 N/cm² kadar basınç değişimi sağlık sorunu yaratmaz.' },
+  { q: 'Basınç değişikliği nedeniyle görülen akut olaylarda yükümlülük süresi _______ gün, diğer (kronik) olaylarda ise yükümlülük süresi 10 yıldır.', a: '3', alts: ['üç', 'uc'], exp: 'Bölüm 1 Slayt 94: Akut olaylarda yükümlülük süresi 3 gün, diğer olaylarda 10 yıldır.' },
+  { q: 'Dalgıç odalarında kişi başına saatte en az _______ m³ hava sağlanmalı ve havadaki karbondioksit (CO2) miktarı %0,1\'i geçmemelidir.', a: '40', alts: ['kırk', 'kirk'], exp: 'Bölüm 1 Slayt 96: Dalgıç odalarında kişi başına saatte en az 40 m³ hava sağlanmalıdır.' },
+  { q: 'Bir dalgıç _______ metreden fazla derinliğe bir günde iki defadan fazla dalamaz ve bu iki dalma arasında en az 5 saat geçmelidir.', a: '22', alts: ['yirmi iki'], exp: 'Bölüm 1 Slayt 96: 22 metreden fazla derinliğe günde iki defadan fazla dalınamaz.' },
+  { q: '1 m³ havadaki su buharı miktarına mutlak nem; aynı sıcaklıkta doymuş havadaki mutlak nemin yüzdesine ise _______ nem denir ve sıcaklık arttıkça bu oran azalır.', a: 'bağıl', alts: ['bagil', 'nispi'], exp: 'Bölüm 1 Slayt 106: Bağıl nem sıcaklık arttıkça azalır.' },
+  { q: 'Bir işyerinde bağıl nem %30–80 aralığında olmalı ve ortamdaki nem _______ ya da Psikrometre ile ölçülmelidir.', a: 'higrometre', alts: [], exp: 'Bölüm 1 Slayt 113: Ortamdaki nem Higrometre ya da Psikrometre ile ölçülür.' },
+  { q: 'İşyerinde termal konforun bozulmaması ve ısı stresi oluşmaması için hava akım hızı saniyede _______ metreyi (m/sn) aşmamalıdır.', a: '0,3-0,5', alts: ['0,5', '0.5', '0,3', '0.3-0.5'], exp: 'Bölüm 1 Slayt 113: Hava akım hızı saniyede 0,3-0,5 metreyi aşmamalıdır.' },
+  { q: 'Termal konforda hava akım hızı Anemometre ile ölçülürken, ılık/sıcak yüzeylerden yayılan radyant ısı _______ termometre ile ölçülür.', a: 'glob', alts: ['glop', 'kara küre'], exp: 'Bölüm 1 Slayt 113: Radyant ısı Glop (Glob) termometre ile ölçülür.' },
+  { q: 'İnsanların vücutlarının ısı dengesini koruyamadıkları aşırı sıcak veya aşırı soğuk termal bölgeye _______ bölgesi denir.', a: 'bunalım', alts: ['bunalim'], exp: 'Bölüm 1 Slayt 110: Termal konfor sınırları dışındaki bölgeye bunalım bölgesi denir.' },
+  { q: 'Elektromanyetik spektrumun insan gözü tarafından algılanabilen kısmı olan görünür ışık genellikle _______ nanometre (nm) dalga boyu aralığındadır.', a: '400-700', alts: ['400 - 700'], exp: 'Bölüm 1 Slayt 116: Görünür ışık 400-700 nm aralığındadır.' },
+  { q: 'Işık çalışılan bölgeye doğrudan geliyorsa direkt aydınlatma, başka bir yüzeye çarpıp yansıyarak geliyorsa _______ (dolaylı) aydınlatma denir.', a: 'endirekt', alts: ['dolaylı'], exp: 'Bölüm 1 Slayt 118 & 121: Başka yüzeye çarpıp geliyorsa endirekt aydınlatmadır.' },
+  { q: 'İşyerlerinde doğal aydınlatma için pencerelerin işyeri taban yüzeyinin en az _______ oranında ışık almasını sağlayacak büyüklükte olması şarttır.', a: '1/10', alts: ['%10', 'onda bir'], exp: 'Bölüm 1 Slayt 123: İşyeri taban yüzeyinin en az 1/10\'u oranında pencere olmalıdır.' },
+  { q: 'İnsanın bilgi (enformasyon) algılamasında en önemli duyu organı göz olup, bütün algılamanın %_______ ile %90\'ı göz kanalıyla gerçekleşir.', a: '80', alts: ['seksen', '80-90'], exp: 'Bölüm 1 Slayt 124: Algılamanın %80 ile %90\'ı göz kanalıyla gerçekleşir.' },
+  { q: 'Birim yüzeye düşen ışık akısına (Işık akısı / toplam alan) aydınlatma şiddeti denir; birimi _______ (Lux) ve ölçüm aleti Lüksmetredir.', a: 'lüks', alts: ['lüx', 'lux', 'luks'], exp: 'Bölüm 1 Slayt 129: Aydınlatma şiddeti birimi Lüks (Lüx), ölçen alet Lüksmetredir.' },
+  { q: 'Havada yaklaşık 5 cm gidebilen ve bir kağıt tabakasını veya alüminyum levhayı geçemeyen, ancak solunduğunda veya yutulduğunda hücrelere çok zararlı olan ağır parçacık radyasyonu _______ ışınlarıdır.', a: 'alfa', alts: ['alpha'], exp: 'Bölüm 1 Slayt 138: Kağıt tabakasını geçemeyen ağır parçacık alfa ışınlarıdır.' },
+  { q: 'Radyasyon tespitinde bulunduğu yerdeki anlık radyasyon doz hızını ölçen cihazlara _______ (doz hızı ölçer), belli bir zaman aralığındaki toplam dozu ölçenlere ise dozimetre denir.', a: 'surveymetre', alts: ['surveymetreler'], exp: 'Bölüm 1 Slayt 139: Doz hızı ölçerlere surveymetre denir.' },
+  { q: 'Kimyasal Maddeler Yönetmeliğine göre merkezi, kişinin kulaklarını birleştiren çizginin orta noktası olan _______ cm yarıçaplı kürenin başın ön kısmında kalan yarısına "Solunum bölgesi" denir.', a: '30', alts: ['otuz'], exp: 'Bölüm 2 Slayt 5: Solunum bölgesi 30 cm yarıçaplı kürenin başın ön kısmında kalan yarısıdır.' },
+  { q: '0°C\'den düşük parlama noktası ve 35°C\'den düşük kaynama noktasına sahip sıvı hâldeki kimyasallar _______ kolay alevlenir madde olarak sınıflandırılır.', a: 'çok', alts: ['cok'], exp: 'Bölüm 2 Slayt 51: Parlama noktası <0°C ve kaynama noktası <35°C olanlar çok kolay alevlenir maddedir.' },
+  { q: 'Çevre dostu, sürdürülebilir ve insan sağlığına daha az zarar veren kimyasal maddelerin ve süreçlerin tasarlanmasına _______ kimya denir.', a: 'yeşil', alts: ['yesil'], exp: 'Bölüm 2 Slayt 133: Çevre dostu sürdürülebilir kimya yaklaşımına Yeşil Kimya denir.' }
 ];

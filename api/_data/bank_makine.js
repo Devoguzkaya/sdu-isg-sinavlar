@@ -1,214 +1,254 @@
-// Makine ve Tezgahlarda İSG — 10 Ayrı Test Teması + Ek 75 Çoktan Seçmeli + 35 Boşluk Doldurma
+// Makine, Teçhizat ve Enerji Sistemlerinde İş Güvenliği (Prof. Dr. İbrahim ÜÇGÜL — 1-5. Hafta Orijinal Ders Sunumları)
 export const makineTestThemes = [
-  'Makine Emniyeti Yönetmeliği (2006/42/AT) ve CE Uygunluk İşaretlemesi',
-  'Mekanik Tehlikeler: Ezilme, Makaslama, Kapma, Sürüklenme ve Fırlama',
-  'Makine Koruyucuları: Sabit, Hareketli, Ayarlanabilir ve Kilitlemeli Koruyucular',
-  'Algılama ve Emniyet Tertibatları: Çift El Kumanda, Fotoelektrik Perde, Acil Durdurma',
-  'Talaşlı İmalat Tezgahları: Torna, Freze, Matkap ve Taşlama (Zımpara) Taşları',
-  'Preslerde (Eksantrik ve Hidrolik) ve Metal İşleme Makinelerinde Güvenlik',
-  'Ağaç İşleme Makineleri: Daire Testere, Şerit Testere ve Planya Güvenliği',
-  'Kaynak İşlerinde İSG: Gazaltı, Elektrik Ark ve Oksi-Asetilen Kaynağı',
-  'Kaldırma ve İletme Ekipmanları: Vinçler, Forkliftler, Halatlar ve Periyodik Kontrol',
-  'Basınçlı Kaplar, Kazanlar, Kompresörler ve Bakım-Onarımda EKED (LOTO)'
+  '1. Hafta: Sistem, Makine, Tesisat, Cihaz Kavramları ve Motorların Sınıflandırılması',
+  '1. Hafta: İş Makineleri, Tesisat Türleri (Isıtma/Soğutma/Buhar), Ölçme ve SI Birimleri',
+  '2. Hafta: Malzeme Bilimi, Madde, Element, Bileşik, Karışım ve Maddenin Halleri',
+  '2. Hafta: Atomik Yapı, Atomlar Arası Bağlar (İyonik, Kovalent, Metalik, Van der Waals)',
+  '2. Hafta: Mühendislik Malzemeleri (Metal, Seramik, Polimer, Kompozit), Deformasyon, Kırılma ve Muayene',
+  '3. Hafta: Çözülemeyen Bağlama Elemanları (Lehim, Kaynak, Perçin ve Yapıştırıcı Bağlantılar)',
+  '3. Hafta: Çözülebilen Bağlama Elemanları (Cıvata-Somun, Vida, Kama, Sıkı/Konik Geçme, Pim ve Perno)',
+  '4. Hafta: Güç ve Hareket İletim Elemanları (Dişli Çarklar, Sürtünmeli Çarklar, Kayış-Kasnak ve Zincirler)',
+  '5. Hafta: İmalat Yöntemleri — Döküm Teknolojisi (Model, Maça, Yolluk, Kum/Kokil/Basınçlı/Savurma Döküm)',
+  '5. Hafta: Plastik Şekil Verme (Haddeleme, Dövme, Ekstrüzyon), Toz Metalurjisi ve Kaynak Yöntemleri'
 ];
 
 export const makineConceptGroups = [
   {
-    groupName: 'Makine Emniyeti Yönetmeliği, Mekanik Tehlikeler ve Koruyucu Türleri',
+    groupName: '1. Hafta: Sistem, Makine, Tesisat, Cihaz, Ölçme ve SI Birimleri (Prof. Dr. İbrahim Üçgül Sunumu)',
     items: [
       {
-        opt: '2006/42/AT Makine Emniyeti Yönetmeliği ve CE İşareti',
-        desc: 'Makinelerin piyasaya arz edilmeden önce temel sağlık ve güvenlik kurallarına uygun olduğunu, teknik dosyasının hazırlandığını ve AB Uygunluk Beyanı ile CE işareti taşıdığını düzenleyen yönetmeliktir.',
-        q: 'Makinelerin tasarım ve imalat aşamasında temel sağlık ve güvenlik gerekliliklerini karşıladığını gösteren "CE" uygunluk işaretlemesi hangi yönetmelik kapsamında zorunludur?'
+        opt: 'Makina (Enerji dönüştürerek iş veya etki oluşturan mekanik düzenek)',
+        desc: '1. Hafta ders sunumuna göre; herhangi bir enerji türünü başka bir enerjiye dönüştürmek, belli bir güçten yararlanarak bir işi yapmak veya etki oluşturmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe "Makina" denir.',
+        q: 'Prof. Dr. İbrahim Üçgül\'ün 1. hafta ders notlarına göre; "Herhangi bir enerji türünü başka bir enerjiye dönüştürmek, belli bir güçten yararlanarak bir işi yapmak veya etki oluşturmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe" ne ad verilir?'
       },
       {
-        opt: 'Sabit koruyucular (Sadece alet/anahtarla sökülebilen)',
-        desc: 'Kayış-kasnak, dişli ve kaplin gibi işlem sırasında erişim gerektirmeyen tehlikeli hareketli parçaları kapatan; yalnızca özel el aleti (anahtar/tornavida) ile açılabilen ve söküldüğünde bağlantı elemanları üzerinde kalan koruyuculardır.',
-        q: 'Normal çalışma sırasında erişim gerektirmeyen kayış-kasnak ve dişli çark gibi aktarma organlarında kullanılan, yalnızca alet (anahtar) yardımıyla sökülebilen en sade koruyucu türü hangisidir?'
+        opt: 'Sistem (Makina, Tesisat ve Cihaz olmak üzere 3 gruba ayrılır)',
+        desc: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlere "Sistem" denir. Sistem; makina, tesisat ve cihaz olmak üzere üç ana gruba ayrılır.',
+        q: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlerin genel adı olan ve "Makina, Tesisat, Cihaz" olmak üzere üç ana gruba ayrılan kavram hangisidir?'
       },
       {
-        opt: 'Ara kilitlemeli (İnterloklu) hareketli koruyucu',
-        desc: 'Koruyucu kapak açıldığında makinenin tehlikeli hareketini otomatik olarak durduran ve kapak kapatılmadıkça makinenin çalışmasına izin vermeyen koruyucu türüdür.',
-        q: 'Açıldığında makinenin tehlikeli fonksiyonlarını otomatik olarak durduran ve kapatılıncaya kadar makinenin tekrar çalışmasını engelleyen koruyucu türü hangisidir?'
+        opt: 'Tesisat (Malzeme çeviren, ileten veya biriktiren sistemler)',
+        desc: '1. Hafta sunumuna göre; malzeme çeviren, ileten veya biriktiren sistemlere "Tesisat" (buhar, ısıtma, soğutma, sıhhi, klima tesisatları vb.) denir.',
+        q: 'Sistem sınıflandırmasında "Malzeme çeviren, ileten veya biriktiren sistemler" (buhar tesisatı, sıhhi tesisat, ısıtma-soğutma tesisatı vb.) hangi kavramla tanımlanır?'
       },
       {
-        opt: 'Kilitli ara kilitlemeli koruyucu (Atalet durana kadar açılmayan)',
-        desc: 'Santrifüj, planya veya büyük volanlı makinelerde durdurma komutu verilse bile tehlikeli dönme hareketi (atalet) tamamen sıfırlanana kadar kapağın açılmasını mekanik/elektromanyetik olarak kilitleyen koruyucudur.',
-        q: 'Makineye durdurma komutu verildikten sonra bile atalet (devam eden dönme hareketi) tamamen duruncaya kadar kapağın açılmasını engelleyen koruyucu türü hangisidir?'
+        opt: 'Cihaz (İnsanların bilgilerini ve sezgilerini artıran, gözleme/denetleme yapan sistemler)',
+        desc: 'İnsanların bilgilerini, sezgilerini veya düşünce kapasitelerini artırmak, olayları gözlemek, denetlemek, yönlendirmek ve yönetmek amacıyla kullanılan sistemlere "Cihaz" (röntgen, haberleşme, ölçme cihazları vb.) denir.',
+        q: 'İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek ve denetlemek amacıyla kullanılan sistemlere (haberleşme cihazları, röntgen cihazları, ölçüm aletleri vb.) ne ad verilir?'
       },
       {
-        opt: 'Kendi kendine ayarlanan (Otomatik) koruyucu',
-        desc: 'Daire testere veya planya tezgahlarında iş parçasının ilerlemesiyle birlikte yalnızca parçanın geçeceği kadar açılan ve parça geçtikten sonra yay/ağırlık etkisiyle kendiliğinden eski kapalı konumuna dönen koruyucudur.',
-        q: 'İş parçasının kendi hareketiyle yalnızca parçanın geçmesine izin verecek kadar açılan ve işlem bittiğinde otomatik olarak kapalı konuma dönen koruyucu türü hangisidir?'
+        opt: 'Motorlar (Aldığı ısı, hidrolik veya elektrik enerjisini mekanik enerjiye çeviren makinalar)',
+        desc: 'Makinalar enerji dönüştürücü olarak motorlar ve iş makinaları diye ikiye ayrılır. Motorlar; ısı, hidrolik, elektrik vb. aldığı enerjiyi mekanik enerjiye çeviren makinalardır.',
+        q: 'Enerji dönüştürücü makinalar sınıflandırmasında; ısı, hidrolik, pnömatik veya elektrik gibi aldığı enerjiyi "mekanik enerjiye" çeviren makinalara ne ad verilir?'
       },
       {
-        opt: 'Çift el kumanda tertibatı (Eşzamanlılık <= 0,5 saniye)',
-        desc: 'Operatörün her iki elini de tehlike bölgesinden uzak tutmak için iki butona aynı anda (en fazla 0,5 saniye farkla) basmasını zorunlu kılan; bir el çekildiğinde presi/makineyi anında durduran tertibattır.',
-        q: 'Özellikle preslerde operatörün ellerini operasyon noktasından uzak tutmak için her iki elin aynı anda (en fazla 0,5 saniye zaman farkıyla) iki ayrı butona basmasını gerektiren emniyet tertibatı hangisidir?'
+        opt: 'İş Makinaları (Aldığı mekanik enerjiyi yararlı işe dönüştüren makinalar)',
+        desc: 'İş makinaları; motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalardır (takım tezgahları, tekstil/ziraat/maden makinaları, kaldırma-iletme makinaları, taşıtlar, akışkan makinaları).',
+        q: 'Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, tekstil/maden makinaları, vinç, pompa, kompresör vb.) ne ad verilir?'
       },
       {
-        opt: 'Fotoelektrik (Işık) perdesi (ESPE / AOPD)',
-        desc: 'Tehlike bölgesinin önüne kızılötesi ışık demeti (perde) oluşturan; el veya vücut uzvu ışık demetini kestiği anda makineyi durduran elektro-duyarlı koruyucu donanımdır.',
-        q: 'Operasyon noktası önüne görünmez kızılötesi ışık huzmeleri oluşturarak operatörün eli tehlike bölgesine girdiğinde ışık demetinin kesilmesiyle makineyi anında durduran tertibat hangisidir?'
+        opt: 'Kompresör, yoğuşturucu (kondanser), kısılma vanası ve buharlaştırıcı (evaporatör)',
+        desc: '1. Hafta örnek sorularında da vurgulandığı üzere bir soğutma tesisatının 4 temel elemanı: Kompresör, yoğuşturucu, kısılma vanası ve buharlaştırıcıdır.',
+        q: '1. Hafta ders sonu örnek sorularında da yer aldığı üzere, gıda ve ortam soğutmada kullanılan bir "Soğutma Tesisatının" 4 temel elemanı aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Acil durdurma (E-Stop) butonu (Sarı zemin üzerine Kırmızı mantar başlı)',
-        desc: 'Tehlike anında makineyi en kısa sürede durduran, sarı zemin üzerinde kırmızı mantar başlıklı, basıldığında kilitli kalan ve sıfırlanması (reset) makineyi doğrudan tekrar başlatmayan emniyet elemanıdır.',
-        q: 'Makinelerde sarı zemin üzerine kırmızı mantar başlıklı olarak tasarlanan, basıldığında kilitli kalan ve kilidi açıldığında makineyi kendiliğinden tekrar çalıştırmayan tertibat hangisidir?'
+        opt: 'Basınç: Manometre (Atmosfer basıncı: Barometre) / Boyut: Kumpas ve Mikrometre',
+        desc: 'Kapalı kaplardaki basıncı ölçen cihazlara manometre, atmosfer basıncını ölçen cihazlara barometre, hassas boyut ölçen cihazlara ise kumpas, mikrometre, mastar ve komparatör denir.',
+        q: 'Ölçme tekniğinde kapalı sistem basıncını, atmosfer basıncını ve hassas parça boyutlarını ölçmek için kullanılan cihaz eşleştirmelerinden hangisi doğrudur?'
       },
       {
-        opt: 'Operasyon noktası (Point of operation)',
-        desc: 'Makinede kesme, delme, bükme, şekillendirme veya talaş kaldırma işleminin bizzat gerçekleştiği ve iş kazalarının en yoğun yaşandığı tehlikeli bölgedir.',
-        q: 'Makine ve tezgahlarda malzeme üzerinde kesme, delme, bükme veya şekillendirme işleminin doğrudan yapıldığı bölgeye ne ad verilir?'
+        opt: 'Güç birimi: J/s (Watt) — Temel büyüklükler: Uzunluk (m), Kütle (kg), Zaman (s), Akım (A), Sıcaklık (K), Işık (cd), Madde (mol)',
+        desc: '1. Hafta örnek sorularında vurgulandığı üzere SI birim sisteminde 7 temel büyüklük vardır (Uzunluk ana boyuttur; hız, ivme, alan, kuvvet türetilmiştir) ve güç birimi J/s (Watt)\'tır.',
+        q: '1. Hafta ders sonu sorularına göre SI birim sisteminde aşağıdakilerden hangisi "Güç" birimidir ve hangisi 7 temel (ana) büyüklükten biridir?'
       }
     ]
   },
   {
-    groupName: 'Talaşlı İmalat, Zımpara Taşı, Presler ve Ağaç İşleme Tezgahları',
+    groupName: '2. Hafta: Malzeme Bilgisi, Atomik Bağlar, Deformasyon ve Muayene Yöntemleri',
     items: [
       {
-        opt: 'Zımpara taşı mesnet (dayama) açıklığı en fazla 3 mm olmalıdır',
-        desc: 'Seyyar veya sabit taşlama (zımpara) tezgahlarında iş parçasının taş ile mesnet arasına sıkışıp taşı patlatmasını önlemek için taş ile dayama (mesnet) arasındaki açıklık en fazla 3 mm olacak şekilde ayarlanır.',
-        q: 'Zımpara taşı (taşlama) tezgahlarında iş parçasının araya sıkışarak taşı kırmasını önlemek için taş ile iş parçası dayama mesnedi arasındaki mesafe en fazla kaç mm olmalıdır?'
+        opt: 'Eylemsizlik (Maddenin mevcut durma veya hareket konumunu koruma eğilimi — Kütleyle orantılıdır)',
+        desc: '2. Hafta Malzeme Bilgisi sunumuna göre; bütün maddeler mevcut konumunu (durma hâlini ya da hareketini) koruma eğilimi olan bir "eylemsizlik" barındırır ve büyüklüğü maddenin kütlesiyle orantılıdır.',
+        q: 'Malzeme Bilgisi ders notlarına göre; bir maddenin mevcut konumunu (durma hâlini ya da hareketini) koruma eğilimine ne ad verilir ve bu büyüklük ne ile doğru orantılıdır?'
       },
       {
-        opt: 'Zımpara taşı göz koruyucu siperi ve üst açıklık (<= 6 mm)',
-        desc: 'Zımpara taşı tezgahlarında taşın üst kısmındaki ayarlanabilir dil (talaş saptırıcı) ile taş arasındaki açıklık en fazla 6 mm olmalı, dayama mesnedi ise taş merkezinin (ekseninin) biraz üzerinde veya hizasında olmalıdır.',
-        q: 'Zımpara taşı tezgahında taşın üst kısmında bulunan ayarlanabilir koruyucu dil ile taş arasındaki açıklık en fazla kaç mm olmalıdır?'
+        opt: 'Katı (Kristal ve Amorf), Sıvı (Moleküler), Gaz (Atom) ve Plazma (İyon kavramı)',
+        desc: 'Maddenin 4 hâli: Katı hâlde kristal ve amorf kavramı, sıvı hâlde moleküler kavram, gaz hâlinde atom kavramı, plazma hâlinde ise iyon kavramı söz konusudur.',
+        q: 'Maddenin 4 hâli incelendiğinde; "Kristal/Amorf" kavramı ile "İyon" kavramı sırasıyla maddenin hangi hâllerinde söz konusudur?'
       },
       {
-        opt: 'Çınlama (Ses) testi ve azami devir sayısı (RPM) kontrolü',
-        desc: 'Zımpara taşları tezgaha takılmadan önce çatlak kontrolü için tahta tokmakla tıklatılarak "çınlama testi" yapılır; sağlam taş berrak metalik ses verir, çatlak taş tok/boğuk ses çıkarır.',
-        q: 'Zımpara taşları tezgaha monte edilmeden önce gözle görülmeyen kılcal çatlakların tespiti için ahşap tokmakla vurularak yapılan kontrole ne ad verilir?'
+        opt: 'İyonik Bağ (Metal-ametal elektron alışverişi, sert/kırılgan, katı hâlde elektriği İLETMEZ)',
+        desc: '2. Hafta örnek soru 3\'te vurgulandığı üzere; iyonik bağ metaller ile ametaller arasında elektron alışverişiyle oluşur, ergime noktası yüksektir, sert ve kırılgandır; ancak KATI hâlde elektriği iletmez (sadece ergimiş veya çözelti hâlinde iletir).',
+        q: '2. Hafta ders sonu sorularına göre; metaller ile ametaller arasında elektron alışverişiyle oluşan "İyonik Bağ" yapısıyla ilgili hangi özellik gözlenmez / dikkat edilmelidir?'
       },
       {
-        opt: 'Torna ve matkap tezgahlarında ELDİVEN KULLANILMAZ ve aynada anahtar unutulmaz',
-        desc: 'Dönen ayna, mil ve matkap ucu eldiveni kaparak uzuv kopmasına yol açacağından döner tezgahlarda kesinlikle eldiven giyilmez, bol kıyafet giyilmez ve torna aynası üzerinde ayna anahtarı bırakılmaz.',
-        q: 'Torna, freze ve sütunlu matkap gibi yüksek hızla dönen talaşlı imalat tezgahlarında kapma/sürüklenme tehlikesine karşı kesinlikle uyulması gereken temel kural nedir?'
+        opt: 'Van der Waals Bağı (Moleküller veya atom gruplarını zayıf elektrostatik çekimle bağlayan ikincil bağ)',
+        desc: '2. Hafta örnek soru 4\'te sorulduğu üzere; moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türü Van der Waals bağıdır.',
+        q: 'Moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türü aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Daire testerede Yarma Bıçağı (Ayırma kaması / Riving knife)',
-        desc: 'Ahşap daire testere tezgahlarında kesilen kerestenin testere arka dişlerini sıkıştırarak operatöre doğru şiddetle geri fırlamasını (kickback / geri tepme) önleyen, testere bıçağının hemen arkasındaki kavisli metal parçadır.',
-        q: 'Daire testere tezgahlarında kesilen ahşap parçanın testereyi sıkıştırarak operatöre doğru geri tepmesini (fırlamasını) önlemek amacıyla testerenin hemen arkasına takılan güvenlik elemanı hangisidir?'
+        opt: 'Seramikler ve Cam (Kimyasal ve ısıl kararlılığı çok yüksek, ergime sıcaklığı yüksek, kırılgan ve yalıtkan)',
+        desc: '2. Hafta örnek soru 1\'de sorulduğu üzere; cam, porselen, Al2O3, SiO2 gibi seramik malzemeler kimyasal ve ısıl kararlılığı çok yüksek, korozyona dirençli, yalıtkan ancak kırılgan malzemelerdir.',
+        q: '2. Hafta ders sonu sorularına göre; inorganik bileşiklerden oluşan, ergime sıcaklığı ile kimyasal ve ısıl kararlılığı çok yüksek ancak kırılgan olan malzeme grubu (ve örneği) hangisidir?'
       },
       {
-        opt: 'İtme çubuğu (Push stick) ve geri tepme tırnakları',
-        desc: 'Daire testere ve planya tezgahlarında küçük/dar parçalar işlenirken ellerin bıçağa yaklaşmasını önlemek için kullanılan yardımcı el aletidir.',
-        q: 'Ağaç işleme (daire testere ve planya) tezgahlarında kesimin son aşamasında veya dar parçalar işlenirken operatörün elinin bıçağa temasını önlemek için kullanılan yardımcı aparat nedir?'
+        opt: 'Polimer malzemeler (Hafif, korozyon dayanımı yüksek, yalıtkan, çekme dayanımı ve sıcaklık direnci düşük)',
+        desc: '2. Hafta örnek soru 2\'de vurgulandığı üzere; polimerler (termoset, termoplastik, elastomer) hafif, elektrik yalıtkanı ve korozyon direnci bakımından çok iyi malzemelerdir.',
+        q: 'Karbon ve hidrojen esaslı büyük moleküllü organik bileşiklerden oluşan, hafif ve korozyon direnci bakımından çok iyi olan ancak yüksek sıcaklıklara uygun olmayan malzeme grubu hangisidir?'
       },
       {
-        opt: 'Eksantrik (Mekanik) preslerde tam devir kavraması yerine Kısmi Devir (Friksiyon) kavraması',
-        desc: 'Tam devirli (mekanik kamalı) preslerde harekete geçen koç başlığı kurs tamamlanmadan durdurulamadığı için ışık perdesi kullanılamaz; bu nedenle her noktada durabilen friksiyon (hidrolik/pnömatik) kavramalı presler tercih edilir.',
-        q: 'Pres tezgahlarında ışık perdesi (fotoelektrik koruyucu) kullanılabilmesi ve koç başlığının strokun (kursun) herhangi bir noktasında anında durdurulabilmesi için pres hangi tip kavrama sistemine sahip olmalıdır?'
+        opt: 'Kompozit Malzemeler (En basit ve eski örneği çamur ve samanın karıştırılmasıyla yapılan Kerpiçtir)',
+        desc: 'İki ya da daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle elde edilen malzemelere kompozit denir; insanlık tarihinin bilinen en basit kompozit yapı malzemesi kerpiçtir (çamur + saman).',
+        q: 'İki veya daha fazla farklı malzemenin makroskopik düzeyde birleştirilmesiyle oluşturulan "Kompozit Malzemelerin" Anadolu\'da da yaygın kullanılan en basit ve en eski tarihsel örneği nedir?'
+      },
+      {
+        opt: 'Gevrek Kırılma (Plastik deformasyon çok az/yok, tokluk düşük, akma gerilmesinden küçük gerilmede ani oluşur)',
+        desc: '2. Hafta örnek soru 5\'te sorulduğu üzere; gevrek kırılmada çok az veya hiç plastik deformasyon olmaz, tokluk düşüktür, kırılma akma gerilmesinden küçük gerilmelerde özellikle kış aylarında ani oluşur. Sünek kırılmada ise koni-çanak yüzeyi ve yüksek plastik deformasyon görülür.',
+        q: 'Malzemelerde kırılma türleri karşılaştırıldığında "Gevrek Kırılma" tipinde görülen karakteristik durum aşağıdakilerden hangisidir?'
+      },
+      {
+        opt: 'Tahribatsız Muayene (Malzemenin fiziki yapısına zarar vermeden iç ve dış süreksizlikleri tespit eder)',
+        desc: 'Tahribatlı muayene (çekme, basma, eğilme, darbe/tokluk, sertlik) malzemede kalıcı şekil değişimi/kırılma yaratırken; tahribatsız muayene parçaya zarar vermeden iç bünye ve yüzey çatlaklarını/süreksizliklerini tespit eder.',
+        q: 'Özellikle uçak yapı elemanları gibi servis altında olan hayati parçaların fiziki yapısına hiçbir zarar vermeden iç bünye ve dış yüzey süreksizliklerinin tespit edilmesini sağlayan yöntem hangisidir?'
       }
     ]
   },
   {
-    groupName: 'Kaynak İşlerinde İSG ve Basınçlı Gaz Tüpleri',
+    groupName: '3. Hafta: Çözülemeyen ve Çözülebilen Bağlama Elemanları',
     items: [
       {
-        opt: 'Asetilen tüpü (Sarı renkli - RAL 1018) ve Bakır (%65-70 üzeri) yasağı',
-        desc: 'Asetilen tüpleri sarı renklidir; asetilen gazı saf bakır veya %65-70\'ten fazla bakır içeren alaşımlarla temas ettiğinde patlayıcı "bakır asetilenür" oluşturduğu için bakır boru/rekor kullanımı kesinlikle yasaktır.',
-        q: 'Oksi-asetilen kaynağında kullanılan sarı renkli Asetilen tüplerinin valf, manometre ve boru tesisatında patlayıcı bileşik oluşturduğu için hangi metalin (%65-70 üzeri alaşımı) kullanılması kesinlikle yasaktır?'
+        opt: 'Çözülemeyen Bağlama Elemanları (Perçin, Lehim, Kaynak ve Yapıştırıcı bağlantılar)',
+        desc: '3. Hafta sunumuna göre; çözülürken tahrip olduğu için tekrar kullanılamayan, makine elemanlarını şekil veya maddesel bağla birleştiren elemanlar: Perçin, Lehim, Kaynak ve Yapıştırıcıdır.',
+        q: 'Makine elemanlarını şekil veya maddesel bağla birbirine bağlayan ve sökülürken tahrip olduğu için tekrar kullanılamayan "Çözülemeyen Bağlama Elemanları" grubu hangisidir?'
       },
       {
-        opt: 'Oksijen tüpü (Mavi renkli - RAL 5012) ve Yağ/Gres yasağı',
-        desc: 'Oksijen tüpleri mavi renklidir; basınçlı saf oksijen sıvı yağ veya gres ile temas ettiğinde kıvılcım olmadan kendiliğinden şiddetle patladığı için oksijen manometresi ve valflerine kesinlikle yağlı elle/bezle dokunulmaz.',
-        q: 'Mavi renkli basınçlı Oksijen tüplerinin valf ve manometrelerinin hangi madde ile teması kıvılcım olmaksızın ani ve şiddetli patlamaya neden olur?'
+        opt: 'Lehimleme (Ana metaller ergimez, 400°C altında yumuşak lehim, 400°C üstünde sert lehim, kristal yapı bozulmaz)',
+        desc: 'Lehimleme; iki metal parçanın kendilerinden daha düşük sıcaklıkta ergiyen ilave bir malzeme (lehim) yardımıyla bağlanmasıdır. Ana malzeme ergimediği için kristal yapı değişmez, ince parçalar yanmaz; ancak yüksek sıcaklık ve yüksek mukavemet gerektiren yerlere uygun değildir.',
+        q: 'Birleştirilecek metal parçaların ergitilmeden, kendilerinden daha düşük sıcaklıkta ergiyen ilave bir tel/malzeme ile birleştirildiği ve ana metalin kristal yapısının değişmediği bağlama yöntemi hangisidir?'
       },
       {
-        opt: 'Alev geri tepme emniyet valfi (Flashback arrestor)',
-        desc: 'Oksi-gaz kaynağında şaloma ucundan geri tepen alevin ve gaz akışının hortumdan geçerek tüpe ulaşmasını ve tüpü patlatmasını önleyen, regülatör çıkışı ve şaloma girişine takılan emniyet valfidir.',
-        q: 'Oksi-asetilen veya oksi-LPG kaynak sistemlerinde alevin hortum içinden tüpe doğru ilerleyerek tüpün patlamasını önlemek amacıyla manometre çıkışına ve şaloma girişine takılan zorunlu emniyet donanımı hangisidir?'
+        opt: 'Perçin Bağlantısı (Rijit olmadığı için titreşimlere dayanıklıdır, ergime ve ısıl iç gerilme oluşturmaz)',
+        desc: 'Perçin bağlantıları; kaynakta olduğu gibi ergime sebebiyle kristal yapı değişimi ve ısıl iç gerilmeler oluşturmaz, rijit olmadığı için titreşimli yüklere dayanıklıdır ve metal ile deri/plastik/tekstil gibi farklı malzemeleri bağlayabilir.',
+        q: 'Birleşme yerinde ergime ve ısıl iç gerilme oluşturmayan, rijit olmadığı için titreşimlere karşı dayanıklı olan ve uçak gövdeleri ile metal-deri/plastik birleştirmelerinde kullanılan çözülemeyen eleman hangisidir?'
       },
       {
-        opt: 'Asetilen tüplerinin maksimum çalışma/dolum basıncı (1,5 bar / tüp içi aseton-gözenekli madde)',
-        desc: 'Serbest asetilen gazı 1,5 bar (150 kPa) basıncın üzerinde kararsızlaşıp patlayabildiği için tüp içinde gözenekli maddeye emdirilmiş aseton içinde çözünmüş halde depolanır ve dik konumda kullanılır.',
-        q: 'Asetilen gazı serbest halde kaç bar basıncın üzerinde kendiliğinden ayrışarak patlama tehlikesi gösterdiği için tüp içinde aseton emdirilmiş gözenekli kitlede depolanır?'
+        opt: 'Yapıştırıcı (Zamk) Bağlantılar (Adhezyon ve kohezyon kuvveti; delik/çentik açılmadığı için kesit zayıflamaz)',
+        desc: 'Yapıştırma bağlantısında ana malzemede delik veya çentik açılmadığından kesit zayıflamaz, korozyona karşı korur ve sönümleme sağlar; ancak yaşlanma görülür ve 80°C–120°C üzerinde mukavemeti düşer.',
+        q: 'Ana malzemede delik veya çentik açılmadığı için kesit zayıflamasına yol açmayan, adhezyon ve kohezyon kuvvetlerine dayanan ancak 80°C–120°C üzerindeki sıcaklıklarda mukavemeti düşen bağlantı türü hangisidir?'
       },
       {
-        opt: 'Elektrik ark kaynağında boşta çalışma gerilimi ve UV/IR radyasyon',
-        desc: 'Ark kaynağında oluşan morötesi (UV) ışınlar gözde "kaynak alması / fotokeratit" ve cilt yanığına, kızılötesi (IR) ışınlar ise katarakta yol açar; ayrıca kapalı/iletken alanlarda doğru akım (DC) veya düşük boşta çalışma gerilimli makineler kullanılır.',
-        q: 'Elektrik ark ve gazaltı kaynağında ortaya çıkan ve kaynakçının gözünde "kaynak alması (fotokeratit)" ile uzun vadede katarakt oluşumuna neden olan fiziksel risk etmeni hangisidir?'
+        opt: 'Çözülebilen Bağlama Elemanları (Cıvata-Somun, Mil-Göbek, Kama, Sıkı/Sıkma/Konik Geçme, Pim ve Perno)',
+        desc: 'Bağlanan parçalar ve bağlama elemanı hasar görmeden istenildiği kadar sökülüp takılabilen elemanlar çözülebilen bağlama elemanlarıdır.',
+        q: 'Bağlanan parçalara ve bağlama elemanına zarar vermeden istenildiği kadar sökülüp tekrar takılabilen "Çözülebilen Bağlama Elemanları" arasında aşağıdakilerden hangisi yer alır?'
       },
       {
-        opt: 'TIG (Argon) ve MIG/MAG (Gazaltı) kaynağında Ozon, CO ve Boğucu Gaz riski',
-        desc: 'Gazaltı kaynağında koruyucu gaz olarak kullanılan Argon ve CO2 havadan ağır olduğu için kapalı/çukur alanlarda oksijeni süpürerek boğulmaya, UV ışınlarının havadaki oksijeni parçalaması ise zehirli Ozon (O3) gazı oluşumuna yol açar.',
-        q: 'Kapalı alanlarda yapılan TIG (Argon) veya MIG/MAG gazaltı kaynağında koruyucu gazın ortam havasını süpürmesi ve UV ışınlarının oksijeni etkilemesiyle oluşan iki temel kimyasal risk nedir?'
+        opt: 'Cıvata (Dış vida) ve Somun (İç vida) — Helis profiline göre: Üçgen, Trapez, Testere, Yuvarlak ve Kare vida',
+        desc: 'Cıvata dış vida, somun iç vidadır. Vidalar profiline göre üçgen, trapez, testere, yuvarlak ve kare vida; helis yönüne göre sağ ve sol vida olarak sınıflandırılır. Dezavantajı merkezleme kalitesinin olmaması ve çentik tesiriyle kopabilmesidir.',
+        q: 'Çözülebilen bağlama elemanlarından olan vidaların diş profiline göre sınıflandırılmasında aşağıdakilerden hangileri yer alır?'
+      },
+      {
+        opt: 'Boyuna ve Enine Kamalar (Mil ile göbek arasında kuvvet veya şekil bağıyla moment ileten elemanlar)',
+        desc: 'Kamalar mil ile göbek arasında moment ileten prizmatik elemanlardır. Mil eksenine dik (radyal) monte edilenlere "Enine kama", mil eksenine paralel monte edilenlere "Boyuna kama / Uygu kaması (Feder)" denir.',
+        q: 'Mil ile göbek arasında kuvvet veya şekil bağıyla moment ileten; mil eksenine paralel (boyuna/feder) veya dik (enine) olarak monte edilen prizmatik bağlama elemanı hangisidir?'
+      },
+      {
+        opt: 'Sıkı Geçme Bağlantısı (Mil dış çapının göbek delik çapından biraz büyük seçilerek basınçla/ısıtma-soğutmayla takılması)',
+        desc: 'Sıkı geçmede başlangıçta milin dış çapı göbeğin delik çapından biraz büyüktür; preslenerek veya göbek ısıtılıp/mil soğutularak takılır ve oluşan yüzey basıncı/sürtünme ile moment iletilir.',
+        q: 'Başlangıçta milin dış çapının göbeğin delik çapından biraz büyük seçildiği ve montaj sonrası yüzeyler arasında oluşan basınç/sürtünme sayesinde ilave eleman olmadan moment iletilen bağlantı hangisidir?'
+      },
+      {
+        opt: 'Pim ve Perno Bağlantıları (Pimler merkezleme ve emniyet elemanı görevi de görür; pernolar mafsallı/hareketli bağlantı sağlar)',
+        desc: 'Pimler (silindirik, konik, çentikli) bağlama yanında merkezleme ve aşırı yükte kesilerek emniyet elemanı görevi üstlenir; pernolar ise çatal/mafsal bağlantılarında parçaların birbirine göre dönmesine izin verir.',
+        q: 'Çözülebilen bağlama elemanları içinde bağlama görevinin yanı sıra "merkezleme" ve aşırı yükte kırılarak "emniyet elemanı" görevini de üstlenen eleman hangisidir?'
       }
     ]
   },
   {
-    groupName: 'Kaldırma-İletme Ekipmanları, Basınçlı Kaplar ve Periyodik Kontroller',
+    groupName: '4. Hafta: Güç ve Hareket İletim Elemanları ve 5. Hafta: İmalat Yöntemleri',
     items: [
       {
-        opt: 'Kaldırma ekipmanları periyodik kontrol süresi (Yılda en az 1 kez)',
-        desc: 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliğine göre vinç, caraskal, forklift, transpalet ve yük asansörleri standartlarda süre belirtilmemişse yılda en az 1 kez kontrol edilir.',
-        q: 'İş Ekipmanlarının Kullanımında Sağlık ve Güvenlik Şartları Yönetmeliğine göre kaldırma ve iletme ekipmanlarının (vinç, forklift, caraskal) azami periyodik kontrol süresi nedir?'
+        opt: 'Güç ve Hareket İletim Elemanları (Dişli çarklar, Sürtünmeli çarklar, Kayış-Kasnak ve Zincirler — Sıkı geçme bağlama elemanıdır)',
+        desc: '4. Hafta örnek soru 1\'de sorulduğu üzere; motor ile iş makinası arasında güç ve hareket ileten 4 temel mekanizma: Dişli çarklar, Zincirler, Kayış-Kasnak ve Sürtünmeli çarklardır (Sıkı geçme ise bağlama elemanıdır).',
+        q: '4. Hafta ders sonu sorularında da sorulduğu üzere; aşağıdakilerden hangisi motor ile iş makinası arasında güç ve hareket iletiminde kullanılan mekanizmalardan biri DEĞİLDİR?'
       },
       {
-        opt: 'Kaldırma araçlarında Statik deney (1,25 katı) ve Dinamik deney (1,1 katı)',
-        desc: 'Kaldırma ve iletme ekipmanlarının periyodik kontrolünde beyan edilen azami yükün 1,25 katı ile statik yük testi (10 dk askıda tutma), 1,1 katı ile dinamik yük testi uygulanır.',
-        q: 'Vinç ve diğer kaldırma araçlarının periyodik muayenelerinde uygulanan "Statik yük deneyi" ve "Dinamik yük deneyi" katsayıları beyan edilen azami yükün sırasıyla kaç katıdır?'
+        opt: 'Alın Dişli (Paralel eksenli), Konik Dişli (Kesişen eksenli) ve Kremayer/Çubuk Dişli (Dönme hareketini doğrusal harekete çeviren)',
+        desc: 'Eksenleri paralel olan dişlilere alın dişli (düz/helisel), eksenleri kesişenlere konik dişli, diş sayısı sonsuza götürülerek dönme hareketini doğrusal harekete çeviren doğru şeklindeki dişliye ise kremayer (çubuk) dişli denir.',
+        q: 'Dişli çark mekanizmalarında dişlilerden birinin yarıçapı/diş sayısı sonsuza götürülerek düz bir çubuk hâlini alan ve dönme hareketini doğrusal harekete çeviren dişli türü hangisidir?'
       },
       {
-        opt: 'İnsan kaldırmak için kullanılan ekipmanlarda güvenlik katsayısı (Halat: 2 katı, Zincir/Kanca: 10-14)',
-        desc: 'Çelik tel halatların genel güvenlik katsayısı 5, zincirlerin 4, tekstil halatların 7 iken; insan taşımada kullanılan ekipmanlarda bu katsayılar genel kural olarak iki katına çıkarılır.',
-        q: 'Kaldırma işlemlerinde kullanılan çelik tel halatlar ve kaldırma zincirleri için standart güvenlik (emniyet) katsayıları sırasıyla en az kaç olmalıdır?'
+        opt: 'Kayış-Kasnak Mekanizması (Elastik yapısıyla darbeleri sönümler, ucuzdur, aşırı yükte kayarak emniyet sağlar; ancak %1-2 kayma vardır)',
+        desc: '4. Hafta örnek soru 2\'de vurgulandığı üzere; kayış-kasnak mekanizmaları darbeleri sönümler, sessiz ve ucuzdur, büyük eksen aralıklarında güç iletir; ancak %1-%2 kısmi kayma nedeniyle tam/sabit çevrim oranı sağlayamaz.',
+        q: 'Elastik yapısı sayesinde darbeleri sönümleyen, aşırı yükte kayarak sistemi koruyan ancak %1–%2 oranında kısmi kayma nedeniyle sabit bir çevrim oranı sağlayamayan hareket iletim mekanizması hangisidir?'
       },
       {
-        opt: 'Kanca emniyet mandalı ve tambur üzerinde en az 2-3 sarım halat kalması',
-        desc: 'Vinç kancalarında sapanın kancadan kurtulmasını önleyen "emniyet mandalı" bulunmalı ve kanca en alt seviyeye indiğinde bile tambur üzerinde en az 2 tam sarım halat kalmalıdır.',
-        q: 'Vinçlerde yük kancası en alt çalışma seviyesine indirildiğinde bile halatın tamburdan kurtulmaması için tambur üzerinde en az kaç tam sarım halat kalmalıdır?'
+        opt: 'Zincir Mekanizması (Kayma olmaz, verimi %96-98\'dir, yüksek sıcaklıkta çalışabilir; Gal, Fleyer, Burçlu ve Makaralı tipleri vardır)',
+        desc: 'Zincir mekanizmalarında kayma olmaz, verim %96–98 civarındadır ve fırın gibi sıcak ortamlarda çalışabilir; ancak yağlama gerektirir ve kayışa göre pahalıdır.',
+        q: 'Kayış-kasnak sistemlerinin aksine kayma olmadan sabit çevrim oranıyla (%96–%98 verimle) güç ileten, yüksek sıcaklıklarda çalışabilen ancak düzenli yağlama gerektiren mekanizma hangisidir?'
       },
       {
-        opt: 'Basınçlı kaplarda Hidrostatik test basıncı (İşletme basıncının 1,5 katı)',
-        desc: 'Buhar kazanları, kompresör hava tankları ve otoklav gibi basınçlı kapların yılda en az 1 kez yapılan periyodik kontrolünde işletme basıncının 1,5 katı ile su kullanılarak hidrostatik test yapılır.',
-        q: 'Basınçlı kapların (buhar kazanı, hava tankı vb.) yılda en az 1 kez yapılan periyodik muayenesinde uygulanan "Hidrostatik Test" basıncı, işletme basıncının kaç katıdır?'
+        opt: 'Dökümde Model (Çekme payı verilir), Maça (İç boşlukları oluşturur) ve Yolluk/Çıkıcı (Sıvı metali iletir ve büzülme boşluğunu besler)',
+        desc: '5. Hafta İmalat Yöntemleri sunumuna göre; dökümde kalıp boşluğunu oluşturmak için "Model" (katılaşma büzülmesi için çekme payı verilir), parçanın boş çıkması istenen iç kısımları için kumdan yapılan "Maça", sıvı metalin kalıbı sakin doldurması ve çekme boşluklarını beslemesi için "Yolluk ve Besleyici/Çıkıcı" kullanılır.',
+        q: '5. Hafta Döküm Teknolojisi ders notlarına göre; döküm parçalarının boş (delik/oyuk) çıkması istenen iç kısımlarında kullanılan ve genellikle kumdan imal edilen özel parçaya ne ad verilir?'
       },
       {
-        opt: 'Kompresör hava tanklarının patlamaya dayanıklı ayrı bölmede bulunması',
-        desc: 'Seyyar veya sabit kompresörlerin tehlike anında çalışanlara zarar vermemesi için patlamaya dayanıklı ayrı bir bölmede veya çalışanlardan en az 10 metre uzakta/korugan içinde yerleştirilmesi gerekir.',
-        q: 'Sabit kompresörlerin depoları (hava tankları) patlama riskine karşı işyerinde nasıl konumlandırılmalıdır?'
+        opt: 'Kokil Döküm (Metal kalıba döküm) ve Savurma / Merkezkaç Döküm (Dönen kalıpta boru/silindirik parça dökümü)',
+        desc: 'Kalıp malzemesi olarak çelik veya dökme demir kullanılan yönteme "Kokil (Metal kalıba) Döküm", dönen bir kalıpta merkezkaç kuvvet etkisiyle maçasız boru ve silindirik parça üretilen yönteme ise "Savurma (Merkezkaç) Döküm" denir.',
+        q: 'Ergimiş metalin kendi ekseni etrafında hızla dönen bir kalıba dökülerek merkezkaç kuvveti etkisiyle şekillendirildiği ve özellikle dikişsiz boru/burç üretiminde kullanılan döküm yöntemi hangisidir?'
+      },
+      {
+        opt: 'Plastik Şekil Verme: Haddeleme (Merdaneler arası), Dövme (Çekiç/presle basma) ve Ekstrüzyon (Kalıptan iterek profil çıkarma)',
+        desc: 'Kütle şekillendirme yöntemlerinden Haddeleme zıt dönen iki merdane arasından geçirme, Dövme çekiç/presle darbe/basma uygulama, Ekstrüzyon ise ısıtılmış kütüğü bir kalıp açıklığından iterek sabit kesitli uzun profil/boru üretme işlemidir.',
+        q: 'Plastik şekil verme yöntemlerinden; parçaların birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılıp boyunun uzatılması (slab, kütük, sac, ray üretimi) işlemine ne ad verilir?'
+      },
+      {
+        opt: 'Toz Metalurjisi (Toz üretimi -> Karıştırma -> 300-800 MPa Presleme -> Erime noktası altında Sinterleme)',
+        desc: 'Toz metalurjisi; metal tozlarının üretilmesi, karıştırılması, kalıpta 300–800 MPa basınçla preslenmesi (yeşil/ham parça) ve ana metalin ergime sıcaklığının altındaki bir sıcaklıkta fırında ısıtılarak partiküllerin birbirine kaynaması (Sinterleme) aşamalarından oluşur.',
+        q: 'Toz metalurjisi yönteminde kalıpta preslenerek şekillendirilmiş gözenekli toz parçaların, ergime sıcaklığının altındaki bir sıcaklıkta ısıl işleme tabi tutularak mukavemet kazanması aşamasına ne ad verilir?'
+      },
+      {
+        opt: 'Ergitmeli Kaynak (Oksi-gaz, Elektrik Ark, TIG/Argon [erimeyen Tungsten elektrot], MIG/MAG, Tozaltı) ve Katı Hâl Kaynağı (Sürtünme, Ultrasonik, Difüzyon, Patlama)',
+        desc: '5. Hafta sunumuna göre; TIG (Argon) kaynağında erimeyen Tungsten elektrot kullanılır. Sürtünme, Ultrasonik, Difüzyon ve Patlama kaynağı ise ergitmesiz (katı hâl) kaynak yöntemleridir.',
+        q: '5. Hafta Kaynak Yöntemleri ders notlarına göre; erime noktası çok yüksek olduğu için kaynak sırasında ERİMEYEN "Tungsten" elektrodun ve koruyucu soy gazın kullanıldığı kaynak yöntemi hangisidir?'
       }
     ]
   }
 ];
 
 export const makineExtraFill = [
-  { q: 'Makinelerin temel sağlık ve güvenlik kurallarına uygunluğunu gösteren uygunluk işareti ____ işaretidir.', answers: ['CE', 'ce'], hint: 'Avrupa uygunluk işareti', explanation: '2006/42/AT Makine Emniyeti Yönetmeliğine göre CE işareti zorunludur.' },
-  { q: 'Makine üzerinde kesme, delme, bükme ve şekillendirme işleminin bizzat yapıldığı yere ____ noktası denir.', answers: ['Operasyon', 'operasyon'], hint: 'İşlemin gerçekleştiği nokta', explanation: 'Malzemenin işlendiği bölgeye operasyon noktası denir.' },
-  { q: 'Yalnızca özel bir el aleti (anahtar/tornavida) yardımıyla açılabilen veya sökülebilen koruyuculara ____ koruyucu denir.', answers: ['Sabit', 'sabit'], hint: 'Hareketli olmayan koruyucu', explanation: 'Kayış-kasnak gibi bölgelerde kullanılan koruyucular sabit koruyuculardır.' },
-  { q: 'Kapak açıldığında makineyi otomatik olarak durduran koruyuculara ara ____ (interloklu) koruyucu denir.', answers: ['Kilitlemeli', 'kilitlemeli'], hint: 'İnterlok sistemi', explanation: 'Ara kilitlemeli koruyucular kapak açılınca enerjiyi keser.' },
-  { q: 'Çift el kumanda tertibatında iki butona basma arasındaki eşzamanlılık süresi en fazla ____ saniye olmalıdır.', answers: ['0,5', '0.5', 'yarım'], hint: 'Yarım saniye', explanation: 'EN ISO 13851 standardına göre iki butona en fazla 0,5 sn farkla basılmalıdır.' },
-  { q: 'Acil durdurma (E-Stop) butonları ____ zemin üzerine kırmızı mantar başlıklı olmalıdır.', answers: ['Sarı', 'sarı'], hint: 'Kontrast uyarı rengi', explanation: 'Acil durdurma butonları sarı zemin üzerine kırmızı renktedir.' },
-  { q: 'Zımpara taşı tezgahında taş ile dayama (mesnet) arasındaki açıklık en fazla ____ mm olmalıdır.', answers: ['3', 'üç'], hint: 'Parça sıkışmasını önleyen mesafe', explanation: 'Zımpara taşı ile mesnet arası en fazla 3 mm olmalıdır.' },
-  { q: 'Zımpara taşı tezgahında taşın üst kısmındaki ayarlanabilir koruyucu dil ile taş arası açıklık en fazla ____ mm olmalıdır.', answers: ['6', 'altı'], hint: 'Üst siper açıklığı', explanation: 'Üst koruyucu dil ile taş arasındaki mesafe en fazla 6 mm olmalıdır.' },
-  { q: 'Zımpara taşlarında kılcal çatlak kontrolü için montaj öncesi tahta tokmakla vurularak ____ testi yapılır.', answers: ['Çınlama', 'çınlama', 'Ses'], hint: 'Akustik çatlak kontrolü', explanation: 'Sağlam taş çınlama (metalik) sesi verir, çatlak taş tok ses çıkarır.' },
-  { q: 'Torna, freze ve matkap gibi döner tezgahlarda kapma tehlikesi nedeniyle kesinlikle ____ kullanılmaz.', answers: ['Eldiven', 'eldiven'], hint: 'El KKD yasağı', explanation: 'Döner tezgahlarda eldiven kapma ve uzuv kopması riski yaratır.' },
-  { q: 'Daire testere tezgahında kesilen parçanın geri tepmesini (fırlamasını) önlemek için testerenin arkasına ____ bıçağı (ayırma kaması) takılır.', answers: ['Yarma', 'yarma', 'Ayırma'], hint: 'Riving knife', explanation: 'Yarma bıçağı (ayırma kaması) ahşabın testereyi sıkıştırmasını önler.' },
-  { q: 'Daire testere ve planya tezgahlarında dar parçaları sürerken elleri korumak için ____ çubuğu kullanılır.', answers: ['İtme', 'itme'], hint: 'Push stick', explanation: 'Küçük parçalar itme çubuğu (push stick) ile bıçağa sürülür.' },
-  { q: 'Oksi-asetilen kaynağında kullanılan Asetilen tüplerinin dış gövde rengi ____ renktir.', answers: ['Sarı', 'sarı'], hint: 'RAL 1018', explanation: 'Asetilen tüpleri sarı, oksijen tüpleri mavi renklidir.' },
-  { q: 'Oksi-asetilen kaynağında kullanılan Oksijen tüplerinin dış gövde rengi ____ renktir.', answers: ['Mavi', 'mavi'], hint: 'RAL 5012', explanation: 'Oksijen tüpleri mavi renklidir.' },
-  { q: 'Yanıcı bir gaz olan Hidrojen tüplerinin dış gövde rengi ____ renktir.', answers: ['Kırmızı', 'kırmızı'], hint: 'RAL 3000', explanation: 'Hidrojen tüpleri kırmızı, Azot tüpleri yeşil, Argon açık mavidir.' },
-  { q: 'Asetilen gazı, patlayıcı "bakır asetilenür" oluşturduğu için ____ (%65-70 üzeri) boru ve rekorlarla temas ettirilmez.', answers: ['Bakır', 'bakır'], hint: 'Kızıl iletken metal', explanation: 'Asetilen tesisatında saf bakır ve %70 üstü bakır alaşımı kullanılmaz.' },
-  { q: 'Basınçlı saf oksijen valf ve manometreleri, patlama tehlikesi nedeniyle kesinlikle ____ ve gres ile temas ettirilmemelidir.', answers: ['Yağ', 'yağ'], hint: 'Kayganlaştırıcı madde', explanation: 'Oksijen ile yağ/gres teması kendiliğinden patlamaya yol açar.' },
-  { q: 'Oksi-gaz kaynağında alevin tüpe yürümesini önlemek için hortum/regülatör hattına ____ geri tepme emniyet valfi takılır.', answers: ['Alev', 'alev'], hint: 'Flashback arrestor', explanation: 'Alev geri tepme emniyet valfi tüp patlamasını önler.' },
-  { q: 'Asetilen gazının serbest halde çalışma basıncı ____ barı geçmemelidir.', answers: ['1,5', '1.5'], hint: 'Bir buçuk bar', explanation: 'Asetilen 1,5 bar üzerinde kararsızlaşıp patlama riski taşır.' },
-  { q: 'Elektrik ark kaynağında gözleri UV ve IR ışınlarından korumak için uygun kararma dereceli (DIN) kaynak ____ kullanılır.', answers: ['Maskesi', 'maskesi'], hint: 'Yüz ve göz koruyucu', explanation: 'Ark kaynağında UV/IR radyasyonuna karşı kaynak maskesi kullanılır.' },
-  { q: 'Kaldırma ve iletme ekipmanlarının (vinç, forklift, caraskal) periyodik kontrol süresi yılda en az ____ defadır.', answers: ['1', 'bir'], hint: 'Yıllık muayene', explanation: 'Kaldırma ve iletme ekipmanları yılda en az 1 kez kontrol edilir.' },
-  { q: 'Kaldırma araçlarının statik yük deneyinde deney yükü, beyan edilen azami yükün en az ____ katı olmalıdır.', answers: ['1,25', '1.25'], hint: 'Yüzde 25 fazlası', explanation: 'Statik deney 1,25 katı, dinamik deney 1,1 katı yükle yapılır.' },
-  { q: 'Kaldırma araçlarının dinamik yük deneyinde deney yükü, beyan edilen azami yükün en az ____ katı olmalıdır.', answers: ['1,1', '1.1'], hint: 'Yüzde 10 fazlası', explanation: 'Dinamik yük deneyi azami yükün 1,1 katı ile yapılır.' },
-  { q: 'Vinç kancası en alt seviyeye indiğinde tambur üzerinde en az ____ tam sarım halat kalmalıdır.', answers: ['2', 'iki'], hint: 'Halatın kurtulmaması için', explanation: 'Tambur üzerinde en az 2 tam sarım halat kalmalıdır.' },
-  { q: 'Kaldırma işlemlerinde kullanılan çelik tel halatların güvenlik katsayısı en az ____ olmalıdır.', answers: ['5', 'beş'], hint: 'Zincirde 4, tel halatta 5', explanation: 'Çelik tel halatların güvenlik katsayısı en az 5\'tir.' },
-  { q: 'Kaldırma işlemlerinde kullanılan zincirlerin güvenlik katsayısı en az ____ olmalıdır.', answers: ['4', 'dört'], hint: 'Tel halatta 5, zincirde 4', explanation: 'Kaldırma zincirlerinin güvenlik katsayısı en az 4\'tür.' },
-  { q: 'Basınçlı kapların (kazan, hava tankı) periyodik kontrol süresi standartta aksi belirtilmedikçe yılda en az ____ defadır.', answers: ['1', 'bir'], hint: 'Yıllık periyot', explanation: 'Basınçlı kaplar yılda en az 1 kez kontrol edilir.' },
-  { q: 'Basınçlı kapların hidrostatik test basıncı, işletme basıncının ____ katıdır.', answers: ['1,5', '1.5'], hint: 'Bir buçuk katı', explanation: 'Hidrostatik test işletme basıncının 1,5 katı ile yapılır.' },
-  { q: 'Forkliftlerde yük taşırken çatallar yerden yaklaşık ____ - 20 cm yukarıda tutulmalıdır.', answers: ['15', 'on beş'], hint: 'Devrilmeyi önleyen yükseklik', explanation: 'Forklift çatalları sürüş esnasında yerden 15-20 cm yukarıda taşınır.' },
-  { q: 'Forklift operatörünün devrilme anında ezilmesini önlemek için kabinde ROPS/FOPS ve emniyet ____ bulunması zorunludur.', answers: ['Kemeri', 'kemeri'], hint: 'Kabin dışına fırlamayı önler', explanation: 'Forklift devrilmelerinde emniyet kemeri operatörün kabin altında kalmasını önler.' },
-  { q: 'Makine bakım ve onarımında beklenmedik çalışmayı önlemek için uygulanan prosedür ____ (Etiketle - Kilitle - Emniyete Al - Dene) sistemidir.', answers: ['EKED', 'LOTO', 'eked'], hint: 'Lockout - Tagout', explanation: 'EKED (LOTO) bakım sırasında tüm enerji kaynaklarını kilitler.' },
-  { q: 'Buhar kazanlarında aşırı basınç artışına karşı birbirinden bağımsız en az ____ adet emniyet ventili (subabı) bulunmalıdır.', answers: ['2', 'iki'], hint: 'Yedekli güvenlik', explanation: 'Buhar kazanlarında en az 2 adet emniyet ventili ve 2 adet su seviye göstergesi bulunur.' },
-  { q: 'Taşınabilir gaz tüpleri her zaman ____ konumda ve devrilmeye karşı zincir/kelepçe ile sabitlenerek kullanılmalıdır.', answers: ['Dik', 'dik'], hint: 'Yatay değil!', explanation: 'Basınçlı gaz tüpleri dik konumda sabitlenerek depolanır ve kullanılır.' },
-  { q: 'Şerit testere tezgahlarında testere şeridinin sadece ____ yapılan kısmı açıkta bırakılır, diğer tüm kısımlar koruyucu içine alınır.', answers: ['Kesim', 'kesim', 'işlem'], hint: 'Operasyon bölgesi', explanation: 'Şerit testerenin kesim bölgesi dışındaki tüm kasnak ve şerit boyu kapalı olmalıdır.' },
-  { q: 'Kaldırma operasyonlarında yükün altında veya tehlikeli salınım alanında ____ bulunması kesinlikle yasaktır.', answers: ['İnsan', 'insan', 'çalışan'], hint: 'Askıdaki yük kuralı', explanation: 'Askıdaki yükün altında hiçbir zaman çalışan bulundurulmaz.' }
+  { q: 'Herhangi bir enerji türünü başka bir enerjiye dönüştürmek veya belli bir güçten yararlanarak bir işi yapmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe _______ denir.', a: 'makina', alts: ['makine'], exp: '1. Hafta ders sunumu ve örnek soru 1: Bu düzenekler bütününe makina denir.' },
+  { q: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlere _______ denir ve bu kavram makina, tesisat ve cihaz olmak üzere üç gruba ayrılır.', a: 'sistem', alts: [], exp: '1. Hafta ders sunumu: Sistem; makina, tesisat ve cihaz olmak üzere üçe ayrılır.' },
+  { q: 'Sistem sınıflandırmasında malzeme çeviren, ileten veya biriktiren sistemlere (buhar, ısıtma, soğutma, sıhhi vb.) _______ adı verilir.', a: 'tesisat', alts: [], exp: 'Malzeme çeviren, ileten veya biriktiren sistemlere tesisat denir.' },
+  { q: 'İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek, denetlemek ve ölçmek amacıyla kullanılan sistemlere _______ denir.', a: 'cihaz', alts: [], exp: 'Haberleşme, röntgen, ölçüm aletleri gibi sistemlere cihaz denir.' },
+  { q: 'Enerji dönüştürücü makinalardan; ısı, hidrolik veya elektrik enerjisini mekanik enerjiye çeviren makinalara _______ denir.', a: 'motor', alts: ['motorlar', 'kuvvet makinesi'], exp: 'Motorlar aldığı enerjiyi mekanik enerjiye çeviren makinalardır.' },
+  { q: 'Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, vinçler, pompalar vb.) _______ makinaları denir.', a: 'iş', alts: ['is', 'iş makinası', 'iş makinesi'], exp: 'Mekanik enerjiyi yararlı işe dönüştüren makinalara iş makinaları denir.' },
+  { q: 'Soğutma tesisatının dört temel elemanı: Kompresör, yoğuşturucu (kondanser), kısılma vanası ve _______ (evaporatör) elemanıdır.', a: 'buharlaştırıcı', alts: ['buharlastirici', 'evaporatör'], exp: '1. Hafta örnek soru 3: Kompresör, yoğuşturucu, kısılma vanası ve buharlaştırıcı.' },
+  { q: 'Kapalı kaplardaki basıncı ölçen cihazlara _______, açık hava (atmosfer) basıncını ölçen cihazlara ise barometre denir.', a: 'manometre', alts: [], exp: '1. Hafta örnek soru 4: Basınç ölçüm cihazı manometredir.' },
+  { q: 'SI birim sisteminde iş veya enerjinin birim zamandaki değişimi olan Güç birimi _______ (Watt) olarak ifade edilir.', a: 'j/s', alts: ['watt', 'joule/saniye'], exp: '1. Hafta örnek soru 6: Güç birimi J/s (Watt) veya kW / BG\'dir.' },
+  { q: 'Maddelerin mevcut durma hâlini ya da hareket konumunu koruma eğilimine _______ denir ve büyüklüğü kütle ile doğru orantılıdır.', a: 'eylemsizlik', alts: ['atalet'], exp: '2. Hafta Malzeme Bilgisi: Eylemsizlik maddenin kütlesiyle orantılıdır.' },
+  { q: 'Katı hâldeki bir maddenin sıvı hâle geçmeden doğrudan gaz hâline geçmesine _______ adı verilir.', a: 'süblimleşme', alts: ['sublimlesme'], exp: 'Katıdan doğrudan gaza geçiş süblimleşmedir.' },
+  { q: 'Atom çekirdeğinde yer alan proton ve nötron sayılarının toplamı o atomun _______ numarasını verir.', a: 'kütle', alts: ['kutle'], exp: 'Proton + Nötron sayısı = Kütle numarasıdır.' },
+  { q: 'Metaller ile ametaller arasında elektron alışverişiyle oluşan, yüksek ergime noktasına sahip, sert ve kırılgan olan ancak katı hâlde elektriği iletmeyen bağ türüne _______ bağ denir.', a: 'iyonik', alts: [], exp: '2. Hafta örnek soru 3: İyonik bağ katı hâlde elektriği iletmez.' },
+  { q: 'Moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türüne _______ bağı denir.', a: 'van der waals', alts: ['vanderwaals', 'van der wals'], exp: '2. Hafta örnek soru 4: Zayıf elektrostatik ikincil bağ Van der Waals bağıdır.' },
+  { q: 'Cam, fayans, porselen, oksitler ve karbürler gibi yüksek ergime sıcaklığına ve yüksek ısıl/kimyasal kararlılığa sahip ancak kırılgan ve yalıtkan olan inorganik malzemelere _______ denir.', a: 'seramik', alts: ['seramikler'], exp: 'Seramikler yüksek ısıl/kimyasal kararlılığa sahip ancak kırılgan malzemelerdir.' },
+  { q: 'İki ya da daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle elde edilen malzemelere _______ malzeme denir; tarihteki en eski ve basit örneği çamur ve samandan yapılan kerpiçtir.', a: 'kompozit', alts: ['karma'], exp: 'Çamur ve samandan oluşan kerpiç en basit kompozit malzemedir.' },
+  { q: 'Uygulanan kuvvet ortadan kalktığında malzemenin eski boyutuna geri döndüğü geçici şekil değişimine _______ deformasyon denir.', a: 'elastik', alts: ['esnek'], exp: 'Kuvvet kalkınca geri dönen şekil değişimi elastik deformasyondur.' },
+  { q: 'Uygulanan gerilmenin elastiklik sınırını aşması sonucunda malzemede meydana gelen kalıcı şekil değişimine _______ deformasyon denir.', a: 'plastik', alts: ['kalıcı'], exp: 'Kalıcı şekil değişimine plastik deformasyon denir.' },
+  { q: 'Çok az veya hiç plastik deformasyon olmadan, düşük toklukla ve akma gerilmesinden küçük gerilmelerde çatlağın hızla ilerlemesiyle oluşan tehlikeli kırılma türüne _______ kırılma denir.', a: 'gevrek', alts: [], exp: '2. Hafta örnek soru 5: Gevrek kırılma akma gerilmesinden küçük gerilmelerde ani oluşur.' },
+  { q: 'Servis altındaki parçaların fiziki yapısına hiçbir zarar vermeden iç bünye ve dış yüzey süreksizliklerini tespit etmeye yarayan yöntemlere _______ muayene yöntemleri denir.', a: 'tahribatsız', alts: ['tahribatsiz', 'ndt'], exp: 'Parçaya zarar vermeden yapılan kontrole tahribatsız muayene denir.' },
+  { q: 'Sökülürken tahrip olduğu için tekrar kullanılamayan perçin, lehim, kaynak ve yapıştırıcı gibi elemanlara _______ bağlama elemanları denir.', a: 'çözülemeyen', alts: ['cozulemeyen', 'sökülemeyen'], exp: '3. Hafta: Perçin, lehim, kaynak ve yapıştırıcı çözülemeyen bağlama elemanlarıdır.' },
+  { q: 'İki metal parçanın kendilerinden daha düşük sıcaklıkta ergiyen ilave bir metal alaşımı yardımıyla ana metaller ergitilmeden birleştirilmesi işlemine _______ denir.', a: 'lehimleme', alts: ['lehim'], exp: 'Ana metal ergimeden düşük sıcaklıkta ergiyen ilave metalle yapılan birleştirme lehimlemedir.' },
+  { q: 'Aynı veya farklı iki malzemenin metalik olmayan bir ara malzeme (zamk) ile adhezyon ve kohezyon kuvvetleri sayesinde çözülemeyecek şekilde birleştirilmesine _______ bağlantısı denir.', a: 'yapıştırıcı', alts: ['yapistirici', 'yapıştırma'], exp: 'Zamk ile yapılan birleştirme yapıştırıcı bağlantısıdır.' },
+  { q: 'Vida bağlantılarında dış vidaya cıvata, iç vidaya ise _______ adı verilir.', a: 'somun', alts: [], exp: 'Cıvata dış vida, somun iç vidadır.' },
+  { q: 'Mil ile göbek arasında moment iletmek amacıyla kullanılan ve mil eksenine paralel (boyuna/feder) veya dik (enine) monte edilen prizmatik elemanlara _______ denir.', a: 'kama', alts: ['kamalar', 'feder'], exp: 'Mil-göbek arasında şekil veya kuvvet bağı kuran prizmatik eleman kamadır.' },
+  { q: 'Milin dış çapının göbeğin delik çapından biraz büyük işlenerek basınçla veya ısıtma/soğutma ile monte edildiği çözülebilen bağlantıya _______ geçme denir.', a: 'sıkı', alts: ['siki', 'pres'], exp: 'Çap farkı ve yüzey basıncıyla moment ileten bağlantı sıkı geçmedir.' },
+  { q: 'Dönme-dönme hareket iletim mekanizmalarında döndüren elemanın hızının döndürülen elemanın hızına oranına _______ oranı denir.', a: 'çevrim', alts: ['cevrim', 'iletim'], exp: '4. Hafta: Dönme-dönme elemanlarının en önemli özelliği çevrim oranıdır.' },
+  { q: 'Eksenleri kesişen iki mil arasında hareket ileten dişlilere _______ dişli, dönme hareketini doğrusal harekete çeviren düz çubuk dişliye ise kremayer dişli denir.', a: 'konik', alts: [], exp: 'Kesişen eksenli dişliler konik dişlilerdir.' },
+  { q: 'Elastik bir kayış yardımıyla kasnaklar arasında hareket ileten, darbeleri sönümleyen ancak %1-%2 oranında kısmi kayma yapan mekanizmaya _______ mekanizması denir.', a: 'kayış-kasnak', alts: ['kayis-kasnak', 'kayış kasnak'], exp: '4. Hafta: Kayış-kasnak mekanizmasında %1-2 kısmi kayma vardır.' },
+  { q: 'Dökümde kalıp boşluğunu oluşturmak için kullanılan ve katılaşma sırasındaki hacimsel büzülmeyi karşılamak üzere boyutlarına "çekme payı" eklenen kopyaya _______ denir.', a: 'model', alts: [], exp: '5. Hafta: Kalıp boşluğunu oluşturan parçaya model denir.' },
+  { q: 'Döküm parçalarının boş (delik veya oyuk) çıkması istenen iç kısımlarını oluşturmak için kalıp içine yerleştirilen kumdan yapılmış özel parçaya _______ denir.', a: 'maça', alts: ['maca'], exp: '5. Hafta: İç boşlukları oluşturmak için kumdan yapılan parçaya maça denir.' },
+  { q: 'Kalıp malzemesi olarak kum yerine çelik veya dökme demir gibi metal kalıpların kullanıldığı döküm yöntemine _______ döküm denir.', a: 'kokil', alts: ['metal kalıba'], exp: '5. Hafta: Metal kalıba döküm yöntemine kokil döküm adı verilir.' },
+  { q: 'Parçaların birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılıp boyunun uzatıldığı plastik şekil verme yöntemine _______ denir.', a: 'haddeleme', alts: [], exp: '5. Hafta: İki merdane arasından geçirerek şekillendirme haddelemedir.' },
+  { q: 'Metal tozlarının kalıpta yüksek basınçla (300-800 MPa) preslendikten sonra ergime sıcaklığının altında fırınlanarak mukavemet kazandırılması işlemine _______ denir.', a: 'sinterleme', alts: ['toz metalurjisi'], exp: '5. Hafta: Preslenen toz parçaların ısıl işlemle bağlanması sinterlemedir.' },
+  { q: 'Argon (TIG) kaynağında erime noktası çok yüksek olduğu için kaynak esnasında erimeyen _______ elektrot kullanılır.', a: 'tungsten', alts: ['wolfram'], exp: '5. Hafta: Argon (TIG) kaynağında erimeyen Tungsten elektrot kullanılır.' }
 ];

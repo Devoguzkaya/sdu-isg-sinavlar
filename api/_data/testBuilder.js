@@ -111,7 +111,15 @@ export function buildTenTestsForCourse(baseCourse, testThemes, conceptGroups, ex
   const finalMC = allMC.slice(0, 100);
 
   // 5. Collect existing hand-crafted Fill questions (15) + 35 extra Fill questions = 50 Fill questions
-  const allFill = [...baseCourse.fillQuestions, ...extraFillItems].slice(0, 50);
+  const rawFill = [...(baseCourse.fillQuestions || []), ...(extraFillItems || [])];
+  const allFill = rawFill.map((f) => ({
+    q: f.q,
+    answers: Array.isArray(f.answers) && f.answers.length > 0
+      ? f.answers
+      : [f.a, ...(Array.isArray(f.alts) ? f.alts : [])].filter(Boolean),
+    hint: f.hint || (f.exp ? f.exp.slice(0, 45) : ''),
+    explanation: f.explanation || f.exp || ''
+  })).slice(0, 50);
 
   // 6. Partition into 10 distinct Tests (each test: 10 MC + 5 Fill = 15 Questions)
   const tests = testThemes.map((themeTitle, tIdx) => {
