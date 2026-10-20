@@ -15,8 +15,31 @@ import {
   Award,
   Play,
   Pause,
-  ListChecks
+  ListChecks,
+  User,
+  LogOut,
+  Lock,
+  UserPlus,
+  LogIn
 } from 'lucide-react';
+
+const CLOUD_BUCKET = 'XDdUb2W7LRjEjWdzcBhfzB';
+const USERS_CLOUD_URL = `https://kvdb.io/${CLOUD_BUCKET}/sdu_isg_users_v2`;
+
+async function sha256Browser(str) {
+  const buf = new TextEncoder().encode(str + '_sdu_isg_salt');
+  const hashBuffer = await crypto.subtle.digest('SHA-256', buf);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function createEmptyAnswers() {
+  const init = {};
+  COURSES.forEach((c) => {
+    init[c.id] = { mc: {}, fill: {} };
+  });
+  return init;
+}
 
 function normalizeTR(str) {
   if (!str) return '';
@@ -44,34 +67,64 @@ function isFillCorrect(userVal, validAnswers) {
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
 export default function App() {
+  // Auth state
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const savedUser = localStorage.getItem('sdu_isg_auth_user_v2');
+      if (savedUser) return JSON.parse(savedUser);
+    } catch (e) {}
+    return null;
+  });
+
+  const [authTab, setAuthTab] = useState('login'); // 'login' | 'signup'
+  const [authUsername, setAuthUsername] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authFullName, setAuthFullName] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
+
   const [activeCourseId, setActiveCourseId] = useState(COURSES[0].id);
   const [mode, setMode] = useState('study'); // 'study' | 'exam'
   const [filter, setFilter] = useState('all'); // 'all' | 'mc' | 'fill'
   const [showWordBank, setShowWordBank] = useState(true);
   const [examSubmitted, setExamSubmitted] = useState(false);
 
-  // Answers state persisted to localStorage + Vercel Storage (/api/sync)
   const [cloudStatus, setCloudStatus] = useState('local'); // 'local' | 'synced' | 'saving'
-  const [answers, setAnswers] = useState(() => {
-    try {
-      const saved = localStorage.getItem('sdu_isg_react_vize_v2');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {}
-    const init = {};
-    COURSES.forEach((c) => {
-      init[c.id] = { mc: {}, fill: {} };
-    });
-    return init;
-  });
-
-  // Load from Vercel Cloud Storage (/api/sync or direct cloud KV on localhost) on initial mount
-  const CLOUD_KV_URL = 'https://kvdb.io/XDdUb2W7LRjEjWdzcBhfzB/sdu_isg_vize_state_oguzhan_v2';
   const [cloudReady, setCloudReady] = useState(false);
 
+  const userKey = currentUser?.username || 'guest';
+  const localStoreKey = `sdu_isg_react_vize_v2_${userKey}`;
+  const directCloudUserUrl = `https://kvdb.io/${CLOUD_BUCKET}/sdu_isg_vize_state_${userKey}_v2`;
+
+  const [answers, setAnswers] = useState(() => createEmptyAnswers());
+
+  // Load user's answers from localStorage & Cloud KV whenever currentUser changes
   useEffect(() => {
-    async function loadCloud() {
+    if (!currentUser) return;
+    setCloudReady(false);
+
+    // 1. Instant load from local cache
+    try {
+      const localSaved = localStorage.getItem(localStoreKey);
+      if (localSaved) {
+        setAnswers(JSON.parse(localSaved));
+      } else {
+        setAnswers(createEmptyAnswers());
+      }
+    } catch (e) {
+      setAnswers(createEmptyAnswers());
+    }
+
+    if (currentUser.isGuest) {
+      setCloudStatus('local');
+      setCloudReady(true);
+      return;
+    }
+
+    // 2. Load from Cloud KV (/api/sync?user=... or direct fallback)
+    async function loadUserCloud() {
       try {
-        const r = await fetch('/api/sync');
+        const r = await fetch(`/api/sync?user=${encodeURIComponent(userKey)}`);
         if (r.ok) {
           const res = await r.json();
           if (res && res.configured) {
@@ -85,9 +138,8 @@ export default function App() {
         }
       } catch (e) {}
 
-      // Fallback for Vite localhost dev server
       try {
-        const r2 = await fetch(CLOUD_KV_URL);
+        const r2 = await fetch(directCloudUserUrl);
         if (r2.ok) {
           const data = await r2.json();
           if (data && Object.keys(data).length > 0) {
@@ -96,21 +148,25 @@ export default function App() {
         }
         setCloudStatus('synced');
         setCloudReady(true);
-      } catch (e) {}
+      } catch (e) {
+        setCloudReady(true);
+      }
     }
-    loadCloud();
-  }, []);
+    loadUserCloud();
+  }, [currentUser, userKey]);
 
+  // Save user's answers to localStorage + Cloud KV on change
   useEffect(() => {
+    if (!currentUser) return;
     try {
-      localStorage.setItem('sdu_isg_react_vize_v2', JSON.stringify(answers));
+      localStorage.setItem(localStoreKey, JSON.stringify(answers));
     } catch (e) {}
 
-    if (!cloudReady) return;
+    if (!cloudReady || currentUser.isGuest) return;
     setCloudStatus('saving');
     const timer = setTimeout(async () => {
       try {
-        const r = await fetch('/api/sync', {
+        const r = await fetch(`/api/sync?user=${encodeURIComponent(userKey)}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(answers)
@@ -122,7 +178,7 @@ export default function App() {
       } catch (e) {}
 
       try {
-        await fetch(CLOUD_KV_URL, {
+        await fetch(directCloudUserUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(answers)
@@ -131,7 +187,109 @@ export default function App() {
       } catch (e) {}
     }, 600);
     return () => clearTimeout(timer);
-  }, [answers, cloudReady]);
+  }, [answers, cloudReady, currentUser, userKey]);
+
+  // Handle Login / Signup submit
+  const handleAuthSubmit = async (e) => {
+    e.preventDefault();
+    setAuthError('');
+    const cleanUsername = authUsername.trim().toLowerCase().replace(/[^a-z0-9_.-]/g, '');
+    if (cleanUsername.length < 3) {
+      setAuthError('Kullanıcı adı en az 3 karakter olmalıdır (harf ve rakam).');
+      return;
+    }
+    if (authPassword.length < 4) {
+      setAuthError('Şifre en az 4 karakter olmalıdır.');
+      return;
+    }
+
+    setAuthLoading(true);
+    try {
+      // Try Vercel Serverless /api/auth first
+      const r = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: authTab,
+          username: cleanUsername,
+          password: authPassword,
+          fullName: authFullName.trim() || cleanUsername
+        })
+      });
+
+      if (r.ok || r.status === 400 || r.status === 401 || r.status === 409) {
+        const data = await r.json();
+        if (!r.ok) {
+          setAuthError(data.error || 'İşlem başarısız.');
+          setAuthLoading(false);
+          return;
+        }
+        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(data.user));
+        setCurrentUser(data.user);
+        setAuthLoading(false);
+        return;
+      }
+    } catch (err) {}
+
+    // Fallback for Vite localhost dev server (Direct Cloud KV Users Table)
+    try {
+      let users = {};
+      const resGet = await fetch(USERS_CLOUD_URL);
+      if (resGet.ok) {
+        users = await resGet.json();
+      }
+      const passHash = await sha256Browser(authPassword);
+
+      if (authTab === 'signup') {
+        if (users[cleanUsername]) {
+          setAuthError('Bu kullanıcı adı zaten alınmış kanka, giriş yapabilirsin.');
+          setAuthLoading(false);
+          return;
+        }
+        const newUser = {
+          username: cleanUsername,
+          fullName: authFullName.trim() || cleanUsername,
+          passHash,
+          createdAt: new Date().toISOString()
+        };
+        users[cleanUsername] = newUser;
+        await fetch(USERS_CLOUD_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(users)
+        });
+        const userSession = { username: newUser.username, fullName: newUser.fullName };
+        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(userSession));
+        setCurrentUser(userSession);
+      } else {
+        const existing = users[cleanUsername];
+        if (!existing || existing.passHash !== passHash) {
+          setAuthError('Kullanıcı adı veya şifre hatalı!');
+          setAuthLoading(false);
+          return;
+        }
+        const userSession = { username: existing.username, fullName: existing.fullName };
+        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(userSession));
+        setCurrentUser(userSession);
+      }
+    } catch (err) {
+      setAuthError('Bağlantı hatası oluştu, tekrar dene kanka.');
+    }
+    setAuthLoading(false);
+  };
+
+  const handleGuestLogin = () => {
+    const guest = { username: 'misafir', fullName: 'Misafir Öğrenci', isGuest: true };
+    localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(guest));
+    setCurrentUser(guest);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('sdu_isg_auth_user_v2');
+    setCurrentUser(null);
+    setAuthPassword('');
+    setAuthError('');
+  };
 
   // 45-min Timer
   const [secondsLeft, setSecondsLeft] = useState(45 * 60);
@@ -297,6 +455,150 @@ export default function App() {
   const totalAllCoursesMC = COURSES.reduce((acc, c) => acc + c.mcQuestions.length, 0);
   const totalAllCoursesFill = COURSES.reduce((acc, c) => acc + c.fillQuestions.length, 0);
 
+  // RENDER LOGIN / SIGNUP SCREEN IF NOT AUTHENTICATED
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 py-12">
+        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-slate-950 flex items-center gap-3.5">
+            <div className="bg-slate-950 text-amber-400 p-3 rounded-xl shadow">
+              <GraduationCap className="w-8 h-8" />
+            </div>
+            <div>
+              <h1 className="text-lg font-black tracking-tight leading-snug">
+                SDÜ İSG Yüksek Lisans
+              </h1>
+              <p className="text-xs font-bold text-slate-900/80">
+                Vize Sınav & Çalışma Portalı (6 Ders • 240 Soru)
+              </p>
+            </div>
+          </div>
+
+          {/* Auth Tabs */}
+          <div className="grid grid-cols-2 border-b border-slate-800 bg-slate-900/50">
+            <button
+              type="button"
+              onClick={() => {
+                setAuthTab('login');
+                setAuthError('');
+              }}
+              className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
+                authTab === 'login'
+                  ? 'border-amber-500 text-amber-400 bg-slate-800/60'
+                  : 'border-transparent text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <LogIn className="w-4 h-4" />
+              Giriş Yap
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setAuthTab('signup');
+                setAuthError('');
+              }}
+              className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
+                authTab === 'signup'
+                  ? 'border-amber-500 text-amber-400 bg-slate-800/60'
+                  : 'border-transparent text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <UserPlus className="w-4 h-4" />
+              Kayıt Ol
+            </button>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleAuthSubmit} className="p-6 space-y-4">
+            {authTab === 'signup' && (
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                  Ad Soyad
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={authFullName}
+                    onChange={(e) => setAuthFullName(e.target.value)}
+                    placeholder="Örn: Oğuzhan Kaya"
+                    className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            )}
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Kullanıcı Adı
+              </label>
+              <div className="relative flex items-center">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5" />
+                <input
+                  type="text"
+                  required
+                  value={authUsername}
+                  onChange={(e) => setAuthUsername(e.target.value)}
+                  placeholder="oguzhan"
+                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Şifre
+              </label>
+              <div className="relative flex items-center">
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5" />
+                <input
+                  type="password"
+                  required
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {authError && (
+              <div className="bg-rose-950/80 border border-rose-700 text-rose-200 text-xs font-bold p-3 rounded-xl flex items-center gap-2">
+                <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                <span>{authError}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={authLoading}
+              className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+            >
+              {authLoading
+                ? 'İşleniyor...'
+                : authTab === 'login'
+                ? 'Hesabıma Giriş Yap'
+                : 'Hesap Oluştur & Başla'}
+            </button>
+
+            <div className="pt-3 border-t border-slate-800 text-center">
+              <button
+                type="button"
+                onClick={handleGuestLogin}
+                className="text-xs font-bold text-slate-400 hover:text-amber-400 transition"
+              >
+                Üye olmadan Misafir Öğrenci olarak devam et →
+              </button>
+            </div>
+          </form>
+        </div>
+        <p className="text-xs text-slate-500 mt-4 text-center">
+          Her kullanıcının çözdüğü sorular ve puanları bulut veritabanında kendi hesabına özel saklanır.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
       {/* Top Navbar */}
@@ -317,7 +619,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             {/* Cloud DB Status Badge */}
             <div
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold ${
@@ -340,7 +642,7 @@ export default function App() {
               {cloudStatus === 'synced'
                 ? '☁️ Bulut DB Senkronize'
                 : cloudStatus === 'saving'
-                ? '⏳ Buluta Kaydediliyor...'
+                ? '⏳ Kaydediliyor...'
                 : '💾 Yerel Hafıza'}
             </div>
 
@@ -358,7 +660,7 @@ export default function App() {
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                Çalışma Modu (Anında Çözüm & Şık Analizi)
+                Çalışma Modu
               </button>
               <button
                 onClick={() => {
@@ -372,7 +674,7 @@ export default function App() {
                 }`}
               >
                 <ClipboardCheck className="w-3.5 h-3.5" />
-                Sınav Modu (Süreli & Karne)
+                Sınav Modu
               </button>
             </div>
 
@@ -404,11 +706,26 @@ export default function App() {
             {mode === 'exam' && (
               <button
                 onClick={() => setExamSubmitted(true)}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow transition"
               >
-                Sınavı Bitir & Karneyi Gör
+                Sınavı Bitir
               </button>
             )}
+
+            {/* User Badge & Logout */}
+            <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 pl-3 pr-2 py-1 rounded-lg">
+              <User className="w-3.5 h-3.5 text-amber-400" />
+              <span className="text-xs font-bold text-slate-200">
+                {currentUser.fullName}
+              </span>
+              <button
+                onClick={handleLogout}
+                title="Çıkış Yap"
+                className="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white p-1.5 rounded-md transition"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -694,7 +1011,7 @@ export default function App() {
                                 )}
                               </div>
 
-                              {/* Inline per-option explanation shown immediately below the option text when answered */}
+                              {/* Inline per-option explanation */}
                               {hasAnswered && showFeedback && optExp && (
                                 <div
                                   className={`mt-2 pt-2 border-t text-xs font-normal leading-relaxed ${
