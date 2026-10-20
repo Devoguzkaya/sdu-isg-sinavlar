@@ -30,10 +30,17 @@ import {
   Check,
   Target,
   Cloud,
-  Zap
+  Zap,
+  Crown,
+  Shield,
+  Users,
+  Trash2,
+  RefreshCw,
+  X
 } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+const ADMIN_USERNAMES = ['oguzhan', 'admin', 'devoguzkaya'];
 
 function createEmptyCourseMap(courses) {
   const init = {};
@@ -48,11 +55,22 @@ export default function App() {
   const [courses, setCourses] = useState([]);
   const [coursesLoading, setCoursesLoading] = useState(true);
 
-  // Auth state
+  // Auth state (No guest mode allowed!)
   const [currentUser, setCurrentUser] = useState(() => {
     try {
       const savedUser = localStorage.getItem('sdu_isg_auth_user_v2');
-      if (savedUser) return JSON.parse(savedUser);
+      if (savedUser) {
+        const parsed = JSON.parse(savedUser);
+        if (parsed && !parsed.isGuest && parsed.username !== 'misafir') {
+          const isAdm = ADMIN_USERNAMES.includes((parsed.username || '').toLowerCase());
+          return {
+            ...parsed,
+            role: isAdm ? 'admin' : parsed.role || 'user',
+            plan: isAdm ? 'pro' : parsed.plan || 'free'
+          };
+        }
+        localStorage.removeItem('sdu_isg_auth_user_v2');
+      }
     } catch (e) {}
     return null;
   });
@@ -60,10 +78,13 @@ export default function App() {
   // Page routing: 'home' (Tanıtım Anasayfası) | 'portal' (Sınav & Çalışma Ekranı)
   const [activePage, setActivePage] = useState(() => {
     try {
-      return localStorage.getItem('sdu_isg_auth_user_v2') ? 'portal' : 'home';
-    } catch (e) {
-      return 'home';
-    }
+      const savedUser = localStorage.getItem('sdu_isg_auth_user_v2');
+      if (savedUser) {
+        const parsed = JSON.parse(savedUser);
+        if (parsed && !parsed.isGuest && parsed.username !== 'misafir') return 'portal';
+      }
+    } catch (e) {}
+    return 'home';
   });
 
   const [authTab, setAuthTab] = useState('login'); // 'login' | 'signup'
@@ -72,6 +93,13 @@ export default function App() {
   const [authFullName, setAuthFullName] = useState('');
   const [authError, setAuthError] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
+
+  // Modals: Upgrade to PRO modal & Admin Panel modal
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [showAdminModal, setShowAdminModal] = useState(false);
+  const [adminUsers, setAdminUsers] = useState([]);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [adminSearch, setAdminSearch] = useState('');
 
   const [activeCourseId, setActiveCourseId] = useState('elektrik');
   const [activeTestIdx, setActiveTestIdx] = useState(0); // 0..9 for Test 1..10, or 'all'
@@ -85,6 +113,11 @@ export default function App() {
   const [cloudStatus, setCloudStatus] = useState('local'); // 'local' | 'synced' | 'saving'
   const [cloudReady, setCloudReady] = useState(false);
 
+  const isAdmin =
+    currentUser?.role === 'admin' ||
+    ADMIN_USERNAMES.includes((currentUser?.username || '').toLowerCase());
+  const isPro = isAdmin || currentUser?.plan === 'pro';
+
   const userKey = currentUser?.username || 'guest';
   const localStoreKey = `sdu_isg_react_vize_v3_${userKey}`;
 
@@ -95,6 +128,7 @@ export default function App() {
 
   const authBoxRef = useRef(null);
   const coursesSectionRef = useRef(null);
+  const pricingSectionRef = useRef(null);
   const questionStartRef = useRef(null);
 
   // 1. Fetch sanitized questions from Backend (/api/questions)
@@ -111,10 +145,102 @@ export default function App() {
       .catch(() => setCoursesLoading(false));
   }, []);
 
+  // Sync currentUser's live plan & role from Backend (/api/auth action: 'me')
+  useEffect(() => {
+    if (!currentUser?.username) return;
+    fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'me', username: currentUser.username })
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.user) {
+          localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(data.user));
+          setCurrentUser(data.user);
+        }
+      })
+      .catch(() => {});
+  }, [currentUser?.username]);
+
+  // Enforce Free Plan limit: if !isPro and activeTestIdx !== 0, lock to Test 1 (idx 0)
+  useEffect(() => {
+    if (!isPro && activeTestIdx !== 0) {
+      setActiveTestIdx(0);
+    }
+  }, [isPro, activeTestIdx]);
+
   // Reset question step to 0 when course, test, or filter changes
   useEffect(() => {
     setCurrentStep(0);
   }, [activeCourseId, activeTestIdx, filter]);
+
+  // Admin helper functions
+  const fetchAdminUsers = async () => {
+    if (!isAdmin || !currentUser) return;
+    setAdminLoading(true);
+    try {
+      const r = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'admin_list_users',
+          adminUsername: currentUser.username
+        })
+      });
+      if (r.ok) {
+        const data = await r.json();
+        setAdminUsers(data.users || []);
+      }
+    } catch (e) {}
+    setAdminLoading(false);
+  };
+
+  const handleAdminSetPlan = async (targetUsername, newPlan) => {
+    if (!isAdmin || !currentUser) return;
+    setAdminLoading(true);
+    try {
+      const r = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'admin_set_plan',
+          adminUsername: currentUser.username,
+          targetUsername,
+          newPlan
+        })
+      });
+      if (r.ok) {
+        const data = await r.json();
+        setAdminUsers(data.users || []);
+      }
+    } catch (e) {}
+    setAdminLoading(false);
+  };
+
+  const handleAdminDeleteUser = async (targetUsername) => {
+    if (!isAdmin || !currentUser) return;
+    if (!window.confirm(`@${targetUsername} kullanıcısını silmek istediğine emin misin kanka?`)) {
+      return;
+    }
+    setAdminLoading(true);
+    try {
+      const r = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'admin_delete_user',
+          adminUsername: currentUser.username,
+          targetUsername
+        })
+      });
+      if (r.ok) {
+        const data = await r.json();
+        setAdminUsers(data.users || []);
+      }
+    } catch (e) {}
+    setAdminLoading(false);
+  };
 
   // Helper to batch-evaluate existing answers on the backend
   const evaluateAllOnBackend = async (userAns, revealCourseId = null, revealTestIdx = undefined) => {
@@ -153,13 +279,6 @@ export default function App() {
     } catch (e) {}
     setAnswers(initialAns);
 
-    if (currentUser.isGuest) {
-      setCloudStatus('local');
-      setCloudReady(true);
-      evaluateAllOnBackend(initialAns);
-      return;
-    }
-
     async function loadUserCloud() {
       try {
         const r = await fetch(`/api/sync?user=${encodeURIComponent(userKey)}`);
@@ -178,7 +297,7 @@ export default function App() {
       evaluateAllOnBackend(initialAns);
     }
     loadUserCloud();
-  }, [currentUser, userKey, courses.length]);
+  }, [currentUser?.username, userKey, courses.length]);
 
   // 3. Auto-save user's answers to localStorage + Cloud (/api/sync)
   useEffect(() => {
@@ -187,7 +306,6 @@ export default function App() {
       localStorage.setItem(localStoreKey, JSON.stringify(answers));
     } catch (e) {}
 
-    if (currentUser.isGuest) return;
     setCloudStatus('saving');
     const timer = setTimeout(async () => {
       try {
@@ -244,20 +362,24 @@ export default function App() {
     setAuthLoading(false);
   };
 
-  const handleGuestLogin = (targetCourseId = null) => {
-    const guest = { username: 'misafir', fullName: 'Misafir Öğrenci', isGuest: true };
-    localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(guest));
-    setCurrentUser(guest);
-    if (targetCourseId) setActiveCourseId(targetCourseId);
-    setActivePage('portal');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToAuth = (tab = 'signup') => {
+    setAuthTab(tab);
+    setAuthError('');
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        authBoxRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 80);
+    } else {
+      authBoxRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleOpenCourseFromHome = (courseId) => {
     setActiveCourseId(courseId);
     setActiveTestIdx(0);
     if (!currentUser) {
-      handleGuestLogin(courseId);
+      scrollToAuth('signup');
     } else {
       setActivePage('portal');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -345,6 +467,10 @@ export default function App() {
 
   // Select MC Option -> Verify on Backend (/api/questions)
   const handleSelectMC = async (qIdx, optIdx) => {
+    if (!isPro && qIdx >= 10) {
+      setShowUpgradeModal(true);
+      return;
+    }
     const cId = activeCourse.id;
     setAnswers((prev) => ({
       ...prev,
@@ -385,6 +511,10 @@ export default function App() {
   };
 
   const handleFillChange = (qIdx, val) => {
+    if (!isPro && qIdx >= 5) {
+      setShowUpgradeModal(true);
+      return;
+    }
     const cId = activeCourse.id;
     setAnswers((prev) => ({
       ...prev,
@@ -403,6 +533,10 @@ export default function App() {
 
   // Check Fill-in-the-blank on Backend (/api/questions)
   const handleCheckFill = async (qIdx, reveal = false) => {
+    if (!isPro && qIdx >= 5) {
+      setShowUpgradeModal(true);
+      return;
+    }
     const cId = activeCourse.id;
     const curVal = courseState.fill?.[qIdx]?.val || '';
 
@@ -448,13 +582,14 @@ export default function App() {
   };
 
   const handleRevealCurrentView = async () => {
-    await evaluateAllOnBackend(answers, activeCourse.id, activeTestIdx);
+    const targetTest = isPro ? activeTestIdx : 0;
+    await evaluateAllOnBackend(answers, activeCourse.id, targetTest);
     setExamSubmitted(true);
   };
 
   const handleResetCurrentView = () => {
     const cId = activeCourse.id;
-    if (activeTestIdx === 'all') {
+    if (activeTestIdx === 'all' && isPro) {
       setAnswers((prev) => ({
         ...prev,
         [cId]: { mc: {}, fill: {} }
@@ -464,8 +599,9 @@ export default function App() {
         [cId]: { mc: {}, fill: {} }
       }));
     } else {
-      const mcStart = activeTestIdx * 10;
-      const fillStart = activeTestIdx * 5;
+      const tIdx = activeTestIdx === 'all' ? 0 : activeTestIdx;
+      const mcStart = tIdx * 10;
+      const fillStart = tIdx * 5;
       setAnswers((prev) => {
         const nextMc = { ...(prev[cId]?.mc || {}) };
         const nextFill = { ...(prev[cId]?.fill || {}) };
@@ -489,6 +625,253 @@ export default function App() {
     const m = String(Math.floor(secs / 60)).padStart(2, '0');
     const s = String(secs % 60).padStart(2, '0');
     return `${m}:${s}`;
+  };
+
+  // ============================================================================
+  // UPGRADE TO PRO MODAL (Shown when Free user clicks Test 2..10)
+  // ============================================================================
+  const renderUpgradeModal = () => {
+    if (!showUpgradeModal) return null;
+    return (
+      <div className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="bg-slate-900 border-2 border-amber-500 rounded-2xl max-w-lg w-full p-6 text-white shadow-2xl relative animate-in fade-in zoom-in-95 duration-150">
+          <button
+            onClick={() => setShowUpgradeModal(false)}
+            className="absolute top-4 right-4 text-slate-400 hover:text-white p-1"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-amber-500 text-slate-950 p-3 rounded-xl shadow">
+              <Crown className="w-7 h-7" />
+            </div>
+            <div>
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">
+                PRO Üyelik Paketi
+              </span>
+              <h3 className="text-xl font-black text-white">
+                Test 2 – Test 10 Kilidini Açın
+              </h3>
+            </div>
+          </div>
+
+          <p className="text-sm text-slate-300 leading-relaxed mb-4">
+            Şu anda <strong>Ücretsiz Plan</strong> kullanıyorsunuz. Ücretsiz planda 6 dersin her birinden <strong>Test 1 (toplam 6 sınav • 90 soru)</strong> açıktır.
+          </p>
+
+          <div className="bg-slate-800/90 border border-slate-700 rounded-xl p-4 space-y-2.5 mb-5 text-xs">
+            <div className="font-extrabold text-amber-400 uppercase tracking-wide mb-1">
+              PRO Пaket İle Açılan Özellikler:
+            </div>
+            <div className="flex items-center gap-2 text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>6 Dersin Tamamında <strong>10'ar Deneme Sınavı (Toplam 60 Sınav)</strong></span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span><strong>600 Çoktan Seçmeli + 300 Boşluk Doldurma (900 Soru)</strong> Tam Erişim</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>A'dan E'ye Tüm Şıkların Detaylı Konu & Mevzuat Analizi</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>Bulut Senkronizasyon ve 45 Dk Gerçek Vize Simülasyonu</span>
+            </div>
+          </div>
+
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3.5 mb-5 text-xs text-amber-200">
+            💡 <strong>Nasıl PRO Olurum?</strong> Hesabınızı (<strong>@{currentUser?.username}</strong>) PRO plana yükseltmek için platform yöneticisi (<strong>Oğuzhan Kaya</strong>) ile iletişime geçebilirsiniz. Yönetici onayladığı anda tüm 60 test anında açılır!
+          </div>
+
+          <div className="flex justify-end gap-2.5">
+            <button
+              onClick={() => setShowUpgradeModal(false)}
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs px-5 py-2.5 rounded-xl transition"
+            >
+              Anladım, Test 1'e Devam Et
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // ============================================================================
+  // ADMIN PANEL MODAL (Only visible to Oğuzhan / Admin)
+  // ============================================================================
+  const renderAdminModal = () => {
+    if (!showAdminModal || !isAdmin) return null;
+
+    const filteredUsers = adminUsers.filter(
+      (u) =>
+        u.username.toLowerCase().includes(adminSearch.toLowerCase()) ||
+        (u.fullName || '').toLowerCase().includes(adminSearch.toLowerCase())
+    );
+    const proCount = adminUsers.filter((u) => u.plan === 'pro').length;
+    const freeCount = adminUsers.length - proCount;
+
+    return (
+      <div className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="bg-slate-900 border-2 border-amber-500 rounded-2xl max-w-3xl w-full max-h-[88vh] flex flex-col text-white shadow-2xl overflow-hidden">
+          {/* Modal Header */}
+          <div className="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="bg-amber-500 text-slate-950 p-2.5 rounded-xl">
+                <Crown className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-black text-white">
+                  Yönetici (Admin) Paneli — Üye & Paket Yönetimi
+                </h3>
+                <p className="text-xs text-slate-400">
+                  Kayıtlı öğrencileri tek tıkla <strong>PRO (Ücretli)</strong> veya <strong>Ücretsiz (Free)</strong> plana geçirebilirsin.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setShowAdminModal(false)}
+              className="text-slate-400 hover:text-white p-1.5 rounded-lg bg-slate-800"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Stats & Search */}
+          <div className="p-5 border-b border-slate-800 bg-slate-900/60 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-xs font-extrabold">
+              <span className="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-200">
+                👥 Toplam Üye: {adminUsers.length}
+              </span>
+              <span className="bg-amber-500/20 border border-amber-500/40 px-3 py-1.5 rounded-lg text-amber-300">
+                👑 PRO Üye: {proCount}
+              </span>
+              <span className="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-400">
+                🆓 Ücretsiz Üye: {freeCount}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={adminSearch}
+                onChange={(e) => setAdminSearch(e.target.value)}
+                placeholder="Üye ara (isim veya kullanıcı adı)..."
+                className="bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2 text-xs font-bold text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+              />
+              <button
+                onClick={fetchAdminUsers}
+                disabled={adminLoading}
+                className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 p-2 rounded-xl transition"
+                title="Listeyi Yenile"
+              >
+                <RefreshCw className={`w-4 h-4 ${adminLoading ? 'animate-spin' : ''}`} />
+              </button>
+            </div>
+          </div>
+
+          {/* Users Table */}
+          <div className="p-5 overflow-y-auto flex-1 space-y-2.5">
+            {adminLoading && adminUsers.length === 0 ? (
+              <div className="text-center py-10 text-sm text-slate-400 font-bold">
+                Kullanıcılar yükleniyor...
+              </div>
+            ) : filteredUsers.length === 0 ? (
+              <div className="text-center py-10 text-sm text-slate-400 font-bold">
+                Kayıtlı kullanıcı bulunamadı.
+              </div>
+            ) : (
+              filteredUsers.map((u) => {
+                const isUserAdmin = u.role === 'admin';
+                const isUserPro = u.plan === 'pro' || isUserAdmin;
+                return (
+                  <div
+                    key={u.username}
+                    className="bg-slate-800/80 border border-slate-700 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-sm ${
+                          isUserAdmin
+                            ? 'bg-amber-500 text-slate-950'
+                            : isUserPro
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-slate-700 text-slate-300'
+                        }`}
+                      >
+                        {u.fullName?.[0]?.toUpperCase() || u.username[0].toUpperCase()}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-extrabold text-sm text-white">
+                            {u.fullName}
+                          </span>
+                          <span className="text-xs font-bold text-slate-400">
+                            @{u.username}
+                          </span>
+                          {isUserAdmin && (
+                            <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                              ADMIN
+                            </span>
+                          )}
+                          <span
+                            className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                              isUserPro
+                                ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
+                                : 'bg-slate-700 text-slate-300'
+                            }`}
+                          >
+                            {isUserPro ? '👑 PRO PAKET (60 TEST)' : '🆓 ÜCRETSİZ (TEST 1)'}
+                          </span>
+                        </div>
+                        {u.createdAt && (
+                          <div className="text-[11px] text-slate-500 mt-0.5">
+                            Kayıt: {new Date(u.createdAt).toLocaleDateString('tr-TR')}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {!isUserAdmin && (
+                      <div className="flex items-center gap-2">
+                        {isUserPro ? (
+                          <button
+                            onClick={() => handleAdminSetPlan(u.username, 'free')}
+                            disabled={adminLoading}
+                            className="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-extrabold px-3 py-2 rounded-lg transition"
+                          >
+                            Ücretsize Düşür
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleAdminSetPlan(u.username, 'pro')}
+                            disabled={adminLoading}
+                            className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold px-3.5 py-2 rounded-lg shadow transition flex items-center gap-1.5"
+                          >
+                            <Crown className="w-3.5 h-3.5" />
+                            <span>PRO Yap (Tüm Testleri Aç)</span>
+                          </button>
+                        )}
+                        <button
+                          onClick={() => handleAdminDeleteUser(u.username)}
+                          disabled={adminLoading}
+                          title="Kullanıcıyı Sil"
+                          className="bg-rose-950/80 hover:bg-rose-600 text-rose-300 hover:text-white p-2 rounded-lg border border-rose-800 transition"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </div>
+    );
   };
 
   // Shared Footer Component
@@ -530,7 +913,7 @@ export default function App() {
 
           <div>
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 mb-3">
-              Hızlı Erişim & Modlar
+              Üyelik & Çalışma Modları
             </h4>
             <ul className="space-y-2 text-xs font-semibold">
               <li>
@@ -547,9 +930,11 @@ export default function App() {
               <li>
                 <button
                   onClick={() => {
-                    setMode('study');
-                    if (!currentUser) handleGuestLogin();
-                    else setActivePage('portal');
+                    if (!currentUser) scrollToAuth('signup');
+                    else {
+                      setMode('study');
+                      setActivePage('portal');
+                    }
                   }}
                   className="hover:text-white transition"
                 >
@@ -559,9 +944,11 @@ export default function App() {
               <li>
                 <button
                   onClick={() => {
-                    setMode('exam');
-                    if (!currentUser) handleGuestLogin();
-                    else setActivePage('portal');
+                    if (!currentUser) scrollToAuth('signup');
+                    else {
+                      setMode('exam');
+                      setActivePage('portal');
+                    }
                   }}
                   className="hover:text-white transition"
                 >
@@ -588,6 +975,7 @@ export default function App() {
   if (activePage === 'home' || !currentUser) {
     return (
       <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+        {renderAdminModal()}
         {/* Top Landing Header */}
         <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
@@ -625,17 +1013,29 @@ export default function App() {
               </button>
               <button
                 onClick={() =>
-                  authBoxRef.current?.scrollIntoView({ behavior: 'smooth' })
+                  pricingSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
                 }
                 className="hover:text-amber-400 transition"
               >
-                {currentUser ? 'Sınav Portalı' : 'Giriş / Kayıt'}
+                Paketler (Ücretsiz / PRO)
               </button>
             </nav>
 
             <div className="flex items-center gap-2.5">
               {currentUser ? (
                 <>
+                  {isAdmin && (
+                    <button
+                      onClick={() => {
+                        setShowAdminModal(true);
+                        fetchAdminUsers();
+                      }}
+                      className="bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/40 text-xs font-extrabold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5"
+                    >
+                      <Crown className="w-4 h-4" />
+                      <span>Admin Paneli</span>
+                    </button>
+                  )}
                   <button
                     onClick={() => setActivePage('portal')}
                     className="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
@@ -654,18 +1054,16 @@ export default function App() {
               ) : (
                 <>
                   <button
-                    onClick={() => handleGuestLogin()}
+                    onClick={() => scrollToAuth('login')}
                     className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-xl transition"
                   >
-                    Misafir Girişi
+                    Giriş Yap
                   </button>
                   <button
-                    onClick={() =>
-                      authBoxRef.current?.scrollIntoView({ behavior: 'smooth' })
-                    }
+                    onClick={() => scrollToAuth('signup')}
                     className="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition"
                   >
-                    Giriş Yap / Kayıt Ol
+                    Ücretsiz Kayıt Ol
                   </button>
                 </>
               )}
@@ -718,20 +1116,20 @@ export default function App() {
                 <button
                   onClick={() => {
                     if (currentUser) setActivePage('portal');
-                    else handleGuestLogin();
+                    else scrollToAuth('signup');
                   }}
                   className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2"
                 >
-                  <span>Hemen Test Çözmeye Başla</span>
+                  <span>{currentUser ? 'Sınav Portalına Geç' : 'Ücretsiz Hesap Oluştur & Başla'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() =>
-                    coursesSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+                    pricingSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
                   }
                   className="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm px-5 py-3.5 rounded-xl transition"
                 >
-                  6 Dersi ve Konuları İncele
+                  Paketleri İncele (Ücretsiz / PRO)
                 </button>
               </div>
             </div>
@@ -740,21 +1138,36 @@ export default function App() {
             <div ref={authBoxRef} className="lg:col-span-5 flex justify-center">
               {currentUser ? (
                 <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 space-y-5">
-                  <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4">
-                    <div className="bg-amber-500 text-slate-950 p-3 rounded-xl">
-                      <User className="w-7 h-7" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-amber-400 uppercase">
-                        Aktif Öğrenci Oturumu
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div className="flex items-center gap-3.5">
+                      <div className="bg-amber-500 text-slate-950 p-3 rounded-xl">
+                        <User className="w-7 h-7" />
                       </div>
-                      <h3 className="text-lg font-black text-white">{currentUser.fullName}</h3>
-                      <p className="text-xs text-slate-400">@{currentUser.username}</p>
+                      <div>
+                        <div className="text-xs font-bold text-amber-400 uppercase">
+                          Aktif Öğrenci Oturumu
+                        </div>
+                        <h3 className="text-lg font-black text-white">{currentUser.fullName}</h3>
+                        <p className="text-xs text-slate-400">@{currentUser.username}</p>
+                      </div>
                     </div>
+                    <span
+                      className={`text-xs font-black px-3 py-1 rounded-full uppercase ${
+                        isAdmin
+                          ? 'bg-amber-500 text-slate-950'
+                          : isPro
+                          ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-300'
+                          : 'bg-slate-800 border border-slate-700 text-slate-300'
+                      }`}
+                    >
+                      {isAdmin ? '👑 ADMIN' : isPro ? '👑 PRO ÜYE' : '🆓 ÜCRETSİZ PLAN'}
+                    </span>
                   </div>
 
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    Çözdüğün tüm testler ve puanların hesabına otomatik olarak kaydedilmektedir. Kaldığın yerden devam etmek için aşağıdaki butona tıklayabilirsin.
+                    {isPro
+                      ? 'Tüm 6 ders ve 60 deneme sınavına (900 soru) sınırsız erişiminiz aktiftir. Kaldığınız yerden devam edebilirsiniz.'
+                      : 'Ücretsiz planda her dersten 1. Deneme Sınavı (toplam 6 sınav • 90 soru) açıktır. Tüm 60 sınav için PRO plana geçebilirsiniz.'}
                   </p>
 
                   <button
@@ -810,7 +1223,7 @@ export default function App() {
                       }`}
                     >
                       <UserPlus className="w-4 h-4" />
-                      Kayıt Ol
+                      Ücretsiz Kayıt Ol
                     </button>
                   </div>
 
@@ -824,7 +1237,7 @@ export default function App() {
                           type="text"
                           value={authFullName}
                           onChange={(e) => setAuthFullName(e.target.value)}
-                          placeholder="Örn: Oğuzhan Kaya"
+                          placeholder="Örn: Ahmet Yılmaz"
                           className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
                         />
                       </div>
@@ -882,17 +1295,11 @@ export default function App() {
                         ? 'İşleniyor...'
                         : authTab === 'login'
                         ? 'Hesabıma Giriş Yap'
-                        : 'Hesap Oluştur & Başla'}
+                        : 'Ücretsiz Hesap Oluştur'}
                     </button>
 
-                    <div className="pt-3 border-t border-slate-800 text-center">
-                      <button
-                        type="button"
-                        onClick={() => handleGuestLogin()}
-                        className="text-xs font-bold text-slate-400 hover:text-amber-400 transition"
-                      >
-                        Üye olmadan Misafir Öğrenci olarak devam et →
-                      </button>
+                    <div className="pt-2 text-center text-[11px] text-slate-400">
+                      🎁 Ücretsiz kayıt olarak her dersten <strong>1. Deneme Sınavını (Toplam 6 Test • 90 Soru)</strong> hemen çözebilirsiniz.
                     </div>
                   </form>
                 </div>
@@ -901,8 +1308,132 @@ export default function App() {
           </div>
         </section>
 
+        {/* Pricing / Plans Section */}
+        <section ref={pricingSectionRef} className="py-14 bg-slate-900/60 border-b border-slate-800/80">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-amber-400">
+                Üyelik Paketleri
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
+                Ücretsiz Başlayın, PRO ile Tüm 60 Sınavı Açın
+              </h3>
+              <p className="text-sm text-slate-400 mt-2">
+                Kayıt olan her öğrenci ücretsiz planla her dersten 1'er deneme testi çözebilir.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* FREE PLAN */}
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+                      Başlangıç Paketi
+                    </span>
+                    <span className="bg-slate-800 text-slate-300 text-xs font-extrabold px-3 py-1 rounded-full">
+                      Her Ders 1 Test
+                    </span>
+                  </div>
+                  <h4 className="text-2xl font-black text-white mt-2">Ücretsiz Plan</h4>
+                  <div className="text-3xl font-black text-amber-400 mt-2">
+                    0 ₺ <span className="text-xs font-bold text-slate-400">/ Kayıtla Anında Açık</span>
+                  </div>
+
+                  <ul className="mt-6 space-y-3 text-xs font-semibold text-slate-300">
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>6 Dersin Her Birinden <strong>Test 1 (Toplam 6 Sınav • 90 Soru)</strong></span>
+                    </li>
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>A-E Tüm Şıkların Detaylı Çözüm Analizi</span>
+                    </li>
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>Çalışma Modu ve 45 Dk Sınav Modu</span>
+                    </li>
+                    <li className="flex items-center gap-2.5 text-slate-500">
+                      <Lock className="w-4 h-4 text-slate-600 shrink-0" />
+                      <span>Test 2 – Test 10 (54 Deneme Sınavı • 810 Soru Kilitli)</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <button
+                  onClick={() => {
+                    if (currentUser) setActivePage('portal');
+                    else scrollToAuth('signup');
+                  }}
+                  className="mt-8 w-full bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-xs py-3.5 rounded-xl border border-slate-700 transition"
+                >
+                  {currentUser ? 'Ücretsiz Testlere Git' : 'Ücretsiz Hesap Oluştur'}
+                </button>
+              </div>
+
+              {/* PRO PLAN */}
+              <div className="bg-slate-900 border-2 border-amber-500 rounded-2xl p-6 flex flex-col justify-between relative shadow-2xl">
+                <div className="absolute -top-3 right-6 bg-amber-500 text-slate-950 text-[11px] font-black uppercase px-3 py-1 rounded-full shadow">
+                  👑 TAM ERİŞİM PAKETİ
+                </div>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-amber-400">
+                      Sınırsız Hazırlık Paketi
+                    </span>
+                    <span className="bg-amber-500/20 text-amber-300 text-xs font-extrabold px-3 py-1 rounded-full">
+                      Her Ders 10 Test
+                    </span>
+                  </div>
+                  <h4 className="text-2xl font-black text-white mt-2">PRO Üyelik Planı</h4>
+                  <div className="text-3xl font-black text-emerald-400 mt-2">
+                    Tam Paket <span className="text-xs font-bold text-slate-400">/ Dönem Boyu Sınırsız</span>
+                  </div>
+
+                  <ul className="mt-6 space-y-3 text-xs font-semibold text-slate-200">
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span>6 Dersin Tamamında <strong>10'ar Test (Toplam 60 Sınav • 900 Soru)</strong></span>
+                    </li>
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span><strong>600 Çoktan Seçmeli + 300 Boşluk Doldurma</strong> Sorusunun Tamamı</span>
+                    </li>
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span>150 Soruluk "Tüm 10 Testi Birlikte Çöz" Maraton Modu</span>
+                    </li>
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span>Bulut Senkronizasyon ile Tüm Cihazlardan Erişim</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <button
+                  onClick={() => {
+                    if (currentUser) {
+                      if (isPro) setActivePage('portal');
+                      else {
+                        setActivePage('portal');
+                        setShowUpgradeModal(true);
+                      }
+                    } else {
+                      scrollToAuth('signup');
+                    }
+                  }}
+                  className="mt-8 w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                >
+                  <Crown className="w-4 h-4" />
+                  <span>{isPro ? 'PRO Hesabınız Aktif — Sınavlara Git' : 'PRO Üyelik İçin Kayıt Ol / İletişime Geç'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
-        <section className="py-14 bg-slate-900/50 border-b border-slate-800/80">
+        <section className="py-14 border-b border-slate-800/80">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <h3 className="text-2xl sm:text-3xl font-black text-white">
@@ -978,7 +1509,7 @@ export default function App() {
                 </h3>
               </div>
               <p className="text-xs text-slate-400">
-                İstediğin dersin kartına tıklayarak doğrudan o dersin 1. deneme sınavına başlayabilirsin.
+                Ücretsiz üyelikle her dersin 1. testini, PRO üyelikle tamamını çözebilirsiniz.
               </p>
             </div>
 
@@ -1006,14 +1537,18 @@ export default function App() {
                       <div className="text-[11px] font-extrabold uppercase text-slate-300">
                         Öne Çıkan Sınav Konuları:
                       </div>
-                      {(c.tests || []).slice(0, 3).map((t) => (
+                      {(c.tests || []).slice(0, 3).map((t, i) => (
                         <div
                           key={t.testId}
                           className="text-xs text-slate-400 flex items-center gap-1.5 truncate"
                         >
-                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          {i === 0 ? (
+                            <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          ) : (
+                            <Crown className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                          )}
                           <span className="truncate">
-                            Test {t.testId}: {t.theme}
+                            Test {t.testId}: {t.theme} {i === 0 ? '(Ücretsiz)' : '(PRO)'}
                           </span>
                         </div>
                       ))}
@@ -1027,7 +1562,7 @@ export default function App() {
                     onClick={() => handleOpenCourseFromHome(c.id)}
                     className="mt-6 w-full bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-950 font-extrabold text-xs py-3 rounded-xl border border-slate-700 hover:border-amber-500 transition flex items-center justify-center gap-2"
                   >
-                    <span>Bu Dersin Testlerine Başla</span>
+                    <span>{currentUser ? 'Bu Dersin Testlerine Başla' : 'Ücretsiz Kayıt Ol & Test 1\'i Çöz'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -1054,30 +1589,31 @@ export default function App() {
     );
   }
 
-  const activeStats = getStats(activeCourse, activeTestIdx);
+  const effectiveTestIdx = isPro ? activeTestIdx : 0;
+  const activeStats = getStats(activeCourse, effectiveTestIdx);
   const overallCourseStats = getStats(activeCourse, 'all');
   const pointsPerQuestion = +(100 / activeStats.total).toFixed(1);
   const totalAllCoursesMC = courses.reduce((acc, c) => acc + c.mcQuestions.length, 0);
   const totalAllCoursesFill = courses.reduce((acc, c) => acc + c.fillQuestions.length, 0);
 
   // Slice MC and Fill questions according to selected Test (0..9) or 'all'
-  const mcStartIdx = activeTestIdx === 'all' ? 0 : activeTestIdx * 10;
+  const mcStartIdx = effectiveTestIdx === 'all' ? 0 : effectiveTestIdx * 10;
   const mcEndIdx =
-    activeTestIdx === 'all'
+    effectiveTestIdx === 'all'
       ? activeCourse.mcQuestions.length
-      : Math.min((activeTestIdx + 1) * 10, activeCourse.mcQuestions.length);
+      : Math.min((effectiveTestIdx + 1) * 10, activeCourse.mcQuestions.length);
 
-  const fillStartIdx = activeTestIdx === 'all' ? 0 : activeTestIdx * 5;
+  const fillStartIdx = effectiveTestIdx === 'all' ? 0 : effectiveTestIdx * 5;
   const fillEndIdx =
-    activeTestIdx === 'all'
+    effectiveTestIdx === 'all'
       ? activeCourse.fillQuestions.length
-      : Math.min((activeTestIdx + 1) * 5, activeCourse.fillQuestions.length);
+      : Math.min((effectiveTestIdx + 1) * 5, activeCourse.fillQuestions.length);
 
   const visibleMC = activeCourse.mcQuestions.slice(mcStartIdx, mcEndIdx);
   const visibleFill = activeCourse.fillQuestions.slice(fillStartIdx, fillEndIdx);
 
   const activeTestMeta =
-    activeTestIdx !== 'all' && activeCourse.tests ? activeCourse.tests[activeTestIdx] : null;
+    effectiveTestIdx !== 'all' && activeCourse.tests ? activeCourse.tests[effectiveTestIdx] : null;
   const currentWordBank = activeTestMeta?.wordBank || activeCourse.wordBank || [];
 
   // Build unified step list for Paged ("Sayfa Sayfa") mode
@@ -1131,8 +1667,12 @@ export default function App() {
     if (safeStep < pagedItems.length - 1) {
       setCurrentStep(safeStep + 1);
       scrollToQuestionStart();
-    } else if (activeTestIdx !== 'all' && activeTestIdx < 9) {
-      setActiveTestIdx(activeTestIdx + 1);
+    } else if (effectiveTestIdx !== 'all' && effectiveTestIdx < 9) {
+      if (!isPro) {
+        setShowUpgradeModal(true);
+        return;
+      }
+      setActiveTestIdx(effectiveTestIdx + 1);
       setCurrentStep(0);
       scrollToQuestionStart();
     }
@@ -1168,7 +1708,7 @@ export default function App() {
             <span className="bg-amber-100 text-amber-900 text-[11px] font-extrabold px-2 py-0.5 rounded">
               Çoktan Seçmeli
             </span>
-            {activeTestIdx === 'all' && (
+            {effectiveTestIdx === 'all' && (
               <span className="text-xs font-bold text-slate-500">(Genel #{qIdx + 1})</span>
             )}
           </div>
@@ -1284,8 +1824,10 @@ export default function App() {
               <span>
                 {safeStep < pagedItems.length - 1
                   ? `Sonraki Soru (Soru ${safeStep + 2}/${pagedItems.length})`
-                  : activeTestIdx !== 'all' && activeTestIdx < 9
-                  ? `Sonraki Teste Geç (Test ${activeTestIdx + 2})`
+                  : effectiveTestIdx !== 'all' && effectiveTestIdx < 9
+                  ? isPro
+                    ? `Sonraki Teste Geç (Test ${effectiveTestIdx + 2})`
+                    : `🔒 Test 2'yi Aç (PRO Paket)`
                   : 'Test Tamamlandı'}
               </span>
               <ChevronRight className="w-4 h-4" />
@@ -1405,7 +1947,7 @@ export default function App() {
             <span className="bg-blue-100 text-blue-900 text-[11px] font-extrabold px-2 py-0.5 rounded">
               Boşluk Doldurma
             </span>
-            {activeTestIdx === 'all' && (
+            {effectiveTestIdx === 'all' && (
               <span className="text-xs font-bold text-slate-500">(Genel #{qIdx + 1})</span>
             )}
           </div>
@@ -1505,8 +2047,10 @@ export default function App() {
               <span>
                 {safeStep < pagedItems.length - 1
                   ? `Sonraki Soru (Soru ${safeStep + 2}/${pagedItems.length})`
-                  : activeTestIdx !== 'all' && activeTestIdx < 9
-                  ? `Sonraki Teste Geç (Test ${activeTestIdx + 2})`
+                  : effectiveTestIdx !== 'all' && effectiveTestIdx < 9
+                  ? isPro
+                    ? `Sonraki Teste Geç (Test ${effectiveTestIdx + 2})`
+                    : `🔒 Test 2'yi Aç (PRO Paket)`
                   : 'Test Tamamlandı'}
               </span>
               <ChevronRight className="w-4 h-4" />
@@ -1519,6 +2063,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col justify-between">
+      {renderUpgradeModal()}
+      {renderAdminModal()}
+
       <div>
         {/* Top Navbar */}
         <header className="sticky top-0 z-50 bg-slate-900 text-white border-b-4 border-amber-500 shadow-lg">
@@ -1545,7 +2092,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-wrap items-center gap-2">
               {/* Anasayfa Button */}
               <button
                 onClick={() => {
@@ -1558,31 +2105,36 @@ export default function App() {
                 <span>Anasayfa</span>
               </button>
 
-              {/* Cloud DB Status Badge */}
-              <div
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold ${
-                  cloudStatus === 'synced'
-                    ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300'
-                    : cloudStatus === 'saving'
-                    ? 'bg-amber-950/80 border-amber-500 text-amber-300'
-                    : 'bg-slate-800 border-slate-700 text-slate-300'
-                }`}
-              >
-                <span
-                  className={`w-2 h-2 rounded-full ${
-                    cloudStatus === 'synced'
-                      ? 'bg-emerald-400'
-                      : cloudStatus === 'saving'
-                      ? 'bg-amber-400 animate-pulse'
-                      : 'bg-slate-400'
+              {/* Admin Panel Button (Only for Oğuzhan / Admin) */}
+              {isAdmin && (
+                <button
+                  onClick={() => {
+                    setShowAdminModal(true);
+                    fetchAdminUsers();
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow transition"
+                >
+                  <Crown className="w-3.5 h-3.5" />
+                  <span>Admin Paneli</span>
+                </button>
+              )}
+
+              {/* Plan Badge for Non-Admin Users */}
+              {!isAdmin && (
+                <button
+                  onClick={() => {
+                    if (!isPro) setShowUpgradeModal(true);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-extrabold transition ${
+                    isPro
+                      ? 'bg-emerald-950/80 border-emerald-500 text-emerald-300'
+                      : 'bg-amber-500/20 hover:bg-amber-500/30 border-amber-500 text-amber-300'
                   }`}
-                />
-                {cloudStatus === 'synced'
-                  ? '☁️ Bulut Senkronize'
-                  : cloudStatus === 'saving'
-                  ? '⏳ Kaydediliyor...'
-                  : '💾 Yerel Hafıza'}
-              </div>
+                >
+                  <Crown className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{isPro ? 'PRO Üye (60 Test Açık)' : 'Ücretsiz Plan • PRO\'ya Geç'}</span>
+                </button>
+              )}
 
               {/* Mode Switcher */}
               <div className="inline-flex rounded-lg bg-slate-800 p-1 border border-slate-700">
@@ -1659,6 +2211,11 @@ export default function App() {
                 <span className="text-xs font-bold text-slate-200">
                   {currentUser.fullName}
                 </span>
+                {isAdmin && (
+                  <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-1.5 py-0.5 rounded">
+                    ADMIN
+                  </span>
+                )}
                 <button
                   onClick={handleLogout}
                   title="Çıkış Yap"
@@ -1675,7 +2232,7 @@ export default function App() {
           {/* 6 Course Selector Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-6">
             {courses.map((course) => {
-              const st = getStats(course, 'all');
+              const st = getStats(course, isPro ? 'all' : 0);
               const isSelected = course.id === activeCourse.id;
               return (
                 <button
@@ -1708,7 +2265,7 @@ export default function App() {
 
                   <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
                     <span className="text-slate-500">
-                      10 Test • {st.answered}/{st.total}
+                      {isPro ? '10 Test' : 'Test 1'} • {st.answered}/{st.total}
                     </span>
                     <span
                       className={
@@ -1757,7 +2314,7 @@ export default function App() {
             {/* Score Box */}
             <div className="lg:w-72 bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col items-center justify-center text-center shrink-0">
               <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1">
-                {activeTestIdx === 'all' ? 'Tüm 10 Test Genel Puanı' : `Test ${activeTestIdx + 1} Puanı`}
+                {effectiveTestIdx === 'all' ? 'Tüm 10 Test Genel Puanı' : `Test ${effectiveTestIdx + 1} Puanı`}
               </div>
               <Award
                 className={`w-7 h-7 mb-1 ${
@@ -1804,7 +2361,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* 10-TEST SELECTOR BAR (Test 1 .. Test 10 + Tüm 10 Test) */}
+          {/* 10-TEST SELECTOR BAR (Test 1 Free, Test 2..10 PRO unless user isPro) */}
           {activeCourse.tests && activeCourse.tests.length > 0 && (
             <div className="bg-white rounded-xl border border-slate-200 p-4 mb-5 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -1816,35 +2373,47 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => {
+                    if (!isPro) {
+                      setShowUpgradeModal(true);
+                      return;
+                    }
                     setActiveTestIdx('all');
                     setExamSubmitted(false);
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition border ${
-                    activeTestIdx === 'all'
+                  className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition border flex items-center gap-1.5 ${
+                    effectiveTestIdx === 'all'
                       ? 'bg-amber-500 text-slate-950 border-amber-600 shadow'
                       : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
                   }`}
                 >
-                  📚 Tüm 10 Testi Birlikte Seç (150 Soru)
+                  {!isPro && <Lock className="w-3.5 h-3.5 text-amber-600" />}
+                  <span>📚 Tüm 10 Testi Birlikte Seç (150 Soru)</span>
                 </button>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
                 {activeCourse.tests.map((t, idx) => {
+                  const isLocked = !isPro && idx >= 1;
                   const tStat = getStats(activeCourse, idx);
-                  const isSelected = activeTestIdx === idx;
-                  const isDone = tStat.answered === tStat.total && tStat.total > 0;
+                  const isSelected = effectiveTestIdx === idx;
+                  const isDone = !isLocked && tStat.answered === tStat.total && tStat.total > 0;
                   return (
                     <button
                       key={t.testId}
                       onClick={() => {
+                        if (isLocked) {
+                          setShowUpgradeModal(true);
+                          return;
+                        }
                         setActiveTestIdx(idx);
                         setExamSubmitted(false);
                       }}
-                      title={t.title}
+                      title={isLocked ? `${t.title} (PRO Üyelik Gerektirir)` : t.title}
                       className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
                         isSelected
                           ? 'bg-slate-900 text-white border-slate-900 shadow-md -translate-y-0.5'
+                          : isLocked
+                          ? 'bg-slate-100/80 border-slate-200 text-slate-500 hover:border-amber-400'
                           : isDone
                           ? 'bg-emerald-50/70 border-emerald-300 text-slate-900 hover:border-emerald-500'
                           : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-white hover:border-slate-400'
@@ -1854,26 +2423,36 @@ export default function App() {
                         <div className="flex items-center justify-between gap-1">
                           <span
                             className={`text-xs font-black ${
-                              isSelected ? 'text-amber-400' : 'text-slate-900'
+                              isSelected
+                                ? 'text-amber-400'
+                                : isLocked
+                                ? 'text-slate-600'
+                                : 'text-slate-900'
                             }`}
                           >
                             {t.shortTitle}
                           </span>
-                          <span
-                            className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
-                              isSelected
-                                ? 'bg-slate-800 text-slate-200'
-                                : isDone
-                                ? 'bg-emerald-600 text-white'
-                                : 'bg-slate-200 text-slate-700'
-                            }`}
-                          >
-                            {tStat.answered}/{tStat.total}
-                          </span>
+                          {isLocked ? (
+                            <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 flex items-center gap-0.5">
+                              <Lock className="w-2.5 h-2.5" /> PRO
+                            </span>
+                          ) : (
+                            <span
+                              className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                                isSelected
+                                  ? 'bg-slate-800 text-slate-200'
+                                  : isDone
+                                  ? 'bg-emerald-600 text-white'
+                                  : 'bg-slate-200 text-slate-700'
+                              }`}
+                            >
+                              {tStat.answered}/{tStat.total}
+                            </span>
+                          )}
                         </div>
                         <div
                           className={`text-[11px] font-medium mt-1 line-clamp-2 leading-tight ${
-                            isSelected ? 'text-slate-300' : 'text-slate-600'
+                            isSelected ? 'text-slate-300' : 'text-slate-500'
                           }`}
                         >
                           {t.theme}
@@ -1882,21 +2461,29 @@ export default function App() {
 
                       <div
                         className={`mt-2 pt-1.5 border-t text-[10px] font-extrabold flex items-center justify-between ${
-                          isSelected ? 'border-slate-700 text-amber-300' : 'border-slate-200 text-slate-500'
+                          isSelected
+                            ? 'border-slate-700 text-amber-300'
+                            : 'border-slate-200 text-slate-500'
                         }`}
                       >
-                        <span>Puan:</span>
-                        <span
-                          className={
-                            tStat.score >= 70
-                              ? isSelected
-                                ? 'text-emerald-400'
-                                : 'text-emerald-700'
-                              : ''
-                          }
-                        >
-                          {tStat.score}/100
-                        </span>
+                        {isLocked ? (
+                          <span className="text-amber-700 font-bold">🔒 PRO Paket</span>
+                        ) : (
+                          <>
+                            <span>Puan:</span>
+                            <span
+                              className={
+                                tStat.score >= 70
+                                  ? isSelected
+                                    ? 'text-emerald-400'
+                                    : 'text-emerald-700'
+                                  : ''
+                              }
+                            >
+                              {tStat.score}/100
+                            </span>
+                          </>
+                        )}
                       </div>
                     </button>
                   );
@@ -1993,14 +2580,14 @@ export default function App() {
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
               >
                 <Eye className="w-3.5 h-3.5 text-blue-600" />
-                {activeTestIdx === 'all' ? 'Tüm 150 Cevabı Göster' : `Test ${activeTestIdx + 1} Cevaplarını Göster`}
+                {effectiveTestIdx === 'all' ? 'Tüm 150 Cevabı Göster' : `Test ${effectiveTestIdx + 1} Cevaplarını Göster`}
               </button>
               <button
                 onClick={handleResetCurrentView}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                {activeTestIdx === 'all' ? 'Tüm Dersi Sıfırla' : `Test ${activeTestIdx + 1}'i Sıfırla`}
+                {effectiveTestIdx === 'all' ? 'Tüm Dersi Sıfırla' : `Test ${effectiveTestIdx + 1}'i Sıfırla`}
               </button>
             </div>
           </div>
@@ -2111,15 +2698,17 @@ export default function App() {
                   onClick={goNextStep}
                   disabled={
                     safeStep === pagedItems.length - 1 &&
-                    (activeTestIdx === 'all' || activeTestIdx >= 9)
+                    (effectiveTestIdx === 'all' || effectiveTestIdx >= 9)
                   }
                   className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-white text-xs sm:text-sm font-extrabold shadow transition"
                 >
                   <span>
                     {safeStep < pagedItems.length - 1
                       ? 'Sonraki Soru'
-                      : activeTestIdx !== 'all' && activeTestIdx < 9
-                      ? `Test ${activeTestIdx + 2}'ye Geç`
+                      : effectiveTestIdx !== 'all' && effectiveTestIdx < 9
+                      ? isPro
+                        ? `Test ${effectiveTestIdx + 2}'ye Geç`
+                        : `🔒 Test 2 (PRO)`
                       : 'Son Soru'}
                   </span>
                   <ChevronRight className="w-4 h-4" />
@@ -2166,7 +2755,7 @@ export default function App() {
                   {showWordBank && currentWordBank.length > 0 && (
                     <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
                       <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
-                        🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
+                        🔑 {effectiveTestIdx === 'all' ? 'Bu Dersin' : `Test ${effectiveTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {currentWordBank.map((word, idx) => (
