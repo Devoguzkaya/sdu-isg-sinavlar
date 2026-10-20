@@ -21,7 +21,11 @@ import {
   UserPlus,
   LogIn,
   ShieldCheck,
-  Layers
+  Layers,
+  ChevronLeft,
+  ChevronRight,
+  LayoutList,
+  FileText
 } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
@@ -57,6 +61,8 @@ export default function App() {
 
   const [activeCourseId, setActiveCourseId] = useState('elektrik');
   const [activeTestIdx, setActiveTestIdx] = useState(0); // 0..9 for Test 1..10, or 'all'
+  const [currentStep, setCurrentStep] = useState(0); // Current question index inside paged view
+  const [viewMode, setViewMode] = useState('paged'); // 'paged' (Sayfa Sayfa) | 'list' (Tüm Liste)
   const [mode, setMode] = useState('study'); // 'study' | 'exam'
   const [filter, setFilter] = useState('all'); // 'all' | 'mc' | 'fill'
   const [showWordBank, setShowWordBank] = useState(true);
@@ -86,6 +92,11 @@ export default function App() {
       })
       .catch(() => setCoursesLoading(false));
   }, []);
+
+  // Reset question step to 0 when course, test, or filter changes
+  useEffect(() => {
+    setCurrentStep(0);
+  }, [activeCourseId, activeTestIdx, filter]);
 
   // Helper to batch-evaluate existing answers on the backend
   const evaluateAllOnBackend = async (userAns, revealCourseId = null, revealTestIdx = undefined) => {
@@ -259,11 +270,17 @@ export default function App() {
     let answered = 0;
 
     const mcStart = testIdx === 'all' ? 0 : testIdx * 10;
-    const mcEnd = testIdx === 'all' ? course.mcQuestions.length : Math.min((testIdx + 1) * 10, course.mcQuestions.length);
+    const mcEnd =
+      testIdx === 'all'
+        ? course.mcQuestions.length
+        : Math.min((testIdx + 1) * 10, course.mcQuestions.length);
     const fillStart = testIdx === 'all' ? 0 : testIdx * 5;
-    const fillEnd = testIdx === 'all' ? course.fillQuestions.length : Math.min((testIdx + 1) * 5, course.fillQuestions.length);
+    const fillEnd =
+      testIdx === 'all'
+        ? course.fillQuestions.length
+        : Math.min((testIdx + 1) * 5, course.fillQuestions.length);
 
-    const total = (mcEnd - mcStart) + (fillEnd - fillStart);
+    const total = mcEnd - mcStart + (fillEnd - fillStart);
 
     for (let idx = mcStart; idx < mcEnd; idx++) {
       if (st.mc?.[idx] !== undefined) {
@@ -428,6 +445,7 @@ export default function App() {
         return { ...prev, [cId]: { mc: nextMc, fill: nextFill } };
       });
     }
+    setCurrentStep(0);
     setExamSubmitted(false);
   };
 
@@ -615,6 +633,435 @@ export default function App() {
   const activeTestMeta =
     activeTestIdx !== 'all' && activeCourse.tests ? activeCourse.tests[activeTestIdx] : null;
   const currentWordBank = activeTestMeta?.wordBank || activeCourse.wordBank || [];
+
+  // Build unified step list for Paged ("Sayfa Sayfa") mode
+  const pagedItems = [];
+  if (filter === 'all' || filter === 'mc') {
+    visibleMC.forEach((q, localIdx) => {
+      const qIdx = mcStartIdx + localIdx;
+      pagedItems.push({
+        type: 'mc',
+        q,
+        qIdx,
+        localIdx,
+        testNumber: Math.floor(qIdx / 10) + 1,
+        questionInTest: (qIdx % 10) + 1
+      });
+    });
+  }
+  if (filter === 'all' || filter === 'fill') {
+    visibleFill.forEach((q, localIdx) => {
+      const qIdx = fillStartIdx + localIdx;
+      pagedItems.push({
+        type: 'fill',
+        q,
+        qIdx,
+        localIdx,
+        testNumber: Math.floor(qIdx / 5) + 1,
+        questionInTest: (qIdx % 5) + 1
+      });
+    });
+  }
+
+  const safeStep = Math.min(currentStep, Math.max(0, pagedItems.length - 1));
+  const currentPagedItem = pagedItems[safeStep];
+
+  const goPrevStep = () => {
+    if (safeStep > 0) {
+      setCurrentStep(safeStep - 1);
+      window.scrollTo({ top: 260, behavior: 'smooth' });
+    }
+  };
+
+  const goNextStep = () => {
+    if (safeStep < pagedItems.length - 1) {
+      setCurrentStep(safeStep + 1);
+      window.scrollTo({ top: 260, behavior: 'smooth' });
+    } else if (activeTestIdx !== 'all' && activeTestIdx < 9) {
+      setActiveTestIdx(activeTestIdx + 1);
+      setCurrentStep(0);
+      window.scrollTo({ top: 220, behavior: 'smooth' });
+    }
+  };
+
+  // Helper to render a single MC question card (used in both Paged and List modes)
+  const renderMCCard = (q, qIdx, showNextPrompt = false) => {
+    const testNumber = Math.floor(qIdx / 10) + 1;
+    const questionInTest = (qIdx % 10) + 1;
+
+    const userChoice = courseState.mc?.[qIdx];
+    const hasAnswered = userChoice !== undefined;
+    const qFb = courseFeedback.mc?.[qIdx];
+    const isCorrect = qFb?.correct;
+
+    let borderClass = 'border-slate-200';
+    if (hasAnswered && showFeedback && qFb) {
+      borderClass = isCorrect
+        ? 'border-emerald-500 ring-1 ring-emerald-500'
+        : 'border-rose-500 ring-1 ring-rose-500';
+    }
+
+    return (
+      <div
+        key={`mc-${qIdx}`}
+        className={`bg-white rounded-xl border ${borderClass} p-5 sm:p-6 shadow-sm transition`}
+      >
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
+              TEST {testNumber} • SORU {questionInTest}
+            </span>
+            <span className="bg-amber-100 text-amber-900 text-[11px] font-extrabold px-2 py-0.5 rounded">
+              Çoktan Seçmeli
+            </span>
+            {activeTestIdx === 'all' && (
+              <span className="text-xs font-bold text-slate-500">(Genel #{qIdx + 1})</span>
+            )}
+          </div>
+          <span className="text-xs font-bold text-slate-400">{pointsPerQuestion} Puan</span>
+        </div>
+
+        <p className="text-base sm:text-lg font-bold text-slate-900 mb-5 leading-relaxed">
+          {q.q}
+        </p>
+
+        <div className="space-y-2.5">
+          {q.options.map((opt, oIdx) => {
+            const isSelected = userChoice === oIdx;
+            const isRightAnswer = qFb && qFb.answer === oIdx;
+            const optExp = qFb?.optionExplanations?.[oIdx];
+
+            let btnStyle =
+              'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100 hover:border-slate-300';
+            let badgeStyle = 'bg-white border-slate-300 text-slate-700';
+
+            if (hasAnswered) {
+              if (showFeedback && qFb) {
+                if (isRightAnswer) {
+                  btnStyle =
+                    'bg-emerald-50/90 border-emerald-500 text-emerald-950 font-bold shadow-sm';
+                  badgeStyle = 'bg-emerald-600 border-emerald-600 text-white';
+                } else if (isSelected) {
+                  btnStyle =
+                    'bg-rose-50/90 border-rose-500 text-rose-950 font-semibold shadow-sm';
+                  badgeStyle = 'bg-rose-600 border-rose-600 text-white';
+                } else {
+                  btnStyle = 'bg-slate-50/70 border-slate-200 text-slate-700';
+                }
+              } else if (isSelected) {
+                btnStyle = 'bg-blue-50 border-blue-600 text-blue-950 font-bold';
+                badgeStyle = 'bg-blue-600 border-blue-600 text-white';
+              }
+            }
+
+            return (
+              <button
+                key={oIdx}
+                onClick={() => handleSelectMC(qIdx, oIdx)}
+                className={`w-full text-left p-3.5 rounded-lg border flex items-start gap-3 text-sm transition ${btnStyle}`}
+              >
+                <span
+                  className={`w-7 h-7 rounded-md border flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5 ${badgeStyle}`}
+                >
+                  {LETTERS[oIdx]}
+                </span>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <span>{opt}</span>
+                    {hasAnswered && showFeedback && qFb && isRightAnswer && (
+                      <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shrink-0">
+                        ✓ Doğru Şık
+                      </span>
+                    )}
+                    {hasAnswered && showFeedback && qFb && isSelected && !isRightAnswer && (
+                      <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-rose-600 text-white shrink-0">
+                        ✗ Senin Seçimin
+                      </span>
+                    )}
+                  </div>
+
+                  {hasAnswered && showFeedback && optExp && (
+                    <div
+                      className={`mt-2 pt-2 border-t text-xs font-normal leading-relaxed ${
+                        isRightAnswer
+                          ? 'border-emerald-200 text-emerald-900'
+                          : isSelected
+                          ? 'border-rose-200 text-rose-900'
+                          : 'border-slate-200 text-slate-600'
+                      }`}
+                    >
+                      <span className="font-bold">
+                        {isRightAnswer ? 'Neden Doğru? ' : `${LETTERS[oIdx]} Şıkkı Nedir? `}
+                      </span>
+                      {optExp}
+                    </div>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Immediate "Sonraki Soru" action bar right after selecting an answer in Paged mode */}
+        {showNextPrompt && hasAnswered && (
+          <div className="mt-5 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+            <span className="text-xs font-bold text-slate-600">
+              {showFeedback && qFb ? (
+                isCorrect ? (
+                  <span className="text-emerald-700 font-extrabold">
+                    ✅ Harika! Cevabın doğru, sıradaki soruya geçebilirsin.
+                  </span>
+                ) : (
+                  <span className="text-rose-700 font-extrabold">
+                    💡 Açıklamayı incelediysen sıradaki soruya geçebilirsin.
+                  </span>
+                )
+              ) : (
+                <span className="text-blue-700 font-extrabold">
+                  ✓ Seçimin kaydedildi ({LETTERS[userChoice]}).
+                </span>
+              )}
+            </span>
+
+            <button
+              onClick={goNextStep}
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition flex items-center gap-2 ml-auto"
+            >
+              <span>
+                {safeStep < pagedItems.length - 1
+                  ? `Sonraki Soru (Soru ${safeStep + 2}/${pagedItems.length})`
+                  : activeTestIdx !== 'all' && activeTestIdx < 9
+                  ? `Sonraki Teste Geç (Test ${activeTestIdx + 2})`
+                  : 'Test Tamamlandı'}
+              </span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        {hasAnswered && showFeedback && qFb && (
+          <div
+            className={`mt-4 p-4 rounded-xl border-l-4 text-sm ${
+              isCorrect
+                ? 'bg-emerald-50/80 border-emerald-600 text-emerald-950'
+                : 'bg-rose-50/80 border-rose-600 text-rose-950'
+            }`}
+          >
+            <div className="flex items-start gap-2.5">
+              {isCorrect ? (
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              ) : (
+                <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+              )}
+              <div>
+                <span className="font-extrabold">
+                  {isCorrect
+                    ? 'Doğru Cevap!'
+                    : `Yanlış! Doğru Seçenek: ${LETTERS[qFb.answer]} (${q.options[qFb.answer]})`}
+                </span>{' '}
+                — {qFb.explanation}
+              </div>
+            </div>
+
+            {qFb.optionExplanations && qFb.optionExplanations.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-slate-200/80">
+                <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-slate-700 mb-2">
+                  <ListChecks className="w-4 h-4 text-slate-600" />
+                  Tüm Şıkların Detaylı Açıklaması (A - E Özeti)
+                </div>
+                <div className="grid grid-cols-1 gap-1.5">
+                  {q.options.map((optText, idx) => {
+                    const isRight = idx === qFb.answer;
+                    const isUser = idx === userChoice;
+                    return (
+                      <div
+                        key={idx}
+                        className={`text-xs px-3 py-2 rounded-lg border flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 ${
+                          isRight
+                            ? 'bg-emerald-100/80 border-emerald-400 text-emerald-950 font-semibold'
+                            : isUser
+                            ? 'bg-rose-100/70 border-rose-300 text-rose-950'
+                            : 'bg-white/90 border-slate-200 text-slate-700'
+                        }`}
+                      >
+                        <span className="font-extrabold shrink-0">
+                          {LETTERS[idx]}) {optText}:
+                        </span>
+                        <span className="font-normal">{qFb.optionExplanations[idx]}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Helper to render a single Fill-in-the-blank card (used in both Paged and List modes)
+  const renderFillCard = (q, qIdx, showNextPrompt = false) => {
+    const testNumber = Math.floor(qIdx / 5) + 1;
+    const fillInTest = (qIdx % 5) + 1;
+
+    const fState = courseState.fill?.[qIdx] || {
+      val: '',
+      checked: false
+    };
+    const fFb = courseFeedback.fill?.[qIdx];
+
+    let borderClass = 'border-slate-200';
+    if (fState.checked && showFeedback && fFb) {
+      borderClass = fFb.ok
+        ? 'border-emerald-500 ring-1 ring-emerald-500'
+        : 'border-rose-500 ring-1 ring-rose-500';
+    }
+
+    return (
+      <div
+        key={`fill-${qIdx}`}
+        className={`bg-white rounded-xl border ${borderClass} p-5 sm:p-6 shadow-sm transition`}
+      >
+        {showWordBank && currentWordBank.length > 0 && showNextPrompt && (
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-3.5 mb-4">
+            <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
+              🔑 Bu Testin Kelime Havuzu (Kelimeye Tıklayarak Direkt Kutuya Yazdırabilirsin)
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {currentWordBank.map((word, idx) => (
+                <button
+                  type="button"
+                  key={idx}
+                  onClick={() => handleFillChange(qIdx, word)}
+                  className="bg-white hover:bg-blue-600 hover:text-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm transition"
+                >
+                  {word}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
+              TEST {testNumber} • BOŞLUK DOLDURMA {fillInTest}
+            </span>
+            <span className="bg-blue-100 text-blue-900 text-[11px] font-extrabold px-2 py-0.5 rounded">
+              Boşluk Doldurma
+            </span>
+            {activeTestIdx === 'all' && (
+              <span className="text-xs font-bold text-slate-500">(Genel #{qIdx + 1})</span>
+            )}
+          </div>
+          <span className="text-xs font-bold text-slate-400">{pointsPerQuestion} Puan</span>
+        </div>
+
+        <p className="text-base sm:text-lg font-bold text-slate-900 mb-4 leading-relaxed">
+          {q.q}
+        </p>
+
+        <div className="flex flex-wrap items-center gap-2.5">
+          <input
+            type="text"
+            value={fState.val}
+            onChange={(e) => handleFillChange(qIdx, e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleCheckFill(qIdx, false);
+            }}
+            placeholder="Cevabınızı buraya yazın veya üstteki kelimeye tıklayın..."
+            className="flex-1 min-w-[220px] px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none text-sm font-bold text-slate-900"
+          />
+          <button
+            onClick={() => handleCheckFill(qIdx, false)}
+            className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition"
+          >
+            Kontrol Et
+          </button>
+          <button
+            onClick={() => handleCheckFill(qIdx, true)}
+            className="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold px-3.5 py-2.5 rounded-lg transition"
+          >
+            Cevabı Gör
+          </button>
+        </div>
+
+        <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2 font-medium">
+          <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
+          <span>İpucu: {q.hint}</span>
+        </div>
+
+        {fState.checked && showFeedback && fFb && (
+          <div
+            className={`mt-4 p-3.5 rounded-lg border-l-4 text-sm flex items-start gap-2.5 ${
+              fFb.ok
+                ? 'bg-emerald-50/70 border-emerald-600 text-emerald-950'
+                : 'bg-rose-50/70 border-rose-600 text-rose-950'
+            }`}
+          >
+            {fFb.ok ? (
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            ) : (
+              <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+            )}
+            <div>
+              {fFb.ok ? (
+                <span>
+                  <strong>Doğru!</strong> Cevap:{' '}
+                  <u className="font-extrabold">{fFb.correctAnswer}</u>
+                </span>
+              ) : (
+                <span>
+                  <strong>Doğru Cevap:</strong>{' '}
+                  <u className="font-extrabold">{fFb.correctAnswer}</u>{' '}
+                  <span className="text-xs opacity-80">
+                    (Senin yazdığın: {fState.val || 'Boş'})
+                  </span>
+                </span>
+              )}
+              {fFb.explanation && (
+                <p className="mt-1 text-xs opacity-90 leading-relaxed">
+                  💡 {fFb.explanation}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Immediate "Sonraki Soru" action bar after checking Fill question in Paged mode */}
+        {showNextPrompt && fState.checked && (
+          <div className="mt-5 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+            <span className="text-xs font-bold text-slate-600">
+              {fFb?.ok ? (
+                <span className="text-emerald-700 font-extrabold">
+                  ✅ Doğru cevap! Sıradaki soruya geçebilirsin.
+                </span>
+              ) : (
+                <span className="text-rose-700 font-extrabold">
+                  💡 Doğru cevabı incelediysen sıradaki soruya geçebilirsin.
+                </span>
+              )}
+            </span>
+
+            <button
+              onClick={goNextStep}
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition flex items-center gap-2 ml-auto"
+            >
+              <span>
+                {safeStep < pagedItems.length - 1
+                  ? `Sonraki Soru (Soru ${safeStep + 2}/${pagedItems.length})`
+                  : activeTestIdx !== 'all' && activeTestIdx < 9
+                  ? `Sonraki Teste Geç (Test ${activeTestIdx + 2})`
+                  : 'Test Tamamlandı'}
+              </span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
@@ -907,7 +1354,7 @@ export default function App() {
                     : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
                 }`}
               >
-                📚 Tüm 10 Testi Birlikte Göster (150 Soru)
+                📚 Tüm 10 Testi Birlikte Seç (150 Soru)
               </button>
             </div>
 
@@ -1001,32 +1448,58 @@ export default function App() {
           </div>
         )}
 
-        {/* Filter & Action Bar */}
-        <div className="bg-white rounded-xl border border-slate-200 p-3.5 mb-6 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+        {/* Filter, View Mode (Sayfa Sayfa / Liste) & Action Bar */}
+        <div className="bg-white rounded-xl border border-slate-200 p-3.5 mb-5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
           <div className="flex flex-wrap items-center gap-2">
+            {/* View Mode Toggle: Sayfa Sayfa vs Liste */}
+            <div className="inline-flex rounded-lg bg-slate-100 p-1 border border-slate-300 mr-1">
+              <button
+                onClick={() => setViewMode('paged')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
+                  viewMode === 'paged'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <FileText className="w-3.5 h-3.5" />
+                Sayfa Sayfa (Tek Soru)
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
+                  viewMode === 'list'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <LayoutList className="w-3.5 h-3.5" />
+                Tüm Liste
+              </button>
+            </div>
+
             <button
               onClick={() => setFilter('all')}
-              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition ${
+              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
                 filter === 'all'
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              Tüm Sorular ({activeStats.total})
+              Tümü ({activeStats.total})
             </button>
             <button
               onClick={() => setFilter('mc')}
-              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition ${
+              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
                 filter === 'mc'
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              Çoktan Seçmeli Test ({visibleMC.length})
+              Çoktan Seçmeli ({visibleMC.length})
             </button>
             <button
               onClick={() => setFilter('fill')}
-              className={`px-3.5 py-2 rounded-lg text-xs font-bold transition ${
+              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
                 filter === 'fill'
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -1061,351 +1534,188 @@ export default function App() {
           </div>
         </div>
 
-        {/* SECTION 1: MULTIPLE CHOICE */}
-        {(filter === 'all' || filter === 'mc') && (
-          <section className="mb-10">
-            <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
-              <h3 className="text-lg font-extrabold text-slate-900">
-                📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({visibleMC.length} Soru)
-              </h3>
-              <span className="text-xs font-bold text-slate-500">
-                Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan 5 şık analizi gelir
-              </span>
-            </div>
-
-            <div className="space-y-5">
-              {visibleMC.map((q, localIdx) => {
-                const qIdx = mcStartIdx + localIdx;
-                const testNumber = Math.floor(qIdx / 10) + 1;
-                const questionInTest = (qIdx % 10) + 1;
-
-                const userChoice = courseState.mc?.[qIdx];
-                const hasAnswered = userChoice !== undefined;
-                const qFb = courseFeedback.mc?.[qIdx];
-                const isCorrect = qFb?.correct;
-
-                let borderClass = 'border-slate-200';
-                if (hasAnswered && showFeedback && qFb) {
-                  borderClass = isCorrect
-                    ? 'border-emerald-500 ring-1 ring-emerald-500'
-                    : 'border-rose-500 ring-1 ring-rose-500';
-                }
-
-                return (
-                  <div
-                    key={qIdx}
-                    className={`bg-white rounded-xl border ${borderClass} p-5 shadow-sm transition`}
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <div className="flex items-center gap-2">
-                        <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
-                          TEST {testNumber} • SORU {questionInTest}
-                        </span>
-                        {activeTestIdx === 'all' && (
-                          <span className="text-xs font-bold text-slate-500">
-                            (Genel #{qIdx + 1})
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-xs font-bold text-slate-400">
-                        Çoktan Seçmeli • {pointsPerQuestion} Puan
-                      </span>
-                    </div>
-
-                    <p className="text-base font-bold text-slate-900 mb-4 leading-relaxed">
-                      {q.q}
-                    </p>
-
-                    <div className="space-y-2.5">
-                      {q.options.map((opt, oIdx) => {
-                        const isSelected = userChoice === oIdx;
-                        const isRightAnswer = qFb && qFb.answer === oIdx;
-                        const optExp = qFb?.optionExplanations?.[oIdx];
-
-                        let btnStyle =
-                          'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100 hover:border-slate-300';
-                        let badgeStyle = 'bg-white border-slate-300 text-slate-700';
-
-                        if (hasAnswered) {
-                          if (showFeedback && qFb) {
-                            if (isRightAnswer) {
-                              btnStyle =
-                                'bg-emerald-50/90 border-emerald-500 text-emerald-950 font-bold shadow-sm';
-                              badgeStyle = 'bg-emerald-600 border-emerald-600 text-white';
-                            } else if (isSelected) {
-                              btnStyle =
-                                'bg-rose-50/90 border-rose-500 text-rose-950 font-semibold shadow-sm';
-                              badgeStyle = 'bg-rose-600 border-rose-600 text-white';
-                            } else {
-                              btnStyle = 'bg-slate-50/70 border-slate-200 text-slate-700';
-                            }
-                          } else if (isSelected) {
-                            btnStyle = 'bg-blue-50 border-blue-600 text-blue-950 font-bold';
-                            badgeStyle = 'bg-blue-600 border-blue-600 text-white';
-                          }
-                        }
-
-                        return (
-                          <button
-                            key={oIdx}
-                            onClick={() => handleSelectMC(qIdx, oIdx)}
-                            className={`w-full text-left p-3.5 rounded-lg border flex items-start gap-3 text-sm transition ${btnStyle}`}
-                          >
-                            <span
-                              className={`w-7 h-7 rounded-md border flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5 ${badgeStyle}`}
-                            >
-                              {LETTERS[oIdx]}
-                            </span>
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between gap-2">
-                                <span>{opt}</span>
-                                {hasAnswered && showFeedback && qFb && isRightAnswer && (
-                                  <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shrink-0">
-                                    ✓ Doğru Şık
-                                  </span>
-                                )}
-                                {hasAnswered && showFeedback && qFb && isSelected && !isRightAnswer && (
-                                  <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-rose-600 text-white shrink-0">
-                                    ✗ Senin Seçimin
-                                  </span>
-                                )}
-                              </div>
-
-                              {hasAnswered && showFeedback && optExp && (
-                                <div
-                                  className={`mt-2 pt-2 border-t text-xs font-normal leading-relaxed ${
-                                    isRightAnswer
-                                      ? 'border-emerald-200 text-emerald-900'
-                                      : isSelected
-                                      ? 'border-rose-200 text-rose-900'
-                                      : 'border-slate-200 text-slate-600'
-                                  }`}
-                                >
-                                  <span className="font-bold">
-                                    {isRightAnswer
-                                      ? 'Neden Doğru? '
-                                      : `${LETTERS[oIdx]} Şıkkı Nedir? `}
-                                  </span>
-                                  {optExp}
-                                </div>
-                              )}
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {hasAnswered && showFeedback && qFb && (
-                      <div
-                        className={`mt-4 p-4 rounded-xl border-l-4 text-sm ${
-                          isCorrect
-                            ? 'bg-emerald-50/80 border-emerald-600 text-emerald-950'
-                            : 'bg-rose-50/80 border-rose-600 text-rose-950'
-                        }`}
-                      >
-                        <div className="flex items-start gap-2.5">
-                          {isCorrect ? (
-                            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                          ) : (
-                            <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-                          )}
-                          <div>
-                            <span className="font-extrabold">
-                              {isCorrect
-                                ? 'Doğru Cevap!'
-                                : `Yanlış! Doğru Seçenek: ${LETTERS[qFb.answer]} (${q.options[qFb.answer]})`}
-                            </span>{' '}
-                            — {qFb.explanation}
-                          </div>
-                        </div>
-
-                        {qFb.optionExplanations && qFb.optionExplanations.length > 0 && (
-                          <div className="mt-3 pt-3 border-t border-slate-200/80">
-                            <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-slate-700 mb-2">
-                              <ListChecks className="w-4 h-4 text-slate-600" />
-                              Tüm Şıkların Detaylı Açıklaması (A - E Özeti)
-                            </div>
-                            <div className="grid grid-cols-1 gap-1.5">
-                              {q.options.map((optText, idx) => {
-                                const isRight = idx === qFb.answer;
-                                const isUser = idx === userChoice;
-                                return (
-                                  <div
-                                    key={idx}
-                                    className={`text-xs px-3 py-2 rounded-lg border flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 ${
-                                      isRight
-                                        ? 'bg-emerald-100/80 border-emerald-400 text-emerald-950 font-semibold'
-                                        : isUser
-                                        ? 'bg-rose-100/70 border-rose-300 text-rose-950'
-                                        : 'bg-white/90 border-slate-200 text-slate-700'
-                                    }`}
-                                  >
-                                    <span className="font-extrabold shrink-0">
-                                      {LETTERS[idx]}) {optText}:
-                                    </span>
-                                    <span className="font-normal">
-                                      {qFb.optionExplanations[idx]}
-                                    </span>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        )}
-
-        {/* SECTION 2: FILL IN THE BLANK */}
-        {(filter === 'all' || filter === 'fill') && (
-          <section>
-            <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
-              <h3 className="text-lg font-extrabold text-slate-900">
-                ✍️ Bölüm 2: Boşluk Doldurma Soruları ({visibleFill.length} Soru)
-              </h3>
-              <span className="text-xs font-bold text-slate-500">
-                Her soru {pointsPerQuestion} puandır
-              </span>
-            </div>
-
-            {showWordBank && currentWordBank.length > 0 && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
-                <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
-                  🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
+        {/* ===================================================================== */}
+        {/* PAGED ("SAYFA SAYFA / TEK SORU") MODE                                  */}
+        {/* ===================================================================== */}
+        {viewMode === 'paged' && currentPagedItem && (
+          <div className="mb-10">
+            {/* Question Number Navigator Bar */}
+            <div className="bg-white rounded-xl border border-slate-200 p-4 mb-4 shadow-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <div className="text-xs font-extrabold uppercase tracking-wider text-slate-700">
+                  📌 Soru Gezgini — Soru {safeStep + 1} / {pagedItems.length}
+                  <span className="ml-2 text-slate-400 font-semibold">
+                    ({currentPagedItem.type === 'mc' ? 'Çoktan Seçmeli Test' : 'Boşluk Doldurma'})
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {currentWordBank.map((word, idx) => (
-                    <span
-                      key={idx}
-                      className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
-                    >
-                      {word}
-                    </span>
-                  ))}
+
+                <div className="flex items-center gap-3 text-[11px] font-bold">
+                  <span className="flex items-center gap-1 text-emerald-700">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Doğru
+                  </span>
+                  <span className="flex items-center gap-1 text-rose-700">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Yanlış
+                  </span>
+                  <span className="flex items-center gap-1 text-slate-500">
+                    <span className="w-2.5 h-2.5 rounded-full bg-slate-200 inline-block" /> Boş
+                  </span>
                 </div>
               </div>
+
+              {/* Numbered Buttons (1..15) */}
+              <div className="flex flex-wrap gap-1.5">
+                {pagedItems.map((item, idx) => {
+                  const isCurrent = idx === safeStep;
+                  let pillClass = 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200';
+
+                  if (item.type === 'mc') {
+                    const ans = courseState.mc?.[item.qIdx];
+                    const fb = courseFeedback.mc?.[item.qIdx];
+                    if (ans !== undefined) {
+                      if (showFeedback && fb) {
+                        pillClass = fb.correct
+                          ? 'bg-emerald-600 text-white border-emerald-700'
+                          : 'bg-rose-600 text-white border-rose-700';
+                      } else {
+                        pillClass = 'bg-blue-600 text-white border-blue-700';
+                      }
+                    }
+                  } else {
+                    const fSt = courseState.fill?.[item.qIdx];
+                    const fb = courseFeedback.fill?.[item.qIdx];
+                    if (fSt?.checked) {
+                      if (showFeedback && fb) {
+                        pillClass = fb.ok
+                          ? 'bg-emerald-600 text-white border-emerald-700'
+                          : 'bg-rose-600 text-white border-rose-700';
+                      } else {
+                        pillClass = 'bg-blue-600 text-white border-blue-700';
+                      }
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={`${item.type}-${item.qIdx}`}
+                      onClick={() => setCurrentStep(idx)}
+                      className={`w-9 h-9 rounded-lg border text-xs font-extrabold transition flex items-center justify-center ${pillClass} ${
+                        isCurrent ? 'ring-2 ring-amber-500 ring-offset-2 scale-105 shadow' : ''
+                      }`}
+                      title={
+                        item.type === 'mc'
+                          ? `Soru ${idx + 1}: Çoktan Seçmeli`
+                          : `Soru ${idx + 1}: Boşluk Doldurma`
+                      }
+                    >
+                      {idx + 1}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Active Single Question Card */}
+            {currentPagedItem.type === 'mc'
+              ? renderMCCard(currentPagedItem.q, currentPagedItem.qIdx, true)
+              : renderFillCard(currentPagedItem.q, currentPagedItem.qIdx, true)}
+
+            {/* Bottom Prev / Next Navigation Bar */}
+            <div className="mt-4 bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
+              <button
+                onClick={goPrevStep}
+                disabled={safeStep === 0}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none text-xs sm:text-sm font-extrabold text-slate-800 transition"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span>Önceki Soru</span>
+              </button>
+
+              <div className="text-xs sm:text-sm font-extrabold text-slate-600 text-center">
+                Soru <span className="text-slate-950">{safeStep + 1}</span> / {pagedItems.length}
+              </div>
+
+              <button
+                onClick={goNextStep}
+                disabled={
+                  safeStep === pagedItems.length - 1 &&
+                  (activeTestIdx === 'all' || activeTestIdx >= 9)
+                }
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-white text-xs sm:text-sm font-extrabold shadow transition"
+              >
+                <span>
+                  {safeStep < pagedItems.length - 1
+                    ? 'Sonraki Soru'
+                    : activeTestIdx !== 'all' && activeTestIdx < 9
+                    ? `Test ${activeTestIdx + 2}'ye Geç`
+                    : 'Son Soru'}
+                </span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ===================================================================== */}
+        {/* LIST ("TÜM LİSTE") MODE                                                */}
+        {/* ===================================================================== */}
+        {viewMode === 'list' && (
+          <>
+            {(filter === 'all' || filter === 'mc') && (
+              <section className="mb-10">
+                <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
+                  <h3 className="text-lg font-extrabold text-slate-900">
+                    📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({visibleMC.length} Soru)
+                  </h3>
+                  <span className="text-xs font-bold text-slate-500">
+                    Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan 5 şık analizi gelir
+                  </span>
+                </div>
+
+                <div className="space-y-5">
+                  {visibleMC.map((q, localIdx) =>
+                    renderMCCard(q, mcStartIdx + localIdx, false)
+                  )}
+                </div>
+              </section>
             )}
 
-            <div className="space-y-4">
-              {visibleFill.map((q, localIdx) => {
-                const qIdx = fillStartIdx + localIdx;
-                const testNumber = Math.floor(qIdx / 5) + 1;
-                const fillInTest = (qIdx % 5) + 1;
+            {(filter === 'all' || filter === 'fill') && (
+              <section>
+                <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
+                  <h3 className="text-lg font-extrabold text-slate-900">
+                    ✍️ Bölüm 2: Boşluk Doldurma Soruları ({visibleFill.length} Soru)
+                  </h3>
+                  <span className="text-xs font-bold text-slate-500">
+                    Her soru {pointsPerQuestion} puandır
+                  </span>
+                </div>
 
-                const fState = courseState.fill?.[qIdx] || {
-                  val: '',
-                  checked: false
-                };
-                const fFb = courseFeedback.fill?.[qIdx];
-
-                let borderClass = 'border-slate-200';
-                if (fState.checked && showFeedback && fFb) {
-                  borderClass = fFb.ok
-                    ? 'border-emerald-500 ring-1 ring-emerald-500'
-                    : 'border-rose-500 ring-1 ring-rose-500';
-                }
-
-                return (
-                  <div
-                    key={qIdx}
-                    className={`bg-white rounded-xl border ${borderClass} p-5 shadow-sm transition`}
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <div className="flex items-center gap-2">
-                        <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
-                          TEST {testNumber} • BOŞLUK DOLDURMA {fillInTest}
+                {showWordBank && currentWordBank.length > 0 && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
+                    <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
+                      🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {currentWordBank.map((word, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
+                        >
+                          {word}
                         </span>
-                        {activeTestIdx === 'all' && (
-                          <span className="text-xs font-bold text-slate-500">
-                            (Genel #{qIdx + 1})
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-xs font-bold text-slate-400">
-                        Kavram & Sınır Değer • {pointsPerQuestion} Puan
-                      </span>
+                      ))}
                     </div>
-
-                    <p className="text-base font-bold text-slate-900 mb-4 leading-relaxed">
-                      {q.q}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <input
-                        type="text"
-                        value={fState.val}
-                        onChange={(e) => handleFillChange(qIdx, e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') handleCheckFill(qIdx, false);
-                        }}
-                        placeholder="Cevabınızı buraya yazın..."
-                        className="flex-1 min-w-[220px] px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none text-sm font-bold text-slate-900"
-                      />
-                      <button
-                        onClick={() => handleCheckFill(qIdx, false)}
-                        className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition"
-                      >
-                        Kontrol Et
-                      </button>
-                      <button
-                        onClick={() => handleCheckFill(qIdx, true)}
-                        className="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold px-3.5 py-2.5 rounded-lg transition"
-                      >
-                        Cevabı Gör
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2 font-medium">
-                      <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
-                      <span>İpucu: {q.hint}</span>
-                    </div>
-
-                    {fState.checked && showFeedback && fFb && (
-                      <div
-                        className={`mt-3.5 p-3.5 rounded-lg border-l-4 text-sm flex items-start gap-2.5 ${
-                          fFb.ok
-                            ? 'bg-emerald-50/70 border-emerald-600 text-emerald-950'
-                            : 'bg-rose-50/70 border-rose-600 text-rose-950'
-                        }`}
-                      >
-                        {fFb.ok ? (
-                          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                        ) : (
-                          <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-                        )}
-                        <div>
-                          {fFb.ok ? (
-                            <span>
-                              <strong>Doğru!</strong> Cevap:{' '}
-                              <u className="font-extrabold">{fFb.correctAnswer}</u>
-                            </span>
-                          ) : (
-                            <span>
-                              <strong>Doğru Cevap:</strong>{' '}
-                              <u className="font-extrabold">{fFb.correctAnswer}</u>{' '}
-                              <span className="text-xs opacity-80">
-                                (Senin yazdığın: {fState.val || 'Boş'})
-                              </span>
-                            </span>
-                          )}
-                          {fFb.explanation && (
-                            <p className="mt-1 text-xs opacity-90 leading-relaxed">
-                              💡 {fFb.explanation}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    )}
                   </div>
-                );
-              })}
-            </div>
-          </section>
+                )}
+
+                <div className="space-y-4">
+                  {visibleFill.map((q, localIdx) =>
+                    renderFillCard(q, fillStartIdx + localIdx, false)
+                  )}
+                </div>
+              </section>
+            )}
+          </>
         )}
       </main>
     </div>
