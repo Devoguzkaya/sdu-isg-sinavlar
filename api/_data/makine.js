@@ -291,7 +291,7 @@ export const makineCourse = {
     {
       q: "Makine tasarımında bir parçanın emniyetle taşıyabileceği 'Emniyet Gerilmesi (σ_em)' hesaplanırken, malzemenin Akma (veya Kopma) Dayanımının hangi değere bölünmesi gerekir?",
       options: [
-        "Emniyet Katsayısına (Güvenlik Katsayısı - S > 1)",
+        "Emniyet Katsayısına",
         "Sıfıra",
         "Ortam sıcaklığına",
         "Makinenin rengine",
@@ -332,7 +332,7 @@ export const makineCourse = {
         "Yağ, gres yağı ve yağlı el/eldiven/üstübü",
         "Hava",
         "Kuru bez",
-        "Sabunlu su (kaçak kontrolü için)",
+        "Sabunlu su",
         "Metal anahtar"
       ],
       answer: 0,
@@ -405,9 +405,9 @@ export const makineCourse = {
     {
       q: "Malzemelerin içerisindeki gizli çatlakları, kaynak dikişi hatalarını veya döküm boşluklarını malzemeye hiçbir zarar vermeden tespit etmek için kullanılan yöntemlere genel olarak ne ad verilir?",
       options: [
-        "Tahribatsız Muayene Yöntemleri (NDT: Ultrasonik, Radyografik, Manyetik Parçacık, Penetrant)",
-        "Çekme deneyi (Parçayı koparana kadar çekme)",
-        "Çentik darbe deneyi (Parçayı kırma)",
+        "Tahribatsız Muayene Yöntemleri (NDT)",
+        "Çekme deneyi",
+        "Çentik darbe deneyi",
         "Eğme ve kırma deneyi",
         "Kimyasal eritme deneyi"
       ],
@@ -424,7 +424,7 @@ export const makineCourse = {
     {
       q: "Bir kuvvetin (Newton) bir cisme uygulanarak cismi kendi doğrultusunda belirli bir yol (metre) boyunca hareket ettirmesiyle ortaya çıkan büyüklüğe (W = F . x) ve birim zamanda yapılan işe (P = W / t) sırasıyla ne ad verilir?",
       options: [
-        "İş / Enerji (Joule = N.m) — Güç (Watt = Joule/saniye)",
+        "İş / Enerji — Güç",
         "Basınç (Pascal) — Hız (m/s)",
         "İvme (m/s²) — Kütle (kg)",
         "Frekans (Hertz) — Direnç (Ohm)",

@@ -43,7 +43,7 @@ export const elektrikCourse = {
       q: "Elektrik tesislerinde gerilimsiz çalışmaya başlamadan önce uygulanması gereken '5 Temel Güvenlik Kuralı'nın ilk iki adımı aşağıdakilerden hangisinde doğru sırayla verilmiştir?",
       options: [
         "Topraklama yap - Çalışma alanını sınırla",
-        "Gerilimi her yönden kes - Tekrar gerilim verilmesini önle (Kilitleme/Etiketleme)",
+        "Gerilimi her yönden kes - Tekrar gerilim verilmesini önle",
         "Gerilimsizliği kontrol et - Enerjiyi kes",
         "Kısa devre et - Gerilimi kes",
         "KKD giy - Topraklama yap"
@@ -131,7 +131,7 @@ export const elektrikCourse = {
     {
       q: "Bir fabrikada bakım teknisyeni panoda çalışırken başka bir çalışanın şalteri yanlışlıkla kaldırması sonucu iş kazası meydana gelmiştir. Bu kazayı önlemek için uygulanması gereken temel prosedür hangisidir?",
       options: [
-        "LOTO (Lockout / Tagout - Kilitleme ve Etiketleme)",
+        "LOTO (Kilitleme ve Etiketleme)",
         "Termal kamera ile ölçüm",
         "Paratoner tesisatı kurulumu",
         "Aydınlatma şiddetinin artırılması",
@@ -181,7 +181,7 @@ export const elektrikCourse = {
     },
     {
       q: "Çok iletkenli dar ve nemli yerlerde (kazan içi, metal tank içi vb.) çalışırken el aletleri ve taşınabilir aydınlatmalarda kullanılması gereken 'Çok Düşük Güvenlik Gerilimi' (SELV) alternatif akımda en fazla kaç Volt olmalıdır?",
-      options: ["24 V (veya 12-42 V arası küçük gerilim)", "110 V", "220 V", "380 V", "1000 V"],
+      options: ["24 V", "110 V", "220 V", "380 V", "1000 V"],
       answer: 0,
       explanation: "İnsanda tehlikeli dokunma gerilimi sınırı AC'de 50 V (dar/ıslak metal ortamlarda 24 V - 42 V küçük gerilim), DC'de 120 V olarak kabul edilir.",
       optionExplanations: [
@@ -216,7 +216,7 @@ export const elektrikCourse = {
       options: [
         "Karbondioksitli (CO2) söndürücü",
         "Kuru Kimyevi Tozlu (KKT) söndürücü",
-        "Su ve sulu köpük (elektriği ilettiği için)",
+        "Su ve sulu köpük",
         "Halokarbon gazlı söndürücü",
         "FM-200 gazlı sistem"
       ],
@@ -247,7 +247,7 @@ export const elektrikCourse = {
       q: "Kalp üzerinden geçen elektrik akımında hangi temas yolu kalp kasından geçen akım oranı (kalp faktörü) açısından EN TEHLİKELİ yollardan biridir?",
       options: [
         "Sağ ayak - Sol ayak",
-        "Sol el - Sağ el veya Sol el - İki ayak (Göğüs/Kalp hattını doğrudan geçen yol)",
+        "Sol el - Sağ el veya Sol el - İki ayak",
         "Sağ el parmak ucu - Sağ dirsek",
         "Sol diz - Sol ayak bileği",
         "Sadece sağ elin dış yüzeyi"
@@ -265,7 +265,7 @@ export const elektrikCourse = {
     {
       q: "Aşağıdakilerden hangisi elektrikte 'Doğrudan Dokunma'ya (normal işletme şartlarında gerilim altında bulunan aktif kısımlara temasa) karşı alınan koruma önlemlerinden biridir?",
       options: [
-        "Aktif bölümlerin yalıtılması (izolasyon), muhafaza içine alınması (IP2X) ve engel/uzaklık konulması",
+        "Aktif bölümlerin yalıtılması, muhafaza içine alınması ve engel konulması",
         "Cihazın metal gövdesinin boyanması",
         "Çalışana pamuklu iş eldiveni verilmesi",
         "Topraklama direncinin yükseltilmesi",
@@ -303,7 +303,7 @@ export const elektrikCourse = {
     {
       q: "Kaçak Akım Rölesi (RCD / Artık Akım Anahtarı) çalışma prensibi olarak devredeki hangi durumu algılayarak enerjiyi keser?",
       options: [
-        "Faz iletkeninden giden akım ile nötr iletkeninden dönen akım arasındaki farkı (toprağa akan kaçak akımı)",
+        "Faz iletkeninden giden akım ile nötr iletkeninden dönen akım arasındaki farkı",
         "Sadece ortam sıcaklığının artışını",
         "Şebeke frekansının 50 Hz olmasını",
         "Prizdeki toplam güç tüketiminin az olmasını",
@@ -360,7 +360,7 @@ export const elektrikCourse = {
     {
       q: "Akaryakıt istasyonları, boyahaneler, un/kömür değirmenleri ve kimyasal tanker dolum tesisleri gibi patlayıcı ortam (Ex-proof) bulunan yerlerde statik elektrik birikimini önlemek için hangi teknik önlem alınır?",
       options: [
-        "Tüm metal gövdelerin ve dolum hortumlarının eşpotansiyel olarak topraklanması (anti-statik topraklama kelepçesi)",
+        "Tüm metal gövdelerin ve dolum hortumlarının eşpotansiyel olarak topraklanması",
         "Çalışanlara sentetik/naylon kıyafet giydirilmesi",
         "Ortam neminin sıfıra düşürülmesi",
         "Zeminin yalıtkan plastikle kaplanması",
@@ -398,7 +398,7 @@ export const elektrikCourse = {
     {
       q: "Yüksek gerilim (YG) enerji nakil hatlarının yakınında vinç, ekskavatör veya beton pompası ile çalışırken İSG açısından uyulması gereken en kritik kural nedir?",
       options: [
-        "Vinç bomunun hatta temas etmese bile ark atlama mesafesi (emniyet mesafesi) içine girmemesi ve işaretçi/gözcü bulundurulması",
+        "Vinç bomunun hatta emniyet mesafesinden fazla yaklaşmaması ve işaretçi bulundurulması",
         "Vinç operatörünün güneş gözlüğü takması",
         "Hattın altından hızlıca geçilmesi",
         "Vinç bomuna bez bağlanması",
@@ -417,7 +417,7 @@ export const elektrikCourse = {
     {
       q: "Elektrik tesisatlarında 'Sıfırlama' (TN-C sisteminde gövdenin nötr hattına bağlanması) uygulaması ile ilgili güvenlik açısından hangi risk söz konusudur?",
       options: [
-        "Nötr hattının kopması durumunda cihazların metal gövdelerinin doğrudan 220 V faz gerilimi altında kalması",
+        "Nötr hattının kopması durumunda cihazların metal gövdelerinin doğrudan gerilim altında kalması",
         "Cihazların hiç çalışmaması",
         "Topraklama direncinin sıfır olması",
         "Elektrik faturasının düşmesi",
@@ -438,7 +438,7 @@ export const elektrikCourse = {
       options: [
         "Kabloların ek yerleri açıkta bırakılmalı ve su birikintisi içinden geçirilmelidir",
         "Fiş yapısı kırık kablolar priz deliklerine çıplak telle (kibrit çöpü sıkıştırılarak) takılmalıdır",
-        "Kablolar mekanik ezilmelere ve suya karşı korunmalı (askıya alınmalı/kablo köprüsü kullanılmalı) ve 30 mA kaçak akım röleli şantiye panosundan beslenmelidir",
+        "Kablolar mekanik ezilmelere ve suya karşı korunmalı, 30 mA kaçak akım korumalı panodan beslenmelidir",
         "Elektrikli el aletlerinin topraklama ucu iptal edilmelidir",
         "Hasarlı kablolar sadece kağıt bantla sarılmalıdır"
       ],

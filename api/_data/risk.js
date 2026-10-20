@@ -283,10 +283,10 @@ export const riskCourse = {
     {
       q: "5x5 L Tipi Matris yönteminde Olasılık = 5 (Çok Yüksek) ve Şiddet = 5 (Ölüm / Sürekli İş Göremezlik) olarak belirlendiğinde Risk Skoru (25) hangi risk bölgesine girer ve ne yapılmalıdır?",
       options: [
-        "Katlanılamaz (Kabul Edilemez) Risk (15-25 puan) — İş derhal durdurulur, risk düşürülmeden işe başlanmaz",
-        "Önemsiz Risk (1-4 puan) — Hiçbir önlem gerekmez",
-        "Dikkate Değer / Orta Risk (8-12 puan) — Mevcut kontroller sürdürülür",
-        "Düşük Risk (5-6 puan) — Uzun vadede izlenir",
+        "Katlanılamaz (Kabul Edilemez) Risk — İş derhal durdurulur, risk düşürülmeden işe başlanmaz",
+        "Önemsiz Risk — Hiçbir önlem gerekmez",
+        "Orta Risk — Mevcut kontroller sürdürülür",
+        "Düşük Risk — Uzun vadede izlenir",
         "Kabul Edilebilir Risk — Çalışmaya devam edilir"
       ],
       answer: 0,
@@ -359,11 +359,11 @@ export const riskCourse = {
     {
       q: "İşkazalarının oluşumunu 5 ardışık domino taşına (1-Sosyal çevre/Kalıtım, 2-Kişisel kusurlar, 3-Güvensiz hareket ve güvensiz durumlar, 4-Kaza, 5-Yaralanma/Zarar) benzeten ve kazaları önlemek için 3. taşın çekilmesi gerektiğini belirten araştırmacı ve oranı nedir?",
       options: [
-        "H.W. Heinrich — Kazaların %88'i güvensiz hareketlerden, %10'u güvensiz durumlardan, %2'si önlenemez nedenlerden kaynaklanır",
-        "Isaac Newton — %50 hareket, %50 durum",
-        "Kinney — %100 makine hatası",
-        "Ramazzini — %90 meslek hastalığı",
-        "Taylor — %100 yönetim hatası"
+        "H.W. Heinrich — %88 Hareket, %10 Durum, %2 Önlenemez",
+        "Isaac Newton — %50 Hareket, %50 Durum",
+        "Kinney — %100 Makine Hatası",
+        "Ramazzini — %90 Meslek Hastalığı",
+        "Taylor — %100 Yönetim Hatası"
       ],
       answer: 0,
       explanation: "Heinrich'in Domino Teorisine göre kazaların %88'i insana bağlı güvensiz davranışlardan, %10'u ortama bağlı güvensiz durumlardan, %2'si ise kaçınılmaz/beklenmedik olaylardan kaynaklanır.",
@@ -417,7 +417,7 @@ export const riskCourse = {
       q: "Yapılan risk değerlendirmesi dokümanının sayfaları kimler tarafından paraflanır ve son sayfası kimler tarafından imzalanarak işyerinde saklanır?",
       options: [
         "Sadece iş güvenliği uzmanı imzalar",
-        "Risk değerlendirmesi ekibinde yer alan tüm üyeler (işveren/vekili, uzman, hekim, çalışan temsilcisi, destek elemanı) tarafından imzalanır",
+        "Risk değerlendirmesi ekibinde yer alan tüm üyeler tarafından imzalanır",
         "Sadece noter tarafından onaylanır",
         "İmzaya gerek yoktur",
         "Sadece çalışan temsilcisi imzalar"

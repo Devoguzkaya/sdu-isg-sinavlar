@@ -194,7 +194,7 @@ export const fkruCourse = {
     {
       q: "Radyasyon Güvenliği Yönetmeliği'ne göre radyasyon görevlileri için yıllık etkin doz sınırı (ardışık 5 yılın ortalaması) ve tek bir yılda aşılamayacak maksimum doz sınırı kaç mSv (miliSievert)'tir?",
       options: [
-        "Yıllık ortalama 20 mSv / Tek yılda en fazla 50 mSv (Halk için yıllık 1 mSv)",
+        "Yıllık ortalama 20 mSv / Tek yılda en fazla 50 mSv",
         "Yıllık ortalama 100 mSv / Tek yılda 500 mSv",
         "Yıllık ortalama 1 mSv / Tek yılda 5 mSv",
         "Yıllık ortalama 500 mSv / Tek yılda 1000 mSv",
@@ -232,7 +232,7 @@ export const fkruCourse = {
     {
       q: "Atölyelerde floresan lambaların titreşim frekansı ile torna/testerelerin dönüş frekansının çakışması sonucu, hızla dönen makine parçasının 'duruyormuş veya çok yavaş dönüyormuş gibi' algılanması tehlikesine ne ad verilir?",
       options: [
-        "Stroboskopik (Optik yanılma) etki",
+        "Stroboskopik etki",
         "Kamaşma etkisi",
         "Termal etki",
         "Akustik travma",
@@ -365,7 +365,7 @@ export const fkruCourse = {
     {
       q: "İyonlaştırıcı radyasyon türlerinden 'Beta (β) parçacıkları' ve 'Nötron radyasyonu' için en uygun zırhlama malzemeleri sırasıyla hangileridir?",
       options: [
-        "Beta için: Alüminyum / Pleksiglas (plastik/cam) levha — Nötron için: Su, Parafin, Polietilen gibi hidrojen (H) bakımından zengin malzemeler ve beton",
+        "Beta için: Alüminyum veya Pleksiglas levha — Nötron için: Su, Parafin veya Beton",
         "Her ikisi için sadece ince kağıt",
         "Sadece pamuklu kumaş",
         "Zırhlamaya gerek yoktur",
@@ -384,8 +384,8 @@ export const fkruCourse = {
     {
       q: "14 Ekim dersinde işlenen 'İyonlaştırıcı Radyasyonun Biyolojik Etkileri' kapsamında; belirli bir eşik doz aşılınca ortaya çıkan ve doz arttıkça şiddeti artan (cilt kızarıklığı/eritem, katarakt, kısırlık gibi) etkilere ne ad verilir?",
       options: [
-        "Deterministik (Eşikli / Kesin) Etkiler",
-        "Stokastik (Olasılıksal / Eşiksiz) Etkiler",
+        "Deterministik Etkiler",
+        "Stokastik Etkiler",
         "Akustik Etkiler",
         "Mekanik Etkiler",
         "Psikolojik Etkiler"
@@ -403,7 +403,7 @@ export const fkruCourse = {
     {
       q: "Elektrik ark kaynağı veya oksijen kaynağı yapan çalışanlarda, koruyucu kaynak maskesi kullanılmadığında hangi 'İyonlaştırıcı Olmayan Radyasyon' türüne maruziyet sonucu gözde 'Fotokeratit (Kaynak Alması)' ve deride güneş yanığı benzeri eritem oluşur?",
       options: [
-        "Ultraviyole (Morötesi - UV) ışınları (ve mercekte katarakt yapan Kızılötesi - IR ışınları)",
+        "Ultraviyole (UV) ışınları",
         "Alfa parçacıkları",
         "Radyo dalgaları",
         "Nötron ışınları",
@@ -422,7 +422,7 @@ export const fkruCourse = {
     {
       q: "Radyasyon kaynaklarıyla çalışan personelin (röntgen teknisyeni, nükleer tıp çalışanı, endüstriyel radyografi uzmanı) maruz kaldığı kişisel radyasyon dozunu takip etmek için yakasına/üzerine taktığı ölçüm cihazına ne ad verilir?",
       options: [
-        "Kişisel Radyasyon Dozimetresi (TLD - Termolüminesans Dozimetre / Film Dozimetre / Cep Dozimetresi)",
+        "Kişisel Radyasyon Dozimetresi",
         "Anemometre",
         "Higrometre",
         "Lüksmetre",
@@ -441,7 +441,7 @@ export const fkruCourse = {
     {
       q: "Yüksek irtifada (dağcılık, yüksek rakımlı şantiyeler, kabin basıncı düşen uçaklar) çalışanlarda atmosfer basıncının düşmesine bağlı olarak gelişen en temel fizyolojik tehlike nedir?",
       options: [
-        "Havadaki oksijen kısmi basıncının düşmesi sonucu dokuların oksijensiz kalması (Hipoksi / Akut Dağ Hastalığı)",
+        "Havadaki oksijen kısmi basıncının düşmesi sonucu dokuların oksijensiz kalması (Hipoksi)",
         "Kanda azot miktarının aşırı artması",
         "Kulak zarının aşırı dış basınçla içe çökmesi",
         "Gürültü seviyesinin artması",
@@ -460,7 +460,7 @@ export const fkruCourse = {
     {
       q: "Radyasyon Güvenliği Yönetmeliği'ne göre; 18 yaşını doldurmamış olanların radyasyon kaynağı ile çalışması ve hamileliği belirlenmiş kadın çalışanların radyasyonlu alanlarda çalıştırılması ile ilgili kural nedir?",
       options: [
-        "18 yaşından küçükler radyasyon işlerinde çalıştırılamaz; hamileliği belirlenen kadın çalışanlar ise çalışma şartları yeniden düzenlenerek fetüs için yıllık 1 mSv sınırını aşmayacak (veya radyasyonsuz) alanlarda görevlendirilir, emzirenler radyoaktif kontaminasyon riski olan işlerde çalıştırılamaz",
+        "18 yaşından küçükler radyasyon işlerinde çalıştırılamaz; hamileler fetüs dozu 1 mSv'i aşmayacak şekilde görevlendirilir, emzirenler açık kaynaklarda çalışamaz",
         "16 yaşından itibaren herkes tam zamanlı radyasyon görevlisi olabilir",
         "Hamile çalışanlar yılda 50 mSv doz alabilir",
         "Emziren kadınlar açık radyoaktif kaynaklarla çalışmaya devam eder",

@@ -132,7 +132,7 @@ export const ilkyardimCourse = {
       q: "Yetişkin bir kazazedede Temel Yaşam Desteği (TYD) uygulanırken 'Kalp Masajı / Suni Solunum' oranı ve dakikadaki bası hızı ne olmalıdır?",
       options: [
         "15 kalp masajı / 1 suni solunum - dakikada 60 bası",
-        "30 kalp masajı / 2 suni solunum - dakikada 100-120 bası (göğüs 5 cm çökecek şekilde)",
+        "30 kalp masajı / 2 suni solunum - dakikada 100-120 bası",
         "5 kalp masajı / 5 suni solunum - dakikada 200 bası",
         "10 kalp masajı / 2 suni solunum - dakikada 50 bası",
         "Sadece suni solunum"
@@ -227,7 +227,7 @@ export const ilkyardimCourse = {
       q: "Soluk borusuna yabancı cisim kaçarak 'Tam Tıkanma' yaşayan (konuşamayan, nefes alamayan, ellerini boynuna götüren, moraran) bilinci açık yetişkin bir kişiye hangi ilk yardım manevrası uygulanır?",
       options: [
         "Sırtüstü yatırıp su içirilir",
-        "Heimlich Manevrası (Sırta 5 vuruş ve diyafram altına 5 karın basısı)",
+        "Heimlich Manevrası",
         "Koma pozisyonu verilir",
         "Şok pozisyonu verilir",
         "Ağzına parmak sokulup körleme aranır"
@@ -264,9 +264,9 @@ export const ilkyardimCourse = {
     {
       q: "Bir işyerinde gürültü ve toz ölçümlerinin yapılması, makine koruyucularının takılması ve havalandırma sisteminin kurulması meslek hastalıklarından korunmada hangi basamak korumaya girer?",
       options: [
-        "Birincil Koruma (Primer Koruma - Hastalık oluşmadan riskleri kaynağında/ortamda önleme)",
-        "İkincil Koruma (Erken tanı / Periyodik muayene)",
-        "Üçüncül Koruma (Rehabilitasyon ve tedavi)",
+        "Birincil Koruma (Primer Koruma)",
+        "İkincil Koruma (Sekonder Koruma)",
+        "Üçüncül Koruma (Tersiyer Koruma)",
         "Palyatif bakım",
         "Tıbbi müdahale"
       ],
@@ -359,8 +359,8 @@ export const ilkyardimCourse = {
     {
       q: "Bilinci kapalı ancak solunumu ve nabzı OLAN bir kazazedeye, dil kökünün geriye kaçmasını ve kusmuğun soluk borusuna gitmesini önlemek için verilen güvenli yatış pozisyonu hangisidir?",
       options: [
-        "Koma Pozisyonu (Yarı yüzükoyun yan yatış pozisyonu)",
-        "Şok Pozisyonu (Sırtüstü ayakları 30 cm yukarıda)",
+        "Koma Pozisyonu",
+        "Şok Pozisyonu",
         "Yarı oturur pozisyon",
         "Tam yüzüstü pozisyon",
         "Dik oturuş pozisyonu"
@@ -379,7 +379,7 @@ export const ilkyardimCourse = {
       q: "14 Ekim dersinde işlenen 'Kanamalarda İlk Yardım' kurallarına göre; uzuv kopması veya tüm yöntemlere rağmen durdurulamayan çok şiddetli atardamar kanamalarında son çare olarak uygulanan 'Turnike (Boğucu Sargı)' ile ilgili hangisi DOĞRUDUR?",
       options: [
         "Turnike ince tel veya iple sıkılır ve hiç gevşetilmez",
-        "Turnike sadece TEK KEMİKLİ bölgelere (üst kol: pazı veya üst bacak: uyluk) 8-10 cm genişliğinde bezle uygulanır, uygulama saati yazılır ve 15-20 dakikada bir 5-10 saniye gevşetilir",
+        "Turnike tek kemikli uzuv bölgelerine uygulanır, saati yazılır ve periyodik gevşetilir",
         "Turnike her küçük sıyrıkta hemen el bileğine uygulanır",
         "Turnikenin üzeri kalın battaniye ile kapatılarak gizlenir",
         "Turnike boyun bölgesine uygulanır"
@@ -456,7 +456,7 @@ export const ilkyardimCourse = {
       options: [
         "Doğrudan buzun veya dondurucunun içine gömülerek",
         "Su dolu bir kavanozun içine atılarak",
-        "Kopan parça temiz nemli bir bezle sarılıp su geçirmez birinci plastik torbaya konur; bu torba da içinde '1 ölçek su + 2 ölçek buz' bulunan ikinci bir torba içine yerleştirilerek (buzla doğrudan temas ettirilmeden) en geç 6 saat içinde hastaneye ulaştırılır",
+        "Kopan parça temiz beze sarılıp torbaya konur, torba buzlu su dolu ikinci torbaya yerleştirilerek nakledilir",
         "Alkol veya kolonya içine konularak",
         "Kuru peçeteye sarılıp cepte taşınarak"
       ],

@@ -220,7 +220,7 @@ export const madenCourse = {
       q: "Mermer ocaklarında dağdan kesilen büyük ana kütlenin (bloğun) devrilmesi işleminde, devrilen bloğun kırılmasını önlemek ve sarsıntıyı sönümlemek için bloğun düşeceği zemine ne serilir?",
       options: [
         "Beton zemin dökülür",
-        "İnce toprak / pasadan oluşan yastıklama (amortisör) yığını serilir",
+        "İnce toprak veya pasa yastığı serilir",
         "Çelik plakalar dizilir",
         "Su havuzu yapılır",
         "Ahşap kalaslar dikey konur"
@@ -239,7 +239,7 @@ export const madenCourse = {
       q: "Açık ocaklarda iş makineleri ve dev kaya kamyonlarıyla ilgili yaşanan ölümlü kazaların en önemli nedenlerinden biri nedir?",
       options: [
         "Araçların çok yavaş gitmesi",
-        "Büyük kamyonların geniş 'Kör Nokta' (görüş alanı dışı) bölgelerinde yaya veya küçük araç ezilmesi",
+        "Büyük kamyonların geniş kör noktalarında yaya veya küçük araç ezilmesi",
         "Lastiklerin küçük olması",
         "Kabin içinde klima bulunması",
         "Farların güçlü olması"
@@ -288,7 +288,7 @@ export const madenCourse = {
     },
     {
       q: "Cevherin üzerini örten ve ekonomik değeri olmayan, cevhere ulaşmak için kazılıp alınması (dekapaj yapılması) gereken örtü tabakasına / yan taşa madencilikte ne ad verilir?",
-      options: ["Tenör", "Pasa (Örtü tabakası / Dekapaj malzemesi)", "Konsantre", "Rezerv", "Filon"],
+      options: ["Tenör", "Pasa", "Konsantre", "Rezerv", "Filon"],
       answer: 1,
       explanation: "Ekonomik değeri olmayan yan taş ve örtü tabakasına 'Pasa' (veya dekapaj malzemesi); bu örtü tabakasının kaldırılması işlemine ise 'Dekapaj (Örtü kazısı)' denir.",
       optionExplanations: [
@@ -302,7 +302,7 @@ export const madenCourse = {
     {
       q: "Açık ocak işletmeciliğinde ekonomik sınırların belirlenmesinde kullanılan; '1 ton (veya 1 m³) cevher üretmek için kazılması gereken pasa (örtü) miktarı' oranına ne ad verilir?",
       options: [
-        "Dekapaj Oranı (Örtü / Cevher Oranı - Stripping Ratio)",
+        "Dekapaj Oranı (Stripping Ratio)",
         "Gözeneklilik Oranı",
         "Nem Oranı",
         "Kül Oranı",
@@ -340,7 +340,7 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında dağdan (ana kayadan) elmas telle arkası ve yanları kesilerek ayrılan dev mermer kütlesini yatırmak (devirmek) için kesim yarığının içine yerleştirilen ve su veya hava basıncıyla şişirilen ekipmana ne ad verilir?",
       options: [
-        "Hidrolik / Pnömatik Yastık (Sac veya Kevlar Devirme Yastığı) ve Hidrolik Kriko",
+        "Basınçlı devirme yastığı ve hidrolik kriko",
         "Dinamit lokumu",
         "El arabası",
         "Manyetik tutucu",
@@ -378,7 +378,7 @@ export const madenCourse = {
     {
       q: "Delme-patlatma yapılan açık ocaklarda patlatma sırasında kaya parçalarının beklenenden çok uzak mesafelere fırlayarak çalışanlara ve ekipmanlara zarar vermesi olayına ne ad verilir ve en önemli sebebi nedir?",
       options: [
-        "Taş Savrulması (Flyrock) - Yetersiz sıkılama boyu, aşırı şarj (fazla patlayıcı) veya uygunsuz dilim kalınlığı",
+        "Taş Savrulması (Flyrock) - Yetersiz sıkılama ve aşırı şarj",
         "Tasman (Çökme) - Az patlayıcı kullanımı",
         "Grizu - Kömür tozu",
         "Liküfaksiyon - Sıcaklık",
@@ -410,7 +410,7 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında dağdan devrilen büyük ana kütlenin (ana bloğun), nakliyeye uygun ticari ebatlı (dikdörtgen prizma) bloklara bölünmesi işlemine ne ad verilir?",
       options: [
-        "Sayalama (Ebatlama / İkincil kesim)",
+        "Sayalama",
         "Zenginleştirme",
         "Flotasyon",
         "Sondajlama",
@@ -429,7 +429,7 @@ export const madenCourse = {
     {
       q: "Açık ocak madenlerinde nakliye yollarının (rampaların) güvenliği ile ilgili aşağıdakilerden hangisi DOĞRUDUR?",
       options: [
-        "Yol eğimleri araçların fren kapasitesini aşmamalı, uçurum kenarında güvenlik seti bulunmalı ve toz kalkmasını önlemek için yollar düzenli olarak arazözle sulanmalıdır",
+        "Yol eğimleri kontrol altında tutulmalı, kenar güvenlik seti (banket) bulunmalı ve toz için düzenli sulanmalıdır",
         "Yollar tek şeritli ve çok dik (%40 eğimli) yapılmalıdır",
         "Toz bulutu oluşması kamyonların birbirini görmesi için faydalıdır",
         "Yol kenarlarına güvenlik seti (banket) yapılmasına gerek yoktur",
