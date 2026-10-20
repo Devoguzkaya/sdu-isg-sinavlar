@@ -20,12 +20,17 @@ import {
   Lock,
   UserPlus,
   LogIn,
-  ShieldCheck,
   Layers,
   ChevronLeft,
   ChevronRight,
   LayoutList,
-  FileText
+  FileText,
+  Home,
+  ArrowRight,
+  Check,
+  Target,
+  Cloud,
+  Zap
 } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
@@ -39,7 +44,7 @@ function createEmptyCourseMap(courses) {
 }
 
 export default function App() {
-  // Courses fetched from Backend (/api/questions — answers stripped!)
+  // Courses fetched from Backend (/api/questions)
   const [courses, setCourses] = useState([]);
   const [coursesLoading, setCoursesLoading] = useState(true);
 
@@ -50,6 +55,15 @@ export default function App() {
       if (savedUser) return JSON.parse(savedUser);
     } catch (e) {}
     return null;
+  });
+
+  // Page routing: 'home' (Tanıtım Anasayfası) | 'portal' (Sınav & Çalışma Ekranı)
+  const [activePage, setActivePage] = useState(() => {
+    try {
+      return localStorage.getItem('sdu_isg_auth_user_v2') ? 'portal' : 'home';
+    } catch (e) {
+      return 'home';
+    }
   });
 
   const [authTab, setAuthTab] = useState('login'); // 'login' | 'signup'
@@ -78,6 +92,9 @@ export default function App() {
   const [answers, setAnswers] = useState({});
   // Backend-evaluated feedback per question (only populated after answering/submitting)
   const [feedback, setFeedback] = useState({});
+
+  const authBoxRef = useRef(null);
+  const coursesSectionRef = useRef(null);
 
   // 1. Fetch sanitized questions from Backend (/api/questions)
   useEffect(() => {
@@ -218,16 +235,32 @@ export default function App() {
       }
       localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(data.user));
       setCurrentUser(data.user);
+      setActivePage('portal');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       setAuthError('Sunucu bağlantı hatası oluştu.');
     }
     setAuthLoading(false);
   };
 
-  const handleGuestLogin = () => {
+  const handleGuestLogin = (targetCourseId = null) => {
     const guest = { username: 'misafir', fullName: 'Misafir Öğrenci', isGuest: true };
     localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(guest));
     setCurrentUser(guest);
+    if (targetCourseId) setActiveCourseId(targetCourseId);
+    setActivePage('portal');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenCourseFromHome = (courseId) => {
+    setActiveCourseId(courseId);
+    setActiveTestIdx(0);
+    if (!currentUser) {
+      handleGuestLogin(courseId);
+    } else {
+      setActivePage('portal');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleLogout = () => {
@@ -235,6 +268,7 @@ export default function App() {
     setCurrentUser(null);
     setAuthPassword('');
     setAuthError('');
+    setActivePage('home');
   };
 
   // 45-min Timer
@@ -263,6 +297,7 @@ export default function App() {
 
   // Stats for an entire course (150 questions) or a specific test (0..9 => 15 questions)
   const getStats = (course, testIdx = 'all') => {
+    if (!course) return { correct: 0, wrong: 0, answered: 0, total: 0, score: 0 };
     const st = answers[course.id] || { mc: {}, fill: {} };
     const fb = feedback[course.id] || { mc: {}, fill: {} };
     let correct = 0;
@@ -455,142 +490,550 @@ export default function App() {
     return `${m}:${s}`;
   };
 
-  // RENDER LOGIN / SIGNUP SCREEN IF NOT AUTHENTICATED
-  if (!currentUser) {
-    return (
-      <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 py-12">
-        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-slate-950 flex items-center gap-3.5">
-            <div className="bg-slate-950 text-amber-400 p-3 rounded-xl shadow">
-              <GraduationCap className="w-8 h-8" />
+  // Shared Footer Component
+  const renderFooter = () => (
+    <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 mt-20">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="md:col-span-2 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="bg-amber-500 text-slate-950 p-2 rounded-lg">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <span className="text-lg font-black text-white tracking-tight">
+                SDÜ İSG Yüksek Lisans Sınav Portalı
+              </span>
             </div>
-            <div>
-              <h1 className="text-lg font-black tracking-tight leading-snug">
-                SDÜ İSG Yüksek Lisans
-              </h1>
-              <p className="text-xs font-bold text-slate-900/80">
-                Vize Sınav & Çalışma Portalı (6 Ders • 60 Test • 900 Soru)
+            <p className="text-sm text-slate-400 leading-relaxed max-w-md">
+              Süleyman Demirel Üniversitesi İş Sağlığı ve Güvenliği Yüksek Lisans programı dersleri için hazırlanmış interaktif vize/final çalışma, konu tarama ve deneme sınavı platformu.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 mb-3">
+              Yüksek Lisans Dersleri
+            </h4>
+            <ul className="space-y-2 text-xs font-semibold">
+              {courses.map((c) => (
+                <li key={c.id}>
+                  <button
+                    onClick={() => handleOpenCourseFromHome(c.id)}
+                    className="hover:text-white transition text-left"
+                  >
+                    • {c.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 mb-3">
+              Hızlı Erişim & Modlar
+            </h4>
+            <ul className="space-y-2 text-xs font-semibold">
+              <li>
+                <button
+                  onClick={() => {
+                    setActivePage('home');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition"
+                >
+                  • Tanıtım Anasayfası
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setMode('study');
+                    if (!currentUser) handleGuestLogin();
+                    else setActivePage('portal');
+                  }}
+                  className="hover:text-white transition"
+                >
+                  • Öğretici Çalışma Modu (Şık Analizli)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setMode('exam');
+                    if (!currentUser) handleGuestLogin();
+                    else setActivePage('portal');
+                  }}
+                  className="hover:text-white transition"
+                >
+                  • 45 Dk Gerçek Sınav Simülasyonu
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-semibold">
+          <p>© 2026 SDÜ İSG Yüksek Lisans Çalışma Portalı • Tüm Hakları Saklıdır.</p>
+          <p className="text-slate-400">
+            6 Ders • 60 Deneme Sınavı • 900 Çözümlü Soru
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+
+  // ============================================================================
+  // RENDER LANDING / HOME PAGE ('home' OR NOT LOGGED IN)
+  // ============================================================================
+  if (activePage === 'home' || !currentUser) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+        {/* Top Landing Header */}
+        <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+            <div
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-3 cursor-pointer"
+            >
+              <div className="bg-amber-500 text-slate-950 p-2.5 rounded-xl shadow-md">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-base sm:text-lg font-black tracking-tight text-white">
+                  SDÜ İSG Yüksek Lisans
+                </h1>
+                <p className="text-[11px] font-bold text-amber-400">
+                  Akademik Sınav & Deneme Platformu
+                </p>
+              </div>
+            </div>
+
+            <nav className="hidden md:flex items-center gap-6 text-xs font-extrabold uppercase tracking-wider text-slate-300">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="hover:text-amber-400 transition"
+              >
+                Anasayfa
+              </button>
+              <button
+                onClick={() =>
+                  coursesSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+                }
+                className="hover:text-amber-400 transition"
+              >
+                Dersler (6)
+              </button>
+              <button
+                onClick={() =>
+                  authBoxRef.current?.scrollIntoView({ behavior: 'smooth' })
+                }
+                className="hover:text-amber-400 transition"
+              >
+                {currentUser ? 'Sınav Portalı' : 'Giriş / Kayıt'}
+              </button>
+            </nav>
+
+            <div className="flex items-center gap-2.5">
+              {currentUser ? (
+                <>
+                  <button
+                    onClick={() => setActivePage('portal')}
+                    className="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5"
+                  >
+                    <span>Sınavlara Geç ({currentUser.fullName})</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    title="Çıkış Yap"
+                    className="bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white p-2.5 rounded-xl border border-slate-700 transition"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleGuestLogin()}
+                    className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-xl transition"
+                  >
+                    Misafir Girişi
+                  </button>
+                  <button
+                    onClick={() =>
+                      authBoxRef.current?.scrollIntoView({ behavior: 'smooth' })
+                    }
+                    className="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black px-4 py-2.5 rounded-xl shadow transition"
+                  >
+                    Giriş Yap / Kayıt Ol
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </header>
+
+        {/* Hero Section + Login/Signup Card */}
+        <section className="relative overflow-hidden py-12 lg:py-20 border-b border-slate-800/80">
+          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column: Site Introduction */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider">
+                <Sparkles className="w-4 h-4" />
+                <span>2026 Bahar Dönemi Vize & Final Hazırlık Portalı</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+                SDÜ İş Sağlığı ve Güvenliği{' '}
+                <span className="text-amber-400">Yüksek Lisans</span> Deneme Sınavı Merkezi
+              </h2>
+
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                6 yüksek lisans dersinin tamamı için ders hocalarının sınav formatına birebir uygun olarak hazırlanmış{' '}
+                <strong className="text-white">60 ayrı konu temalı deneme sınavı</strong>,{' '}
+                <strong className="text-white">600 çoktan seçmeli test</strong> ve{' '}
+                <strong className="text-white">300 boşluk doldurma</strong> sorusuyla sınavlara eksiksiz hazırlanın.
+              </p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400">6</div>
+                  <div className="text-xs font-bold text-slate-400 mt-1">Yüksek Lisans Dersi</div>
+                </div>
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400">60</div>
+                  <div className="text-xs font-bold text-slate-400 mt-1">Ayrı Deneme Sınavı</div>
+                </div>
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400">900</div>
+                  <div className="text-xs font-bold text-slate-400 mt-1">Çözümlü Özgün Soru</div>
+                </div>
+                <div className="bg-slate-900/90 border border-slate-800 p-4 rounded-2xl">
+                  <div className="text-2xl sm:text-3xl font-black text-emerald-400">A-E</div>
+                  <div className="text-xs font-bold text-slate-400 mt-1">5 Şık Detaylı Analiz</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                <button
+                  onClick={() => {
+                    if (currentUser) setActivePage('portal');
+                    else handleGuestLogin();
+                  }}
+                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2"
+                >
+                  <span>Hemen Test Çözmeye Başla</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() =>
+                    coursesSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                  className="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-sm px-5 py-3.5 rounded-xl transition"
+                >
+                  6 Dersi ve Konuları İncele
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Login / Signup Card (or Quick Launch Card if logged in) */}
+            <div ref={authBoxRef} className="lg:col-span-5 flex justify-center">
+              {currentUser ? (
+                <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 space-y-5">
+                  <div className="flex items-center gap-3.5 border-b border-slate-800 pb-4">
+                    <div className="bg-amber-500 text-slate-950 p-3 rounded-xl">
+                      <User className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-amber-400 uppercase">
+                        Aktif Öğrenci Oturumu
+                      </div>
+                      <h3 className="text-lg font-black text-white">{currentUser.fullName}</h3>
+                      <p className="text-xs text-slate-400">@{currentUser.username}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Çözdüğün tüm testler ve puanların hesabına otomatik olarak kaydedilmektedir. Kaldığın yerden devam etmek için aşağıdaki butona tıklayabilirsin.
+                  </p>
+
+                  <button
+                    onClick={() => setActivePage('portal')}
+                    className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                  >
+                    <span>Sınav Portalına Git</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                  <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-slate-950 flex items-center gap-3.5">
+                    <div className="bg-slate-950 text-amber-400 p-3 rounded-xl shadow">
+                      <GraduationCap className="w-8 h-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-black tracking-tight leading-snug">
+                        SDÜ İSG Yüksek Lisans
+                      </h3>
+                      <p className="text-xs font-bold text-slate-900/80">
+                        Vize Sınav & Çalışma Portalı (6 Ders • 60 Test • 900 Soru)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 border-b border-slate-800 bg-slate-900/50">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthTab('login');
+                        setAuthError('');
+                      }}
+                      className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
+                        authTab === 'login'
+                          ? 'border-amber-500 text-amber-400 bg-slate-800/60'
+                          : 'border-transparent text-slate-400 hover:text-slate-200'
+                      }`}
+                    >
+                      <LogIn className="w-4 h-4" />
+                      Giriş Yap
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthTab('signup');
+                        setAuthError('');
+                      }}
+                      className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
+                        authTab === 'signup'
+                          ? 'border-amber-500 text-amber-400 bg-slate-800/60'
+                          : 'border-transparent text-slate-400 hover:text-slate-200'
+                      }`}
+                    >
+                      <UserPlus className="w-4 h-4" />
+                      Kayıt Ol
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleAuthSubmit} className="p-6 space-y-4">
+                    {authTab === 'signup' && (
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                          Ad Soyad
+                        </label>
+                        <input
+                          type="text"
+                          value={authFullName}
+                          onChange={(e) => setAuthFullName(e.target.value)}
+                          placeholder="Örn: Oğuzhan Kaya"
+                          className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                        />
+                      </div>
+                    )}
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                        Kullanıcı Adı
+                      </label>
+                      <div className="relative flex items-center">
+                        <User className="w-4 h-4 text-slate-400 absolute left-3.5" />
+                        <input
+                          type="text"
+                          required
+                          value={authUsername}
+                          onChange={(e) => setAuthUsername(e.target.value)}
+                          placeholder="kullanici_adi"
+                          className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                        Şifre
+                      </label>
+                      <div className="relative flex items-center">
+                        <Lock className="w-4 h-4 text-slate-400 absolute left-3.5" />
+                        <input
+                          type="password"
+                          required
+                          value={authPassword}
+                          onChange={(e) => setAuthPassword(e.target.value)}
+                          placeholder="••••••••"
+                          className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    {authError && (
+                      <div className="bg-rose-950/80 border border-rose-700 text-rose-200 text-xs font-bold p-3 rounded-xl flex items-center gap-2">
+                        <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                        <span>{authError}</span>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={authLoading}
+                      className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                    >
+                      {authLoading
+                        ? 'İşleniyor...'
+                        : authTab === 'login'
+                        ? 'Hesabıma Giriş Yap'
+                        : 'Hesap Oluştur & Başla'}
+                    </button>
+
+                    <div className="pt-3 border-t border-slate-800 text-center">
+                      <button
+                        type="button"
+                        onClick={() => handleGuestLogin()}
+                        className="text-xs font-bold text-slate-400 hover:text-amber-400 transition"
+                      >
+                        Üye olmadan Misafir Öğrenci olarak devam et →
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-14 bg-slate-900/50 border-b border-slate-800/80">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h3 className="text-2xl sm:text-3xl font-black text-white">
+                Sınavlara Nasıl Hazırlıyoruz?
+              </h3>
+              <p className="text-sm text-slate-400 mt-2">
+                Sadece doğru şıkkı ezberleten değil, diğer 4 şıkkın da ne olduğunu öğreten akıllı çalışma sistemi.
               </p>
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 border-b border-slate-800 bg-slate-900/50">
-            <button
-              type="button"
-              onClick={() => {
-                setAuthTab('login');
-                setAuthError('');
-              }}
-              className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
-                authTab === 'login'
-                  ? 'border-amber-500 text-amber-400 bg-slate-800/60'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <LogIn className="w-4 h-4" />
-              Giriş Yap
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setAuthTab('signup');
-                setAuthError('');
-              }}
-              className={`py-3.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 border-b-2 transition ${
-                authTab === 'signup'
-                  ? 'border-amber-500 text-amber-400 bg-slate-800/60'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <UserPlus className="w-4 h-4" />
-              Kayıt Ol
-            </button>
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center">
+                  <ListChecks className="w-5 h-5" />
+                </div>
+                <h4 className="font-extrabold text-base text-white">
+                  5 Şık Detaylı Çözüm Analizi
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Bir soruyu işaretlediğinde yalnızca doğru cevabı değil, A'dan E'ye tüm çeldirici şıkların hangi kavrama veya yönetmeliğe ait olduğunu anında görürsün.
+                </p>
+              </div>
 
-          <form onSubmit={handleAuthSubmit} className="p-6 space-y-4">
-            {authTab === 'signup' && (
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+                  <Target className="w-5 h-5" />
+                </div>
+                <h4 className="font-extrabold text-base text-white">
+                  Her Derste 10 Ayrı Deneme Testi
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Her ders kendi içinde 10 alt konuya bölünmüştür. Her testte 10 çoktan seçmeli + 5 boşluk doldurma olmak üzere 15 soru yer alır.
+                </p>
+              </div>
+
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <h4 className="font-extrabold text-base text-white">
+                  Sayfa Sayfa Odaklı Çözüm
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Soruları dikkatin dağılmadan tek tek sayfa sayfa çözebilir, boşluk doldurma sorularında kelime havuzundan tek tıkla cevap seçebilirsin.
+                </p>
+              </div>
+
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center">
+                  <Cloud className="w-5 h-5" />
+                </div>
+                <h4 className="font-extrabold text-base text-white">
+                  Bulut Senkronizasyon & Kayıt
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Kullanıcı adınla giriş yaptığında çözdüğün tüm testler buluta kaydedilir; telefondan veya bilgisayardan kaldığın sorudan devam edebilirsin.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 6 Courses Showcase Section */}
+        <section ref={coursesSectionRef} className="py-14">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Ad Soyad
-                </label>
-                <input
-                  type="text"
-                  value={authFullName}
-                  onChange={(e) => setAuthFullName(e.target.value)}
-                  placeholder="Örn: Oğuzhan Kaya"
-                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
-                />
+                <span className="text-xs font-extrabold uppercase tracking-wider text-amber-400">
+                  Ders Müfredatı & Deneme Sınavları
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
+                  6 Ders • 60 Deneme Sınavı • 900 Soru
+                </h3>
               </div>
-            )}
-
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                Kullanıcı Adı
-              </label>
-              <div className="relative flex items-center">
-                <User className="w-4 h-4 text-slate-400 absolute left-3.5" />
-                <input
-                  type="text"
-                  required
-                  value={authUsername}
-                  onChange={(e) => setAuthUsername(e.target.value)}
-                  placeholder="oguzhan"
-                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
-                />
-              </div>
+              <p className="text-xs text-slate-400">
+                İstediğin dersin kartına tıklayarak doğrudan o dersin 1. deneme sınavına başlayabilirsin.
+              </p>
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                Şifre
-              </label>
-              <div className="relative flex items-center">
-                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5" />
-                <input
-                  type="password"
-                  required
-                  value={authPassword}
-                  onChange={(e) => setAuthPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl pl-10 pr-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
-                />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {courses.map((c) => (
+                <div
+                  key={c.id}
+                  style={{ borderTop: `4px solid ${c.hex}` }}
+                  className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition shadow-lg"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 text-xs font-extrabold text-slate-400 uppercase mb-2">
+                      <span>{c.code}</span>
+                      <span className="bg-slate-800 text-amber-400 px-2.5 py-0.5 rounded-full text-[11px]">
+                        10 Test • 150 Soru
+                      </span>
+                    </div>
+
+                    <h4 className="text-lg font-black text-white leading-snug">{c.title}</h4>
+                    <p className="text-xs font-semibold text-slate-400 mt-1">
+                      👨‍🏫 {c.instructor}
+                    </p>
+
+                    <div className="mt-4 pt-3 border-t border-slate-800/80 space-y-1.5">
+                      <div className="text-[11px] font-extrabold uppercase text-slate-300">
+                        Öne Çıkan Sınav Konuları:
+                      </div>
+                      {(c.tests || []).slice(0, 3).map((t) => (
+                        <div
+                          key={t.testId}
+                          className="text-xs text-slate-400 flex items-center gap-1.5 truncate"
+                        >
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span className="truncate">
+                            Test {t.testId}: {t.theme}
+                          </span>
+                        </div>
+                      ))}
+                      <div className="text-[11px] text-slate-500 font-semibold pl-5">
+                        + 7 konu testi daha (Toplam 100 Test + 50 Boşluk Doldurma)
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => handleOpenCourseFromHome(c.id)}
+                    className="mt-6 w-full bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-950 font-extrabold text-xs py-3 rounded-xl border border-slate-700 hover:border-amber-500 transition flex items-center justify-center gap-2"
+                  >
+                    <span>Bu Dersin Testlerine Başla</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
 
-            {authError && (
-              <div className="bg-rose-950/80 border border-rose-700 text-rose-200 text-xs font-bold p-3 rounded-xl flex items-center gap-2">
-                <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                <span>{authError}</span>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={authLoading}
-              className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-black text-sm py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
-            >
-              {authLoading
-                ? 'İşleniyor...'
-                : authTab === 'login'
-                ? 'Hesabıma Giriş Yap'
-                : 'Hesap Oluştur & Başla'}
-            </button>
-
-            <div className="pt-3 border-t border-slate-800 text-center">
-              <button
-                type="button"
-                onClick={handleGuestLogin}
-                className="text-xs font-bold text-slate-400 hover:text-amber-400 transition"
-              >
-                Üye olmadan Misafir Öğrenci olarak devam et →
-              </button>
-            </div>
-          </form>
-        </div>
-        <p className="text-xs text-slate-500 mt-4 text-center flex items-center gap-1.5">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          Sorular ve cevap anahtarları F12 korumalı olarak sunucu tarafında (/api/questions) tutulmaktadır.
-        </p>
+        {renderFooter()}
       </div>
     );
   }
@@ -601,7 +1044,7 @@ export default function App() {
         <div className="text-center space-y-2">
           <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-sm font-bold text-slate-300">
-            Sorular güvenli sunucudan (/api/questions) yükleniyor...
+            Sorular yükleniyor...
           </p>
         </div>
       </div>
@@ -1073,662 +1516,682 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
-      {/* Top Navbar */}
-      <header className="sticky top-0 z-50 bg-slate-900 text-white border-b-4 border-amber-500 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-amber-500 text-slate-950 p-2 rounded-lg">
-              <GraduationCap className="w-6 h-6" />
+    <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col justify-between">
+      <div>
+        {/* Top Navbar */}
+        <header className="sticky top-0 z-50 bg-slate-900 text-white border-b-4 border-amber-500 shadow-lg">
+          <div className="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setActivePage('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="bg-amber-500 hover:bg-amber-400 text-slate-950 p-2 rounded-lg transition"
+                title="Anasayfaya Dön"
+              >
+                <GraduationCap className="w-6 h-6" />
+              </button>
+              <div>
+                <h1 className="text-lg font-extrabold tracking-tight flex items-center gap-2">
+                  SDÜ İSG Yüksek Lisans — Vize Sınav Portalı
+                </h1>
+                <p className="text-xs text-slate-400">
+                  6 Ders × 10 Test = 60 Sınav • {totalAllCoursesMC} Çoktan Seçmeli + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
+                  {totalAllCoursesMC + totalAllCoursesFill} Soru)
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-lg font-extrabold tracking-tight flex items-center gap-2">
-                SDÜ İSG Yüksek Lisans — Vize Sınav Portalı
-                <span className="hidden sm:inline-flex items-center gap-1 text-[10px] bg-emerald-950 border border-emerald-600 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
-                  <ShieldCheck className="w-3 h-3" /> 60 Deneme Sınavı • Backend Korumalı
+
+            <div className="flex flex-wrap items-center gap-2.5">
+              {/* Anasayfa Button */}
+              <button
+                onClick={() => {
+                  setActivePage('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition"
+              >
+                <Home className="w-3.5 h-3.5 text-amber-400" />
+                <span>Anasayfa</span>
+              </button>
+
+              {/* Cloud DB Status Badge */}
+              <div
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold ${
+                  cloudStatus === 'synced'
+                    ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300'
+                    : cloudStatus === 'saving'
+                    ? 'bg-amber-950/80 border-amber-500 text-amber-300'
+                    : 'bg-slate-800 border-slate-700 text-slate-300'
+                }`}
+              >
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    cloudStatus === 'synced'
+                      ? 'bg-emerald-400'
+                      : cloudStatus === 'saving'
+                      ? 'bg-amber-400 animate-pulse'
+                      : 'bg-slate-400'
+                  }`}
+                />
+                {cloudStatus === 'synced'
+                  ? '☁️ Bulut Senkronize'
+                  : cloudStatus === 'saving'
+                  ? '⏳ Kaydediliyor...'
+                  : '💾 Yerel Hafıza'}
+              </div>
+
+              {/* Mode Switcher */}
+              <div className="inline-flex rounded-lg bg-slate-800 p-1 border border-slate-700">
+                <button
+                  onClick={() => {
+                    setMode('study');
+                    setExamSubmitted(false);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
+                    mode === 'study'
+                      ? 'bg-amber-500 text-slate-950 shadow'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Çalışma Modu
+                </button>
+                <button
+                  onClick={() => {
+                    setMode('exam');
+                    setExamSubmitted(false);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
+                    mode === 'exam'
+                      ? 'bg-amber-500 text-slate-950 shadow'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <ClipboardCheck className="w-3.5 h-3.5" />
+                  Sınav Modu
+                </button>
+              </div>
+
+              {/* Timer */}
+              <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
+                <Clock className="w-4 h-4 text-amber-400" />
+                <span className="font-mono font-bold text-sm text-amber-400">
+                  {formatTime(secondsLeft)}
                 </span>
-              </h1>
-              <p className="text-xs text-slate-400">
-                6 Ders × 10 Test = 60 Sınav • {totalAllCoursesMC} Çoktan Seçmeli + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
-                {totalAllCoursesMC + totalAllCoursesFill} Soru)
-              </p>
+                <button
+                  onClick={() => setTimerRunning(!timerRunning)}
+                  className="bg-slate-700 hover:bg-slate-600 text-xs px-2 py-1 rounded font-semibold flex items-center gap-1"
+                >
+                  {timerRunning ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                  {timerRunning ? 'Duraklat' : 'Başlat'}
+                </button>
+                <button
+                  onClick={() => {
+                    setTimerRunning(false);
+                    setSecondsLeft(45 * 60);
+                  }}
+                  className="text-slate-400 hover:text-white text-xs px-1"
+                  title="Sayacı Sıfırla"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              {mode === 'exam' && (
+                <button
+                  onClick={async () => {
+                    await evaluateAllOnBackend(answers);
+                    setExamSubmitted(true);
+                  }}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow transition"
+                >
+                  Sınavı Bitir
+                </button>
+              )}
+
+              {/* User Badge & Logout */}
+              <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 pl-3 pr-2 py-1 rounded-lg">
+                <User className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-xs font-bold text-slate-200">
+                  {currentUser.fullName}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  title="Çıkış Yap"
+                  className="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white p-1.5 rounded-md transition"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </div>
+        </header>
 
-          <div className="flex flex-wrap items-center gap-2.5">
-            {/* Cloud DB Status Badge */}
-            <div
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-bold ${
-                cloudStatus === 'synced'
-                  ? 'bg-emerald-950/80 border-emerald-600 text-emerald-300'
-                  : cloudStatus === 'saving'
-                  ? 'bg-amber-950/80 border-amber-500 text-amber-300'
-                  : 'bg-slate-800 border-slate-700 text-slate-300'
-              }`}
-            >
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  cloudStatus === 'synced'
-                    ? 'bg-emerald-400'
-                    : cloudStatus === 'saving'
-                    ? 'bg-amber-400 animate-pulse'
-                    : 'bg-slate-400'
+        <main className="max-w-7xl mx-auto px-4 mt-6">
+          {/* 6 Course Selector Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-6">
+            {courses.map((course) => {
+              const st = getStats(course, 'all');
+              const isSelected = course.id === activeCourse.id;
+              return (
+                <button
+                  key={course.id}
+                  onClick={() => {
+                    setActiveCourseId(course.id);
+                    setExamSubmitted(false);
+                  }}
+                  style={{
+                    borderTopColor: isSelected ? course.hex : undefined
+                  }}
+                  className={`text-left p-3.5 rounded-xl border transition-all flex flex-col justify-between ${
+                    isSelected
+                      ? 'bg-white border-2 border-slate-900 shadow-md -translate-y-0.5'
+                      : 'bg-white/80 border-slate-200 hover:border-slate-400 hover:bg-white'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 uppercase">
+                      <span>{course.code}</span>
+                      <span
+                        className="w-2.5 h-2.5 rounded-full"
+                        style={{ backgroundColor: course.hex }}
+                      />
+                    </div>
+                    <div className="font-bold text-sm text-slate-900 mt-1 line-clamp-2 leading-snug">
+                      {course.title}
+                    </div>
+                  </div>
+
+                  <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+                    <span className="text-slate-500">
+                      10 Test • {st.answered}/{st.total}
+                    </span>
+                    <span
+                      className={
+                        st.score >= 70
+                          ? 'text-emerald-700 font-extrabold'
+                          : 'text-slate-700 font-bold'
+                      }
+                    >
+                      %{st.score}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Course Banner & Score Card */}
+          <div
+            className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-5 flex flex-col lg:flex-row justify-between gap-6"
+            style={{ borderLeft: `6px solid ${activeCourse.hex}` }}
+          >
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-700 mb-2">
+                <span>{activeCourse.code}</span>
+                <span>•</span>
+                <span>{activeCourse.badge}</span>
+              </div>
+              <h2 className="text-2xl font-black text-slate-900">{activeCourse.title}</h2>
+              <p className="text-sm font-semibold text-slate-600 mt-1">
+                👨‍🏫 {activeCourse.instructor} &nbsp;|&nbsp; 📋 {activeCourse.examInfo}
+              </p>
+
+              <div className="mt-4 bg-amber-50/90 border border-amber-200 rounded-lg p-3.5">
+                <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-amber-900 mb-1.5">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  Hoca Sınav Vurguları & Kritik Tüyolar
+                </div>
+                <ul className="list-disc list-inside text-xs sm:text-sm text-amber-950 space-y-1">
+                  {activeCourse.tips.map((tip, i) => (
+                    <li key={i}>{tip}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Score Box */}
+            <div className="lg:w-72 bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col items-center justify-center text-center shrink-0">
+              <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1">
+                {activeTestIdx === 'all' ? 'Tüm 10 Test Genel Puanı' : `Test ${activeTestIdx + 1} Puanı`}
+              </div>
+              <Award
+                className={`w-7 h-7 mb-1 ${
+                  activeStats.score >= 70 ? 'text-emerald-600' : 'text-amber-500'
                 }`}
               />
-              {cloudStatus === 'synced'
-                ? '☁️ Bulut DB Senkronize'
-                : cloudStatus === 'saving'
-                ? '⏳ Kaydediliyor...'
-                : '💾 Yerel Hafıza'}
-            </div>
-
-            {/* Mode Switcher */}
-            <div className="inline-flex rounded-lg bg-slate-800 p-1 border border-slate-700">
-              <button
-                onClick={() => {
-                  setMode('study');
-                  setExamSubmitted(false);
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
-                  mode === 'study'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                Çalışma Modu
-              </button>
-              <button
-                onClick={() => {
-                  setMode('exam');
-                  setExamSubmitted(false);
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition ${
-                  mode === 'exam'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                <ClipboardCheck className="w-3.5 h-3.5" />
-                Sınav Modu
-              </button>
-            </div>
-
-            {/* Timer */}
-            <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span className="font-mono font-bold text-sm text-amber-400">
-                {formatTime(secondsLeft)}
-              </span>
-              <button
-                onClick={() => setTimerRunning(!timerRunning)}
-                className="bg-slate-700 hover:bg-slate-600 text-xs px-2 py-1 rounded font-semibold flex items-center gap-1"
-              >
-                {timerRunning ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
-                {timerRunning ? 'Duraklat' : 'Başlat'}
-              </button>
-              <button
-                onClick={() => {
-                  setTimerRunning(false);
-                  setSecondsLeft(45 * 60);
-                }}
-                className="text-slate-400 hover:text-white text-xs px-1"
-                title="Sayacı Sıfırla"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            {mode === 'exam' && (
-              <button
-                onClick={async () => {
-                  await evaluateAllOnBackend(answers);
-                  setExamSubmitted(true);
-                }}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow transition"
-              >
-                Sınavı Bitir
-              </button>
-            )}
-
-            {/* User Badge & Logout */}
-            <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 pl-3 pr-2 py-1 rounded-lg">
-              <User className="w-3.5 h-3.5 text-amber-400" />
-              <span className="text-xs font-bold text-slate-200">
-                {currentUser.fullName}
-              </span>
-              <button
-                onClick={handleLogout}
-                title="Çıkış Yap"
-                className="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white p-1.5 rounded-md transition"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 mt-6">
-        {/* 6 Course Selector Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-6">
-          {courses.map((course) => {
-            const st = getStats(course, 'all');
-            const isSelected = course.id === activeCourse.id;
-            return (
-              <button
-                key={course.id}
-                onClick={() => {
-                  setActiveCourseId(course.id);
-                  setExamSubmitted(false);
-                }}
-                style={{
-                  borderTopColor: isSelected ? course.hex : undefined
-                }}
-                className={`text-left p-3.5 rounded-xl border transition-all flex flex-col justify-between ${
-                  isSelected
-                    ? 'bg-white border-2 border-slate-900 shadow-md -translate-y-0.5'
-                    : 'bg-white/80 border-slate-200 hover:border-slate-400 hover:bg-white'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 uppercase">
-                    <span>{course.code}</span>
-                    <span
-                      className="w-2.5 h-2.5 rounded-full"
-                      style={{ backgroundColor: course.hex }}
-                    />
-                  </div>
-                  <div className="font-bold text-sm text-slate-900 mt-1 line-clamp-2 leading-snug">
-                    {course.title}
-                  </div>
-                </div>
-
-                <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
-                  <span className="text-slate-500">
-                    10 Test • {st.answered}/{st.total}
+              <div className="text-4xl font-black text-slate-900">
+                {activeStats.score}
+                <span className="text-lg font-bold text-slate-400"> / 100</span>
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wide mt-1">
+                {activeStats.score >= 70 ? (
+                  <span className="text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                    ✅ GEÇER NOT (≥70)
                   </span>
-                  <span
-                    className={
-                      st.score >= 70
-                        ? 'text-emerald-700 font-extrabold'
-                        : 'text-slate-700 font-bold'
-                    }
-                  >
-                    %{st.score}
+                ) : (
+                  <span className="text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full">
+                    🎯 Geçme Barajı: 70 Puan
                   </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 w-full mt-3.5 pt-3 border-t border-slate-200 text-xs font-bold">
+                <div className="text-emerald-700">
+                  <div className="text-base">{activeStats.correct}</div>
+                  Doğru
                 </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Course Banner & Score Card */}
-        <div
-          className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-5 flex flex-col lg:flex-row justify-between gap-6"
-          style={{ borderLeft: `6px solid ${activeCourse.hex}` }}
-        >
-          <div className="flex-1">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-700 mb-2">
-              <span>{activeCourse.code}</span>
-              <span>•</span>
-              <span>{activeCourse.badge}</span>
-            </div>
-            <h2 className="text-2xl font-black text-slate-900">{activeCourse.title}</h2>
-            <p className="text-sm font-semibold text-slate-600 mt-1">
-              👨‍🏫 {activeCourse.instructor} &nbsp;|&nbsp; 📋 {activeCourse.examInfo}
-            </p>
-
-            <div className="mt-4 bg-amber-50/90 border border-amber-200 rounded-lg p-3.5">
-              <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-amber-900 mb-1.5">
-                <Sparkles className="w-4 h-4 text-amber-600" />
-                Hoca Sınav Vurguları & Kritik Tüyolar
-              </div>
-              <ul className="list-disc list-inside text-xs sm:text-sm text-amber-950 space-y-1">
-                {activeCourse.tips.map((tip, i) => (
-                  <li key={i}>{tip}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Score Box */}
-          <div className="lg:w-72 bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col items-center justify-center text-center shrink-0">
-            <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1">
-              {activeTestIdx === 'all' ? 'Tüm 10 Test Genel Puanı' : `Test ${activeTestIdx + 1} Puanı`}
-            </div>
-            <Award
-              className={`w-7 h-7 mb-1 ${
-                activeStats.score >= 70 ? 'text-emerald-600' : 'text-amber-500'
-              }`}
-            />
-            <div className="text-4xl font-black text-slate-900">
-              {activeStats.score}
-              <span className="text-lg font-bold text-slate-400"> / 100</span>
-            </div>
-            <div className="text-xs font-bold uppercase tracking-wide mt-1">
-              {activeStats.score >= 70 ? (
-                <span className="text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
-                  ✅ GEÇER NOT (≥70)
-                </span>
-              ) : (
-                <span className="text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full">
-                  🎯 Geçme Barajı: 70 Puan
-                </span>
-              )}
-            </div>
-
-            <div className="grid grid-cols-3 gap-2 w-full mt-3.5 pt-3 border-t border-slate-200 text-xs font-bold">
-              <div className="text-emerald-700">
-                <div className="text-base">{activeStats.correct}</div>
-                Doğru
-              </div>
-              <div className="text-rose-700">
-                <div className="text-base">{activeStats.wrong}</div>
-                Yanlış
-              </div>
-              <div className="text-slate-500">
-                <div className="text-base">{activeStats.total - activeStats.answered}</div>
-                Boş
-              </div>
-            </div>
-
-            <div className="w-full mt-3 pt-2.5 border-t border-slate-200 text-[11px] font-bold text-slate-500 flex items-center justify-between">
-              <span>Ders Genel (10 Test):</span>
-              <span className="text-slate-800">
-                {overallCourseStats.answered}/{overallCourseStats.total} Soru (%{overallCourseStats.score})
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* 10-TEST SELECTOR BAR (Test 1 .. Test 10 + Tüm 10 Test) */}
-        {activeCourse.tests && activeCourse.tests.length > 0 && (
-          <div className="bg-white rounded-xl border border-slate-200 p-4 mb-5 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-slate-800">
-                <Layers className="w-4 h-4 text-amber-600" />
-                <span>
-                  {activeCourse.code} — 10 Ayrı Deneme Sınavı Seçimi (Her Test: 10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru)
-                </span>
-              </div>
-              <button
-                onClick={() => {
-                  setActiveTestIdx('all');
-                  setExamSubmitted(false);
-                }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition border ${
-                  activeTestIdx === 'all'
-                    ? 'bg-amber-500 text-slate-950 border-amber-600 shadow'
-                    : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
-                }`}
-              >
-                📚 Tüm 10 Testi Birlikte Seç (150 Soru)
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
-              {activeCourse.tests.map((t, idx) => {
-                const tStat = getStats(activeCourse, idx);
-                const isSelected = activeTestIdx === idx;
-                const isDone = tStat.answered === tStat.total && tStat.total > 0;
-                return (
-                  <button
-                    key={t.testId}
-                    onClick={() => {
-                      setActiveTestIdx(idx);
-                      setExamSubmitted(false);
-                    }}
-                    title={t.title}
-                    className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
-                      isSelected
-                        ? 'bg-slate-900 text-white border-slate-900 shadow-md -translate-y-0.5'
-                        : isDone
-                        ? 'bg-emerald-50/70 border-emerald-300 text-slate-900 hover:border-emerald-500'
-                        : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-white hover:border-slate-400'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-1">
-                        <span
-                          className={`text-xs font-black ${
-                            isSelected ? 'text-amber-400' : 'text-slate-900'
-                          }`}
-                        >
-                          {t.shortTitle}
-                        </span>
-                        <span
-                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
-                            isSelected
-                              ? 'bg-slate-800 text-slate-200'
-                              : isDone
-                              ? 'bg-emerald-600 text-white'
-                              : 'bg-slate-200 text-slate-700'
-                          }`}
-                        >
-                          {tStat.answered}/{tStat.total}
-                        </span>
-                      </div>
-                      <div
-                        className={`text-[11px] font-medium mt-1 line-clamp-2 leading-tight ${
-                          isSelected ? 'text-slate-300' : 'text-slate-600'
-                        }`}
-                      >
-                        {t.theme}
-                      </div>
-                    </div>
-
-                    <div
-                      className={`mt-2 pt-1.5 border-t text-[10px] font-extrabold flex items-center justify-between ${
-                        isSelected ? 'border-slate-700 text-amber-300' : 'border-slate-200 text-slate-500'
-                      }`}
-                    >
-                      <span>Puan:</span>
-                      <span
-                        className={
-                          tStat.score >= 70
-                            ? isSelected
-                              ? 'text-emerald-400'
-                              : 'text-emerald-700'
-                            : ''
-                        }
-                      >
-                        {tStat.score}/100
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {activeTestMeta && (
-              <div className="mt-3 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
-                <div className="font-extrabold text-slate-900 flex items-center gap-2">
-                  <span className="bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded font-black">
-                    AKTİF SINAV: {activeTestMeta.shortTitle.toUpperCase()}
-                  </span>
-                  <span>{activeTestMeta.theme}</span>
+                <div className="text-rose-700">
+                  <div className="text-base">{activeStats.wrong}</div>
+                  Yanlış
                 </div>
-                <span className="text-slate-500 font-semibold">
-                  10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru (Her soru {pointsPerQuestion} Puan)
+                <div className="text-slate-500">
+                  <div className="text-base">{activeStats.total - activeStats.answered}</div>
+                  Boş
+                </div>
+              </div>
+
+              <div className="w-full mt-3 pt-2.5 border-t border-slate-200 text-[11px] font-bold text-slate-500 flex items-center justify-between">
+                <span>Ders Genel (10 Test):</span>
+                <span className="text-slate-800">
+                  {overallCourseStats.answered}/{overallCourseStats.total} Soru (%{overallCourseStats.score})
                 </span>
               </div>
-            )}
-          </div>
-        )}
-
-        {/* Filter, View Mode (Sayfa Sayfa / Liste) & Action Bar */}
-        <div className="bg-white rounded-xl border border-slate-200 p-3.5 mb-5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
-          <div className="flex flex-wrap items-center gap-2">
-            {/* View Mode Toggle: Sayfa Sayfa vs Liste */}
-            <div className="inline-flex rounded-lg bg-slate-100 p-1 border border-slate-300 mr-1">
-              <button
-                onClick={() => setViewMode('paged')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
-                  viewMode === 'paged'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <FileText className="w-3.5 h-3.5" />
-                Sayfa Sayfa (Tek Soru)
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
-                  viewMode === 'list'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <LayoutList className="w-3.5 h-3.5" />
-                Tüm Liste
-              </button>
             </div>
-
-            <button
-              onClick={() => setFilter('all')}
-              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
-                filter === 'all'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              Tümü ({activeStats.total})
-            </button>
-            <button
-              onClick={() => setFilter('mc')}
-              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
-                filter === 'mc'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              Çoktan Seçmeli ({visibleMC.length})
-            </button>
-            <button
-              onClick={() => setFilter('fill')}
-              className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
-                filter === 'fill'
-                  ? 'bg-slate-900 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              Boşluk Doldurma ({visibleFill.length})
-            </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => setShowWordBank(!showWordBank)}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
-            >
-              <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-              {showWordBank ? 'Kelime Havuzunu Gizle' : 'Kelime Havuzunu Göster'}
-            </button>
-            <button
-              onClick={handleRevealCurrentView}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
-            >
-              <Eye className="w-3.5 h-3.5 text-blue-600" />
-              {activeTestIdx === 'all' ? 'Tüm 150 Cevabı Göster' : `Test ${activeTestIdx + 1} Cevaplarını Göster`}
-            </button>
-            <button
-              onClick={handleResetCurrentView}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              {activeTestIdx === 'all' ? 'Tüm Dersi Sıfırla' : `Test ${activeTestIdx + 1}'i Sıfırla`}
-            </button>
-          </div>
-        </div>
-
-        {/* ===================================================================== */}
-        {/* PAGED ("SAYFA SAYFA / TEK SORU") MODE                                  */}
-        {/* ===================================================================== */}
-        {viewMode === 'paged' && currentPagedItem && (
-          <div className="mb-10">
-            {/* Question Number Navigator Bar */}
-            <div className="bg-white rounded-xl border border-slate-200 p-4 mb-4 shadow-sm">
+          {/* 10-TEST SELECTOR BAR (Test 1 .. Test 10 + Tüm 10 Test) */}
+          {activeCourse.tests && activeCourse.tests.length > 0 && (
+            <div className="bg-white rounded-xl border border-slate-200 p-4 mb-5 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <div className="text-xs font-extrabold uppercase tracking-wider text-slate-700">
-                  📌 Soru Gezgini — Soru {safeStep + 1} / {pagedItems.length}
-                  <span className="ml-2 text-slate-400 font-semibold">
-                    ({currentPagedItem.type === 'mc' ? 'Çoktan Seçmeli Test' : 'Boşluk Doldurma'})
+                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-slate-800">
+                  <Layers className="w-4 h-4 text-amber-600" />
+                  <span>
+                    {activeCourse.code} — 10 Ayrı Deneme Sınavı Seçimi (Her Test: 10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru)
                   </span>
                 </div>
-
-                <div className="flex items-center gap-3 text-[11px] font-bold">
-                  <span className="flex items-center gap-1 text-emerald-700">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Doğru
-                  </span>
-                  <span className="flex items-center gap-1 text-rose-700">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Yanlış
-                  </span>
-                  <span className="flex items-center gap-1 text-slate-500">
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-200 inline-block" /> Boş
-                  </span>
-                </div>
+                <button
+                  onClick={() => {
+                    setActiveTestIdx('all');
+                    setExamSubmitted(false);
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition border ${
+                    activeTestIdx === 'all'
+                      ? 'bg-amber-500 text-slate-950 border-amber-600 shadow'
+                      : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                  }`}
+                >
+                  📚 Tüm 10 Testi Birlikte Seç (150 Soru)
+                </button>
               </div>
 
-              {/* Numbered Buttons (1..15) */}
-              <div className="flex flex-wrap gap-1.5">
-                {pagedItems.map((item, idx) => {
-                  const isCurrent = idx === safeStep;
-                  let pillClass = 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200';
-
-                  if (item.type === 'mc') {
-                    const ans = courseState.mc?.[item.qIdx];
-                    const fb = courseFeedback.mc?.[item.qIdx];
-                    if (ans !== undefined) {
-                      if (showFeedback && fb) {
-                        pillClass = fb.correct
-                          ? 'bg-emerald-600 text-white border-emerald-700'
-                          : 'bg-rose-600 text-white border-rose-700';
-                      } else {
-                        pillClass = 'bg-blue-600 text-white border-blue-700';
-                      }
-                    }
-                  } else {
-                    const fSt = courseState.fill?.[item.qIdx];
-                    const fb = courseFeedback.fill?.[item.qIdx];
-                    if (fSt?.checked) {
-                      if (showFeedback && fb) {
-                        pillClass = fb.ok
-                          ? 'bg-emerald-600 text-white border-emerald-700'
-                          : 'bg-rose-600 text-white border-rose-700';
-                      } else {
-                        pillClass = 'bg-blue-600 text-white border-blue-700';
-                      }
-                    }
-                  }
-
+              <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
+                {activeCourse.tests.map((t, idx) => {
+                  const tStat = getStats(activeCourse, idx);
+                  const isSelected = activeTestIdx === idx;
+                  const isDone = tStat.answered === tStat.total && tStat.total > 0;
                   return (
                     <button
-                      key={`${item.type}-${item.qIdx}`}
-                      onClick={() => setCurrentStep(idx)}
-                      className={`w-9 h-9 rounded-lg border text-xs font-extrabold transition flex items-center justify-center ${pillClass} ${
-                        isCurrent ? 'ring-2 ring-amber-500 ring-offset-2 scale-105 shadow' : ''
+                      key={t.testId}
+                      onClick={() => {
+                        setActiveTestIdx(idx);
+                        setExamSubmitted(false);
+                      }}
+                      title={t.title}
+                      className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
+                        isSelected
+                          ? 'bg-slate-900 text-white border-slate-900 shadow-md -translate-y-0.5'
+                          : isDone
+                          ? 'bg-emerald-50/70 border-emerald-300 text-slate-900 hover:border-emerald-500'
+                          : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-white hover:border-slate-400'
                       }`}
-                      title={
-                        item.type === 'mc'
-                          ? `Soru ${idx + 1}: Çoktan Seçmeli`
-                          : `Soru ${idx + 1}: Boşluk Doldurma`
-                      }
                     >
-                      {idx + 1}
+                      <div>
+                        <div className="flex items-center justify-between gap-1">
+                          <span
+                            className={`text-xs font-black ${
+                              isSelected ? 'text-amber-400' : 'text-slate-900'
+                            }`}
+                          >
+                            {t.shortTitle}
+                          </span>
+                          <span
+                            className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                              isSelected
+                                ? 'bg-slate-800 text-slate-200'
+                                : isDone
+                                ? 'bg-emerald-600 text-white'
+                                : 'bg-slate-200 text-slate-700'
+                            }`}
+                          >
+                            {tStat.answered}/{tStat.total}
+                          </span>
+                        </div>
+                        <div
+                          className={`text-[11px] font-medium mt-1 line-clamp-2 leading-tight ${
+                            isSelected ? 'text-slate-300' : 'text-slate-600'
+                          }`}
+                        >
+                          {t.theme}
+                        </div>
+                      </div>
+
+                      <div
+                        className={`mt-2 pt-1.5 border-t text-[10px] font-extrabold flex items-center justify-between ${
+                          isSelected ? 'border-slate-700 text-amber-300' : 'border-slate-200 text-slate-500'
+                        }`}
+                      >
+                        <span>Puan:</span>
+                        <span
+                          className={
+                            tStat.score >= 70
+                              ? isSelected
+                                ? 'text-emerald-400'
+                                : 'text-emerald-700'
+                              : ''
+                          }
+                        >
+                          {tStat.score}/100
+                        </span>
+                      </div>
                     </button>
                   );
                 })}
               </div>
+
+              {activeTestMeta && (
+                <div className="mt-3 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <div className="font-extrabold text-slate-900 flex items-center gap-2">
+                    <span className="bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded font-black">
+                      AKTİF SINAV: {activeTestMeta.shortTitle.toUpperCase()}
+                    </span>
+                    <span>{activeTestMeta.theme}</span>
+                  </div>
+                  <span className="text-slate-500 font-semibold">
+                    10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru (Her soru {pointsPerQuestion} Puan)
+                  </span>
+                </div>
+              )}
             </div>
+          )}
 
-            {/* Active Single Question Card */}
-            <div ref={questionStartRef} className="scroll-mt-20">
-              {currentPagedItem.type === 'mc'
-                ? renderMCCard(currentPagedItem.q, currentPagedItem.qIdx, true)
-                : renderFillCard(currentPagedItem.q, currentPagedItem.qIdx, true)}
-            </div>
-
-            {/* Bottom Prev / Next Navigation Bar */}
-            <div className="mt-4 bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
-              <button
-                onClick={goPrevStep}
-                disabled={safeStep === 0}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none text-xs sm:text-sm font-extrabold text-slate-800 transition"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                <span>Önceki Soru</span>
-              </button>
-
-              <div className="text-xs sm:text-sm font-extrabold text-slate-600 text-center">
-                Soru <span className="text-slate-950">{safeStep + 1}</span> / {pagedItems.length}
+          {/* Filter, View Mode (Sayfa Sayfa / Liste) & Action Bar */}
+          <div className="bg-white rounded-xl border border-slate-200 p-3.5 mb-5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+            <div className="flex flex-wrap items-center gap-2">
+              {/* View Mode Toggle: Sayfa Sayfa vs Liste */}
+              <div className="inline-flex rounded-lg bg-slate-100 p-1 border border-slate-300 mr-1">
+                <button
+                  onClick={() => setViewMode('paged')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
+                    viewMode === 'paged'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  Sayfa Sayfa (Tek Soru)
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-extrabold transition ${
+                    viewMode === 'list'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <LayoutList className="w-3.5 h-3.5" />
+                  Tüm Liste
+                </button>
               </div>
 
               <button
-                onClick={goNextStep}
-                disabled={
-                  safeStep === pagedItems.length - 1 &&
-                  (activeTestIdx === 'all' || activeTestIdx >= 9)
-                }
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-white text-xs sm:text-sm font-extrabold shadow transition"
+                onClick={() => setFilter('all')}
+                className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
+                  filter === 'all'
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
               >
-                <span>
-                  {safeStep < pagedItems.length - 1
-                    ? 'Sonraki Soru'
-                    : activeTestIdx !== 'all' && activeTestIdx < 9
-                    ? `Test ${activeTestIdx + 2}'ye Geç`
-                    : 'Son Soru'}
-                </span>
-                <ChevronRight className="w-4 h-4" />
+                Tümü ({activeStats.total})
+              </button>
+              <button
+                onClick={() => setFilter('mc')}
+                className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
+                  filter === 'mc'
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                Çoktan Seçmeli ({visibleMC.length})
+              </button>
+              <button
+                onClick={() => setFilter('fill')}
+                className={`px-3 py-2 rounded-lg text-xs font-bold transition ${
+                  filter === 'fill'
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                Boşluk Doldurma ({visibleFill.length})
+              </button>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={() => setShowWordBank(!showWordBank)}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
+              >
+                <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+                {showWordBank ? 'Kelime Havuzunu Gizle' : 'Kelime Havuzunu Göster'}
+              </button>
+              <button
+                onClick={handleRevealCurrentView}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
+              >
+                <Eye className="w-3.5 h-3.5 text-blue-600" />
+                {activeTestIdx === 'all' ? 'Tüm 150 Cevabı Göster' : `Test ${activeTestIdx + 1} Cevaplarını Göster`}
+              </button>
+              <button
+                onClick={handleResetCurrentView}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                {activeTestIdx === 'all' ? 'Tüm Dersi Sıfırla' : `Test ${activeTestIdx + 1}'i Sıfırla`}
               </button>
             </div>
           </div>
-        )}
 
-        {/* ===================================================================== */}
-        {/* LIST ("TÜM LİSTE") MODE                                                */}
-        {/* ===================================================================== */}
-        {viewMode === 'list' && (
-          <>
-            {(filter === 'all' || filter === 'mc') && (
-              <section className="mb-10">
-                <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
-                  <h3 className="text-lg font-extrabold text-slate-900">
-                    📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({visibleMC.length} Soru)
-                  </h3>
-                  <span className="text-xs font-bold text-slate-500">
-                    Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan 5 şık analizi gelir
-                  </span>
-                </div>
-
-                <div className="space-y-5">
-                  {visibleMC.map((q, localIdx) =>
-                    renderMCCard(q, mcStartIdx + localIdx, false)
-                  )}
-                </div>
-              </section>
-            )}
-
-            {(filter === 'all' || filter === 'fill') && (
-              <section>
-                <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
-                  <h3 className="text-lg font-extrabold text-slate-900">
-                    ✍️ Bölüm 2: Boşluk Doldurma Soruları ({visibleFill.length} Soru)
-                  </h3>
-                  <span className="text-xs font-bold text-slate-500">
-                    Her soru {pointsPerQuestion} puandır
-                  </span>
-                </div>
-
-                {showWordBank && currentWordBank.length > 0 && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
-                    <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
-                      🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {currentWordBank.map((word, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
-                        >
-                          {word}
-                        </span>
-                      ))}
-                    </div>
+          {/* ===================================================================== */}
+          {/* PAGED ("SAYFA SAYFA / TEK SORU") MODE                                  */}
+          {/* ===================================================================== */}
+          {viewMode === 'paged' && currentPagedItem && (
+            <div className="mb-10">
+              {/* Question Number Navigator Bar */}
+              <div className="bg-white rounded-xl border border-slate-200 p-4 mb-4 shadow-sm">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="text-xs font-extrabold uppercase tracking-wider text-slate-700">
+                    📌 Soru Gezgini — Soru {safeStep + 1} / {pagedItems.length}
+                    <span className="ml-2 text-slate-400 font-semibold">
+                      ({currentPagedItem.type === 'mc' ? 'Çoktan Seçmeli Test' : 'Boşluk Doldurma'})
+                    </span>
                   </div>
-                )}
 
-                <div className="space-y-4">
-                  {visibleFill.map((q, localIdx) =>
-                    renderFillCard(q, fillStartIdx + localIdx, false)
-                  )}
+                  <div className="flex items-center gap-3 text-[11px] font-bold">
+                    <span className="flex items-center gap-1 text-emerald-700">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Doğru
+                    </span>
+                    <span className="flex items-center gap-1 text-rose-700">
+                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Yanlış
+                    </span>
+                    <span className="flex items-center gap-1 text-slate-500">
+                      <span className="w-2.5 h-2.5 rounded-full bg-slate-200 inline-block" /> Boş
+                    </span>
+                  </div>
                 </div>
-              </section>
-            )}
-          </>
-        )}
-      </main>
+
+                {/* Numbered Buttons (1..15) */}
+                <div className="flex flex-wrap gap-1.5">
+                  {pagedItems.map((item, idx) => {
+                    const isCurrent = idx === safeStep;
+                    let pillClass = 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200';
+
+                    if (item.type === 'mc') {
+                      const ans = courseState.mc?.[item.qIdx];
+                      const fb = courseFeedback.mc?.[item.qIdx];
+                      if (ans !== undefined) {
+                        if (showFeedback && fb) {
+                          pillClass = fb.correct
+                            ? 'bg-emerald-600 text-white border-emerald-700'
+                            : 'bg-rose-600 text-white border-rose-700';
+                        } else {
+                          pillClass = 'bg-blue-600 text-white border-blue-700';
+                        }
+                      }
+                    } else {
+                      const fSt = courseState.fill?.[item.qIdx];
+                      const fb = courseFeedback.fill?.[item.qIdx];
+                      if (fSt?.checked) {
+                        if (showFeedback && fb) {
+                          pillClass = fb.ok
+                            ? 'bg-emerald-600 text-white border-emerald-700'
+                            : 'bg-rose-600 text-white border-rose-700';
+                        } else {
+                          pillClass = 'bg-blue-600 text-white border-blue-700';
+                        }
+                      }
+                    }
+
+                    return (
+                      <button
+                        key={`${item.type}-${item.qIdx}`}
+                        onClick={() => setCurrentStep(idx)}
+                        className={`w-9 h-9 rounded-lg border text-xs font-extrabold transition flex items-center justify-center ${pillClass} ${
+                          isCurrent ? 'ring-2 ring-amber-500 ring-offset-2 scale-105 shadow' : ''
+                        }`}
+                        title={
+                          item.type === 'mc'
+                            ? `Soru ${idx + 1}: Çoktan Seçmeli`
+                            : `Soru ${idx + 1}: Boşluk Doldurma`
+                        }
+                      >
+                        {idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Active Single Question Card */}
+              <div ref={questionStartRef} className="scroll-mt-20">
+                {currentPagedItem.type === 'mc'
+                  ? renderMCCard(currentPagedItem.q, currentPagedItem.qIdx, true)
+                  : renderFillCard(currentPagedItem.q, currentPagedItem.qIdx, true)}
+              </div>
+
+              {/* Bottom Prev / Next Navigation Bar */}
+              <div className="mt-4 bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
+                <button
+                  onClick={goPrevStep}
+                  disabled={safeStep === 0}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 disabled:opacity-40 disabled:pointer-events-none text-xs sm:text-sm font-extrabold text-slate-800 transition"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Önceki Soru</span>
+                </button>
+
+                <div className="text-xs sm:text-sm font-extrabold text-slate-600 text-center">
+                  Soru <span className="text-slate-950">{safeStep + 1}</span> / {pagedItems.length}
+                </div>
+
+                <button
+                  onClick={goNextStep}
+                  disabled={
+                    safeStep === pagedItems.length - 1 &&
+                    (activeTestIdx === 'all' || activeTestIdx >= 9)
+                  }
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:pointer-events-none text-white text-xs sm:text-sm font-extrabold shadow transition"
+                >
+                  <span>
+                    {safeStep < pagedItems.length - 1
+                      ? 'Sonraki Soru'
+                      : activeTestIdx !== 'all' && activeTestIdx < 9
+                      ? `Test ${activeTestIdx + 2}'ye Geç`
+                      : 'Son Soru'}
+                  </span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ===================================================================== */}
+          {/* LIST ("TÜM LİSTE") MODE                                                */}
+          {/* ===================================================================== */}
+          {viewMode === 'list' && (
+            <>
+              {(filter === 'all' || filter === 'mc') && (
+                <section className="mb-10">
+                  <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
+                    <h3 className="text-lg font-extrabold text-slate-900">
+                      📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({visibleMC.length} Soru)
+                    </h3>
+                    <span className="text-xs font-bold text-slate-500">
+                      Her soru {pointsPerQuestion} puandır • Cevaplandığında 5 şık analizi açılır
+                    </span>
+                  </div>
+
+                  <div className="space-y-5">
+                    {visibleMC.map((q, localIdx) =>
+                      renderMCCard(q, mcStartIdx + localIdx, false)
+                    )}
+                  </div>
+                </section>
+              )}
+
+              {(filter === 'all' || filter === 'fill') && (
+                <section>
+                  <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
+                    <h3 className="text-lg font-extrabold text-slate-900">
+                      ✍️ Bölüm 2: Boşluk Doldurma Soruları ({visibleFill.length} Soru)
+                    </h3>
+                    <span className="text-xs font-bold text-slate-500">
+                      Her soru {pointsPerQuestion} puandır
+                    </span>
+                  </div>
+
+                  {showWordBank && currentWordBank.length > 0 && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
+                        🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {currentWordBank.map((word, idx) => (
+                          <span
+                            key={idx}
+                            className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
+                          >
+                            {word}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="space-y-4">
+                    {visibleFill.map((q, localIdx) =>
+                      renderFillCard(q, fillStartIdx + localIdx, false)
+                    )}
+                  </div>
+                </section>
+              )}
+            </>
+          )}
+        </main>
+      </div>
+
+      {renderFooter()}
     </div>
   );
 }
