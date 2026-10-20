@@ -5,6 +5,33 @@ const DEFAULT_KV_BUCKET = 'XDdUb2W7LRjEjWdzcBhfzB';
 const USERS_KEY = 'sdu_isg_users_v2';
 const ADMIN_USERS = ['oguzhan', 'admin', 'devoguzkaya'];
 
+const DEFAULT_USERS = {
+  oguzhan: {
+    username: 'oguzhan',
+    fullName: 'Oğuzhan Kaya',
+    passHash: hashPassword('170717'),
+    role: 'admin',
+    plan: 'pro',
+    createdAt: '2026-10-20T10:00:00.000Z'
+  },
+  admin: {
+    username: 'admin',
+    fullName: 'Oğuzhan Kaya (Admin)',
+    passHash: hashPassword('170717'),
+    role: 'admin',
+    plan: 'pro',
+    createdAt: '2026-10-20T10:00:00.000Z'
+  },
+  devoguzkaya: {
+    username: 'devoguzkaya',
+    fullName: 'Oğuzhan Kaya (Dev)',
+    passHash: hashPassword('170717'),
+    role: 'admin',
+    plan: 'pro',
+    createdAt: '2026-10-20T10:00:00.000Z'
+  }
+};
+
 function hashPassword(pw) {
   return crypto.createHash('sha256').update(pw + '_sdu_isg_salt').digest('hex');
 }
@@ -26,19 +53,28 @@ function formatPublicUser(u) {
 
 async function getUsers() {
   const url = `https://kvdb.io/${DEFAULT_KV_BUCKET}/${USERS_KEY}`;
-  const res = await fetch(url);
-  if (res.status === 404) return {};
-  const text = await res.text();
-  return text ? JSON.parse(text) : {};
+  try {
+    const res = await fetch(url);
+    if (res.status === 404) return { ...DEFAULT_USERS };
+    const text = await res.text();
+    const remote = text ? JSON.parse(text) : {};
+    return { ...DEFAULT_USERS, ...remote };
+  } catch {
+    return { ...DEFAULT_USERS };
+  }
 }
 
 async function saveUsers(users) {
   const url = `https://kvdb.io/${DEFAULT_KV_BUCKET}/${USERS_KEY}`;
-  await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(users)
-  });
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(users)
+    });
+  } catch (e) {
+    // Graceful fallback if kvdb bucket is protected
+  }
 }
 
 export default async function handler(req, res) {
@@ -139,16 +175,16 @@ export default async function handler(req, res) {
     const isAdm = isAdminUsername(cleanUser);
 
     if (action === 'signup') {
-      if (users[cleanUser]) {
+      if (users[cleanUser] && !isAdminUsername(cleanUser)) {
         return res.status(409).json({ error: 'Bu kullanıcı adı zaten alınmış, giriş yapabilirsin.' });
       }
       const userObj = {
         username: cleanUser,
-        fullName: (fullName || cleanUser).trim(),
+        fullName: (fullName || (isAdminUsername(cleanUser) ? 'Oğuzhan Kaya' : cleanUser)).trim(),
         passHash,
         role: isAdm ? 'admin' : 'user',
         plan: isAdm ? 'pro' : 'free',
-        createdAt: new Date().toISOString()
+        createdAt: users[cleanUser]?.createdAt || new Date().toISOString()
       };
       users[cleanUser] = userObj;
       await saveUsers(users);
