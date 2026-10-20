@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   GraduationCap,
   Clock,
@@ -665,22 +665,31 @@ export default function App() {
 
   const safeStep = Math.min(currentStep, Math.max(0, pagedItems.length - 1));
   const currentPagedItem = pagedItems[safeStep];
+  const questionStartRef = useRef(null);
+
+  const scrollToQuestionStart = () => {
+    setTimeout(() => {
+      if (questionStartRef.current) {
+        questionStartRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 20);
+  };
 
   const goPrevStep = () => {
     if (safeStep > 0) {
       setCurrentStep(safeStep - 1);
-      window.scrollTo({ top: 260, behavior: 'smooth' });
+      scrollToQuestionStart();
     }
   };
 
   const goNextStep = () => {
     if (safeStep < pagedItems.length - 1) {
       setCurrentStep(safeStep + 1);
-      window.scrollTo({ top: 260, behavior: 'smooth' });
+      scrollToQuestionStart();
     } else if (activeTestIdx !== 'all' && activeTestIdx < 9) {
       setActiveTestIdx(activeTestIdx + 1);
       setCurrentStep(0);
-      window.scrollTo({ top: 220, behavior: 'smooth' });
+      scrollToQuestionStart();
     }
   };
 
@@ -1615,9 +1624,11 @@ export default function App() {
             </div>
 
             {/* Active Single Question Card */}
-            {currentPagedItem.type === 'mc'
-              ? renderMCCard(currentPagedItem.q, currentPagedItem.qIdx, true)
-              : renderFillCard(currentPagedItem.q, currentPagedItem.qIdx, true)}
+            <div ref={questionStartRef} className="scroll-mt-20">
+              {currentPagedItem.type === 'mc'
+                ? renderMCCard(currentPagedItem.q, currentPagedItem.qIdx, true)
+                : renderFillCard(currentPagedItem.q, currentPagedItem.qIdx, true)}
+            </div>
 
             {/* Bottom Prev / Next Navigation Bar */}
             <div className="mt-4 bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center justify-between gap-4">
