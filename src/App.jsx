@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { COURSES } from './data/courses';
+import React, { useState, useEffect } from 'react';
 import {
   GraduationCap,
   Clock,
@@ -20,53 +19,25 @@ import {
   LogOut,
   Lock,
   UserPlus,
-  LogIn
+  LogIn,
+  ShieldCheck
 } from 'lucide-react';
 
-const CLOUD_BUCKET = 'XDdUb2W7LRjEjWdzcBhfzB';
-const USERS_CLOUD_URL = `https://kvdb.io/${CLOUD_BUCKET}/sdu_isg_users_v2`;
+const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
-async function sha256Browser(str) {
-  const buf = new TextEncoder().encode(str + '_sdu_isg_salt');
-  const hashBuffer = await crypto.subtle.digest('SHA-256', buf);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
-}
-
-function createEmptyAnswers() {
+function createEmptyCourseMap(courses) {
   const init = {};
-  COURSES.forEach((c) => {
+  courses.forEach((c) => {
     init[c.id] = { mc: {}, fill: {} };
   });
   return init;
 }
 
-function normalizeTR(str) {
-  if (!str) return '';
-  return str
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/ı/g, 'i')
-    .replace(/ğ/g, 'g')
-    .replace(/ü/g, 'u')
-    .replace(/ş/g, 's')
-    .replace(/ö/g, 'o')
-    .replace(/ç/g, 'c')
-    .replace(/â/g, 'a')
-    .replace(/[.,;:\-_/]/g, '')
-    .replace(/\s+/g, ' ');
-}
-
-function isFillCorrect(userVal, validAnswers) {
-  const normUser = normalizeTR(userVal);
-  if (!normUser) return false;
-  return validAnswers.some((ans) => normalizeTR(ans) === normUser);
-}
-
-const LETTERS = ['A', 'B', 'C', 'D', 'E'];
-
 export default function App() {
+  // Courses fetched from Backend (/api/questions — answers stripped!)
+  const [courses, setCourses] = useState([]);
+  const [coursesLoading, setCoursesLoading] = useState(true);
+
   // Auth state
   const [currentUser, setCurrentUser] = useState(() => {
     try {
@@ -83,7 +54,7 @@ export default function App() {
   const [authError, setAuthError] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
 
-  const [activeCourseId, setActiveCourseId] = useState(COURSES[0].id);
+  const [activeCourseId, setActiveCourseId] = useState('elektrik');
   const [mode, setMode] = useState('study'); // 'study' | 'exam'
   const [filter, setFilter] = useState('all'); // 'all' | 'mc' | 'fill'
   const [showWordBank, setShowWordBank] = useState(true);
@@ -93,35 +64,70 @@ export default function App() {
   const [cloudReady, setCloudReady] = useState(false);
 
   const userKey = currentUser?.username || 'guest';
-  const localStoreKey = `sdu_isg_react_vize_v2_${userKey}`;
-  const directCloudUserUrl = `https://kvdb.io/${CLOUD_BUCKET}/sdu_isg_vize_state_${userKey}_v2`;
+  const localStoreKey = `sdu_isg_react_vize_v3_${userKey}`;
 
-  const [answers, setAnswers] = useState(() => createEmptyAnswers());
+  // User's selected options & typed fill strings
+  const [answers, setAnswers] = useState({});
+  // Backend-evaluated feedback per question (only populated after answering/submitting)
+  const [feedback, setFeedback] = useState({});
 
-  // Load user's answers from localStorage & Cloud KV whenever currentUser changes
+  // 1. Fetch sanitized questions from Backend (/api/questions)
   useEffect(() => {
-    if (!currentUser) return;
+    fetch('/api/questions')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data?.courses) {
+          setCourses(data.courses);
+          setActiveCourseId(data.courses[0].id);
+        }
+        setCoursesLoading(false);
+      })
+      .catch(() => setCoursesLoading(false));
+  }, []);
+
+  // Helper to batch-evaluate existing answers on the backend
+  const evaluateAllOnBackend = async (userAns, revealCourseId = null) => {
+    try {
+      const r = await fetch('/api/questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'evaluate_all',
+          userAnswers: userAns,
+          revealCourseId
+        })
+      });
+      if (r.ok) {
+        const res = await r.json();
+        if (res.feedback) setFeedback(res.feedback);
+        if (revealCourseId && res.updatedUserAnswers) {
+          setAnswers(res.updatedUserAnswers);
+        }
+      }
+    } catch (e) {}
+  };
+
+  // 2. Load user's saved answers from Cloud (/api/sync) + evaluate them on Backend
+  useEffect(() => {
+    if (!currentUser || courses.length === 0) return;
     setCloudReady(false);
 
-    // 1. Instant load from local cache
+    let initialAns = createEmptyCourseMap(courses);
     try {
       const localSaved = localStorage.getItem(localStoreKey);
       if (localSaved) {
-        setAnswers(JSON.parse(localSaved));
-      } else {
-        setAnswers(createEmptyAnswers());
+        initialAns = { ...initialAns, ...JSON.parse(localSaved) };
       }
-    } catch (e) {
-      setAnswers(createEmptyAnswers());
-    }
+    } catch (e) {}
+    setAnswers(initialAns);
 
     if (currentUser.isGuest) {
       setCloudStatus('local');
       setCloudReady(true);
+      evaluateAllOnBackend(initialAns);
       return;
     }
 
-    // 2. Load from Cloud KV (/api/sync?user=... or direct fallback)
     async function loadUserCloud() {
       try {
         const r = await fetch(`/api/sync?user=${encodeURIComponent(userKey)}`);
@@ -129,40 +135,27 @@ export default function App() {
           const res = await r.json();
           if (res && res.configured) {
             if (res.data && Object.keys(res.data).length > 0) {
-              setAnswers(res.data);
+              initialAns = { ...createEmptyCourseMap(courses), ...res.data };
+              setAnswers(initialAns);
             }
             setCloudStatus('synced');
-            setCloudReady(true);
-            return;
           }
         }
       } catch (e) {}
-
-      try {
-        const r2 = await fetch(directCloudUserUrl);
-        if (r2.ok) {
-          const data = await r2.json();
-          if (data && Object.keys(data).length > 0) {
-            setAnswers(data);
-          }
-        }
-        setCloudStatus('synced');
-        setCloudReady(true);
-      } catch (e) {
-        setCloudReady(true);
-      }
+      setCloudReady(true);
+      evaluateAllOnBackend(initialAns);
     }
     loadUserCloud();
-  }, [currentUser, userKey]);
+  }, [currentUser, userKey, courses.length]);
 
-  // Save user's answers to localStorage + Cloud KV on change
+  // 3. Auto-save user's answers to localStorage + Cloud (/api/sync)
   useEffect(() => {
-    if (!currentUser) return;
+    if (!currentUser || !cloudReady || courses.length === 0) return;
     try {
       localStorage.setItem(localStoreKey, JSON.stringify(answers));
     } catch (e) {}
 
-    if (!cloudReady || currentUser.isGuest) return;
+    if (currentUser.isGuest) return;
     setCloudStatus('saving');
     const timer = setTimeout(async () => {
       try {
@@ -171,25 +164,13 @@ export default function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(answers)
         });
-        if (r.ok) {
-          setCloudStatus('synced');
-          return;
-        }
-      } catch (e) {}
-
-      try {
-        await fetch(directCloudUserUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(answers)
-        });
-        setCloudStatus('synced');
+        if (r.ok) setCloudStatus('synced');
       } catch (e) {}
     }, 600);
     return () => clearTimeout(timer);
   }, [answers, cloudReady, currentUser, userKey]);
 
-  // Handle Login / Signup submit
+  // Handle Login / Signup via Backend (/api/auth)
   const handleAuthSubmit = async (e) => {
     e.preventDefault();
     setAuthError('');
@@ -205,7 +186,6 @@ export default function App() {
 
     setAuthLoading(true);
     try {
-      // Try Vercel Serverless /api/auth first
       const r = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -216,64 +196,16 @@ export default function App() {
           fullName: authFullName.trim() || cleanUsername
         })
       });
-
-      if (r.ok || r.status === 400 || r.status === 401 || r.status === 409) {
-        const data = await r.json();
-        if (!r.ok) {
-          setAuthError(data.error || 'İşlem başarısız.');
-          setAuthLoading(false);
-          return;
-        }
-        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(data.user));
-        setCurrentUser(data.user);
+      const data = await r.json();
+      if (!r.ok) {
+        setAuthError(data.error || 'İşlem başarısız.');
         setAuthLoading(false);
         return;
       }
-    } catch (err) {}
-
-    // Fallback for Vite localhost dev server (Direct Cloud KV Users Table)
-    try {
-      let users = {};
-      const resGet = await fetch(USERS_CLOUD_URL);
-      if (resGet.ok) {
-        users = await resGet.json();
-      }
-      const passHash = await sha256Browser(authPassword);
-
-      if (authTab === 'signup') {
-        if (users[cleanUsername]) {
-          setAuthError('Bu kullanıcı adı zaten alınmış kanka, giriş yapabilirsin.');
-          setAuthLoading(false);
-          return;
-        }
-        const newUser = {
-          username: cleanUsername,
-          fullName: authFullName.trim() || cleanUsername,
-          passHash,
-          createdAt: new Date().toISOString()
-        };
-        users[cleanUsername] = newUser;
-        await fetch(USERS_CLOUD_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(users)
-        });
-        const userSession = { username: newUser.username, fullName: newUser.fullName };
-        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(userSession));
-        setCurrentUser(userSession);
-      } else {
-        const existing = users[cleanUsername];
-        if (!existing || existing.passHash !== passHash) {
-          setAuthError('Kullanıcı adı veya şifre hatalı!');
-          setAuthLoading(false);
-          return;
-        }
-        const userSession = { username: existing.username, fullName: existing.fullName };
-        localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(userSession));
-        setCurrentUser(userSession);
-      }
+      localStorage.setItem('sdu_isg_auth_user_v2', JSON.stringify(data.user));
+      setCurrentUser(data.user);
     } catch (err) {
-      setAuthError('Bağlantı hatası oluştu, tekrar dene kanka.');
+      setAuthError('Sunucu bağlantı hatası oluştu.');
     }
     setAuthLoading(false);
   };
@@ -310,132 +242,162 @@ export default function App() {
     return () => clearInterval(interval);
   }, [timerRunning]);
 
-  const activeCourse = useMemo(
-    () => COURSES.find((c) => c.id === activeCourseId) || COURSES[0],
-    [activeCourseId]
-  );
-
-  const courseState = answers[activeCourse.id] || { mc: {}, fill: {} };
+  const activeCourse = courses.find((c) => c.id === activeCourseId) || courses[0];
+  const courseState = (activeCourse && answers[activeCourse.id]) || { mc: {}, fill: {} };
+  const courseFeedback = (activeCourse && feedback[activeCourse.id]) || { mc: {}, fill: {} };
   const showFeedback = mode === 'study' || examSubmitted;
 
   const getStats = (course) => {
     const st = answers[course.id] || { mc: {}, fill: {} };
+    const fb = feedback[course.id] || { mc: {}, fill: {} };
     let correct = 0;
     let wrong = 0;
     let answered = 0;
     const total = course.mcQuestions.length + course.fillQuestions.length;
 
-    course.mcQuestions.forEach((q, idx) => {
-      if (st.mc[idx] !== undefined) {
+    course.mcQuestions.forEach((_, idx) => {
+      if (st.mc?.[idx] !== undefined) {
         answered++;
-        if (st.mc[idx] === q.answer) correct++;
-        else wrong++;
+        if (fb.mc?.[idx]) {
+          if (fb.mc[idx].correct) correct++;
+          else wrong++;
+        }
       }
     });
 
-    course.fillQuestions.forEach((q, idx) => {
-      const f = st.fill[idx];
+    course.fillQuestions.forEach((_, idx) => {
+      const f = st.fill?.[idx];
       if (f && f.checked) {
         answered++;
-        if (f.ok) correct++;
-        else wrong++;
+        if (fb.fill?.[idx]) {
+          if (fb.fill[idx].ok) correct++;
+          else wrong++;
+        }
       }
     });
 
-    const score = Math.round((correct / total) * 100);
+    const score = total > 0 ? Math.round((correct / total) * 100) : 0;
     return { correct, wrong, answered, total, score };
   };
 
-  const activeStats = getStats(activeCourse);
-  const pointsPerQuestion = +(100 / activeStats.total).toFixed(1);
-
-  const handleSelectMC = (qIdx, optIdx) => {
+  // Select MC Option -> Verify on Backend (/api/questions)
+  const handleSelectMC = async (qIdx, optIdx) => {
+    const cId = activeCourse.id;
     setAnswers((prev) => ({
       ...prev,
-      [activeCourse.id]: {
-        ...prev[activeCourse.id],
+      [cId]: {
+        ...prev[cId],
         mc: {
-          ...prev[activeCourse.id]?.mc,
+          ...prev[cId]?.mc,
           [qIdx]: optIdx
         }
       }
     }));
+
+    try {
+      const r = await fetch('/api/questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'check_mc',
+          courseId: cId,
+          qIdx,
+          userChoice: optIdx
+        })
+      });
+      if (r.ok) {
+        const res = await r.json();
+        setFeedback((prev) => ({
+          ...prev,
+          [cId]: {
+            ...prev[cId],
+            mc: {
+              ...prev[cId]?.mc,
+              [qIdx]: res
+            }
+          }
+        }));
+      }
+    } catch (e) {}
   };
 
   const handleFillChange = (qIdx, val) => {
-    const q = activeCourse.fillQuestions[qIdx];
-    const ok = isFillCorrect(val, q.answers);
+    const cId = activeCourse.id;
     setAnswers((prev) => ({
       ...prev,
-      [activeCourse.id]: {
-        ...prev[activeCourse.id],
+      [cId]: {
+        ...prev[cId],
         fill: {
-          ...prev[activeCourse.id]?.fill,
+          ...prev[cId]?.fill,
           [qIdx]: {
             val,
-            checked:
-              mode === 'exam'
-                ? val.trim().length > 0
-                : prev[activeCourse.id]?.fill?.[qIdx]?.checked || false,
-            ok
+            checked: mode === 'exam' ? val.trim().length > 0 : prev[cId]?.fill?.[qIdx]?.checked || false
           }
         }
       }
     }));
   };
 
-  const handleCheckFill = (qIdx) => {
-    const curVal = courseState.fill[qIdx]?.val || '';
-    const q = activeCourse.fillQuestions[qIdx];
-    const ok = isFillCorrect(curVal, q.answers);
-    setAnswers((prev) => ({
-      ...prev,
-      [activeCourse.id]: {
-        ...prev[activeCourse.id],
-        fill: {
-          ...prev[activeCourse.id]?.fill,
-          [qIdx]: { val: curVal, checked: true, ok }
-        }
+  // Check Fill-in-the-blank on Backend (/api/questions)
+  const handleCheckFill = async (qIdx, reveal = false) => {
+    const cId = activeCourse.id;
+    const curVal = courseState.fill?.[qIdx]?.val || '';
+
+    try {
+      const r = await fetch('/api/questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'check_fill',
+          courseId: cId,
+          qIdx,
+          val: curVal,
+          reveal
+        })
+      });
+      if (r.ok) {
+        const res = await r.json();
+        setAnswers((prev) => ({
+          ...prev,
+          [cId]: {
+            ...prev[cId],
+            fill: {
+              ...prev[cId]?.fill,
+              [qIdx]: {
+                val: reveal ? res.correctAnswer : curVal,
+                checked: true
+              }
+            }
+          }
+        }));
+        setFeedback((prev) => ({
+          ...prev,
+          [cId]: {
+            ...prev[cId],
+            fill: {
+              ...prev[cId]?.fill,
+              [qIdx]: res
+            }
+          }
+        }));
       }
-    }));
+    } catch (e) {}
   };
 
-  const handleRevealSingleFill = (qIdx) => {
-    const q = activeCourse.fillQuestions[qIdx];
-    setAnswers((prev) => ({
-      ...prev,
-      [activeCourse.id]: {
-        ...prev[activeCourse.id],
-        fill: {
-          ...prev[activeCourse.id]?.fill,
-          [qIdx]: { val: q.answers[0], checked: true, ok: true }
-        }
-      }
-    }));
-  };
-
-  const handleRevealAllCourse = () => {
-    const newMc = { ...courseState.mc };
-    activeCourse.mcQuestions.forEach((q, i) => {
-      if (newMc[i] === undefined) newMc[i] = q.answer;
-    });
-    const newFill = { ...courseState.fill };
-    activeCourse.fillQuestions.forEach((q, i) => {
-      if (!newFill[i] || !newFill[i].checked) {
-        newFill[i] = { val: q.answers[0], checked: true, ok: true };
-      }
-    });
-    setAnswers((prev) => ({
-      ...prev,
-      [activeCourse.id]: { mc: newMc, fill: newFill }
-    }));
+  const handleRevealAllCourse = async () => {
+    await evaluateAllOnBackend(answers, activeCourse.id);
     setExamSubmitted(true);
   };
 
   const handleResetCourse = () => {
+    const cId = activeCourse.id;
     setAnswers((prev) => ({
       ...prev,
-      [activeCourse.id]: { mc: {}, fill: {} }
+      [cId]: { mc: {}, fill: {} }
+    }));
+    setFeedback((prev) => ({
+      ...prev,
+      [cId]: { mc: {}, fill: {} }
     }));
     setExamSubmitted(false);
   };
@@ -446,21 +408,11 @@ export default function App() {
     return `${m}:${s}`;
   };
 
-  const wordBankList = useMemo(() => {
-    return activeCourse.fillQuestions
-      .map((f) => f.answers[0])
-      .sort((a, b) => a.localeCompare(b, 'tr'));
-  }, [activeCourse]);
-
-  const totalAllCoursesMC = COURSES.reduce((acc, c) => acc + c.mcQuestions.length, 0);
-  const totalAllCoursesFill = COURSES.reduce((acc, c) => acc + c.fillQuestions.length, 0);
-
   // RENDER LOGIN / SIGNUP SCREEN IF NOT AUTHENTICATED
   if (!currentUser) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 py-12">
         <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
-          {/* Header */}
           <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-slate-950 flex items-center gap-3.5">
             <div className="bg-slate-950 text-amber-400 p-3 rounded-xl shadow">
               <GraduationCap className="w-8 h-8" />
@@ -475,7 +427,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Auth Tabs */}
           <div className="grid grid-cols-2 border-b border-slate-800 bg-slate-900/50">
             <button
               type="button"
@@ -509,22 +460,19 @@ export default function App() {
             </button>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleAuthSubmit} className="p-6 space-y-4">
             {authTab === 'signup' && (
               <div>
                 <label className="block text-xs font-bold text-slate-300 mb-1.5">
                   Ad Soyad
                 </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={authFullName}
-                    onChange={(e) => setAuthFullName(e.target.value)}
-                    placeholder="Örn: Oğuzhan Kaya"
-                    className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
-                  />
-                </div>
+                <input
+                  type="text"
+                  value={authFullName}
+                  onChange={(e) => setAuthFullName(e.target.value)}
+                  placeholder="Örn: Oğuzhan Kaya"
+                  className="w-full bg-slate-800 border border-slate-700 focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-slate-500 focus:outline-none"
+                />
               </div>
             )}
 
@@ -592,12 +540,31 @@ export default function App() {
             </div>
           </form>
         </div>
-        <p className="text-xs text-slate-500 mt-4 text-center">
-          Her kullanıcının çözdüğü sorular ve puanları bulut veritabanında kendi hesabına özel saklanır.
+        <p className="text-xs text-slate-500 mt-4 text-center flex items-center gap-1.5">
+          <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          Sorular ve cevap anahtarları F12 korumalı olarak sunucu tarafında (/api/questions) tutulmaktadır.
         </p>
       </div>
     );
   }
+
+  if (coursesLoading || !activeCourse) {
+    return (
+      <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
+        <div className="text-center space-y-2">
+          <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-sm font-bold text-slate-300">
+            Sorular güvenli sunucudan (/api/questions) yükleniyor...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const activeStats = getStats(activeCourse);
+  const pointsPerQuestion = +(100 / activeStats.total).toFixed(1);
+  const totalAllCoursesMC = courses.reduce((acc, c) => acc + c.mcQuestions.length, 0);
+  const totalAllCoursesFill = courses.reduce((acc, c) => acc + c.fillQuestions.length, 0);
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
@@ -609,8 +576,11 @@ export default function App() {
               <GraduationCap className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-lg font-extrabold tracking-tight">
+              <h1 className="text-lg font-extrabold tracking-tight flex items-center gap-2">
                 SDÜ İSG Yüksek Lisans — Vize Sınav Portalı
+                <span className="hidden sm:inline-flex items-center gap-1 text-[10px] bg-emerald-950 border border-emerald-600 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
+                  <ShieldCheck className="w-3 h-3" /> Backend Korumalı
+                </span>
               </h1>
               <p className="text-xs text-slate-400">
                 6 Ders • {totalAllCoursesMC} Çoktan Seçmeli Test + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
@@ -705,7 +675,10 @@ export default function App() {
 
             {mode === 'exam' && (
               <button
-                onClick={() => setExamSubmitted(true)}
+                onClick={async () => {
+                  await evaluateAllOnBackend(answers);
+                  setExamSubmitted(true);
+                }}
                 className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow transition"
               >
                 Sınavı Bitir
@@ -733,7 +706,7 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 mt-6">
         {/* 6 Course Selector Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-6">
-          {COURSES.map((course) => {
+          {courses.map((course) => {
             const st = getStats(course);
             const isSelected = course.id === activeCourse.id;
             return (
@@ -921,18 +894,19 @@ export default function App() {
                 📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({activeCourse.mcQuestions.length} Soru)
               </h3>
               <span className="text-xs font-bold text-slate-500">
-                Her soru {pointsPerQuestion} puandır • Cevaplandığında tüm şıkların açıklaması açılır
+                Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan şık analizi gelir
               </span>
             </div>
 
             <div className="space-y-5">
               {activeCourse.mcQuestions.map((q, qIdx) => {
-                const userChoice = courseState.mc[qIdx];
+                const userChoice = courseState.mc?.[qIdx];
                 const hasAnswered = userChoice !== undefined;
-                const isCorrect = userChoice === q.answer;
+                const qFb = courseFeedback.mc?.[qIdx];
+                const isCorrect = qFb?.correct;
 
                 let borderClass = 'border-slate-200';
-                if (hasAnswered && showFeedback) {
+                if (hasAnswered && showFeedback && qFb) {
                   borderClass = isCorrect
                     ? 'border-emerald-500 ring-1 ring-emerald-500'
                     : 'border-rose-500 ring-1 ring-rose-500';
@@ -959,15 +933,15 @@ export default function App() {
                     <div className="space-y-2.5">
                       {q.options.map((opt, oIdx) => {
                         const isSelected = userChoice === oIdx;
-                        const isRightAnswer = q.answer === oIdx;
-                        const optExp = q.optionExplanations?.[oIdx];
+                        const isRightAnswer = qFb && qFb.answer === oIdx;
+                        const optExp = qFb?.optionExplanations?.[oIdx];
 
                         let btnStyle =
                           'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100 hover:border-slate-300';
                         let badgeStyle = 'bg-white border-slate-300 text-slate-700';
 
                         if (hasAnswered) {
-                          if (showFeedback) {
+                          if (showFeedback && qFb) {
                             if (isRightAnswer) {
                               btnStyle =
                                 'bg-emerald-50/90 border-emerald-500 text-emerald-950 font-bold shadow-sm';
@@ -999,19 +973,18 @@ export default function App() {
                             <div className="flex-1">
                               <div className="flex items-center justify-between gap-2">
                                 <span>{opt}</span>
-                                {hasAnswered && showFeedback && isRightAnswer && (
+                                {hasAnswered && showFeedback && qFb && isRightAnswer && (
                                   <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-600 text-white shrink-0">
                                     ✓ Doğru Şık
                                   </span>
                                 )}
-                                {hasAnswered && showFeedback && isSelected && !isRightAnswer && (
+                                {hasAnswered && showFeedback && qFb && isSelected && !isRightAnswer && (
                                   <span className="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-rose-600 text-white shrink-0">
                                     ✗ Senin Seçimin
                                   </span>
                                 )}
                               </div>
 
-                              {/* Inline per-option explanation */}
                               {hasAnswered && showFeedback && optExp && (
                                 <div
                                   className={`mt-2 pt-2 border-t text-xs font-normal leading-relaxed ${
@@ -1036,7 +1009,7 @@ export default function App() {
                       })}
                     </div>
 
-                    {hasAnswered && showFeedback && (
+                    {hasAnswered && showFeedback && qFb && (
                       <div
                         className={`mt-4 p-4 rounded-xl border-l-4 text-sm ${
                           isCorrect
@@ -1054,13 +1027,13 @@ export default function App() {
                             <span className="font-extrabold">
                               {isCorrect
                                 ? 'Doğru Cevap!'
-                                : `Yanlış! Doğru Seçenek: ${LETTERS[q.answer]} (${q.options[q.answer]})`}
+                                : `Yanlış! Doğru Seçenek: ${LETTERS[qFb.answer]} (${q.options[qFb.answer]})`}
                             </span>{' '}
-                            — {q.explanation}
+                            — {qFb.explanation}
                           </div>
                         </div>
 
-                        {q.optionExplanations && q.optionExplanations.length > 0 && (
+                        {qFb.optionExplanations && qFb.optionExplanations.length > 0 && (
                           <div className="mt-3 pt-3 border-t border-slate-200/80">
                             <div className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wide text-slate-700 mb-2">
                               <ListChecks className="w-4 h-4 text-slate-600" />
@@ -1068,7 +1041,7 @@ export default function App() {
                             </div>
                             <div className="grid grid-cols-1 gap-1.5">
                               {q.options.map((optText, idx) => {
-                                const isRight = idx === q.answer;
+                                const isRight = idx === qFb.answer;
                                 const isUser = idx === userChoice;
                                 return (
                                   <div
@@ -1085,7 +1058,7 @@ export default function App() {
                                       {LETTERS[idx]}) {optText}:
                                     </span>
                                     <span className="font-normal">
-                                      {q.optionExplanations[idx]}
+                                      {qFb.optionExplanations[idx]}
                                     </span>
                                   </div>
                                 );
@@ -1114,13 +1087,13 @@ export default function App() {
               </span>
             </div>
 
-            {showWordBank && (
+            {showWordBank && activeCourse.wordBank && (
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
                 <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
                   🔑 Bu Dersin Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {wordBankList.map((word, idx) => (
+                  {activeCourse.wordBank.map((word, idx) => (
                     <span
                       key={idx}
                       className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
@@ -1134,15 +1107,15 @@ export default function App() {
 
             <div className="space-y-4">
               {activeCourse.fillQuestions.map((q, qIdx) => {
-                const fState = courseState.fill[qIdx] || {
+                const fState = courseState.fill?.[qIdx] || {
                   val: '',
-                  checked: false,
-                  ok: false
+                  checked: false
                 };
+                const fFb = courseFeedback.fill?.[qIdx];
 
                 let borderClass = 'border-slate-200';
-                if (fState.checked && showFeedback) {
-                  borderClass = fState.ok
+                if (fState.checked && showFeedback && fFb) {
+                  borderClass = fFb.ok
                     ? 'border-emerald-500 ring-1 ring-emerald-500'
                     : 'border-rose-500 ring-1 ring-rose-500';
                 }
@@ -1171,19 +1144,19 @@ export default function App() {
                         value={fState.val}
                         onChange={(e) => handleFillChange(qIdx, e.target.value)}
                         onKeyDown={(e) => {
-                          if (e.key === 'Enter') handleCheckFill(qIdx);
+                          if (e.key === 'Enter') handleCheckFill(qIdx, false);
                         }}
                         placeholder="Cevabınızı buraya yazın..."
                         className="flex-1 min-w-[220px] px-3.5 py-2.5 rounded-lg border-2 border-slate-300 focus:border-blue-600 focus:outline-none text-sm font-bold text-slate-900"
                       />
                       <button
-                        onClick={() => handleCheckFill(qIdx)}
+                        onClick={() => handleCheckFill(qIdx, false)}
                         className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition"
                       >
                         Kontrol Et
                       </button>
                       <button
-                        onClick={() => handleRevealSingleFill(qIdx)}
+                        onClick={() => handleCheckFill(qIdx, true)}
                         className="bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 text-xs font-bold px-3.5 py-2.5 rounded-lg transition"
                       >
                         Cevabı Gör
@@ -1195,37 +1168,37 @@ export default function App() {
                       <span>İpucu: {q.hint}</span>
                     </div>
 
-                    {fState.checked && showFeedback && (
+                    {fState.checked && showFeedback && fFb && (
                       <div
                         className={`mt-3.5 p-3.5 rounded-lg border-l-4 text-sm flex items-start gap-2.5 ${
-                          fState.ok
+                          fFb.ok
                             ? 'bg-emerald-50/70 border-emerald-600 text-emerald-950'
                             : 'bg-rose-50/70 border-rose-600 text-rose-950'
                         }`}
                       >
-                        {fState.ok ? (
+                        {fFb.ok ? (
                           <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                         ) : (
                           <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                         )}
                         <div>
-                          {fState.ok ? (
+                          {fFb.ok ? (
                             <span>
                               <strong>Doğru!</strong> Cevap:{' '}
-                              <u className="font-extrabold">{q.answers[0]}</u>
+                              <u className="font-extrabold">{fFb.correctAnswer}</u>
                             </span>
                           ) : (
                             <span>
                               <strong>Doğru Cevap:</strong>{' '}
-                              <u className="font-extrabold">{q.answers[0]}</u>{' '}
+                              <u className="font-extrabold">{fFb.correctAnswer}</u>{' '}
                               <span className="text-xs opacity-80">
                                 (Senin yazdığın: {fState.val || 'Boş'})
                               </span>
                             </span>
                           )}
-                          {q.explanation && (
+                          {fFb.explanation && (
                             <p className="mt-1 text-xs opacity-90 leading-relaxed">
-                              💡 {q.explanation}
+                              💡 {fFb.explanation}
                             </p>
                           )}
                         </div>
