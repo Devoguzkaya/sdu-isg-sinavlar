@@ -95,6 +95,7 @@ export default function App() {
 
   const authBoxRef = useRef(null);
   const coursesSectionRef = useRef(null);
+  const questionStartRef = useRef(null);
 
   // 1. Fetch sanitized questions from Backend (/api/questions)
   useEffect(() => {
@@ -838,6 +839,7 @@ export default function App() {
                         <input
                           type="text"
                           required
+                          autoComplete="username"
                           value={authUsername}
                           onChange={(e) => setAuthUsername(e.target.value)}
                           placeholder="kullanici_adi"
@@ -855,6 +857,7 @@ export default function App() {
                         <input
                           type="password"
                           required
+                          autoComplete={authTab === 'login' ? 'current-password' : 'new-password'}
                           value={authPassword}
                           onChange={(e) => setAuthPassword(e.target.value)}
                           placeholder="••••••••"
@@ -1108,7 +1111,6 @@ export default function App() {
 
   const safeStep = Math.min(currentStep, Math.max(0, pagedItems.length - 1));
   const currentPagedItem = pagedItems[safeStep];
-  const questionStartRef = useRef(null);
 
   const scrollToQuestionStart = () => {
     setTimeout(() => {
