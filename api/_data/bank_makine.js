@@ -14,202 +14,407 @@ export const makineTestThemes = [
 
 export const makineConceptGroups = [
   {
-    groupName: '1. Hafta: Sistem, Makine, Tesisat, Cihaz, Ölçme ve SI Birimleri (Prof. Dr. İbrahim Üçgül Sunumu)',
+    groupName: '1. Hafta: Sistem, Makine ve Tesisat Hiyerarşisi',
     items: [
       {
         opt: 'Makina',
         desc: '1. Hafta ders sunumuna göre; herhangi bir enerji türünü başka bir enerjiye dönüştürmek, belli bir güçten yararlanarak bir işi yapmak veya etki oluşturmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe "Makina" denir.',
-        q: 'Prof. Dr. İbrahim Üçgül\'ün 1. hafta ders notlarına göre; "Herhangi bir enerji türünü başka bir enerjiye dönüştürmek, belli bir güçten yararlanarak bir işi yapmak veya etki oluşturmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe" ne ad verilir?'
+        q: 'Prof. Dr. İbrahim Üçgül\'ün ders notlarına göre; "Herhangi bir enerji türünü başka bir enerjiye dönüştürmek, belli bir güçten yararlanarak bir işi yapmak veya etki oluşturmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe" ne ad verilir?'
       },
       {
         opt: 'Sistem',
         desc: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlere "Sistem" denir. Sistem; makina, tesisat ve cihaz olmak üzere üç ana gruba ayrılır.',
-        q: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlerin genel adı olan ve "Makina, Tesisat, Cihaz" olmak üzere üç ana gruba ayrılan kavram hangisidir?'
+        q: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlerin genel adı olan ve "Makina, Tesisat, Cihaz" olmak üzere üç ana gruba ayrılan üst kavram hangisidir?'
       },
       {
         opt: 'Tesisat',
-        desc: '1. Hafta sunumuna göre; malzeme çeviren, ileten veya biriktiren sistemlere "Tesisat" (buhar, ısıtma, soğutma, sıhhi, klima tesisatları vb.) denir.',
+        desc: '1. Hafta sunumuna göre; malzeme çeviren, ileten veya biriktiren sistemlere "Tesisat" (buhar, ısıtma, soğutma, sıhhi tesisat vb.) denir.',
         q: 'Sistem sınıflandırmasında "Malzeme çeviren, ileten veya biriktiren sistemler" (buhar tesisatı, sıhhi tesisat, ısıtma-soğutma tesisatı vb.) hangi kavramla tanımlanır?'
       },
       {
         opt: 'Cihaz',
-        desc: 'İnsanların bilgilerini, sezgilerini veya düşünce kapasitelerini artırmak, olayları gözlemek, denetlemek, yönlendirmek ve yönetmek amacıyla kullanılan sistemlere "Cihaz" (röntgen, haberleşme, ölçme cihazları vb.) denir.',
-        q: 'İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek ve denetlemek amacıyla kullanılan sistemlere (haberleşme cihazları, röntgen cihazları, ölçüm aletleri vb.) ne ad verilir?'
+        desc: 'İnsanların bilgilerini, sezgilerini veya düşünce kapasitelerini artırmak, olayları gözlemek, denetlemek, yönlendirmek ve yönetmek amacıyla kullanılan sistemlere "Cihaz" denir.',
+        q: 'İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek ve denetlemek amacıyla kullanılan sistemlere (haberleşme, röntgen, ölçüm aygıtları vb.) ne ad verilir?'
       },
       {
         opt: 'Motorlar',
-        desc: 'Makinalar enerji dönüştürücü olarak motorlar ve iş makinaları diye ikiye ayrılır. Motorlar; ısı, hidrolik, elektrik vb. aldığı enerjiyi mekanik enerjiye çeviren makinalardır.',
-        q: 'Enerji dönüştürücü makinalar sınıflandırmasında; ısı, hidrolik, pnömatik veya elektrik gibi aldığı enerjiyi "mekanik enerjiye" çeviren makinalara ne ad verilir?'
+        desc: 'Makinalar enerji dönüştürücü olarak motorlar ve iş makinaları diye ikiye ayrılır. Motorlar; ısı, hidrolik, pnömatik veya elektrik enerjisini mekanik enerjiye çeviren makinelerdir.',
+        q: 'Enerji dönüştürücü makinalar sınıflandırmasında; ısı, hidrolik veya elektrik gibi aldığı enerjiyi doğrudan "mekanik enerjiye" çeviren makinalara ne ad verilir?'
       },
       {
         opt: 'İş Makinaları',
-        desc: 'İş makinaları; motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalardır (takım tezgahları, tekstil/ziraat/maden makinaları, kaldırma-iletme makinaları, taşıtlar, akışkan makinaları).',
-        q: 'Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, tekstil/maden makinaları, vinç, pompa, kompresör vb.) ne ad verilir?'
-      },
-      {
-        opt: 'Kompresör, Kondanser, Kısılma Vanası, Evaporatör',
-        desc: '1. Hafta örnek sorularında da vurgulandığı üzere bir soğutma tesisatının 4 temel elemanı: Kompresör, yoğuşturucu, kısılma vanası ve buharlaştırıcıdır.',
-        q: '1. Hafta ders sonu örnek sorularında da yer aldığı üzere, gıda ve ortam soğutmada kullanılan bir "Soğutma Tesisatının" 4 temel elemanı aşağıdakilerden hangisidir?'
-      },
-      {
-        opt: 'Manometre, Barometre, Kumpas ve Mikrometre',
-        desc: 'Kapalı kaplardaki basıncı ölçen cihazlara manometre, atmosfer basıncını ölçen cihazlara barometre, hassas boyut ölçen cihazlara ise kumpas, mikrometre, mastar ve komparatör denir.',
-        q: 'Ölçme tekniğinde kapalı sistem basıncını, atmosfer basıncını ve hassas parça boyutlarını ölçmek için kullanılan cihaz eşleştirmelerinden hangisi doğrudur?'
-      },
-      {
-        opt: 'Güç birimi: Watt (J/s)',
-        desc: '1. Hafta örnek sorularında vurgulandığı üzere SI birim sisteminde 7 temel büyüklük vardır (Uzunluk ana boyuttur; hız, ivme, alan, kuvvet türetilmiştir) ve güç birimi J/s (Watt)\'tır.',
-        q: '1. Hafta ders sonu sorularına göre SI birim sisteminde aşağıdakilerden hangisi "Güç" birimidir ve hangisi 7 temel (ana) büyüklükten biridir?'
+        desc: 'İş makinaları; motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinelerdir (takım tezgahları, pompalar, vinçler, maden makineleri vb.).',
+        q: 'Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, tekstil/maden makineleri, vinç, pompa, kompresör vb.) ne ad verilir?'
       }
     ]
   },
   {
-    groupName: '2. Hafta: Malzeme Bilgisi, Atomik Bağlar, Deformasyon ve Muayene Yöntemleri',
+    groupName: '1. Hafta: Termodinamik Tesisat ve Soğutma Çevrimi Elemanları',
     items: [
       {
-        opt: 'Eylemsizlik Prensibi',
-        desc: '2. Hafta Malzeme Bilgisi sunumuna göre; bütün maddeler mevcut konumunu (durma hâlini ya da hareketini) koruma eğilimi olan bir "eylemsizlik" barındırır ve büyüklüğü maddenin kütlesiyle orantılıdır.',
-        q: 'Malzeme Bilgisi ders notlarına göre; bir maddenin mevcut konumunu (durma hâlini ya da hareketini) koruma eğilimine ne ad verilir ve bu büyüklük ne ile doğru orantılıdır?'
+        opt: 'Evaporatör (Buharlaştırıcı)',
+        desc: 'Soğutma çevriminde soğutulacak ortamdan ısı çekerek soğutucu akışkanın sıvı fazdan buhar fazına geçmesini sağlayan ısı değiştirici elemandır.',
+        q: 'Buhar sıkıştırmalı mekanik soğutma çevriminde, soğutulmak istenen ortamdan ısıyı çekerek akışkanın buharlaşmasını sağlayan temel çevrim elemanı hangisidir?'
       },
       {
-        opt: 'Katı, Sıvı, Gaz ve Plazma',
-        desc: 'Maddenin 4 hâli: Katı hâlde kristal ve amorf kavramı, sıvı hâlde moleküler kavram, gaz hâlinde atom kavramı, plazma hâlinde ise iyon kavramı söz konusudur.',
-        q: 'Maddenin 4 hâli incelendiğinde; "Kristal/Amorf" kavramı ile "İyon" kavramı sırasıyla maddenin hangi hâllerinde söz konusudur?'
+        opt: 'Kompresör',
+        desc: 'Evaporatörden gelen düşük basınç ve sıcaklıktaki doymuş buharı emerek mekanik güç yardımıyla yüksek basınç ve sıcaklığa sıkıştıran elemandır.',
+        q: 'Soğutma tesisatında evaporatörden çıkan gaz hâlindeki soğutucu akışkanı emip basınç ve sıcaklığını yükselterek yoğuşturucuya basan eleman hangisidir?'
       },
+      {
+        opt: 'Kondanser (Yoğuşturucu)',
+        desc: 'Kompresörden gelen kızgın ve yüksek basınçlı buhardan dış ortama (hava veya su) ısı atarak akışkanı yoğuşturan (sıvılaştıran) elemandır.',
+        q: 'Soğutma tesisatında kompresörden gelen yüksek basınç ve sıcaklıktaki soğutucu akışkanın ısısını dış çevreye atarak akışkanı sıvı fazına dönüştüren eleman hangisidir?'
+      },
+      {
+        opt: 'Kısılma (Genleşme) Vanası',
+        desc: 'Yoğuşturucudan çıkan yüksek basınçlı sıvı akışkanın basıncını evaporatör basıncına düşürerek sıcaklığını aniden düşüren elemandır.',
+        q: 'Soğutma tesisatında kondanserden çıkan yüksek basınçlı sıvı akışkanın basıncını düşürerek sıcaklığının düşmesini ve buharlaştırıcıya sevkini sağlayan eleman hangisidir?'
+      },
+      {
+        opt: 'Ekonomizer',
+        desc: 'Isı geri kazanımı amacıyla baca gazlarının veya ara kademelerin artık ısısını kullanarak besleme suyunu veya akışkanı önceden ısıtan elemandır.',
+        q: 'Kazan ve termik tesisatlarda baca gazlarının artık ısısını kullanarak besleme suyunu ısıtan ve tesisat verimini artıran yardımcı ısı değiştirici eleman hangisidir?'
+      },
+      {
+        opt: 'Kolektör (Dağıtıcı/Toplayıcı)',
+        desc: 'Buhar veya su tesisatlarında ana hattan gelen akışkanı çoklu boru hatlarına dengeli dağıtan veya dönen akışkanı toplayan boru haznesidir.',
+        q: 'Bina ve endüstriyel tesisatlarda akışkanı farklı hatlara düzenli dağıtmak veya dönüş hatlarını ana hatta toplamak amacıyla kullanılan hazneye ne ad verilir?'
+      }
+    ]
+  },
+  {
+    groupName: '1. Hafta: Basınç, Boyut ve Devir Ölçüm Aletleri',
+    items: [
+      {
+        opt: 'Manometre',
+        desc: 'Kapalı kaplardaki veya boru tesisatlarındaki akışkan basıncını (efektif basınç) ölçmek için kullanılan göstergedir.',
+        q: 'Kazan, kompresör tankı ve boru hatları gibi kapalı kaplardaki akışkanın basıncını ölçmede kullanılan cihaz hangisidir?'
+      },
+      {
+        opt: 'Barometre',
+        desc: 'Açık hava (atmosfer) basıncını ölçmek için kullanılan göstergedir.',
+        q: 'Meteorolojik gözlemlerde ve açık ortamda atmosfer basıncını ölçmek amacıyla kullanılan cihaz aşağıdakilerden hangisidir?'
+      },
+      {
+        opt: 'Kumpas',
+        desc: 'İş parçalarının iç çap, dış çap, derinlik ve kademe boyutlarını 0.1, 0.05 veya 0.02 mm hassasiyetle ölçen alettir.',
+        q: 'Makine imalatında parçaların iç çap, dış çap ve derinlik ölçülerini sürgülü cetvel ve verniyer yardımıyla hassas ölçen alet hangisidir?'
+      },
+      {
+        opt: 'Mikrometre',
+        desc: 'Vidalı mil mekanizmasıyla kumpasa göre çok daha yüksek hassasiyette (0.01 mm veya 0.001 mm) kalınlık ve çap ölçümü yapan alettir.',
+        q: 'Hassas talaşlı imalatta parça çapı ve sac kalınlığı gibi ölçüleri 0.01 mm ve altı hassasiyetle ölçebilen vidalı ölçme aleti hangisidir?'
+      },
+      {
+        opt: 'Takometre',
+        desc: 'Dönen miller, makine kasnakları ve motor şaftlarının dakikadaki devir sayısını (RPM) ölçen alettir.',
+        q: 'Dönen miller, elektrik motorları ve türbinlerin açısal hızını veya birim zamandaki devir sayısını (RPM) ölçen cihaz hangisidir?'
+      },
+      {
+        opt: 'Dinamometre',
+        desc: 'Kuvvet veya motorların mil çıkışındaki tork (döndürme momenti) değerlerini ölçmek için kullanılan mekanik veya elektriksel cihazdır.',
+        q: 'Bir motordan veya makine milinden elde edilen tork (döndürme momenti) ve mekanik kuvvet büyüklüğünü ölçen cihaz hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '1. Hafta: SI Birim Sistemi Standartları',
+    items: [
+      {
+        opt: 'Watt (J/s)',
+        desc: 'SI birim sisteminde birim zamanda yapılan iş veya aktarılan enerji miktarı olan Güç birimidir.',
+        q: 'SI birim sisteminde birim zamanda yapılan iş veya aktarılan enerji olarak tanımlanan "Güç" büyüklüğünün birimi hangisidir?'
+      },
+      {
+        opt: 'Joule (N·m)',
+        desc: 'SI birim sisteminde bir newtonluk kuvvetin bir metrelik yolda yaptığı iş veya enerji birimidir.',
+        q: 'SI birim sisteminde mekanik iş, kinetik/potansiyel enerji ve ısı miktarının standart türetilmiş birimi hangisidir?'
+      },
+      {
+        opt: 'Pascal (N/m²)',
+        desc: 'SI birim sisteminde bir metrekarelik alana dik olarak etki eden bir newtonluk kuvvetle oluşan Basınç ve Gerilme birimidir.',
+        q: 'SI birim sisteminde birim alana düşen dik kuvvet olarak tanımlanan "Basınç ve Mekanik Gerilme" birimi hangisidir?'
+      },
+      {
+        opt: 'Newton (kg·m/s²)',
+        desc: 'Bir kilogramlık kütleye 1 m/s² ivme kazandıran Kuvvet birimidir.',
+        q: 'Dinamik prensiplerine göre 1 kg kütleli bir cisme 1 m/s² ivme kazandırmak için gereken "Kuvvet" büyüklüğünün SI birimi nedir?'
+      },
+      {
+        opt: 'Kelvin (K)',
+        desc: 'SI birim sistemindeki 7 temel ana büyüklükten biri olan termodinamik Sıcaklık birimidir.',
+        q: 'SI birim sisteminde yer alan 7 temel (türetilmemiş) büyüklükten biri olan standart "Termodinamik Sıcaklık" birimi hangisidir?'
+      },
+      {
+        opt: 'Hertz (1/s)',
+        desc: 'Periyodik dalga ve titreşim hareketlerinde saniyedeki titreşim sayısını ifade eden Frekans birimidir.',
+        q: 'Titreşim, ses ve alternatif akım frekansını ifade eden ve saniyedeki periyot sayısı (1/s) anlamına gelen SI birimi hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '2. Hafta: Atomik Bağ Türleri ve Kimyasal Yapılar',
+    items: [
       {
         opt: 'İyonik Bağ',
-        desc: '2. Hafta örnek soru 3\'te vurgulandığı üzere; iyonik bağ metaller ile ametaller arasında elektron alışverişiyle oluşur, ergime noktası yüksektir, sert ve kırılgandır; ancak KATI hâlde elektriği iletmez (sadece ergimiş veya çözelti hâlinde iletir).',
-        q: '2. Hafta ders sonu sorularına göre; metaller ile ametaller arasında elektron alışverişiyle oluşan "İyonik Bağ" yapısıyla ilgili hangi özellik gözlenmez / dikkat edilmelidir?'
+        desc: 'Metaller ile ametaller arasında elektron alışverişiyle oluşan, yüksek ergime noktasına sahip, sert ve kırılgan olan ancak katı hâlde elektriği iletmeyen güçlü birincil bağdır.',
+        q: 'Metaller ile ametaller arasında elektron alışverişiyle oluşan, ergime noktası yüksek ancak katı hâlde elektriği iletmeyen kimyasal bağ türü hangisidir?'
+      },
+      {
+        opt: 'Kovalent Bağ',
+        desc: 'Ametal atomlarının değerlik elektronlarını ortaklaşa kullanmasıyla oluşan ve yöne bağlı son derece güçlü birincil bağdır (elmas, polimer zincirleri vb.).',
+        q: 'Atomların değerlik elektronlarını ortaklaşa kullanmasıyla oluşan ve elmas gibi malzemelerde çok yüksek sertlik sağlayan yöne bağlı birincil bağ hangisidir?'
+      },
+      {
+        opt: 'Metalik Bağ',
+        desc: 'Pozitif metal iyonları ile aralarındaki serbest elektron denizi (gazı) çekimiyle oluşan, yüksek elektrik ve ısı iletkenliği sağlayan bağdır.',
+        q: 'Pozitif yüklü iyonlar ile serbest elektron bulutu arasında kurulan ve malzemeye yüksek plastik şekil alma ile yüksek elektrik iletkenliği kazandıran bağ türü hangisidir?'
       },
       {
         opt: 'Van der Waals Bağı',
-        desc: '2. Hafta örnek soru 4\'te sorulduğu üzere; moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türü Van der Waals bağıdır.',
-        q: 'Moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türü aşağıdakilerden hangisidir?'
+        desc: 'Moleküller veya atom grupları arasında zayıf elektrostatik çekim kuvvetleriyle oluşan ikincil fiziksel bağ türüdür.',
+        q: 'Moleküller veya doymuş atom gruplarını zayıf elektrostatik dipol çekimlerle birbirine bağlayan ikincil bağ türü aşağıdakilerden hangisidir?'
       },
       {
-        opt: 'Seramikler ve Cam',
-        desc: '2. Hafta örnek soru 1\'de sorulduğu üzere; cam, porselen, Al2O3, SiO2 gibi seramik malzemeler kimyasal ve ısıl kararlılığı çok yüksek, korozyona dirençli, yalıtkan ancak kırılgan malzemelerdir.',
-        q: '2. Hafta ders sonu sorularına göre; inorganik bileşiklerden oluşan, ergime sıcaklığı ile kimyasal ve ısıl kararlılığı çok yüksek ancak kırılgan olan malzeme grubu (ve örneği) hangisidir?'
+        opt: 'Hidrojen Bağı',
+        desc: 'Hidrojen atomunun flor, oksijen veya azot gibi yüksek elektronegatif atomlarla oluşturduğu özel ve kuvvetli bir ikincil bağ türüdür.',
+        q: 'Elektronegatifliği yüksek atomlara bağlı hidrojenin diğer komşu moleküllerle kurduğu, suyun kaynama noktasını yükselten ikincil bağ türü hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '2. Hafta: Mühendislik Malzeme Sınıfları',
+    items: [
+      {
+        opt: 'Metaller ve Metalik Alaşımlar',
+        desc: 'Kristal yapılı, serbest elektronlar sayesinde yüksek elektrik ve ısı iletkenliğine, sünekliğe ve tokluğa sahip inorganik malzemelerdir.',
+        q: 'Kristal kafes yapısına sahip, yüksek elektrik ve ısıl iletkenliği, plastik şekil verilebilirliği ve tokluğu ile bilinen temel mühendislik malzeme grubu hangisidir?'
+      },
+      {
+        opt: 'Seramikler ve Camlar',
+        desc: 'Metal ile ametal bileşiklerinden oluşan, ergime noktası çok yüksek, kimyasal ve ısıl kararlılığı yüksek ancak çekmeye karşı kırılgan inorganik malzemelerdir.',
+        q: 'İnorganik bileşiklerden oluşan, ergime sıcaklığı ve korozyon direnci çok yüksek, basma dayanımı iyi ancak çekmeye karşı son derece kırılgan ve yalıtkan malzeme sınıfı hangisidir?'
       },
       {
         opt: 'Polimer Malzemeler',
-        desc: '2. Hafta örnek soru 2\'de vurgulandığı üzere; polimerler (termoset, termoplastik, elastomer) hafif, elektrik yalıtkanı ve korozyon direnci bakımından çok iyi malzemelerdir.',
-        q: 'Karbon ve hidrojen esaslı büyük moleküllü organik bileşiklerden oluşan, hafif ve korozyon direnci bakımından çok iyi olan ancak yüksek sıcaklıklara uygun olmayan malzeme grubu hangisidir?'
+        desc: 'Karbon ve hidrojen esaslı büyük moleküllü organik bileşiklerden oluşan, hafif, korozyona dayanıklı, elektriksel yalıtkan ancak düşük sıcaklık dayanımlı malzemelerdir.',
+        q: 'Karbon ve hidrojen esaslı makromoleküllerden oluşan, hafif, kimyasal etkilere dayanıklı ve iyi bir elektrik yalıtkanı olan ancak yüksek sıcaklığa dayanamayan malzeme sınıfı hangisidir?'
       },
       {
         opt: 'Kompozit Malzemeler',
-        desc: 'İki ya da daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle elde edilen malzemelere kompozit denir; insanlık tarihinin bilinen en basit kompozit yapı malzemesi kerpiçtir (çamur + saman).',
-        q: 'İki veya daha fazla farklı malzemenin makroskopik düzeyde birleştirilmesiyle oluşturulan "Kompozit Malzemelerin" Anadolu\'da da yaygın kullanılan en basit ve en eski tarihsel örneği nedir?'
+        desc: 'İki veya daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle üstün mekanik özellikler elde edilen karma malzemelerdir (kerpiç, fiberglas, CFRP).',
+        q: 'Birbirinin zayıf yönlerini telafi etmek amacıyla iki veya daha fazla farklı malzemenin makroskopik düzeyde birleştirilmesiyle üretilen (kerpiç, karbon elyaf takviyeli polimer vb.) malzeme sınıfı hangisidir?'
+      },
+      {
+        opt: 'Yarıiletken Malzemeler',
+        desc: 'Elektrik iletkenliği metaller ile yalıtkanlar arasında bulunan ve elektronik devre elemanlarının temelini oluşturan malzemelerdir (Si, Ge, GaAs).',
+        q: 'Elektrik iletkenliği yalıtkanlar ile iletkenler arasında yer alan ve diyot, transistör, mikroçip üretiminde kullanılan malzeme grubu hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '2. Hafta: Deformasyon, Kırılma ve Malzeme Muayenesi',
+    items: [
+      {
+        opt: 'Elastik Deformasyon',
+        desc: 'Uygulanan gerilme ortadan kalktığında malzemenin eski boyut ve geometrisine tamamen geri döndüğü geçici şekil değişimidir.',
+        q: 'Malzemeye uygulanan dış yük ortadan kaldırıldığında atomların orijinal konumuna döndüğü ve kalıcı hasar bırakmayan geçici şekil değişimine ne ad verilir?'
+      },
+      {
+        opt: 'Plastik Deformasyon',
+        desc: 'Elastiklik sınırı (akma sınırı) aşıldığında malzemenin kristal kafesindeki dislokasyon hareketiyle meydana gelen geri dönüşsüz kalıcı şekil değişimidir.',
+        q: 'Malzemenin akma sınırının aşılmasıyla meydana gelen ve kuvvet kaldırılsa dahi geri dönmeyen kalıcı şekil değişimine ne ad verilir?'
       },
       {
         opt: 'Gevrek Kırılma',
-        desc: '2. Hafta örnek soru 5\'te sorulduğu üzere; gevrek kırılmada çok az veya hiç plastik deformasyon olmaz, tokluk düşüktür, kırılma akma gerilmesinden küçük gerilmelerde özellikle kış aylarında ani oluşur. Sünek kırılmada ise koni-çanak yüzeyi ve yüksek plastik deformasyon görülür.',
-        q: 'Malzemelerde kırılma türleri karşılaştırıldığında "Gevrek Kırılma" tipinde görülen karakteristik durum aşağıdakilerden hangisidir?'
+        desc: 'Gözle görülür plastik deformasyon olmadan, düşük toklukla ve akma gerilmesinden küçük gerilmelerde çatlağın çok hızlı ilerlemesiyle ani oluşan kırılmadır.',
+        q: 'Özellikle düşük sıcaklıklarda çok az veya hiç plastik deformasyon göstermeden, düşük toklukla ve akma sınırından düşük gerilmelerde aniden gerçekleşen kırılma türü hangisidir?'
       },
       {
-        opt: 'Tahribatsız Muayene',
-        desc: 'Tahribatlı muayene (çekme, basma, eğilme, darbe/tokluk, sertlik) malzemede kalıcı şekil değişimi/kırılma yaratırken; tahribatsız muayene parçaya zarar vermeden iç bünye ve yüzey çatlaklarını/süreksizliklerini tespit eder.',
-        q: 'Özellikle uçak yapı elemanları gibi servis altında olan hayati parçaların fiziki yapısına hiçbir zarar vermeden iç bünye ve dış yüzey süreksizliklerinin tespit edilmesini sağlayan yöntem hangisidir?'
+        opt: 'Sünek Kırılma',
+        desc: 'Kırılma öncesinde yüksek plastik deformasyon, boyun verme ve koni-çanak morfolojisi sergileyen, yüksek enerji yutan kırılma türüdür.',
+        q: 'Kopma öncesinde belirgin boyun verme ve yüksek plastik deformasyon sergileyen, parçalanması için yüksek enerji gerektiren güvenli kırılma türü hangisidir?'
+      },
+      {
+        opt: 'Yorulma (Fatigue) Hasarı',
+        desc: 'Statik akma gerilmesinden çok daha küçük dinamik ve tekrarlı yükler altında mikroskobik çatlakların ilerleyerek aniden kopmaya yol açmasıdır.',
+        q: 'Malzemenin statik çekme dayanımının altındaki değişken veya tekrarlı gerilmeler altında zamanla çatlak ilerlemesiyle aniden kopması olayına ne ad verilir?'
+      },
+      {
+        opt: 'Tahribatsız Muayene (NDT)',
+        desc: 'Parçanın mekanik bütünlüğüne ve kullanım amacına zarar vermeden iç bünye ve yüzey süreksizliklerini tespit eden yöntemlerdir (Radyografi, Ultrasonik, Manyetik, Sıvı penetrant vb.).',
+        q: 'Hayati makine veya uçak parçalarının fiziki yapısına hiçbir zarar vermeden iç ve yüzey kusurlarını tespit etmeye yarayan yöntem grubuna ne ad verilir?'
       }
     ]
   },
   {
-    groupName: '3. Hafta: Çözülemeyen ve Çözülebilen Bağlama Elemanları',
+    groupName: '3. Hafta: Çözülemeyen (Sökülemeyen) Bağlama Elemanları',
     items: [
       {
-        opt: 'Çözülemeyen Bağlama Elemanları',
-        desc: '3. Hafta sunumuna göre; çözülürken tahrip olduğu için tekrar kullanılamayan, makine elemanlarını şekil veya maddesel bağla birleştiren elemanlar: Perçin, Lehim, Kaynak ve Yapıştırıcıdır.',
-        q: 'Makine elemanlarını şekil veya maddesel bağla birbirine bağlayan ve sökülürken tahrip olduğu için tekrar kullanılamayan "Çözülemeyen Bağlama Elemanları" grubu hangisidir?'
+        opt: 'Kaynak Bağlantısı',
+        desc: 'Birleştirilecek metal parçaların ısı veya basınç etkisiyle yerel olarak eritilerek veya plastik kıvama getirilerek süreklilik sağlayacak biçimde birleştirilmesidir.',
+        q: 'Malzemelerin ısı veya basınç yardımıyla atomik süreklilik sağlayacak şekilde birleştirildiği, sökülürken parçanın tahrip olduğu en yaygın çözülemeyen bağlantı yöntemi hangisidir?'
       },
       {
         opt: 'Lehimleme Bağlantısı',
-        desc: 'Lehimleme; iki metal parçanın kendilerinden daha düşük sıcaklıkta ergiyen ilave bir malzeme (lehim) yardımıyla bağlanmasıdır. Ana malzeme ergimediği için kristal yapı değişmez, ince parçalar yanmaz; ancak yüksek sıcaklık ve yüksek mukavemet gerektiren yerlere uygun değildir.',
-        q: 'Birleştirilecek metal parçaların ergitilmeden, kendilerinden daha düşük sıcaklıkta ergiyen ilave bir tel/malzeme ile birleştirildiği ve ana metalin kristal yapısının değişmediği bağlama yöntemi hangisidir?'
+        desc: 'Ana parçalar ergitilmeden, ana metallerden daha düşük sıcaklıkta ergiyen ilave tel yardımıyla kristal yapı bozulmadan yapılan birleştirmedir.',
+        q: 'Birleştirilecek metal parçaların ergitilmeden, kendilerinden daha düşük sıcaklıkta ergiyen ilave bir dolgu metaliyle birleştirildiği ve ana malzemenin kristal yapısının değişmediği yöntem hangisidir?'
       },
       {
         opt: 'Perçin Bağlantısı',
-        desc: 'Perçin bağlantıları; kaynakta olduğu gibi ergime sebebiyle kristal yapı değişimi ve ısıl iç gerilmeler oluşturmaz, rijit olmadığı için titreşimli yüklere dayanıklıdır ve metal ile deri/plastik/tekstil gibi farklı malzemeleri bağlayabilir.',
-        q: 'Birleşme yerinde ergime ve ısıl iç gerilme oluşturmayan, rijit olmadığı için titreşimlere karşı dayanıklı olan ve uçak gövdeleri ile metal-deri/plastik birleştirmelerinde kullanılan çözülemeyen eleman hangisidir?'
+        desc: 'Birleşme yerinde ergime ve ısıl gerilme oluşturmayan, rijit olmadığı için dinamik ve titreşimli yüklere dayanıklı olan, farklı malzemeleri de bağlayabilen çözülemeyen elemandır.',
+        q: 'Birleşme bölgesinde ısıl gerilme oluşturmayan, elastik yapısıyla titreşimleri sönümleyen ve uçak gövdelerinde metal-deri/kompozit birleştirmelerinde kullanılan çözülemeyen eleman hangisidir?'
       },
       {
         opt: 'Yapıştırıcı Bağlantılar',
-        desc: 'Yapıştırma bağlantısında ana malzemede delik veya çentik açılmadığından kesit zayıflamaz, korozyona karşı korur ve sönümleme sağlar; ancak yaşlanma görülür ve 80°C–120°C üzerinde mukavemeti düşer.',
-        q: 'Ana malzemede delik veya çentik açılmadığı için kesit zayıflamasına yol açmayan, adhezyon ve kohezyon kuvvetlerine dayanan ancak 80°C–120°C üzerindeki sıcaklıklarda mukavemeti düşen bağlantı türü hangisidir?'
+        desc: 'Ana malzemede delik veya çentik açılmadığından kesit zayıflaması yapmayan, korozyon sızdırmazlığı sağlayan fakat 80-120°C üzerinde zayıflayan adhezyon bağlantısıdır.',
+        q: 'Ana malzemede cıvata veya perçin gibi delik açılmasını gerektirmediği için kesit zayıflatmayan, ancak 80°C-120°C üzerindeki sıcaklıklarda mukavemeti belirgin azalan bağlantı türü hangisidir?'
       },
       {
-        opt: 'Çözülebilen Bağlama Elemanları',
-        desc: 'Bağlanan parçalar ve bağlama elemanı hasar görmeden istenildiği kadar sökülüp takılabilen elemanlar çözülebilen bağlama elemanlarıdır.',
-        q: 'Bağlanan parçalara ve bağlama elemanına zarar vermeden istenildiği kadar sökülüp tekrar takılabilen "Çözülebilen Bağlama Elemanları" arasında aşağıdakilerden hangisi yer alır?'
-      },
-      {
-        opt: 'Cıvata ve Somun Bağlantısı',
-        desc: 'Cıvata dış vida, somun iç vidadır. Vidalar profiline göre üçgen, trapez, testere, yuvarlak ve kare vida; helis yönüne göre sağ ve sol vida olarak sınıflandırılır. Dezavantajı merkezleme kalitesinin olmaması ve çentik tesiriyle kopabilmesidir.',
-        q: 'Çözülebilen bağlama elemanlarından olan vidaların diş profiline göre sınıflandırılmasında aşağıdakilerden hangileri yer alır?'
-      },
-      {
-        opt: 'Boyuna ve Enine Kamalar',
-        desc: 'Kamalar mil ile göbek arasında moment ileten prizmatik elemanlardır. Mil eksenine dik (radyal) monte edilenlere "Enine kama", mil eksenine paralel monte edilenlere "Boyuna kama / Uygu kaması (Feder)" denir.',
-        q: 'Mil ile göbek arasında kuvvet veya şekil bağıyla moment ileten; mil eksenine paralel (boyuna/feder) veya dik (enine) olarak monte edilen prizmatik bağlama elemanı hangisidir?'
-      },
-      {
-        opt: 'Sıkı Geçme Bağlantısı',
-        desc: 'Sıkı geçmede başlangıçta milin dış çapı göbeğin delik çapından biraz büyüktür; preslenerek veya göbek ısıtılıp/mil soğutularak takılır ve oluşan yüzey basıncı/sürtünme ile moment iletilir.',
-        q: 'Başlangıçta milin dış çapının göbeğin delik çapından biraz büyük seçildiği ve montaj sonrası yüzeyler arasında oluşan basınç/sürtünme sayesinde ilave eleman olmadan moment iletilen bağlantı hangisidir?'
-      },
-      {
-        opt: 'Pim ve Perno Bağlantıları',
-        desc: 'Pimler (silindirik, konik, çentikli) bağlama yanında merkezleme ve aşırı yükte kesilerek emniyet elemanı görevi üstlenir; pernolar ise çatal/mafsal bağlantılarında parçaların birbirine göre dönmesine izin verir.',
-        q: 'Çözülebilen bağlama elemanları içinde bağlama görevinin yanı sıra "merkezleme" ve aşırı yükte kırılarak "emniyet elemanı" görevini de üstlenen eleman hangisidir?'
+        opt: 'Sıkı Geçme (Pres) Bağlantısı',
+        desc: 'Mil dış çapının delik çapından büyük imal edilip presle veya sıcaklık farkıyla geçirilmesi sonucu yüzeyler arası yüksek sürtünmeyle çözülemez moment ileten bağlantıdır.',
+        q: 'Mil çapının delik çapından büyük seçilmesiyle montaj sonrasında arayüzde oluşan yüksek basınç ve sürtünme sayesinde ilave parça olmadan moment ileten çözülemeyen bağlantı hangisidir?'
       }
     ]
   },
   {
-    groupName: '4. Hafta: Güç ve Hareket İletim Elemanları ve 5. Hafta: İmalat Yöntemleri',
+    groupName: '3. Hafta: Çözülebilen Bağlama Elemanları',
     items: [
       {
-        opt: 'Güç ve Hareket İletim Elemanları',
-        desc: '4. Hafta örnek soru 1\'de sorulduğu üzere; motor ile iş makinası arasında güç ve hareket ileten 4 temel mekanizma: Dişli çarklar, Zincirler, Kayış-Kasnak ve Sürtünmeli çarklardır (Sıkı geçme ise bağlama elemanıdır).',
-        q: '4. Hafta ders sonu sorularında da sorulduğu üzere; aşağıdakilerden hangisi motor ile iş makinası arasında güç ve hareket iletiminde kullanılan mekanizmalardan biri DEĞİLDİR?'
+        opt: 'Cıvata ve Somun Bağlantısı',
+        desc: 'Dış vida (cıvata) ve iç vida (somun) yardımıyla parçalara hasar vermeden istenildiği kadar sökülüp takılabilen en temel çözülebilen bağlama elemanıdır.',
+        q: 'Makine parçalarına ve elemanın kendisine hasar vermeden defalarca sökülüp takılabilen, dış vida ve iç vida çiftinden oluşan temel çözülebilen bağlama elemanı hangisidir?'
       },
       {
-        opt: 'Alın, Konik ve Kremayer Dişli',
-        desc: 'Eksenleri paralel olan dişlilere alın dişli (düz/helisel), eksenleri kesişenlere konik dişli, diş sayısı sonsuza götürülerek dönme hareketini doğrusal harekete çeviren doğru şeklindeki dişliye ise kremayer (çubuk) dişli denir.',
-        q: 'Dişli çark mekanizmalarında dişlilerden birinin yarıçapı/diş sayısı sonsuza götürülerek düz bir çubuk hâlini alan ve dönme hareketini doğrusal harekete çeviren dişli türü hangisidir?'
+        opt: 'Boyuna ve Enine Kamalar',
+        desc: 'Mil ile göbek arasında moment iletmek amacıyla mil eksenine paralel (boyuna/feder) veya dik (enine) yerleştirilen prizmatik elemanlardır.',
+        q: 'Mil ile kasnak veya dişli göbeği arasında moment iletmek amacıyla mil eksenine paralel veya dik olarak açılan kanala yerleştirilen çözülebilen eleman hangisidir?'
+      },
+      {
+        opt: 'Pim Bağlantıları',
+        desc: 'Parçaları birbirine bağlamanın yanı sıra hassas merkezleme ve aşırı yük durumunda kırılarak diğer pahalı parçaları koruyan emniyet sigortası görevi gören elemanlardır.',
+        q: 'Çözülebilen bağlantılarda iki parçanın birbirine göre hassas konumlandırılmasını sağlayan ve aşırı kesme yükünde kırılarak emniyet sigortası işlevi gören eleman hangisidir?'
+      },
+      {
+        opt: 'Perno Bağlantıları',
+        desc: 'Çatal ve mafsallı birleştirmelerde iki parçanın eksenel doğrultuda birbirine göre serbestçe dönmesine izin veren silindirik bağlama elemanıdır.',
+        q: 'Makine mafsallarında ve çatal bağlantılarında, birleştirilen parçaların birbirine göre serbestçe dönme hareketi yapmasına izin veren silindirik bağlama elemanı hangisidir?'
+      },
+      {
+        opt: 'Konik Geçme Bağlantısı',
+        desc: 'Konik mil ucunun konik delikli göbeğe eksenel somun kuvvetiyle sıkıştırılmasıyla oluşan radyal temas basıncıyla çalışan sökülebilir bağlantıdır.',
+        q: 'Konik yüzeylerin eksenel bir kuvvetle birbirine bastırılmasıyla oluşan radyal temas sürtünmesi sayesinde yüksek moment ileten çözülebilen bağlantı hangisidir?'
+      },
+      {
+        opt: 'Setskur (Ayar Vidası)',
+        desc: 'Başsız yapıda, ucu göbekteki mile basarak hafif torkların iletilmesini veya parçaların eksenel kaymasını önleyen tespit vidasıdır.',
+        q: 'Genellikle kafa kısmı bulunmayan ve mil üzerindeki bir bileziğin veya kasnağın eksenel olarak kaymasını önlemek için sıkılan tespit vidasına ne ad verilir?'
+      }
+    ]
+  },
+  {
+    groupName: '4. Hafta: Güç ve Hareket İletim Mekanizmaları',
+    items: [
+      {
+        opt: 'Alın Dişli Çarklar (Düz/Helisel)',
+        desc: 'Eksenleri birbirine paralel olan miller arasında kayma olmaksızın pozitif ve sabit çevrim oranıyla güç ve hareket ileten dişli grubudur.',
+        q: 'Birbirine paralel iki mil arasında kayma olmaksızın sabit çevrim oranı ve yüksek mekanik verimle güç ve hareket ileten dişli çark türü hangisidir?'
+      },
+      {
+        opt: 'Konik Dişli Çarklar',
+        desc: 'Eksenleri bir noktada kesişen (genellikle 90 derece dik açı oluşturan) miller arasında hareket ileten konik geometrili dişlilerdir.',
+        q: 'Eksenleri birbiriyle kesişen (genellikle 90 derecelik açı yapan) miller arasında güç ve hareket iletimi sağlayan dişli çark türü hangisidir?'
+      },
+      {
+        opt: 'Kremayer ve Pinyon Dişli',
+        desc: 'Diş sayısı ve yarıçapı sonsuz olan düz bir çubuk dişli ile pinyon dişlinin çalışması sonucu dairesel dönme hareketini doğrusal öteleme hareketine çeviren mekanizmadır.',
+        q: 'Dairesel dönme hareketini düzgün doğrusal öteleme hareketine çevirmek için silindirik dişliyle birlikte çalışan düz çubuk dişli mekanizması hangisidir?'
       },
       {
         opt: 'Kayış-Kasnak Mekanizması',
-        desc: '4. Hafta örnek soru 2\'de vurgulandığı üzere; kayış-kasnak mekanizmaları darbeleri sönümler, sessiz ve ucuzdur, büyük eksen aralıklarında güç iletir; ancak %1-%2 kısmi kayma nedeniyle tam/sabit çevrim oranı sağlayamaz.',
-        q: 'Elastik yapısı sayesinde darbeleri sönümleyen, aşırı yükte kayarak sistemi koruyan ancak %1–%2 oranında kısmi kayma nedeniyle sabit bir çevrim oranı sağlayamayan hareket iletim mekanizması hangisidir?'
+        desc: 'Büyük eksen mesafelerinde elastik kayışla çalışan, darbeleri sönümleyen ancak %1-2 kısmi kayma nedeniyle sabit çevrim oranı sağlayamayan mekanizmadır.',
+        q: 'Elastik yapısı sayesinde ani darbeleri ve titreşimleri sönümleyen, ancak %1-2 oranındaki kısmi kayma sebebiyle kesin ve sabit bir çevrim oranı sağlayamayan mekanizma hangisidir?'
       },
       {
         opt: 'Zincir Mekanizması',
-        desc: 'Zincir mekanizmalarında kayma olmaz, verim %96–98 civarındadır ve fırın gibi sıcak ortamlarda çalışabilir; ancak yağlama gerektirir ve kayışa göre pahalıdır.',
-        q: 'Kayış-kasnak sistemlerinin aksine kayma olmadan sabit çevrim oranıyla (%96–%98 verimle) güç ileten, yüksek sıcaklıklarda çalışabilen ancak düzenli yağlama gerektiren mekanizma hangisidir?'
+        desc: 'Orta eksen mesafelerinde kayma yapmadan (%96-98 verimle) şekil bağıyla güç ileten, yüksek sıcaklıklarda çalışabilen fakat yağlama gerektiren mekanizmadır.',
+        q: 'Kayış-kasnak mekanizmasının aksine kayma yapmadan pozitif şekil bağıyla güç ileten, yüksek sıcaklıklarda çalışabilen fakat periyodik yağlama gerektiren mekanizma hangisidir?'
       },
       {
-        opt: 'Model, Maça ve Yolluk',
-        desc: '5. Hafta İmalat Yöntemleri sunumuna göre; dökümde kalıp boşluğunu oluşturmak için "Model" (katılaşma büzülmesi için çekme payı verilir), parçanın boş çıkması istenen iç kısımları için kumdan yapılan "Maça", sıvı metalin kalıbı sakin doldurması ve çekme boşluklarını beslemesi için "Yolluk ve Besleyici/Çıkıcı" kullanılır.',
-        q: '5. Hafta Döküm Teknolojisi ders notlarına göre; döküm parçalarının boş (delik/oyuk) çıkması istenen iç kısımlarında kullanılan ve genellikle kumdan imal edilen özel parçaya ne ad verilir?'
+        opt: 'Sürtünmeli Çarklar',
+        desc: 'Birbirine bastırılan iki çarkın yüzeyleri arasındaki sürtünmeyle sessiz ve kademesiz hareket ileten ancak aşırı yükte kayan mekanizmadır.',
+        q: 'Birbirine bastırılan çarkların yüzey sürtünmesiyle güç ileten, sessiz çalışan ancak yüksek yük altında kayma yapabilen mekanizma hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '5. Hafta: Döküm Teknolojisi ve Kalıplama Elemanları',
+    items: [
+      {
+        opt: 'Model',
+        desc: 'Dökülecek parçanın kalıp içinde boşluğunu oluşturmak amacıyla ahşap, metal veya plastikten yapılan ve katılaşma büzülmesi için çekme payı eklenen kopyadır.',
+        q: 'Döküm teknolojisinde, kalıp kumu içinde parçanın dış geometrisine uygun boşluk oluşturmak için kullanılan ve çekme payı verilen parça kopyasına ne ad verilir?'
       },
       {
-        opt: 'Kokil ve Savurma Döküm',
-        desc: 'Kalıp malzemesi olarak çelik veya dökme demir kullanılan yönteme "Kokil (Metal kalıba) Döküm", dönen bir kalıpta merkezkaç kuvvet etkisiyle maçasız boru ve silindirik parça üretilen yönteme ise "Savurma (Merkezkaç) Döküm" denir.',
-        q: 'Ergimiş metalin kendi ekseni etrafında hızla dönen bir kalıba dökülerek merkezkaç kuvveti etkisiyle şekillendirildiği ve özellikle dikişsiz boru/burç üretiminde kullanılan döküm yöntemi hangisidir?'
+        opt: 'Maça',
+        desc: 'Döküm parçalarının içi boş veya delik çıkması istenen kısımlarını oluşturmak için kumdan imal edilip kalıp boşluğuna yerleştirilen özel gövdedir.',
+        q: 'Döküm parçalarında oyuk, delik veya kanal gibi iç boşlukların elde edilmesi amacıyla kalıp boşluğuna yerleştirilen kum gövdeye ne ad verilir?'
       },
       {
-        opt: 'Haddeleme, Dövme ve Ekstrüzyon',
-        desc: 'Kütle şekillendirme yöntemlerinden Haddeleme zıt dönen iki merdane arasından geçirme, Dövme çekiç/presle darbe/basma uygulama, Ekstrüzyon ise ısıtılmış kütüğü bir kalıp açıklığından iterek sabit kesitli uzun profil/boru üretme işlemidir.',
-        q: 'Plastik şekil verme yöntemlerinden; parçaların birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılıp boyunun uzatılması (slab, kütük, sac, ray üretimi) işlemine ne ad verilir?'
+        opt: 'Yolluk ve Besleyici',
+        desc: 'Ergimiş metalin kalıp boşluğuna türbülanssız dolmasını sağlayan kanal sistemine yolluk; katılaşma sırasındaki hacimsel büzülmeyi sıvı metalle besleyen hazneye besleyici denir.',
+        q: 'Dökümde ergimiş metalin kalıp boşluğuna düzgünce akmasını sağlayan kanal sistemi ile katılaşma büzülmesini telafi eden ek rezerv haznesi hangisidir?'
       },
       {
-        opt: 'Toz Metalurjisi ve Sinterleme',
-        desc: 'Toz metalurjisi; metal tozlarının üretilmesi, karıştırılması, kalıpta 300–800 MPa basınçla preslenmesi (yeşil/ham parça) ve ana metalin ergime sıcaklığının altındaki bir sıcaklıkta fırında ısıtılarak partiküllerin birbirine kaynaması (Sinterleme) aşamalarından oluşur.',
-        q: 'Toz metalurjisi yönteminde kalıpta preslenerek şekillendirilmiş gözenekli toz parçaların, ergime sıcaklığının altındaki bir sıcaklıkta ısıl işleme tabi tutularak mukavemet kazanması aşamasına ne ad verilir?'
+        opt: 'Kum Kalıba Döküm',
+        desc: 'Kalıbın refrakter kum ve bağlayıcılarla tek seferlik üretildiği, hemen hemen tüm metallere uygulanabilen en yaygın ve ekonomik geleneksel döküm yöntemidir.',
+        q: 'Her döküm sonrasında kalıbın bozularak parçanın çıkarıldığı, hemen hemen tüm metallerin dökümüne uygun en yaygın geleneksel döküm yöntemi hangisidir?'
       },
       {
-        opt: 'Ergitmeli Kaynak ve Katı Hâl Kaynağı',
-        desc: '5. Hafta sunumuna göre; TIG (Argon) kaynağında erimeyen Tungsten elektrot kullanılır. Sürtünme, Ultrasonik, Difüzyon ve Patlama kaynağı ise ergitmesiz (katı hâl) kaynak yöntemleridir.',
-        q: '5. Hafta Kaynak Yöntemleri ders notlarına göre; erime noktası çok yüksek olduğu için kaynak sırasında ERİMEYEN "Tungsten" elektrodun ve koruyucu soy gazın kullanıldığı kaynak yöntemi hangisidir?'
+        opt: 'Kokil (Metal Kalıp) Döküm',
+        desc: 'Kalıbın çelik veya dökme demirden kalıcı olarak yapıldığı, erimiş metalin yerçekimi etkisiyle doldurulduğu seri döküm yöntemidir.',
+        q: 'Kalıp malzemesi olarak refrakter kum yerine defalarca kullanılabilen çelik veya dökme demir metal kalıpların kullanıldığı seri döküm yöntemi hangisidir?'
+      },
+      {
+        opt: 'Savurma (Merkezkaç) Döküm',
+        desc: 'Kendi ekseni etrafında hızla dönen kalıba dökülen metalin merkezkaç kuvvetiyle kalıp cidarına yayılmasıyla maçasız dikişsiz boru ve silindir üretilen yöntemdir.',
+        q: 'Ergimiş metalin hızla dönen bir kalıba dökülerek merkezkaç kuvveti etkisiyle kalıp cidarına yapışmasıyla maça kullanmadan dikişsiz silindirik parça üreten döküm yöntemi hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '5. Hafta: Plastik Şekil Verme ve Kaynak İmalat Yöntemleri',
+    items: [
+      {
+        opt: 'Haddeleme',
+        desc: 'Kütle şekillendirme yöntemlerinden olup malzemenin birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılması ve boyunun uzatılması işlemidir.',
+        q: 'Malzemenin birbirine zıt yönde dönen iki silindirik merdane arasından geçirilerek kesitinin küçültülüp boyunun uzatıldığı (sac, ray, profil üretimi) plastik şekil verme yöntemi hangisidir?'
+      },
+      {
+        opt: 'Dövme',
+        desc: 'Isıtılmış metal kütüğün açık veya kapalı kalıplar arasında pres veya çekiç darbeleriyle plastik deformasyona uğratılarak tokluğu yüksek parçalar üretilmesidir.',
+        q: 'Kalıp boşluğunda çekiç veya pres darbeleriyle malzemenin plastik deformasyona zorlanarak yüksek mekanik tokluğa sahip krank mili, biyel kolu vb. üretildiği yöntem hangisidir?'
+      },
+      {
+        opt: 'Ekstrüzyon',
+        desc: 'Kovan içerisindeki ısıtılmış metal kütüğün bir ıstampa yardımıyla dar bir kalıp ağzından zorla geçirilerek sabit en kesitli uzun profiller elde edilmesidir.',
+        q: 'Isıtılmış metal kütüğün hidrolik pres yardımıyla kalıp açıklığından itilerek çıkarılması suretiyle alüminyum profil ve boru gibi sabit kesitli parçaların üretildiği yöntem hangisidir?'
+      },
+      {
+        opt: 'Toz Metalurjisi (Sinterleme)',
+        desc: 'İnce metal tozlarının kalıpta yüksek basınçla preslenmesi ve ardından ana metalin ergime sıcaklığının altındaki fırında partiküllerin kaynaşması (sinterleme) ile parça üretilmesidir.',
+        q: 'Metal tozlarının kalıpta preslendikten sonra ergime sıcaklığının altındaki bir sıcaklıkta ısıl işleme tabi tutularak atomik difüzyonla birbirine kaynaması (sinterleme) esasına dayanan yöntem hangisidir?'
+      },
+      {
+        opt: 'TIG (Argon) Kaynağı',
+        desc: 'Erime noktası çok yüksek olan Tungsten elektrot ile iş parçası arasında ark oluşturan ve erimeyen elektrot kullanan gaz altı kaynak yöntemidir.',
+        q: 'Kaynak esnasında erimeyen "Tungsten" elektrot ve koruyucu asal gaz (argon) kullanılarak yapılan hassas gaz altı kaynak yöntemi hangisidir?'
+      },
+      {
+        opt: 'Sürtünme (Katı Hâl) Kaynağı',
+        desc: 'Birleştirilecek parçalardan birinin döndürülerek diğerine basınçla sürtünmesi sonucu açığa çıkan sürtünme ısısıyla eritme olmaksızın yapılan katı hâl birleştirme yöntemidir.',
+        q: 'Parçaların birbirine sürtünmesiyle oluşan mekanik ısı ve ardından uygulanan dövme basıncı ile ana metaller eritilmeden yapılan katı hâl kaynak yöntemi hangisidir?'
       }
     ]
   }

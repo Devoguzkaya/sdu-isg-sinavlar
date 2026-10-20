@@ -14,187 +14,292 @@ export const madenTestThemes = [
 
 export const madenConceptGroups = [
   {
-    groupName: '1. Bölüm: Maden Grupları, Rezervler ve Temel Madencilik Terimleri (Prof. Dr. Servet Demirdağ Ders Notu)',
-    items: [
+    "groupName": "Maden Rezerv ve Cevher Sınıflandırma Terimleri",
+    "items": [
       {
-        opt: 'Maden Kanunu Maden Grupları',
-        desc: 'Ders Kitapçığı Sayfa 1: Maden Yasası madenleri 5 ana gruba ayırır. Taş ocakları (agrega/mıcır) IIa grubunda, blok mermer ve traverten ocakları IIb grubunda; kömür (turba, linyit, taşkömürü, antrasit), bor ve metalik madenler IV. grupta; kıymetli taşlar V. grupta yer alır.',
-        q: 'Prof. Dr. Servet Demirdağ\'ın ders kitapçığına göre Maden Kanunu\'ndaki 5 ana maden grubu sınıflandırmasında "Agrega/mıcır taş ocakları (IIa) ve Blok mermer/traverten (IIb)" ile "Linyit/Taşkömürü/Bor/Metalik madenler" sırasıyla kaçıncı gruplarda yer alır?'
+        "opt": "Görünür Rezerv",
+        "desc": "Boyutları, tenörü ve sürekliliği belirlenmiş, kesin üretilebilir cevher kütlesidir (hata sınırı ±%5 ile ±%20 arasındadır).",
+        "q": "Maden ders kitapçığına göre; boyutları ve tenörü kesin belirlenmiş, hata payı en düşük (±%5-20) üretilebilir cevher kütlesine ne ad verilir?"
       },
       {
-        opt: 'Görünür, Muhtemel ve Mümkün Rezerv',
-        desc: 'Ders Kitapçığı Sayfa 4: Boyutları ve tenörü belirlenmiş kesin üretilebilir cevher kütlesine "Görünür rezerv" (hata sınırı çok iyi bilinen yataklarda ±%5, genellikle ±%20); hata sınırı ±%20-40 olana "Muhtemel rezerv"; hata sınırı ±%50\'nin üzerinde olana ise "Mümkün rezerv" denir.',
-        q: 'Maden ders kitapçığına göre; boyutları ve tenörü belirlenmiş üretilebilir kesin cevher kütlesine ne ad verilir ve pratikte hata sınırı yüzde kaç olarak kabul edilir?'
+        "opt": "Muhtemel Rezerv",
+        "desc": "Arama verileri ve jeolojik süreklilikle tahmin edilen, hata sınırı ±%20 ile ±%40 arasında kabul edilen cevher kütlesidir.",
+        "q": "Maden yatağında boyutları ve tenörü belirli aralıklarla saptanmış, hata payı ±%20-40 arasında olan rezerv sınıfı hangisidir?"
       },
       {
-        opt: 'Tüvenan, Konsantre, Tenör ve Pasa',
-        desc: 'Ders Kitapçığı Sayfa 5-6: Ocaktan çıkarılan ve pasayı da içeren zenginleştirilmemiş ham cevhere "Tüvenan"; zenginleştirilerek faydalı mineral yüzdesi artırılmış cevhere "Konsantre"; cevherin içerdiği faydalı mineralin ağırlıkça yüzdesine "Tenör"; ekonomik değeri olmayan işe yaramaz taşa ise "Pasa" denir.',
-        q: 'Ocakta üretilen, pasayı da içeren zenginleştirilmemiş durumdaki ham cevhere ve cevherin içerdiği faydalı mineralin ağırlık cinsinden yüzdesine sırasıyla ne ad verilir?'
+        "opt": "Mümkün Rezerv",
+        "desc": "Jeolojik benzerlik ve kısıtlı verilerle varlığı öngörülen, hata sınırı ±%50'nin üzerinde olan tahmini cevher kütlesidir.",
+        "q": "Henüz yeterli arama ve sondaj verisi bulunmayan, hata sınırı %50'nin üzerinde olan rezerv sınıfı aşağıdakilerden hangisidir?"
       },
       {
-        opt: 'Dekapaj (Örtü Kazısı)',
-        desc: 'Ders Kitapçığı Sayfa 3 & 6: Açık işletmecilikte öncelikle cevherin üzerini kaplayan işe yaramaz örtü tabakası kazılarak uzaklaştırılır ve cevherin üstü açılır; bu işleme "Örtü kazısı" veya "Dekapaj" adı verilir.',
-        q: 'Açık maden işletmeciliğinde cevher üretimine geçmeden önce cevherin üzerini kaplayan örtü tabakasının kazılarak uzaklaştırılması ve cevherin üstünün açılması işlemine ne ad verilir?'
+        "opt": "Tüvenan (Ham Cevher)",
+        "desc": "Ocaktan doğrudan çıkarılan, pasayı da içeren ve henüz zenginleştirme işlemine tabi tutulmamış ham cevherdir.",
+        "q": "Ocaktan çıkarılan, pasayı da içeren ve henüz hiçbir zenginleştirme işlemine tabi tutulmamış ham cevhere ne ad verilir?"
       },
       {
-        opt: 'Lağım, Baca, Bür ve Desandre',
-        desc: 'Ders Kitapçığı Sayfa 3-5: Taş içerisinde sürülen galeriye (veya patlayıcı deliğine) "Lağım", cevher/damar içinde açılmış galeriye "Baca", yeraltında iki kat arasında açılmış ve yeryüzüne uzanmayan tali kuyulara "Bür (Fere / Kör kuyu)", aşağıdan yukarıya nakliyat için sürülen eğimli galeriye ise "Desandre" denir.',
-        q: 'Madencilik terminolojisinde; "taş içerisinde sürülen galeri (veya patlayıcı deliği)", "damar içerisinde açılan galeri" ve "yeryüzüyle bağlantısı olmayan iki kat arasındaki iç kuyu" sırasıyla hangi terimlerle ifade edilir?'
+        "opt": "Konsantre",
+        "desc": "Tüvenan cevherin zenginleştirme tesisinde işlenerek ekonomik değeri olan faydalı mineral oranının artırılmış durumudur.",
+        "q": "Zenginleştirme tesislerinde işlenerek içindeki faydalı mineral oranı artırılmış nihai cevhere ne ad verilir?"
       },
       {
-        opt: 'Martoperfaratör, Martopikör ve Jumbo',
-        desc: 'Ders Kitapçığı Sayfa 4-5: Basınçlı hava ile çalışan ve delici ucu döverek lağım deliği delen makineye "Martoperfaratör", basınçlı havalı kazı/taş sökme tabancasına "Martopikör", üzerinde birden fazla martoperfaratör bulunan delik delme arabasına ise "Jumbo" denir.',
-        q: 'Galeri sürme ve delik delme işlerinde randımanı artırmak amacıyla üzerinde bir veya birden fazla martoperfaratör bulunan delik delme arabalarına ne ad verilir?'
+        "opt": "Tenör",
+        "desc": "Cevherin içerdiği faydalı mineral miktarının toplam cevher ağırlığına olan yüzdesidir.",
+        "q": "Cevherin içerdiği ekonomik değeri olan faydalı mineralin ağırlıkça yüzdesine madencilikte ne ad verilir?"
       },
       {
-        opt: 'Varagel, Freno, Tumba ve Skip',
-        desc: 'Ders Kitapçığı Sayfa 4-6 & 39: Eğimli yolda yerçekiminden yararlanarak dolu vagon aşağı inerken boş vagonu yukarı çeken yola "Varagel" (üzerindeki taşıma sistemine "Freno"), vagonları 360° ters-yüz ederek boşaltan beşiğe "Tumba", dikey kuyuda insan taşınmayan sadece cevher taşıyan çelik siloya ise "Skip" (insan/vagon taşıyana "Kafes") denir.',
-        q: 'Maden nakliyat terimlerinden; "vagonların yüklerini boşaltmak için 360° dönebilen beşik sistemi" ile "dikey kuyularda insan taşınmasına izin verilmeyen, yalnızca cevher çekilen çelik silo" sırasıyla hangileridir?'
+        "opt": "Pasa (Atık Kayaç)",
+        "desc": "Cevher yatağının içinde veya çevresinde bulunan, ekonomik değeri olmayan ve kazılarak uzaklaştırılan işe yaramaz taş/topraktır.",
+        "q": "Cevher üretimi sırasında çıkan, ekonomik değeri bulunmayan ve döküm sahasına taşınan artık kayaç kütlesine ne ad verilir?"
       },
       {
-        opt: 'Konverjans, Tarama ve Tasman',
-        desc: 'Ders Kitapçığı Sayfa 4-5: Yeraltı galerilerinin arazi basıncıyla kesitinin daralmasına "Konverjans"; konverjansa uğrayan galerinin eski kesitine kavuşturulmasına "Tarama"; göçme hareketinin yeryüzüne kadar yansıyarak arazi alçalmasına yol açmasına ise "Tasman (Sübsidans)" denir.',
-        q: 'Yeraltında açılan galerilerin arazi basıncı etkisiyle zamanla kesitinin daralmasına (% olarak ifade edilir) ve bu daralan galerinin yeniden eski kesitine kavuşturulması işlemine sırasıyla ne ad verilir?'
-      },
-      {
-        opt: 'Otooksidasyon ve Degajman',
-        desc: 'Ders Kitapçığı Sayfa 3 & 5: Kömürdeki karbonun havadaki oksijenle birleşerek ısı ve CO açığa çıkardığı ekzotermik reaksiyona "Otooksidasyon" (ısı dağıtılamazsa "Kendiliğinden yanma"); jeolojik yapı nedeniyle metan ve CO2 gazlarının kömürle birlikte çalışılan yere ani püskürmesine ise "Degajman" denir.',
-        q: 'Kömürün ana yapısını oluşturan karbonun (C) hava ile temas ettiğinde bünyesine oksijen alarak CO, CO2 ve ısı açığa çıkarması olayına (kendiliğinden yanmanın başlangıcına) ne ad verilir?'
+        "opt": "Dekapaj (Örtü Kazısı)",
+        "desc": "Açık maden işletmelerinde cevhere ulaşabilmek için üzerindeki işe yaramaz örtü tabakasının kazılarak kaldırılması işlemidir.",
+        "q": "Açık işletmecilikte cevher üretimine geçebilmek için cevherin üzerini örten tabakanın kazılıp taşınması işlemine ne ad verilir?"
       }
     ]
   },
   {
-    groupName: '2. Bölüm: Açık Ocak İşletmeciliği, Basamak Geometrisi ve Şev Duraylılığı',
-    items: [
+    "groupName": "Yeraltı Maden Galerileri ve Kuyuları",
+    "items": [
       {
-        opt: 'Açık Ocak Tipleri ve Avantajları',
-        desc: 'Ders Kitapçığı Sayfa 6-7: Açık ocaklar topoğrafyaya göre Çukur tip, Yamaç tipi ve Tepe tip olarak üçe ayrılır. Yeraltı ocaklarına göre tavan göçüğü yoktur, tahkimat gerekmez, gaz/toz patlaması ve ani püskürme olmaz, sadece geceleri aydınlatılır ve kaza/meslek hastalığı riski çok daha düşüktür.',
-        q: 'Prof. Dr. Servet Demirdağ\'ın ders notlarına göre açık maden işletmelerinin yeraltı maden işletmelerine kıyasla iş güvenliği açısından sağladığı avantajlarla ilgili aşağıdakilerden hangisi DOĞRUDUR?'
+        "opt": "Lağım",
+        "desc": "Yeraltında taş içerisinde sürülen galeriye veya patlayıcı madde doldurmak amacıyla delinen deliklere verilen addır.",
+        "q": "Madencilik terminolojisinde taş içerisinde sürülen galeriye veya patlayıcı doldurmak için delinen deliklere ne ad verilir?"
       },
       {
-        opt: 'Basamak Geometrisi Elemanları',
-        desc: 'Ders Kitapçığı Sayfa 8: Açık ocaklardaki en temel yapı basamaklardır. Basamak geometrisinin 4 temel elemanı: Basamak yüksekliği, Basamak genişliği, Şev açısı ve Genel şev açısıdır.',
-        q: 'Açık ocaklarda hem çalışma verimini hem de iş güvenliğini doğrudan etkileyen "Basamak Geometrisi"nin 4 temel elemanı aşağıdakilerden hangisidir?'
+        "opt": "Baca",
+        "desc": "Doğrudan cevher kütlesi veya kömür damarı içinde açılan ve ilerletilen yeraltı galerisidir.",
+        "q": "Yeraltı madenciliğinde doğrudan cevher kütlesi veya kömür damarı içerisinde sürülen galeriye ne ad verilir?"
       },
       {
-        opt: 'Basamak Yüksekliği ve Şev Açısı',
-        desc: 'Ders Kitapçığı Sayfa 8: Basamağın devrilmeden ve heyelana uğramadan kendisini ayakta tutabilmesi için en önemli iki parametre "basamak yüksekliği" ve "şev açısı"dır. Bu iki değer ne kadar fazla (dik ve yüksek) olursa heyelan riski o kadar artar.',
-        q: 'Açık işletmelerde basamağın devrilmeden ve heyelana uğramadan kendisini ayakta tutabilmesi için en önemli iki geometrik parametre hangileridir?'
+        "opt": "Bür (Fere / Kör Kuyu)",
+        "desc": "Yeraltında iki kat arasında açılmış, yeryüzüne kadar uzanmayan yerüstü bağlantısız tali iç kuyudur.",
+        "q": "Yeraltında iki ayrı kat arasında bağlantı sağlayan ancak yeryüzüyle doğrudan bağlantısı olmayan iç kuyuya ne ad verilir?"
       },
       {
-        opt: 'Şev Açısı ve Güvenlik Dengesi',
-        desc: 'Ders Kitapçığı Sayfa 8: İki basamağı birleştiren eğik yüzeye "şev" (kazı yapıldığı için "arın"), yatayla yaptığı açıya "şev açısı" denir. Şev açısı ne kadar yatık (düşük) seçilirse heyelan riski o kadar azalır ve güvenlik artar; ancak yapılması gereken dekapaj miktarı ve maliyet artar (kar arzusu ile güvenlik gereksinimi çelişir).',
-        q: 'Açık ocaklarda "Şev Açısı"nın yatık (düşük açılı) seçilmesinin iş güvenliği ve işletme ekonomisi üzerindeki etkisi nedir?'
+        "opt": "Desandre",
+        "desc": "Yeraltında yukarıdan aşağıya veya aşağıdan yukarıya taşıma yapmak üzere eğimli olarak sürülen galeridir.",
+        "q": "Yeraltında katlar arasında malzeme ve cevher nakliyatı amacıyla eğimli olarak açılan galeri türü nedir?"
       },
       {
-        opt: 'Genel Şev Açısı',
-        desc: 'Ders Kitapçığı Sayfa 9: Genel şev açısı; tüm basamakların uç noktalarından geçen hayali (sanal) doğrunun yatayla yaptığı açıdır ve yapılacak toplam hafriyat miktarının hesaplanmasında baz alınan sanal bir değerdir.',
-        q: 'Açık maden işletmelerinde "tüm basamakların uç noktalarından geçen hayali (sanal) doğrunun yatayla yaptığı açı" olarak tanımlanan ve toplam hafriyat miktarının hesaplanmasında baz alınan parametre hangisidir?'
-      },
-      {
-        opt: 'Şev Duraylılığını Etkileyen Faktörler',
-        desc: 'Ders Kitapçığı Sayfa 9: Şevin akmadan ve heyelana uğramadan kendisini ayakta tutabilmesi özelliğine "şev duraylılığı" denir. Etkileyen 4 faktör: Şev geometrisi, malzemenin jeolojik/yapısal özellikleri, yeraltı suyu ve malzeme özellikleridir (kohezyon, içsel sürtünme açısı, yoğunluk).',
-        q: 'Açık ocaklarda en önemli iş güvenliği riski olan şev kaymalarını önlemek için değerlendirilen "Şev Duraylılığı (Stabilitesi)" üzerinde etkili olan 4 ana faktör hangileridir?'
-      },
-      {
-        opt: 'Zemin Hazırlama ve Nebati Toprak',
-        desc: 'Ders Kitapçığı Sayfa 9: Açık işletmede zemin hazırlamada ilk iş, tarıma elverişli toprağın sıyırılarak kaldırılması ve rezerv bitip işletme terk edildikten sonra doğaya yeniden kazandırma sırasında en üste sermek üzere uygun yerlerde stoklanmasıdır; ardından ilk basamak için "yarma" açılır.',
-        q: 'Açık maden işletmeciliğinde "Zemin Hazırlama" aşamasında yapılması gereken İLK işlem aşağıdakilerden hangisidir?'
-      },
-      {
-        opt: 'Şev Aynaları ve Kavlak Sökümü',
-        desc: 'Ders Kitapçığı Sayfa 17: Şevlerde çatlaklar ekstansometre ve fotogrametri ile izlenir; kademelerin askıya alınarak kazı yapılması kesinlikle yasaktır; kademe diplerinde işçilerin dinlenmesi/yemek yemesi engellenir; ateşleme ve aşırı yağış/kar sonrasında işe başlamadan önce "kavlak (çatlak) kontrolü ve sökümü" yapılır.',
-        q: 'Açık ocaklarda şev aynaları ve basamak alt kısımlarında alınacak güvenlik önlemleriyle ilgili aşağıdakilerden hangisi DOĞRUDUR?'
+        "opt": "Ana Kuyu",
+        "desc": "Yeryüzünden yeraltındaki ana galerilere dikey olarak açılan, insan ve cevher taşınan ana şafttır.",
+        "q": "Yeryüzünden yeraltındaki ana katlara dikey doğrultuda inen, havalandırma ve ana nakliyatın yapıldığı düşey açıklık nedir?"
       }
     ]
   },
   {
-    groupName: '2. Bölüm: Delme-Patlatma Teknolojisi, Patlayıcılar ve Açık Ocak Nakliyat Güvenliği',
-    items: [
+    "groupName": "Maden Kazı, Delme ve Nakliyat Ekipmanları",
+    "items": [
       {
-        opt: 'Patlama Fiziği ve Gaz Basıncı',
-        desc: 'Ders Kitapçığı Sayfa 10 & 14: Patlayıcı ateşlendiğinde hacminin 500-600 katı gaza dönüşür, sıcaklık 3800°C\'ye çıkar, detonasyon hızı 1640-7600 m/sn, detonasyon basıncı 2-24 GPa\'dır. Şok dalgaları detonasyon basıncının %5-15\'i kadardır ve radyal çatlak açar; bu çatlaklara sızan "Gaz basıncı" kayacın parçalanmasında en etkin rolü oynar. Toplam enerjinin sadece %20\'si kayanın kırılmasında kullanılır (%80\'i atık enerjidir).',
-        q: 'Prof. Dr. Servet Demirdağ\'ın ders kitapçığına göre; patlayıcı maddenin ateşlenmesiyle gelişen olaylarda kayacın parçalanmasında en etkin rolü hangi basınç oynar ve toplam patlama enerjisinin yüzde kaçı kayanın kırılmasında kullanılır?'
+        "opt": "Martoperfaratör",
+        "desc": "Basınçlı hava ile çalışan, delici çubuğu hem döndürüp hem döverek sert taşta lağım deliği delen el delicisidir.",
+        "q": "Basınçlı hava ile çalışan ve delici ucunu döverek sert kayada lağım deliği delen el makinesine ne ad verilir?"
       },
       {
-        opt: 'Kara Barut ve Emniyetli Fitil',
-        desc: 'Ders Kitapçığı Sayfa 11: Kara barut bileşiminde %72 potasyum nitrat, %16 kömür tozu ve %12 kükürt bulunan en basit patlayıcıdır; parçalama özelliği az olup itici etki yapar. Emniyetli fitillerin içindeki karabarutun yanma hızı yaklaşık 1 m/sn civarındadır.',
-        q: 'Bileşiminde %72 potasyum nitrat, %16 kömür tozu ve %12 kükürt bulunan, parçalama özelliği az olup itici etki yapan patlayıcı madde ve emniyetli fitilin yanma hızı hangisinde doğru verilmiştir?'
+        "opt": "Martopikör",
+        "desc": "Basınçlı hava ile çalışan, dönme hareketi yapmaksızın sadece darbeleyerek kömür ve yumuşak kayaç söken kazıcı tabancadır.",
+        "q": "Dönme hareketi olmaksızın sadece darbeli vuruş yaparak kömür ve yumuşak taş sökmekte kullanılan pnömatik alet nedir?"
       },
       {
-        opt: 'ANFO Patlayıcı Karışımı',
-        desc: 'Ders Kitapçığı Sayfa 11-12: ANFO toz halindeki teknik amonyum nitrat içine %6 mazot (fuel-oil) karıştırılmasıyla elde edilir ve açık işletmelerde ana patlayıcıdır. Duyarlılığı düşük olduğu için doğrudan kapsülle patlamaz; delik tabanına konan yemleyici bir dinamit kartuşu ve kapsül (manyeto -> kapsül -> dinamit -> ANFO zinciri) ile patlatılır. Sulu ortamlarda ise Slurry (AN + TNT) kullanılır.',
-        q: 'Açık maden işletmelerinde ana patlayıcı olarak kullanılan "ANFO"nun bileşimi ve ateşleme zinciri sırası aşağıdakilerden hangisinde doğru verilmiştir?'
+        "opt": "Jumbo",
+        "desc": "Üzerinde birden fazla martoperfaratör kolu bulunan, galeri delme randımanını artıran paletli veya tekerlekli arabadır.",
+        "q": "Yeraltı galeri sürme işlerinde delme hızını artırmak amacıyla üzerinde bir veya birden fazla martoperfaratör bulunan makineye ne ad verilir?"
       },
       {
-        opt: 'Sıkılama ve Delik Geometrisi',
-        desc: 'Ders Kitapçığı Sayfa 12 & 14: Patlayıcı deliğe şarj edildikten sonra deliğin kalan 1/3\'lük üst kısmı kırıntılarla doldurulur; buna "Sıkılama" denir (gazların ve alevin delik dışına kaçmasını önler). Basamaktaki delik geometrisi elemanları ise: Delik eğimi, delik çapı, dilim kalınlığı, delikler arası uzaklık ve tırnak payıdır.',
-        q: 'Ateşleme deliğine ANFO doldurulduktan sonra deliğin üst kısmında kalan ne kadarlık bölüm "Sıkılama" amacıyla kırıntılarla doldurulur ve bunun temel amacı nedir?'
+        "opt": "Skip",
+        "desc": "Dikey kuyularda insan taşınması kesinlikle yasak olan, yalnızca cevher ve pasa çekmekte kullanılan çelik hazneli silodur.",
+        "q": "Dikey maden kuyularında insan taşınmasına izin verilmeyen, yalnızca cevher nakliyatında kullanılan çelik silo kabinine ne ad verilir?"
       },
       {
-        opt: 'Seri ve Paralel Elektrikli Bağlantı',
-        desc: 'Ders Kitapçığı Sayfa 13: 50\'den az sayıda delik patlatılacaksa "Seri bağlantı" kullanılır; avantajı bağlantıda bir kopukluk olursa devrenin tamamlanmaması ve hiçbir deliğin patlamamasıdır. 50\'den fazla delikte "Paralel bağlantı" uygulanır; sakıncası bazı deliklerde kopukluk olursa diğerlerinin patlayıp o deliğin patlamaması ve kazı-yükleme sırasında kazaya yol açmasıdır.',
-        q: 'Ders kitapçığına göre; patlatmada "Seri Bağlantı" ile "Paralel Bağlantı" arasındaki delik sayısı sınırı (50 delik) ve güvenlik farkı aşağıdakilerden hangisidir?'
+        "opt": "Kafes",
+        "desc": "Dikey kuyularda çalışanları ve vagonları güvenle yer altına indirip yukarı çıkaran çok katlı asansör kabinidir.",
+        "q": "Dikey kuyularda personelin ve vagonların katlar arasında taşınmasını sağlayan asansör kabinine ne ad verilir?"
       },
       {
-        opt: 'Patlatma Sahası Güvenlik Kuralları',
-        desc: 'Ders Kitapçığı Sayfa 16-17: Donmuş dinamitler sonradan çözülse bile kesinlikle kullanılmaz. Patlatma sahasının 10 m yakınına kadar cep telefonu ve telsizler kapatılır, antistatik/pamuklu giysi giyilir, atım öncesi en az 750 m\'den duyulabilecek siren çalınır. Sığ deliklerde patlamamış patlayıcı su/basınçlı hava ile çıkarılır; mümkün değilse 20–30 cm yanından paralel bir delik delinip ateşlenir.',
-        q: 'Prof. Dr. Servet Demirdağ\'ın ders kitapçığında yer alan patlatma güvenliği kurallarına göre aşağıdaki sayısal kriterlerden hangisi DOĞRUDUR?'
+        "opt": "Tumba",
+        "desc": "Cevher dolu maden vagonlarını raydan çıkarmadan 360 derece döndürerek içini tek hamlede boşaltan beşik düzeneğidir.",
+        "q": "Maden vagonlarının yüklerini boşaltmak için vagonu 360° ters-yüz ederek deviren mekanik beşik sistemine ne ad verilir?"
       },
       {
-        opt: 'Kazı ve Yükleme Makineleri Sınıflandırması',
-        desc: 'Ders Kitapçığı Sayfa 15: Açık ocak makineleri 3 gruba ayrılır: 1) Sadece Kazı makineleri: Ripper, Dozer, Dragline; 2) Kazı-Yükleme makineleri: Kepçeli ekskavatör, Kovalı ekskavatör, Hidrolik ekskavatör; 3) Yükleme makineleri: Loder, Traktör.',
-        q: 'Ders kitapçığı Sayfa 15\'teki tabloya göre açık ocaklarda kullanılan makinelerden hangileri "Kazı Makineleri", hangileri "Kazı-Yükleme Makineleri" ve hangileri "Yükleme Makineleri" grubunda yer alır?'
-      },
-      {
-        opt: 'Açık Ocak Trafik ve Hız Kuralları',
-        desc: 'Ders Kitapçığı Sayfa 15-16: Ocak içi yol eğimi en fazla 10° olmalı, iki araç genişliğine ek her iki yanda en az 1\'er m emniyet mesafesi bırakılmalıdır. Hız sınırları: Nakliye yolunda maks. 40 km/h, ocak rampalarında ve ocak içi yollarda 20 km/h, kritik yerlerde 10 km/h. Çalışan ekskavatöre 30 m\'den fazla yaklaşılmaz, kamyon takip mesafesi en az 50 m\'dir, işaretsiz kavşakta öncelik soldan gelenindir, yamaçta yamaca dik park edilir.',
-        q: 'Açık ocaklarda yol, nakliyat ve trafik güvenliği kurallarına göre; "Nakliye yolu / Ocak içi rampa / Kritik yer hız sınırları", "Çalışan ekskavatöre yaklaşma mesafesi" ve "Kamyon takip mesafesi" kaçtır?'
-      },
-      {
-        opt: 'Bantlı Konveyör Güvenlik Donanımları',
-        desc: 'Ders Kitapçığı Sayfa 16: Bantlı konveyörlerin üzerine çıkılmaz, çalışırken altından/üstünden geçilmez; bantların her iki yanında 75 cm genişliğinde açık geçit alanı bulunmalı, hat boyunca durdurma teli ve kırmızı mantar başlı acil durdurma düğmeleri yer almalıdır.',
-        q: 'Açık işletmelerde ve kırma-eleme tesislerinde kullanılan "Bantlı Konveyörler"in her iki yanında en az kaç cm genişliğinde açık alan bulundurulmalıdır?'
+        "opt": "Varagel",
+        "desc": "Eğimli yolda yerçekiminden yararlanarak dolu vagon aşağı inerken boş vagonu yukarı çeken fren tertibatlı nakliyat yoludur.",
+        "q": "Eğimli maden yollarında dolu vagonun yerçekimiyle inerken boş vagonu yukarı çektiği mekanik nakliyat sistemine ne ad verilir?"
       }
     ]
   },
   {
-    groupName: '5., 6. ve 7. Bölüm: Mermer Ocakları, Taş Ocakları ve Maden Mevzuatı',
-    items: [
+    "groupName": "Maden Jeomekaniği, Deformasyon ve Gaz Olayları",
+    "items": [
       {
-        opt: 'Mermer Ocakları İşletme Farkları',
-        desc: 'Ders Kitapçığı Sayfa 33: Kesilip boyutlandırılıp cilalanabilen ve piyasada satılabilen taşlara genel olarak "mermer" denir. Mermer ocaklarının diğer açık ocaklardan iki temel farkı vardır: Basamakların şev açısı 90°\'dir (diktir) ve patlayıcı madde kullanılmadan mermer bloklar halinde kesilir.',
-        q: 'Ders kitapçığı 5. Bölüm\'e göre; ülkemizde tamamıyla açık ocak biçiminde işletilen "Mermer Ocakları"nın diğer açık maden ocaklarından iki temel farkı nedir?'
+        "opt": "Konverjans",
+        "desc": "Yeraltında açılan galerilerin arazi basıncı etkisiyle tavan, taban ve yan duvarlardan içeri doğru daralması hareketidir.",
+        "q": "Yeraltında açılan galerilerin arazi basıncı etkisiyle zamanla kesitinin daralması (% olarak ifade edilir) olayına ne ad verilir?"
       },
       {
-        opt: 'Elmas Tel Kesme Aşamaları',
-        desc: 'Ders Kitapçığı Sayfa 33-35: Elmas tel kesmede düşey ve yatay delikler delinip uçları birleştirilir, elmas boncuklu tel geçirilip volana sarılır. Kesilen blok "titano, hava yastığı, su yastığı veya kepçeli iş makineleri" ile devrilir. Devrilen ana bloğun daha küçük bloklara bölünmesi işlemine "Sayalama" denir.',
-        q: 'Mermer ocaklarında elmas tel ile kesilerek ana kütleden ayrılan büyük mermer bloğun devrilmesinde hangi ekipmanlar kullanılır ve devrilen bloğun daha küçük bloklara bölünmesi işlemine ne ad verilir?'
+        "opt": "Tarama",
+        "desc": "Arazi basıncıyla daralmış (konverjansa uğramış) bir galerinin kesitini yeniden açarak eski ölçülerine getirme işlemidir.",
+        "q": "Konverjans nedeniyle daralmış olan yeraltı galerisinin yeniden kazılarak orijinal kesitine kavuşturulması işlemine ne ad verilir?"
       },
       {
-        opt: 'Elmas Tel Kesme Güvenlik Kriterleri',
-        desc: 'Ders Kitapçığı Sayfa 36: Elmas tel kesmede; ray uzunluğu kesilecek uzun yüzeyden %10 daha fazla olmalı, makine aynadan en az 3 m uzağa yerleştirilmeli, kumanda tablosu tel hizasında olmamalı, uygun tel hızı 36–40 m/sn olmalı, telin homojen aşınması için tele burgu verilmeli, ilk 5–10 dk tele fazla yük bindirilmemeli ve makinenin 30 m yakınına ilgisiz kişiler yaklaşmamalıdır.',
-        q: 'Mermer ocaklarında "Elmas Tel Kesme Makinesi" ile güvenli çalışma kurallarına göre aşağıdaki sayısal değerlerden hangisi DOĞRUDUR?'
+        "opt": "Tasman (Sübsidans)",
+        "desc": "Yeraltındaki kazı boşluklarının göçmesi sonucu yer kabuğu hareketinin yüzeye ulaşarak arazide çöküntü ve yarıklar oluşturmasıdır.",
+        "q": "Yeraltında oluşan göçüklerin yeryüzüne kadar ulaşarak zemin yüzeyinde çökme ve yarıklar oluşturması olayına ne ad verilir?"
       },
       {
-        opt: 'Kollu Kesici (Jet-Belt)',
-        desc: 'Ders Kitapçığı Sayfa 35: Kollu kesicilerde (Jet-belt ve zincirli makineler) tel yerine, üzerinde sinterize elmas bulunan özel bir kayış ve 360° dönebilen kesici kol bulunur; zincirli ağaç kesme makinelerine benzer ve ray üzerinde hareket eder.',
-        q: 'Mermer ocaklarında tel yerine üzerinde sinterize elmas bulunan özel bir kayışın döndüğü ve kesici kolunun 360° dönebildiği raylı blok kesme makinesine ne ad verilir?'
+        "opt": "Otooksidasyon",
+        "desc": "Kömürün hava ile temasında oksijeni emerek CO, CO2 gazları ve ısı açığa çıkarmasıyla başlayan kendiliğinden yanma reaksiyonudur.",
+        "q": "Kömürün ana yapısını oluşturan karbonun oksijenle reaksiyona girerek ısı ve gaz üretmesiyle başlayan kendiliğinden yanma olayına ne ad verilir?"
       },
       {
-        opt: 'Taş Ocakları ve Kırma-Eleme Tesisleri',
-        desc: 'Ders Kitapçığı Sayfa 37: Taş ocakları inşaat sektörüne kum-çakıl-agrega sağlayan ve Maden Kanunu IIa grubu ruhsatla çalışan sahalardır. Kırma-eleme tesislerinde toz, gürültü, hareketli ekipmanlara kaptırma, silo içine düşme ve bantlı konveyör yangınları en önemli risklerdir.',
-        q: 'İnşaat sektörüne agrega ve mıcır sağlamak üzere Maden Kanunu "IIa Grubu" ruhsatla işletilen taş ocakları ve kırma-eleme tesislerindeki karakteristik risklerle ilgili aşağıdakilerden hangisi DOĞRUDUR?'
+        "opt": "Degajman",
+        "desc": "Jeolojik sıkışma altındaki metan ve CO2 gazlarının parçalanan kömürle birlikte çalışma alanına büyük bir basınçla aniden püskürmesidir.",
+        "q": "Yeraltı ocaklarında metan veya karbondioksit gazlarının parçalanan kömür tozuyla birlikte galeriye patlarcasına ani püskürmesine ne ad verilir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Açık Ocak Basamak Geometrisi ve Şev Duraylılığı",
+    "items": [
+      {
+        "opt": "Basamak Yüksekliği",
+        "desc": "Bir basamağın tabanı ile üst düzlüğü arasındaki düşey mesafedir; iş makinesinin kazı yüksekliği ile şev stabilitesine göre belirlenir.",
+        "q": "Açık ocaklarda basamağın devrilmeden durabilmesinde en kritik iki geometrik elemandan biri olan düşey mesafeye ne ad verilir?"
       },
       {
-        opt: 'Daimi Nezaretçi ve Sağlık Güvenlik Dokümanı',
-        desc: 'Ders Kitapçığı Sayfa 38-40: Maden işletmelerinde üretim, maden mühendisi olan bir "Daimi Nezaretçi"nin denetiminde yapılır ve ayrıca "A Sınıfı İş Güvenliği Uzmanı" görevlendirilir. İşveren çalışmaya başlanılmadan önce "Sağlık ve Güvenlik Dokümanı" hazırlar ve yılda en az 1 defa acil durum tatbikatı yapılır.',
-        q: 'Ders kitapçığı 7. Bölüm (Mevzuat) hükümlerine göre; maden işletmelerinde üretimin denetiminden sorumlu mühendis unvanı, hazırlanması zorunlu temel doküman ve acil durum tatbikat sıklığı hangisinde doğru verilmiştir?'
+        "opt": "Basamak Genişliği",
+        "desc": "Basamak üzerinde iş makinelerinin ve kamyonların emniyetle çalışıp manevra yapabilmesi için gereken yatay düzlük mesafesidir.",
+        "q": "Açık işletmelerde kazı ve nakliye makinelerinin güvenle hareket edebilmesi için basamak üstünde bırakılan yatay düzlüğe ne ad verilir?"
       },
       {
-        opt: 'Maden Havalandırması ve Gaz Limitleri',
-        desc: 'Ders Kitapçığı Sayfa 27-29 & 52-61: Ocak havasında H2S emniyet sınırı 20 ppm (%0,002)\'dir. Hava hızı her halde 0,5 m/s\'den az olamaz. Metan oranı %1 veya daha çok olan kısımlarda ateşleme yapılmaz, %1,5\'te elektrik enerjisi kesilir, %2\'de çalışanlar tahliye edilir. Yarıçapı en çok 50 km olan alan içindeki madenler ortak kurtarma istasyonu kurabilir. Hayat hattı üzerinde konik gösterge ve 6 adet reflektör şerit bulunur.',
-        q: 'Maden ders kitapçığındaki havalandırma ve mevzuat hükümlerine göre; yeraltı ocaklarında "en az hava hızı", "Hidrojen Sülfür (H2S) emniyet sınırı" ve "ateşlemenin yasaklandığı metan (CH4) sınırı" sırasıyla nedir?'
+        "opt": "Şev Açısı",
+        "desc": "İki basamağı birleştiren eğik kazı yüzeyinin (aynanın) yatay düzlemle yaptığı eğim açısıdır.",
+        "q": "Basamak aynasının yatay düzlemle yaptığı eğim açısına açık maden işletmeciliğinde ne ad verilir?"
+      },
+      {
+        "opt": "Genel Şev Açısı",
+        "desc": "Tüm basamakların en dış uç noktalarından geçen sanal doğrunun yatayla yaptığı açı olup toplam dekapaj hesabında kullanılır.",
+        "q": "Tüm basamakların uç noktalarından geçen hayali doğrunun yatayla yaptığı açıya ne ad verilir?"
+      },
+      {
+        "opt": "Şev Duraylılığı (Stabilitesi)",
+        "desc": "Şevin kaymadan, akmadan ve heyelana uğramadan kendi kendini ayakta tutabilme mekanik dengesidir.",
+        "q": "Açık ocaklarda basamak yüzeyinin heyelan veya kayma olmaksızın dengede kalabilme özelliğine ne ad verilir?"
+      },
+      {
+        "opt": "Kavlak Sökümü",
+        "desc": "Ateşleme ve yağış sonrasında basamak aynasında askıda kalan gevşek taşların levyelerle düşürülerek temizlenmesi işlemidir.",
+        "q": "Ateşleme sonrasında şev aynasında askıda kalıp düşme riski yaratan taşların güvenle temizlenmesi işlemine ne ad verilir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Delme-Patlatma Teknolojisi ve Patlayıcı Türleri",
+    "items": [
+      {
+        "opt": "ANFO",
+        "desc": "Teknik amonyum nitrat tanecikleri içine ağırlıkça %6 mazot (fuel-oil) karıştırılarak hazırlanan açık ocak ana patlayıcısıdır.",
+        "q": "Açık maden işletmelerinde ana patlayıcı olarak kullanılan ve amonyum nitrat içine %6 mazot katılarak hazırlanan patlayıcı hangisidir?"
+      },
+      {
+        "opt": "Kara Barut",
+        "desc": "Bileşiminde %72 güherçile (KNO3), %16 kömür tozu ve %12 kükürt bulunan, itici etkisi yüksek fakat parçalama hızı düşük patlayıcıdır.",
+        "q": "Bileşiminde %72 potasyum nitrat, %16 kömür tozu ve %12 kükürt bulunan ve itici etkisiyle bilinen patlayıcı madde hangisidir?"
+      },
+      {
+        "opt": "Dinamit",
+        "desc": "Nitrogliserin esaslı, patlama hızı ve duyarlılığı çok yüksek olan, ANFO'yu ateşlemede yemleyici kartuş olarak kullanılan patlayıcıdır.",
+        "q": "Duyarlılığı düşük olan ANFO deliklerinde tabana yerleştirilerek yemleyici patlatıcı olarak kullanılan yüksek enerjili patlayıcı nedir?"
+      },
+      {
+        "opt": "Slurry (Su Jeli Patlayıcı)",
+        "desc": "Amonyum nitrat, alüminyum tozu ve su jeli içeren, ıslak ve sulu lağım deliklerinde suya dayanıklılığı nedeniyle tercih edilen patlayıcıdır.",
+        "q": "Su dolu lağım deliklerinde ANFO'nun ıslanıp bozulmasını önlemek için kullanılan suya dayanıklı kimyasal patlayıcı türü hangisidir?"
+      },
+      {
+        "opt": "Sıkılama",
+        "desc": "Patlayıcı doldurulduktan sonra deliğin üst 1/3'lük boşluğunun kırıntı ve kille doldurularak gazın dışarı kaçmasını önleyen işlemdir.",
+        "q": "Lağım deliğine patlayıcı şarj edildikten sonra üst 1/3 boşluğun kırıntılarla doldurulması işlemine ne ad verilir?"
+      },
+      {
+        "opt": "Emniyetli Fitil",
+        "desc": "İçinde ince bir karabarut kanalı bulunan ve yanma hızı yaklaşık 1 m/s olan ateşleme iletim kordonudur.",
+        "q": "İçindeki karabarutun yanma hızı yaklaşık 1 m/sn olan ve fitilli ateşlemede kullanılan kordonun adı nedir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Açık Ocak Nakliyat, Trafik Güvenliği ve İş Makineleri",
+    "items": [
+      {
+        "opt": "Nakliye Yolunda Maksimum 40 km/h Hız Sınırı",
+        "desc": "Açık işletmelerde ana nakliye yollarında kamyon ve iş makinelerinin aşmaması gereken standart üst hız limitidir.",
+        "q": "Açık maden işletmelerinde ana nakliye yollarında kamyonlar için uygulanan azami hız sınırı kaç km/h'dir?"
+      },
+      {
+        "opt": "Ocak İçi Rampalarda 20 km/h Hız Sınırı",
+        "desc": "Ocak içi basamak bağlantı rampalarında yüklü ve boş kamyonların güvenle seyredebileceği azami hız limitidir.",
+        "q": "Açık ocak içi rampa yollarında araçların uyması gereken azami hız sınırı kaç km/h'dir?"
+      },
+      {
+        "opt": "Kritik Yerlerde 10 km/h Hız Sınırı",
+        "desc": "Döküm sahası yaklaşımı, kantar girişi, kavşaklar ve dar manevra noktalarında uyulması zorunlu hız sınırıdır.",
+        "q": "Ocak içinde döküm sahası girişi, dar virajlar ve kantar gibi kritik yerlerdeki hız sınırı kaçtır?"
+      },
+      {
+        "opt": "Ekskavatöre 30 Metre Emniyet Mesafesi",
+        "desc": "Çalışmakta olan bir ekskavatör veya yükleyicinin dönüş dairesi ve kör noktaları sebebiyle korunması gereken yaklaşma sınırıdır.",
+        "q": "Açık ocaklarda çalışmakta olan bir ekskavatöre diğer araçların veya yayaların en az kaç metreden fazla yaklaşmaması gerekir?"
+      },
+      {
+        "opt": "Kamyonlar Arası 50 Metre Takip Mesafesi",
+        "desc": "Ağır kaya kamyonlarının seyir halinde fren mesafesi ve toz engeli nedeniyle aralarında bırakması gereken asgari mesafedir.",
+        "q": "Açık ocak nakliye yollarında seyreden kaya kamyonları arasında bırakılması zorunlu asgari takip mesafesi kaç metredir?"
+      },
+      {
+        "opt": "Bantlı Konveyör Yanlarında 75 cm Açık Alan",
+        "desc": "Konveyör hattı boyunca bakım, gözetim ve acil müdahale amacıyla her iki tarafta bırakılması zorunlu koridor genişliğidir.",
+        "q": "Bantlı konveyörlerin her iki yanında güvenli geçiş ve bakım için bırakılması gereken asgari açık koridor genişliği nedir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Mermer Ocakları, Taş Ocakları ve Mevzuat",
+    "items": [
+      {
+        "opt": "90° Dik Basamak Şev Açısı",
+        "desc": "Mermer ocaklarında blokların düzgün kesilebilmesi için basamak şev açısının klasik ocakların aksine 90 derece dik olması kuralıdır.",
+        "q": "Mermer ocaklarının diğer açık ocaklardan en temel geometrik farkı basamak şev açısının kaç derece olmasıdır?"
+      },
+      {
+        "opt": "Elmas Tel Kesme Makinesi (36-40 m/s Hız)",
+        "desc": "Mermer blokların ana kayadan çatlatılmadan kesilmesi için kullanılan ve tel hızı 36-40 m/s olan kesme sistemidir.",
+        "q": "Mermer ocaklarında blok kesiminde kullanılan elmas telin güvenli ve verimli çalışma hızı aralığı nedir?"
+      },
+      {
+        "opt": "Titano ve Hava/Su Yastığı Sistemi",
+        "desc": "Elmas telle dört tarafı kesilen dev mermer kütlesinin arkasından itilerek pasa yatağına devrilmesini sağlayan düzenektir.",
+        "q": "Mermer ocaklarında kesimi tamamlanan ana bloğun pasa yastığına devrilmesinde hangi hidrolik/pnömatik ekipmanlar kullanılır?"
+      },
+      {
+        "opt": "Sayalama",
+        "desc": "Ana kayadan kesilip devrilen dev mermer kütlesinin kamyona yüklenebilecek ebatlarda daha küçük bloklara bölünmesi işlemidir.",
+        "q": "Mermer ocaklarında ana kütleden kesilerek devrilen büyük bloğun küçük parçalara bölünmesi işlemine ne ad verilir?"
+      },
+      {
+        "opt": "Kollu Kesici (Jet-Belt)",
+        "desc": "Elmas tel yerine sinterize elmaslı kayışın döndüğü, 360° dönebilen kesici kola sahip raylı mermer kesme makinesidir.",
+        "q": "Mermer ocaklarında tel yerine döner kollu elmas kayış kullanan ve 360° dönebilen kesme makinesine ne ad verilir?"
+      },
+      {
+        "opt": "Daimi Nezaretçi (Maden Mühendisi)",
+        "desc": "Maden Kanunu gereğince sahada üretimin fenni nezaret ve denetiminden sorumlu olan maden mühendisidir.",
+        "q": "Maden işletmelerinde üretimin teknik nezaret ve denetiminden sorumlu, kanunen atanması zorunlu maden mühendisi unvanı nedir?"
+      },
+      {
+        "opt": "Sağlık ve Güvenlik Dokümanı",
+        "desc": "İşverenin maden sahasında çalışmaya başlanılmadan önce hazırlamakla yükümlü olduğu temel iş güvenliği belgesidir.",
+        "q": "Maden İşyerlerinde İSG Yönetmeliğine göre işverenin çalışmaya başlanmadan önce hazırlamakla yükümlü olduğu temel dokümanın adı nedir?"
       }
     ]
   }

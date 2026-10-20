@@ -176,19 +176,19 @@ export const fkruCourse = {
       q: "Radyasyondan korunmada ALARA (makul ölçüde ulaşılabilecek en düşük düzey) prensibinin 3 temel dış radyasyon korunma kuralı nedir?",
       options: [
         "Zamanı kısaltmak - Mesafeyi artırmak - Zırhlama kullanmak",
-        "Süreyi uzatmak - Kaynağa yaklaşmak - Maske takmak",
-        "Sıcaklığı artırmak - Havalandırma açmak - Kulaklık takmak",
-        "Topraklama yapmak - Sigorta takmak - Eldiven giymek",
-        "Işığı kapatmak - Su içmek - Dinlenmek"
+        "Kaynağın aktivitesini artırmak - Alanda hava hızını yükseltmek - Pamuklu tulum giymek",
+        "Doğal havalandırma sağlamak - Kurşun yeleği çıkarmak - Sadece dozimetreye güvenmek",
+        "Kaynağın sıcaklığını düşürmek - Ortam nemini %80 üzerine çıkarmak - Negatif basınçlı kabin kullanmak",
+        "Ortam aydınlatmasını artırmak - Kaynak çevresine dielektrik yalıtkan paravan koymak - Antistatik zemin kaplamak"
       ],
       answer: 0,
       explanation: "Dicle Hoca'nın 14 Ekim dersinde vurguladığı 3 altın kural: 1) Zaman (maruziyet süresini azalt), 2) Mesafe (uzaklığın karesiyle radyasyon şiddeti azalır - ters kare kanunu), 3) Zırhlama (kurşun/beton bariyer).",
       optionExplanations: [
         "DOĞRU: Dış radyasyon maruziyetinden korunmanın 3 temel fiziksel ilkesi: Zaman (azalt), Mesafe (artır - ters kare yasası) ve Zırhlama (kurşun/beton engel kullan).",
-        "Süreyi uzatmak ve kaynağa yaklaşmak alınan radyasyon dozunu katlanarak artırır.",
-        "Sıcaklık ve kulaklık radyasyona karşı hiçbir koruma sağlamaz.",
-        "Topraklama ve sigorta elektrik güvenliği önlemleridir.",
-        "Işığı kapatmak radyoaktif kaynağın ışımasını durdurmaz."
+        "Aktiviteyi artırmak radyasyon dozunu katlar; pamuklu tulum ise radyasyon zırhlaması sağlamaz.",
+        "Kurşun yeleği çıkarmak gövdeyi doğrudan radyasyona maruz bırakır; dozimetre koruyucu değil, pasif ölçüm cihazıdır.",
+        "Sıcaklık ve nem nükleer bozunmayı ve radyasyon yayılımını etkilemez.",
+        "Aydınlatma ve dielektrik yalıtım elektrik önlemleridir; iyonlaştırıcı radyasyondan koruma sağlamaz."
       ]
     },
     {
@@ -270,20 +270,20 @@ export const fkruCourse = {
     {
       q: "Dr. Öğr. Üyesi Dicle Özdemir Küçükçapraz'ın dersinde vize notunun %80-90'ını oluşturacağını belirttiği ödevin temel konusu ve geçme notu kriteri nedir?",
       options: [
-        "Fiziksel risk unsurları kapsamında bir iş kazasının vaka analizi - Geçme notu 70",
-        "Kimyasal laboratuvar deneyi - Geçme notu 50",
-        "Sadece makale çevirisi - Geçme notu 60",
-        "Ödev yoktur",
-        "Elektrik panosu çizimi - Geçme notu 45"
+        "Fiziksel risk unsurları kapsamında bir iş kazasının vaka analizi - Lisansüstü geçme notu 70",
+        "Kimyasal maruziyet hesaplama raporu ve GBF analizi - Geçme notu 50",
+        "İşyeri gürültü haritası simülasyonu ve akustik rapor hazırlama - Geçme notu 60",
+        "Radyasyon güvenliği ve zırhlama tasarımı projesi - Geçme notu 65",
+        "Fiziksel risklerle ilgili uluslararası akademik makale çevirisi ve sunumu - Geçme notu 55"
       ],
       answer: 0,
       explanation: "Dicle Hoca 16 Eylül dersinde vize ödevinin fiziksel risk unsurları üzerinden bir haber/vaka analizi olacağını, sisteme yükleneceğini ve lisansüstü geçme notunun 70 olduğunu vurgulamıştır.",
       optionExplanations: [
         "DOĞRU: Dicle Hoca vizenin %80-90'ının fiziksel risk unsurlarıyla ilgili bir haber/vaka analizi ödevi olacağını ve lisansüstü geçme barajının 70 puan olduğunu açıklamıştır.",
-        "Kimyasal risk unsurları final döneminin konusudur ve geçme notu 50 değil 70'tir.",
-        "Makale çevirisi değil, iş kazası haberi üzerinden İSG analizi istenmektedir.",
-        "Bu derste vize ağırlıklı olarak ödev üzerinden değerlendirilmektedir.",
-        "Elektrik panosu çizimi ve 45 geçme notu yanlıştır."
+        "Kimyasal risk unsurları final döneminin konusudur ve lisansüstü geçme notu 50 değil 70'tir.",
+        "Gürültü simülasyonu laboratuvar çalışmasıdır; derste bir iş kazası haberi üzerinden vaka analizi istenmiştir.",
+        "Zırhlama tasarımı projesi değil, vaka analizi ödevdir; geçme notu 70'tir.",
+        "Makale çevirisi değil, Türkiye'de yaşanmış bir iş kazasının fiziksel riskler yönünden irdelenmesi istenmiştir."
       ]
     },
     {
@@ -366,19 +366,19 @@ export const fkruCourse = {
       q: "İyonlaştırıcı radyasyon türlerinden 'Beta (β) parçacıkları' ve 'Nötron radyasyonu' için en uygun zırhlama malzemeleri sırasıyla hangileridir?",
       options: [
         "Beta için: Alüminyum veya Pleksiglas levha — Nötron için: Su, Parafin veya Beton",
-        "Her ikisi için sadece ince kağıt",
-        "Sadece pamuklu kumaş",
-        "Zırhlamaya gerek yoktur",
-        "Sadece tahta çit"
+        "Beta için: Kalın kurşun bloklar — Nötron için: İnce bakır folyo",
+        "Beta için: 1 mm ince kağıt tabakası — Nötron için: Pleksiglas levha",
+        "Beta için: Vakumlu hava boşluğu — Nötron için: İnce alüminyum levha",
+        "Her iki radyasyon türü için de yalnızca 5 cm kalınlığında masif çelik plaka"
       ],
       answer: 0,
       explanation: "Alfa kağıtla; Beta alüminyum veya pleksiglas/plastik levhalarla; Gama ve X-ışınları kurşun/çelik/betonla; Nötronlar ise su, parafin ve polietilen gibi hidrojen atomu zengin malzemelerle yavaşlatılıp zırhlanır.",
       optionExplanations: [
-        "DOĞRU: Beta parçacıkları birkaç mm'lik alüminyum veya pleksiglas ile durdurulur; yüksüz nötronlar ise kendi kütlesine yakın hidrojen atomu içeren su, parafin veya polietilen ile zırhlanır.",
-        "İnce kağıt yalnızca Alfa (α) parçacıklarını durdurabilir; Beta ve Nötron kağıdı kolayca geçer.",
-        "Pamuklu kumaş radyasyon zırhlaması sağlamaz (sadece radyoaktif toz bulaşmasını/kontaminasyonu önler).",
-        "İyonlaştırıcı radyasyonda zırhlama ALARA'nın 3 temel ayağından biridir.",
-        "Tahta çit radyasyonu durduramaz."
+        "DOĞRU: Beta parçacıkları düşük atom numaralı alüminyum veya pleksiglas ile durdurulur; yüksüz nötronlar ise hidrojen atomu içeren su, parafin veya polietilen ile zırhlanır.",
+        "Beta ışınlarında yüksek atom numaralı kurşun kullanılırsa 'Bremsstrahlung (Frenleme)' X-ışınları yayılır, bu yüzden hafif malzemeler seçilir; nötronda ise bakır durdurucu değildir.",
+        "İnce kağıt yalnızca Alfa parçacıklarını durdurur; Beta kağıttan geçer.",
+        "Hava boşluğu radyasyonu zırhlamaz, ters kare yasasıyla sadece mesafeye bağlı zayıflama sağlar.",
+        "Çelik plaka nötronları doğrudan durduramaz; nötron için hidrojen zengini (su, parafin, beton) gereklidir."
       ]
     },
     {

@@ -207,39 +207,39 @@ export const ilkyardimCourse = {
     {
       q: "Atardamar (Arter) kanamalarının en belirgin özelliği aşağıdakilerden hangisidir?",
       options: [
-        "Koyu kırmızı renkli ve sızıntı şeklinde akması",
-        "Parlak/açık kırmızı renkli olması ve kalp atımlarıyla uyumlu olarak fışkırır tarzda kesik kesik akması",
-        "Kendiliğinden hemen durması",
-        "Damla damla kabarcıklar halinde görülmesi",
-        "Mavi renkli olması"
+        "Koyu vişne çürüğü renkli olup sabit bir debiyle sürekli sızma ve taşma tarzında akması",
+        "Parlak açık kırmızı renkli olması ve kalp atımlarıyla uyumlu olarak fışkırır tarzda (pulsatil) kesik kesik akması",
+        "Düşük hidrostatik basınç nedeniyle yalnızca yerçekimi yönünde hafif sızıntı yapması",
+        "Küçük kabarcıklar halinde kılcal damarlardan yayılması ve kendiliğinden 30 saniyede durması",
+        "Koyu kahverengi renkte olup pıhtılaşma süresinin 30 dakikanın üzerinde olması"
       ],
       answer: 1,
       explanation: "Atardamar kanamaları oksijence zengin olduğu için açık/parlak kırmızıdır ve yüksek basınçla kalp atımıyla uyumlu fışkırır tarzda akar; en tehlikeli kanama türüdür.",
       optionExplanations: [
-        "Koyu kırmızı renkli ve sızıntı/taşma şeklinde sürekli akan kanama 'Toplardamar (Ven)' kanamasıdır.",
-        "DOĞRU: Atardamar (arter) kanaması temiz (oksijenli) kan taşıdığı için parlak açık kırmızıdır ve nabızla uyumlu fışkırır tarzda akar.",
-        "Atardamar kanaması yüksek basınçlı olduğu için kendiliğinden durmaz; kısa sürede şok ve ölüme yol açar.",
-        "Küçük kabarcıklar/noktalar halinde sızan kanama 'Kılcal damar (Kapiller)' kanamasıdır.",
-        "İnsan kanı hiçbir damarda mavi renkli akmaz."
+        "Koyu vişne çürüğü renkli ve taşma şeklinde sürekli akan kanama 'Toplardamar (Ven)' kanamasıdır.",
+        "DOĞRU: Atardamar (arter) kanaması temiz (oksijenli) kan taşıdığı için parlak açık kırmızıdır ve nabızla uyumlu pulsatil fışkırır tarzda akar.",
+        "Düşük hidrostatik basınçlı akış toplardamar veya kılcal damar özelliğidir; atardamarda yüksek sistemik arteriyel basınç vardır.",
+        "Küçük kabarcıklar ve noktalar halinde sızan kanama 'Kılcal damar (Kapiller)' kanamasıdır.",
+        "Kahverengi renk ve anormal pıhtılaşma atardamar kanamasının doğal fizyolojik tablosu değildir."
       ]
     },
     {
       q: "Soluk borusuna yabancı cisim kaçarak 'Tam Tıkanma' yaşayan (konuşamayan, nefes alamayan, ellerini boynuna götüren, moraran) bilinci açık yetişkin bir kişiye hangi ilk yardım manevrası uygulanır?",
       options: [
-        "Sırtüstü yatırıp su içirilir",
-        "Heimlich Manevrası",
-        "Koma pozisyonu verilir",
-        "Şok pozisyonu verilir",
-        "Ağzına parmak sokulup körleme aranır"
+        "Kazazede derhal sırtüstü düz yatırılarak göğüs kafesine ritmik kalp masajı basısı başlatılır",
+        "5 kez kürek kemikleri arasına süpürür tarzda sırta vuruş ve 5 kez diyafram altına içe-yukarı karın basısı (Heimlich Manevrası) dönüşümlü uygulanır",
+        "Kazazedenin hava yolunu açmak için baş-çene pozisyonu verilerek göğüs kemiğine ritmik baskı yapılması",
+        "Kazazedenin soluk borusundaki basıncı düşürmek için ağızdan bol sıvı içirilmeye çalışılır",
+        "Kazazedenin başı hiperekstansiyona getirilerek doğrudan suni solunum uygulanır"
       ],
       answer: 1,
       explanation: "Tam tıkanmada bilinci açık hastaya Heimlich Manevrası (5 kez kürek kemikleri arasına süpürür tarzda vuruş + 5 kez karına bası) uygulanır.",
       optionExplanations: [
-        "Soluk borusu tam tıkanmış kişiye su içirmek boğulmayı hızlandırır.",
+        "Kalp masajı bilinci kapalı, solunumu ve nabzı olmayan kardiyak arrest hastasına uygulanır; bilinci açık boğulma vakasında yapılmaz.",
         "DOĞRU: Tam tıkanmada önce kürek kemikleri arasına 5 kez süpürür tarzda vurulur, çıkmazsa arkadan sarılarak göbek ile göğüs kemiği arasına 5 kez içe-yukarı karın basısı (Heimlich) uygulanır.",
-        "Koma pozisyonu bilinci kapalı ancak solunumu ve nabzı olan hastaya verilir.",
-        "Şok pozisyonu dolaşım yetmezliği/kanama durumunda verilir, boğulan kişiye verilmez.",
-        "Ağız içine körleme parmak sokmak yabancı cismi daha derine (soluk borusuna) iter."
+        "Baş-çene pozisyonu ve göğüs basısı bilinci kapalı arrest veya bebeklerde kullanılır; bilinci açık yetişkin tam tıkanmada Heimlich uygulanır.",
+        "Soluk borusu tam tıkanmış kişiye sıvı içirmeye çalışmak akciğere aspirasyona ve ani boğulmaya yol açar.",
+        "Hava yolu yabancı cisimle tıkalıyken suni solunum yapmak cismi bronşlara daha da sıkıştırır."
       ]
     },
     {
@@ -378,20 +378,20 @@ export const ilkyardimCourse = {
     {
       q: "14 Ekim dersinde işlenen 'Kanamalarda İlk Yardım' kurallarına göre; uzuv kopması veya tüm yöntemlere rağmen durdurulamayan çok şiddetli atardamar kanamalarında son çare olarak uygulanan 'Turnike (Boğucu Sargı)' ile ilgili hangisi DOĞRUDUR?",
       options: [
-        "Turnike ince tel veya iple sıkılır ve hiç gevşetilmez",
-        "Turnike tek kemikli uzuv bölgelerine uygulanır, saati yazılır ve periyodik gevşetilir",
-        "Turnike her küçük sıyrıkta hemen el bileğine uygulanır",
-        "Turnikenin üzeri kalın battaniye ile kapatılarak gizlenir",
-        "Turnike boyun bölgesine uygulanır"
+        "Turnike ön kol veya alt bacak gibi çift kemikli bölgelere uygulanmalı ve kanama durana kadar her 30 saniyede bir gevşetilmelidir",
+        "Turnike tek kemikli uzuv bölgelerine (üst kol/uyluk) en az 8-10 cm genişliğinde esnemeyen malzemeyle uygulanır, saati yazılır ve 15-20 dakikada bir gevşetilir",
+        "Turnike her türlü atardamar kanamasında doğrudan ilk müdahale adımı olarak doğrudan bası yapılmadan uygulanmalıdır",
+        "Turnike uygulandıktan sonra sağlık personeli gelene kadar gangren riskine bakılmaksızın hiçbir şekilde gevşetilmemelidir",
+        "Turnike elastik sargı beziyle eklem yerlerinin (dirsek veya diz) tam üzerine gelecek şekilde bağlanmalıdır"
       ],
       answer: 1,
       explanation: "Turnike yalnızca tek kemikli bölgelere (üst kol veya uyluk) geniş şerit malzemeyle uygulanır, açıkta görünür bırakılır, alnına/üzerine 'T' harfi ve saat yazılır, kangreni önlemek için 15-20 dakikada bir 5-10 sn gevşetilir.",
       optionExplanations: [
-        "Tel, ip veya misina gibi ince malzemeler dokuyu ve sinirleri keser; ayrıca gevşetilmezse uzuv kangren olup kaybedilir.",
+        "Ön kol ve alt bacak çift kemikli olduğu için damar iki kemik arasına kaçar ve sıkıştırılamaz; ayrıca 30 saniyede bir gevşetmek kan kaybını hızlandırır.",
         "DOĞRU: Damarı kemiğe sıkıştırabilmek için tek kemikli bölgeye (pazı veya uyluk) uygulanır, saati not edilir ve 15-20 dakikada bir 5-10 sn gevşetilerek dokunun oksijenlenmesi sağlanır.",
-        "Ön kol ve alt bacak çift kemikli olduğu için damar iki kemik arasına kaçar ve sıkıştırılamaz; ayrıca basit kanamalarda doğrudan bası uygulanır.",
-        "Turnikenin üstü kesinlikle örtülmez; sağlık ekiplerinin hemen görebilmesi için açıkta bırakılır.",
-        "Boyuna turnike uygulamak şah damarını ve soluk borusunu kapatarak ölüme yol açar."
+        "Turnike ilk seçenek değildir; doğrudan bası ve basınçlı sargı yetersiz kaldığında veya uzuv kopmasında son çaredir.",
+        "Hiç gevşetmemek uzuv dokularında geri dönüşümsüz iskemi, nekroz ve gangrene yol açar.",
+        "Eklem bölgeleri anatomik yapısı nedeniyle damarı sıkıştırmaya elverişli değildir; turnike eklemin üzerine değil, tek kemikli gövdeye bağlanır."
       ]
     },
     {
@@ -400,7 +400,7 @@ export const ilkyardimCourse = {
         "Kazazedenin bilinci ve yaşamsal bulguları (ABC) kontrol edilir",
         "Kazazedeye şok pozisyonu verilir ve üzeri örtülür",
         "Derhal 112 Acil Yardım çağrılır",
-        "Kazazedeye susuzluğunu gidermek için bol su, ayran veya ağrı kesici ilaç içirilir",
+        "Kazazedenin susuzluk hissini gidermek veya ağrısını azaltmak amacıyla ağızdan su, sıvı içecek veya oral analjezik ilaç verilir",
         "Kazazede hareket ettirilmez"
       ],
       answer: 3,
@@ -435,30 +435,30 @@ export const ilkyardimCourse = {
     {
       q: "Burun kanamalarında uygulanması gereken doğru ilk yardım yöntemi aşağıdakilerden hangisidir?",
       options: [
-        "Başı geriye doğru kaldırmak",
+        "Baş geriye doğru kaldırılarak burun deliklerine alkollü pamuk tıkanması",
         "Kazazedeyi oturtup başını hafifçe ÖNE eğmek ve burun kanatlarını iki parmakla 5 dakika süreyle sıkmak",
-        "Burnun içine tentürdiyotlu pamuk tıkamak",
-        "Kazazedeyi sırtüstü düz yatırmak",
-        "Sıcak su ile yıkamak"
+        "Burun deliklerine povidon iyotlu gazlı bez tampon yerleştirilerek hastanın sırtüstü düz yatırılması",
+        "Kazazedenin sümkürerek burun içindeki tüm pıhtıları dışarı atması ve sıcak su ile burun banyosu yapması",
+        "Yalnızca ağızdan derin nefes aldırılması ve burun kanatlarına kesinlikle parmakla basınç uygulanmaması"
       ],
       answer: 1,
       explanation: "Burun kanamasında baş kesinlikle geriye atılmaz (kan genze ve mideye/soluk borusuna kaçar); baş hafifçe ÖNE eğilir ve burun kanatları 5 dakika sıkılır.",
       optionExplanations: [
         "Başı geriye kaldırmak kanamayı durdurmaz; kanın genizden soluk borusuna veya mideye akarak kusma ve boğulmaya yol açmasına neden olur.",
         "DOĞRU: Hasta oturtulur, başı hafifçe öne eğilir, burun kanatları 5 dakika sıkılır ve ense/burun köküne soğuk uygulama yapılır.",
-        "Burun içine yabancı cisim veya tentürdiyot sokulmaz.",
-        "Sırtüstü yatırmak kanın genze akmasına sebep olur.",
-        "Sıcak su damarları genişleterek (vazodilatasyon) kanamayı daha da artırır."
+        "Burun içine kimyasal solüsyon veya yabancı tampon sokulmaz, mukoza tahrişi ve kimyasal yanık yapar.",
+        "Sümkürmek oluşan pıhtıyı kopararak kanamayı yeniden başlatır; sıcak su ise damarları genişleterek kanamayı şiddetlendirir.",
+        "Burun kanatlarına parmakla 5 dakika doğrudan bası uygulanması kanamayı durduran temel mekanik basıdır."
       ]
     },
     {
       q: "Kopmuş bir uzuv parçası (parmak, el vb.) hastaneye ulaştırılırken dokunun canlılığını koruması için nasıl taşınmalıdır?",
       options: [
-        "Doğrudan buzun veya dondurucunun içine gömülerek",
-        "Su dolu bir kavanozun içine atılarak",
-        "Kopan parça temiz beze sarılıp torbaya konur, torba buzlu su dolu ikinci torbaya yerleştirilerek nakledilir",
-        "Alkol veya kolonya içine konularak",
-        "Kuru peçeteye sarılıp cepte taşınarak"
+        "Kopan parça doğrudan buz kalıplarının içine gömülerek veya dondurucu kabine konularak dondurulmalıdır",
+        "Kopan uzuv doğrudan distile su veya serum fizyolojik dolu kavanoza batırılarak oda sıcaklığında tutulmalıdır",
+        "Kopan parça temiz nemli beze sarılıp su geçirmez birinci torbaya konur; bu torba buzlu su bulunan ikinci torba içinde (doğrudan buza temas etmeden) azami 6 saat içinde ulaştırılır",
+        "Hücreleri dezenfekte etmek amacıyla parça %70'lik medikal alkol veya iyot çözeltisi içinde bekletilmelidir",
+        "Uzuv parçası doğrudan turnikenin bağlı olduğu yaralı güdük ucuna elastik bandajla sarılarak sabitlenmelidir"
       ],
       answer: 2,
       explanation: "Kopan uzuv doğrudan buza veya suya temas ettirilmez (soğuk yanığı/hücre şişmesi yapar); çift torba yöntemiyle soğuk ortamda en geç 6 saat içinde kazazedeyle birlikte hastaneye gönderilir.",
@@ -466,8 +466,8 @@ export const ilkyardimCourse = {
         "Kopan uzvun doğrudan buzla temas etmesi dokularda donma (soğuk yanığı) ve hücre ölümüne yol açarak dikilmesini imkansız hale getirir.",
         "Doğrudan su içine koymak ozmotik basınçla hücrelerin şişip parçalanmasına neden olur.",
         "DOĞRU: Çift torba yöntemi (iç torbada uzuv, dış torbada buzlu su) dokuyu dondurmadan soğuk tutar ve 6 saat boyunca canlılığını korur.",
-        "Alkol ve kolonya canlı hücreleri ve damar uçlarını yakarak öldürür.",
-        "Sıcak ortamda dokular çok hızlı nekroza (hücre ölümüne) uğrar."
+        "Alkol ve iyot çözeltileri canlı hücreleri ve mikrovasküler damar uçlarını koagüle ederek öldürür.",
+        "Güdük ucuna sarmak doku beslenmesini sağlamaz, enfeksiyon ve mikrovasküler hasar riskini katlar."
       ]
     }
   ],

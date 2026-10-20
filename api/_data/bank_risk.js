@@ -13,282 +13,362 @@ export const riskTestThemes = [
 
 export const riskConceptGroups = [
   {
-    groupName: "6331 Kanunu, RD Yönetmeliği, Ekip ve Süreler",
-    items: [
+    "groupName": "6331 Kanunu, RD Yönetmeliği, Ekip ve Süreler",
+    "items": [
       {
-        opt: "Kabul Edilebilir Risk Seviyesi",
-        desc: "İSG Risk Değerlendirmesi Yönetmeliği Madde 4'e göre; yasal yükümlülüklere ve işyerinin önleme politikasına uygun, kayıp veya yaralanma oluşturmayacak düzeydeki risktir.",
-        q: "İSG Risk Değerlendirmesi Yönetmeliği'ne göre 'Yasal yükümlülüklere ve işyerinin önleme politikasına uygun, kayıp veya yaralanma oluşturmayacak risk seviyesi' nasıl tanımlanır?"
+        "opt": "Kabul Edilebilir Risk Seviyesi",
+        "desc": "Yasal yükümlülüklere ve işyerinin önleme politikasına uygun, kayıp veya yaralanma oluşturmayacak tolere edilebilir risk düzeyidir.",
+        "q": "İSG Risk Değerlendirmesi Yönetmeliği'ne göre 'Yasal yükümlülüklere ve işyerinin önleme politikasına uygun, kayıp veya yaralanma oluşturmayacak risk düzeyi' nasıl tanımlanır?"
       },
       {
-        opt: "Önleme Prensibi",
-        desc: "İşyerinde yürütülen işlerin bütün safhalarında iş sağlığı ve güvenliği ile ilgili riskleri ortadan kaldırmak veya azaltmak için planlanan ve alınan tedbirlerin tümüdür.",
-        q: "6331 sayılı Kanun ve Yönetmelikte 'İşyerinde yürütülen işlerin bütün safhalarında İSG ile ilgili riskleri ortadan kaldırmak veya azaltmak için planlanan ve alınan tedbirlerin tümü' ne olarak adlandırılır?"
+        "opt": "Önleme Prensibi",
+        "desc": "İşyerinde yürütülen işlerin bütün safhalarında riskleri ortadan kaldırmak veya azaltmak için planlanan ve alınan tedbirlerin tümüdür.",
+        "q": "6331 sayılı Kanun ve Yönetmelikte 'İşyerinde yürütülen işlerin bütün safhalarında riskleri ortadan kaldırmak veya azaltmak için planlanan ve alınan tedbirlerin tümü' hangi kavramla tanımlanır?"
       },
       {
-        opt: "Ramak Kala Olay",
-        desc: "İşyerinde meydana gelen; çalışan, işyeri ya da iş ekipmanını zarara uğratma potansiyeli olduğu halde zarara uğratmayan olaydır.",
-        q: "İşyerinde meydana gelen; çalışan, işyeri veya iş ekipmanını zarara uğratma potansiyeli bulunduğu halde şans eseri zarara uğratmayan olaylara ne ad verilir?"
+        "opt": "Ramak Kala Olay",
+        "desc": "İşyerinde meydana gelen; çalışan, işyeri ya da iş ekipmanını zarara uğratma potansiyeli olduğu halde zarara uğratmayan tehlikeli olaydır.",
+        "q": "İşyerinde meydana gelen; çalışan, işyeri veya iş ekipmanını zarara uğratma potansiyeli olduğu halde zarara uğratmayan olaylara ne ad verilir?"
       },
       {
-        opt: "Risk Değerlendirmesi Ekibi",
-        desc: "İşveren/vekili koordinatörlüğünde; İGU, işyeri hekimi, çalışan temsilcileri, destek elemanları ve işyerindeki bütün birimleri temsil eden bilgi sahibi çalışanlardan oluşan kuruldur.",
-        q: "Yönetmeliğe göre işverenin oluşturduğu risk değerlendirmesi ekibinde aşağıdakilerden hangisinin yer alması zorunlu DEĞİLDİR?"
+        "opt": "Risk Değerlendirmesi Ekibi",
+        "desc": "İşveren/vekil, İGU, işyeri hekimi, çalışan temsilcisi, destek elemanı ve işyerindeki bütün birimleri temsil eden çalışanlardan oluşan ekiptir.",
+        "q": "Yönetmeliğe göre işverenin oluşturduğu risk değerlendirmesi ekibinde aşağıdakilerden hangisi yer almaz?"
       },
       {
-        opt: "Tasarım veya Kuruluş Aşamasında Başlama",
-        desc: "Risk Değerlendirmesi Yönetmeliği Madde 7 uyarınca, risk değerlendirmesi tüm işyerleri için henüz tasarım veya kuruluş aşamasından itibaren başlatılmak zorundadır.",
-        q: "İSG Risk Değerlendirmesi Yönetmeliği Madde 7'ye göre risk değerlendirmesi çalışmaları işyerinde hangi aşamada başlatılmalıdır?"
+        "opt": "Tasarım veya Kuruluş Aşamasında Başlama",
+        "desc": "Risk değerlendirmesi işletme açıldıktan sonra değil; işyerinin henüz tasarım ve kuruluş aşamasından başlanarak yapılmalıdır.",
+        "q": "İSG Risk Değerlendirmesi Yönetmeliği Madde 7'ye göre risk değerlendirmesi çalışması en erken ne zaman başlamalıdır?"
       },
       {
-        opt: "Periyodik Risk Yenileme Süreleri",
-        desc: "Risk değerlendirmesi; Çok Tehlikeli sınıfta en geç 2 yılda bir, Tehlikeli sınıfta en geç 4 yılda bir, Az Tehlikeli sınıfta ise en geç 6 yılda bir yenilenir.",
-        q: "Risk değerlendirmesi periyodik yenileme süreleri işyerinin tehlike sınıfına göre (Çok Tehlikeli - Tehlikeli - Az Tehlikeli) sırasıyla en geç kaç yılda birdir?"
+        "opt": "Periyodik Risk Yenileme Süreleri",
+        "desc": "Risk değerlendirmesi; Çok Tehlikeli işyerlerinde en geç 2 yılda bir, Tehlikeli işyerlerinde 4 yılda bir, Az Tehlikeli işyerlerinde 6 yılda bir yenilenir.",
+        "q": "Risk değerlendirmesi periyodik yenileme süreleri işyerinin tehlike sınıfına göre (Çok Tehlikeli - Tehlikeli - Az Tehlikeli) sırasıyla en geç kaç yılda birdir?"
       },
       {
-        opt: "Asıl İşveren - Alt İşveren Koordinasyonu",
-        desc: "Alt işverenler yürüttükleri işlerle ilgili risk değerlendirmesini yapar, bir nüshasını asıl işverene verir; asıl işveren çalışmaları denetler ve koordine eder.",
-        q: "Bir işyerinde bir veya daha fazla alt işveren (taşeron) bulunması durumunda risk değerlendirmesi süreci nasıl yürütülür?"
+        "opt": "Asıl İşveren - Alt İşveren Koordinasyonu",
+        "desc": "Alt işveren kendi RD'sini hazırlar ve asıl işverene sunar; asıl işveren denetler, koordine eder ve kendi RD'si ile bütünleştirir.",
+        "q": "Bir işyerinde bir veya daha fazla alt işveren (taşeron) bulunması durumunda risk değerlendirmesi koordinasyonu nasıl sağlanır?"
       },
       {
-        opt: "Birden Fazla İşverenin Paylaştığı Çalışma Alanı",
-        desc: "Aynı çalışma alanını birden fazla işverenin paylaşması durumunda, diğer işverenlerin işleri de dikkate alınarak ayrı ayrı RD yapılır ve karşılıklı bilgi verilir.",
-        q: "Aynı çalışma alanını birden fazla işverenin paylaştığı durumlarda (iş merkezi, sanayi sitesi vb.) risk değerlendirmesi nasıl gerçekleştirilir?"
+        "opt": "Birden Fazla İşverenin Paylaştığı Çalışma Alanı",
+        "desc": "Aynı iş merkezini veya sanayi sitesini paylaşan işverenler, yürüttükleri işler konusunda birbirlerini bilgilendirir ve koordinasyon sağlar.",
+        "q": "Aynı çalışma alanını birden fazla işverenin paylaştığı durumlarda (iş merkezleri, AVM'ler vb.) risk değerlendirmesi yönetimi nasıl yürütülür?"
       },
       {
-        opt: "İşin Durdurulması Yaptırımı",
-        desc: "Çok tehlikeli sınıfta yer alan maden, metal ve yapı işleri ile tehlikeli kimyasallarla çalışılan işyerlerinde risk değerlendirmesi yapılmamışsa iş durdurulur.",
-        q: "6331 sayılı Kanun Madde 25'e göre çok tehlikeli sınıfta yer alan maden, metal ve inşaat işyerlerinde risk değerlendirmesi yapılmaması halinde hangi idari yaptırım uygulanır?"
+        "opt": "İşin Durdurulması Yaptırımı",
+        "desc": "Maden, metal ve yapı işleri gibi çok tehlikeli sınıfta yer alan işyerlerinde risk değerlendirmesi yapılmamış olması durumunda iş durdurulur.",
+        "q": "6331 sayılı Kanun Madde 25'e göre çok tehlikeli sınıfta yer alan maden, metal ve inşaat işyerlerinde risk değerlendirmesi yapılmaması halinde hangi yasal yaptırım uygulanır?"
       }
     ]
   },
   {
-    groupName: "Tehlike, Risk, Risk Algılama ve Maliyetler",
-    items: [
+    "groupName": "Tehlike, Risk, Risk Algılama ve Maliyetler",
+    "items": [
       {
-        opt: "Tehlike Tanımı",
-        desc: "İnsanların yaralanmasına, hastalanmasına, malın/malzemenin hasar görmesine, işyeri ortamının zarar görmesine sebep olabilecek potansiyel kaynak veya durumdur.",
-        q: "TS 18001 standardına göre; 'İnsanların yaralanmasına, malın hasar görmesine veya işyeri ortamının zarar görmesine sebep olabilecek kaynak veya durum' nedir?"
+        "opt": "Tehlike Kavramı",
+        "desc": "İşyerinde var olan veya dışarıdan gelebilecek, çalışana veya işyerine zarar veya hasar verme potansiyelidir.",
+        "q": "TS 18001 ve mevzuata göre; 'İşyerinde var olan ya da dışarıdan gelebilecek, çalışana veya işyerine zarar/hasar verme potansiyeli' nedir?"
       },
       {
-        opt: "Risk Kavramı",
-        desc: "Bir tehlikeden kaynaklanan olayın ortaya çıkma olasılığı (İhtimal) ile bu olayın sebep olacağı zararın şiddetinin (etkisinin) bileşkesidir.",
-        q: "Prof. Dr. Funda Cengiz Çallıoğlu'nun sunumundaki tanıma göre, tehlikeden kaynaklanacak zararın ortaya çıkma olasılığı ile şiddetinin bileşkesine ne denir?"
+        "opt": "Risk Kavramı",
+        "desc": "Tehlikeden kaynaklanacak kayıp, yaralanma veya zararlı neticelerin meydana gelme ihtimali ve şiddetinin bileşkesidir.",
+        "q": "Tehlikeden kaynaklanacak kayıp, yaralanma veya başka zararlı sonuçların meydana gelme olasılığı ile şiddetinin bileşkesine ne ad verilir?"
       },
       {
-        opt: "Köpek Balığı Analojisi",
-        desc: "Denizdeki köpek balığı sadece bir TEHLİKE iken, suya girip yüzmeniz halinde köpek balığının ısırma veya saldırma ihtimali RİSK oluşturur.",
-        q: "Funda Hoca'nın derste anlattığı 'Deniz ve Köpek Balığı' örneğinde köpek balığının kendisi ile denizde yüzme durumu sırasıyla neyi ifade eder?"
+        "opt": "Köpek Balığı Analojisi",
+        "desc": "Denizdeki köpek balığı tehlikedir; kıyıda güneşlenirken risk sıfırdır, suya girip yüzüldüğünde ise tehlikeyle temas başladığı için risk oluşur.",
+        "q": "Funda Hoca'nın derste anlattığı 'Deniz ve Köpek Balığı' örneğinde köpek balığının kendisi ile suya girip yüzmek sırasıyla neyi ifade eder?"
       },
       {
-        opt: "Bireysel Risk Algılamasını Etkileyen Faktörler",
-        desc: "Korkutuculuk düzeyi, anlaşılabilirlik düzeyi, etkilenecek kişi sayısı, riskin ne derece önlenebileceği ve kişisel olarak kabullenilip kabullenilmediğidir.",
-        q: "Aşağıdakilerden hangisi Funda Hoca'nın ders notlarında 'Bireysel Risk Algılamasını Etkileyen Faktörler' arasında sayılan hususlardan biridir?"
+        "opt": "Bireysel Risk Algılaması",
+        "desc": "Korkutuculuk düzeyi, kontrol edilebilirlik hissi, olayın geçmiş deneyimleri ve fayda-risk dengesi gibi sübjektif faktörlerin risk algısını değiştirmesidir.",
+        "q": "Bir bireyin aynı tehlikeye karşı hissettiği korku, olayı kontrol edebilme inancı ve geçmiş deneyimlerine göre geliştirdiği sübjektif değerlendirmeye ne ad verilir?"
       },
       {
-        opt: "Toplumsal Risk Algılama Faktörleri",
-        desc: "Felaket potansiyeli, aşinalık (önceden bilinme), kendi kendini denetleyebilme, çocuklara etkisi, etkinin hızı (akut/kronik) ve kurumlara güvendir.",
-        q: "Toplumun bir riski algılarken 'ölümlerin aynı anda toplu olması (felaket potansiyeli) veya çocukları etkilemesi' hangi kavramla açıklanır?"
+        "opt": "Toplumsal Risk Algılaması",
+        "desc": "Ölümlerin zamana yayılmayıp aynı anda ve felaket potansiyeliyle topluca gerçekleşmesi durumunda toplumun tepkisinin katbekat büyümesidir.",
+        "q": "Toplumun bir riski algılarken 'ölümlerin aynı anda toplu olması (felaket potansiyeli)' nedeniyle riski tekil ölümlere göre çok daha yüksek algılaması neyi ifade eder?"
       },
       {
-        opt: "Direkt (Görünür) Maliyetler",
-        desc: "Bir iş kazası sonrasında işverenin doğrudan cebinden çıkan tazminatlar, sigorta ödemeleri, tedavi masrafları ve mahkeme giderleridir.",
-        q: "İş kazası ve meslek hastalığı sonucunda ortaya çıkan tazminatlar, sağlık giderleri ve sigorta prim artışları hangi maliyet grubuna girer?"
+        "opt": "Direkt (Görünür) Maliyetler",
+        "desc": "Kaza anında doğrudan ortaya çıkan tıbbi tedavi masrafları, hastane faturaları, tazminatlar ve sigortaya ödenen primlerdir.",
+        "q": "İş kazası ve meslek hastalığı sonucunda ortaya çıkan tazminatlar, sağlık giderleri ve cihaz hasarı gibi doğrudan muhasebeleştirilen harcamalar hangi maliyet grubudur?"
       },
       {
-        opt: "Dolaylı (Görünmeyen) Maliyetler",
-        desc: "Buzdağının görünmeyen kısmı gibi iş günü/gücü kaybı, bina-ürün hasarı, verim düşmesi, kötü imaj, diğer çalışanların motivasyon kaybı ve yeni işçi eğitimidir.",
-        q: "Kaza sonrası işletmede yaşanan iş günü ve iş gücü kaybı, sipariş gecikmesi, verim düşüklüğü, kötü şirket imajı ve yeni işçinin eğitim maliyeti hangisidir?"
+        "opt": "Dolaylı (Görünmeyen) Maliyetler",
+        "desc": "İş günü/iş gücü kaybı, sipariş gecikmesi, ceza tazminatları, işyerinin itibar kaybı ve yeni işçi yetiştirme gibi direkt maliyetlerin 4-10 katı olan gizli kayıplardır.",
+        "q": "Kaza sonrası işletmede yaşanan iş günü ve iş gücü kaybı, sipariş gecikmesi, fazla mesai ve itibar kaybı gibi buzdağının görünmeyen tabanını oluşturan maliyetler hangisidir?"
       },
       {
-        opt: "Yeni İSG Yaklaşımının 5 Temel Özelliği",
-        desc: "Tespit bazlı reaktif anlayış yerine risk bazlı proaktif anlayış, geniş çalışan katılımı, uzman katkısı, nitelikli eğitim ve önleme/koruma felsefesidir.",
-        q: "6331 sayılı Kanun ile getirilen modern İSG yaklaşımının geleneksel eski uygulamadan en belirgin farkı aşağıdakilerden hangisidir?"
+        "opt": "Proaktif Modern İSG Yaklaşımı",
+        "desc": "Olaylar ve kazalar olmadan önce riskleri öngörüp ortadan kaldırmayı hedefleyen, risk odaklı ve önleyici modern İSG felsefesidir.",
+        "q": "6331 sayılı Kanun ile getirilen; olaylar meydana gelmeden önce tehlikeleri tespit edip proaktif önlem almayı hedefleyen yeni İSG anlayışı hangisidir?"
       }
     ]
   },
   {
-    groupName: "Tehlike Kaynakları Sınıflandırması",
-    items: [
+    "groupName": "Tehlike Kaynakları Sınıflandırması",
+    "items": [
       {
-        opt: "Kişiye Bağlı Tehlike Faktörleri",
-        desc: "Güvensiz çalışma yöntemi, eğitim ve bilgi noksanlığı, yaş, cinsiyet, ilgisizlik, bedenin işe uyumsuzluğu, aile düzeni ve beslenme yetersizliğidir.",
-        q: "Funda Hoca'nın tehlike kaynakları sınıflandırmasında; çalışanın eğitim noksanlığı, bedenin işe uyumsuzluğu, ilgisizlik ve psikolojik durumu hangi gruba girer?"
+        "opt": "Kişiye Bağlı Tehlike Faktörleri",
+        "desc": "Çalışanın eğitim eksikliği, tecrübesizliği, yorgunluğu, dikkatsizliği veya kişisel koruyucu kullanmaması gibi doğrudan insana dayalı unsurlardır.",
+        "q": "Funda Hoca'nın tehlike kaynakları sınıflandırmasında; çalışanın eğitim noksanlığı, yorgunluğu ve dikkatsizliği hangi tehlike grubu altında incelenir?"
       },
       {
-        opt: "Yönetime Bağlı Tehlike Faktörleri",
-        desc: "İSG politika ve hedefinin olmaması, güvenlik organizasyonu eksikliği, finansman sağlamama, uzun çalışma saatleri, vardiya düzensizliği ve rotasyon yapılmamasıdır.",
-        q: "İşyerinde vardiyalı çalışmanın hatalı düzenlenmesi, rotasyon uygulanmaması, İSG hedeflerinin bulunmaması ve İSG yatırımlarına finansman ayrılmaması hangi tehlike kaynağıdır?"
+        "opt": "Yönetime Bağlı Tehlike Faktörleri",
+        "desc": "Vardiya planlarının hatalı yapılması, bakım planının olmaması, yetersiz denetim ve organizasyonel aksaklıklardan kaynaklanan tehlikelerdir.",
+        "q": "İşyerinde vardiyalı çalışmanın hatalı düzenlenmesi, rotasyon uygulanmaması ve yetersiz gözetim hangi tehlike grubuna girer?"
       },
       {
-        opt: "İşyerinin Bulunduğu Bölgeye Bağlı Faktörler",
-        desc: "Heyelan, göçük, sel baskını, çığ düşmesi, deprem, çevreden gelebilecek yangınlar, meteorolojik fırtınalar, yıldırım düşmesi ve sabotaj tehlikeleridir.",
-        q: "Tesisin bulunduğu coğrafyadan kaynaklanan sel baskını, heyelan, deprem, çığ düşmesi, yıldırım ve sabotaj hangi tehlike kaynağı kategorisindedir?"
+        "opt": "Bölgeye Bağlı Çevresel Faktörler",
+        "desc": "Tesisin coğrafi konumu gereği maruz kalabileceği sel baskını, heyelan, deprem, fırtına veya komşu fabrikaların patlama riskleridir.",
+        "q": "Tesisin bulunduğu coğrafyadan kaynaklanan sel baskını, heyelan, deprem, çığ ve komşu tesis riskleri hangi tehlike kaynağıdır?"
       },
       {
-        opt: "Hatalı veya Eksik Planlamaya Bağlı Faktörler",
-        desc: "Proje dışı ilave tesis kurulması, elle veya araçla taşımanın artması, yıkıp yeniden yapmak zorunda kalınması, havalandırma ve arıtma tesisine ilave yük gelmesidir.",
-        q: "Fabrika projesinde olmayan plansız ilave tesis kurulması, elle taşıma yollarının uzaması ve arıtma sistemine aşırı yük binmesi hangi tehlike kaynağına örnektir?"
+        "opt": "Planlama Eksikliğine Bağlı Faktörler",
+        "desc": "Fabrika projesinde olmayan plansız ilave binalar, taşıma yollarının yetersiz genişliği ve acil çıkışların dar tasarlanmasıdır.",
+        "q": "Fabrika projesinde olmayan plansız ilave tesis kurulması, malzeme akış yollarının dar planlanması hangi tehlike grubundadır?"
       },
       {
-        opt: "İşletme İçi Fiziksel ve Kimyasal Tehlikeler",
-        desc: "Titreşim, gürültü, yetersiz havalandırma, aşırı ısı/nem ile toksik gazlar, organik sıvı buharları, kaynak dumanı, asit-bazlar ve kanserojen tozlardır.",
-        q: "İşletme içi tehlikelerden gürültü, titreşim ve yetersiz aydınlatma 'Fiziksel'; solvent buharları, zehirli gazlar ve asitler ise hangi tehlike sınıfına girer?"
+        "opt": "Fiziksel ve Kimyasal Tehlikeler",
+        "desc": "İşletme içinde gürültü, titreşim, aşırı sıcak/soğuk, aydınlatma yetersizliği ile toz, gaz, buhar ve kimyasal sızıntı tehlikeleridir.",
+        "q": "İşletme içi tehlikelerden gürültü, titreşim, radyasyon ile toksik gaz ve solvent buharları hangi genel tehlike grubunu oluşturur?"
       },
       {
-        opt: "İşletme İçi Mekanik Tehlikeler",
-        desc: "Preslerde çift el kumanda veya fotosel olmaması, hareketli transmisyon kayışlarının koruyucusuz olması, acil durdurma butonunun bulunmaması ve dağınık ortamdır.",
-        q: "Pres makinelerinde çift el kumanda tertibatının bulunmaması, makine hareketli dişli/kayış koruyucularının olmaması hangi tehlike grubundadır?"
+        "opt": "İşletme İçi Mekanik Tehlikeler",
+        "desc": "Makinelerin dönen milleri, dişlileri, kesici ağızları, pres tamburları ve hareketli parçalarda koruyucu bulunmaması tehlikesidir.",
+        "q": "Pres makinelerinde çift el kumanda tertibatının bulunmaması, açıkta dönen miller ve konveyör sıkışma noktaları hangi tehlike grubudur?"
       },
       {
-        opt: "Güvensiz Davranış Örnekleri",
-        desc: "Makine koruyucusunu devre dışı bırakma, KKD kullanmama, 3 metreden yüksek malzeme istifleme, etiketsiz kimyasalla çalışma ve elektrik kesilmeden onarım yapmadır.",
-        q: "Funda Hoca'nın slaytlarında güvensiz davranışlar arasında belirtilen 'malzeme istifleme yükseklik sınırı' en fazla kaç metredir?"
+        "opt": "Güvensiz Davranışlar",
+        "desc": "Çalışanın koruyucuyu devre dışı bırakması, şaka yapması, KKD takmaması veya makine çalışırken elle müdahale etmesidir.",
+        "q": "Malzemeyi fırlatarak taşımak, hareket halindeki makineyi elle yağlamak ve baret takmamak İSG'de hangi kavramla tanımlanır?"
       },
       {
-        opt: "İşyeri Ortamından Kaynaklanan Tehlikeler",
-        desc: "Kaygan ve düzensiz işyeri zemini, yetersiz geçitler ve çıkış kapıları, dar çalışma alanı, merdivenlerde korkuluk olmaması ve yetersiz sosyal tesislerdir.",
-        q: "İşyerinde ara yolların dar olması, acil çıkış kapılarının yetersizliği ve merdiven kenarlarında korkuluk bulunmaması hangi tehlike sınıfındadır?"
+        "opt": "İşyeri Ortamından Kaynaklanan Tehlikeler",
+        "desc": "Kaygan zemin, yetersiz tavan yüksekliği, dar geçiş koridorları ve uygunsuz aydınlatılmış merdiven boşlukları tehlikeleridir.",
+        "q": "İşyerinde ara yolların dar olması, zemin kaplamasının yağlı ve kaygan olması hangi tehlike kaynağına örnektir?"
       }
     ]
   },
   {
-    groupName: "Risk Değerlendirme Yaklaşımları, Prensipleri ve Kontrol Hiyerarşisi",
-    items: [
+    "groupName": "Risk Kontrol Tedbirleri Hiyerarşisi",
+    "items": [
       {
-        opt: "Birey Yaklaşımının Yararları ve Mahzurları",
-        desc: "Yararları: Çabuk netice alınması, düşük maliyet, özgüven; Mahzurları: Yüksek teknik uzmanlık gerektirmesi, sübjektiflik ve diğer çalışanların katılım sağlayamamasıdır.",
-        q: "Funda Hoca'nın dersinde karşılaştırılan risk değerlendirmesinde 'Birey Yaklaşımı'nın en belirgin MAHZURU (dezavantajı) nedir?"
+        "opt": "Eliminasyon (Tehlikenin Yok Edilmesi)",
+        "desc": "Kontrol hiyerarşisinin ilk basamağıdır; tehlike kaynağının tamamen ortadan kaldırılması veya işlemin iptal edilmesidir.",
+        "q": "Funda Hoca'nın risk kontrol hiyerarşisinde en etkili ve İLK sırada yer alan temel yaklaşım hangisidir?"
       },
       {
-        opt: "Takım Yaklaşımının Yararları ve Mahzurları",
-        desc: "Yararları: Geniş bilgi paylaşımı, herkesi tatmin eden sonuç, sahiplenme ve işbirliği ruhu; Mahzurları: Neticenin daha geç alınması, zaman ve maliyetin yüksek olmasıdır.",
-        q: "Risk değerlendirmesinde farklı disiplinlerden oluşan 'Takım Yaklaşımı'nın birey yaklaşımına göre en belirgin dezavantajı nedir?"
+        "opt": "İkame (Yerine Koyma)",
+        "desc": "Tehlikeli bir kimyasalın, malzemenin veya ekipmanın tehlikesiz ya da daha az tehlikeli olanı ile değiştirilmesidir.",
+        "q": "Proses içinde kullanılan parlayıcı ve toksik bir çözücünün yerine su bazlı yanıcı olmayan bir çözücü kullanılması hangi kontrol adımıdır?"
       },
       {
-        opt: "Risklerin Eliminasyonu (Yok Etme)",
-        desc: "Kontrol önlemleri hiyerarşisinin 1. basamağıdır; tehlikeli prosesin veya makinenin tamamen devreden çıkarılmasıdır (örn. koruyucusuz eski presin hurdaya ayrılması).",
-        q: "Funda Hoca'nın risk kontrol hiyerarşisinde ilk sırada yer alan ve eski koruyucusuz presin kullanımdan tamamen kaldırılmasıyla örneklendirilen adım nedir?"
+        "opt": "Tecrit ve İzolasyon",
+        "desc": "Tehlike kaynağının kapalı bir kabin içine alınması, ses yalıtımıyla çevrelenmesi veya radyasyon kalkanı ile çalışanlardan ayrılmasıdır.",
+        "q": "Boyahanede kapalı sistem boya kabini kurulması veya gürültülü kompresörün ses yalıtımlı odaya kapatılması hangi kontrol adımıdır?"
       },
       {
-        opt: "İkame (Yerine Koyma)",
-        desc: "Tehlikenin yok edilemediği durumda yüksek riskli maddenin az riskli olanla değiştirilmesidir (örn. çabuk alevlenen toksik solvent yerine su bazlı çözücü).",
-        q: "Proses içinde kullanılan parlayıcı ve toksik bir çözücünün yerine yanıcı olmayan su bazlı bir temizleyici konulması hangi kontrol adımıdır?"
+        "opt": "Mühendislik Kontrolleri",
+        "desc": "Sabit koruyucular, kilitleme sistemleri, yerel emişli havalandırma (davlumbaz) ve çift el kumanda gibi teknik tasarımlardır.",
+        "q": "Makinelerin hareketli aksamlarına emniyet switch'li sabit koruyucu takılması ve preslere çift el kumanda konulması hangi kontrol adımıdır?"
       },
       {
-        opt: "Tecrit ve İzolasyon",
-        desc: "Tehlike kaynağının kapalı kabine alınması, maruz kalan çalışan sayısının, maruziyet süresinin azaltılmasıdır (örn. kapalı boya kabini, röntgen çalışanının süresini azaltma).",
-        q: "Boyahanede kapalı sistem boya kabini kurulması veya röntgen teknisyeninin günlük çalışma süresinin sınırlandırılması Funda Hoca'nın hiyerarşisinde hangi adımdır?"
+        "opt": "İdari Kontroller",
+        "desc": "Vardiya rotasyonuyla maruziyet süresini kısaltma, çalışma izin formları (sıcak çalışma), İSG eğitimleri ve ikaz levhalarıdır.",
+        "q": "Sıcak çalışma izin formu düzenlenmesi, çalışanlara İSG eğitimi verilmesi ve rotasyonla maruziyet süresinin kısaltılması hangi kontrol adımıdır?"
       },
       {
-        opt: "Mühendislik Kontrolleri",
-        desc: "Makinelerin operasyon noktası koruyucuları, fiziksel bariyerler, çift el kumanda tertibatı ve acil stop butonları gibi teknik donanımlarla koruma sağlanmasıdır.",
-        q: "Makinelerin hareketli aksamlarına sabit koruyucu takılması ve preslere çift el kumanda monte edilmesi hangi kontrol basamağındadır?"
-      },
-      {
-        opt: "İdari Kontroller",
-        desc: "Güvenli çalışma prosedürlerinin yayınlanması, eğitimler, çalışma izin formları, işaretlemeler ve bakım talimatları gibi yönetimsel düzenlemelerdir.",
-        q: "Sıcak çalışma izin formu düzenlenmesi, çalışanlara İSG eğitimi verilmesi ve güvenlik işaret levhaları asılması hangi kontrol basamağına girer?"
-      },
-      {
-        opt: "Kişisel Koruyucu Donanım (KKD)",
-        desc: "Hiyerarşinin en son seçimidir; kullanımı rahatsızlık verici, denetimi zor ve tehlikeyi kaynağında yok etmede en az etkili basamaktır.",
-        q: "Kontrol hiyerarşisinde diğer tüm önlemler uygulandıktan sonra EN SON SEÇİM olarak başvurulan ve denetimi en zor olan basamak hangisidir?"
-      },
-      {
-        opt: "Koruma ve Önleme İlkeleri",
-        desc: "İşletme safhasından önce (tasarım, imalat, montaj) alınan tedbirlere ÖNLEME; işletme safhasında (çalışma, bakım) alınan tedbirlere ise KORUMA denir.",
-        q: "Funda Hoca'nın 14 Temel İSG Prensibine göre; tesisin tasarım ve montaj aşamasında alınan tedbirler ile işletme safhasındaki tedbirler sırasıyla nasıl adlandırılır?"
-      },
-      {
-        opt: "İlave Risk Oluşturmama Prensibi",
-        desc: "Seçilen ve uygulanan bir risk kontrol yönteminin, ortamda çalışanlar için kesinlikle yeni ve beklenmeyen başka bir tehlike/risk yaratmaması kuralıdır.",
-        q: "Bir makineye takılan koruyucunun keskin kenarlarıyla işçiyi kesmesi veya görüşü kapatması hangi temel İSG prensibine aykırıdır?"
+        "opt": "Kişisel Koruyucu Donanım (KKD)",
+        "desc": "Kontrol hiyerarşisinin EN SON basamağıdır; diğer tüm toplu önlemler alındıktan sonra kalan bakiye riske karşı çalışanın vücuduna takılan donanımdır.",
+        "q": "Risk kontrol hiyerarşisinde diğer tüm önlemler uygulandıktan sonra EN SON SEÇİM olarak başvurulan kontrol basamağı hangisidir?"
       }
     ]
   },
   {
-    groupName: "Risk Analiz Yöntemleri (Kalitatif, Kantitatif, Matrisler ve Kinney)",
-    items: [
+    "groupName": "Risk Değerlendirme Yaklaşımları ve Temel Prensipler",
+    "items": [
       {
-        opt: "Ön Tehlike Analizi (PHA)",
-        desc: "Tesisin son tasarım aşamasında, daha detaylı analizlere temel oluşturan, tehlikeli olayları hızla belirleyip sıralayan kalitatif bir yöntemdir.",
-        q: "Tesisin son tasarım aşamasında uygulanan, daha detaylı çalışmalara model teşkil eden ve hızla hazırlanabilen kalitatif yöntem hangisidir?"
+        "opt": "Birey Yaklaşımı",
+        "desc": "Tek bir uzmanın veya mühendisin kişisel bilgi ve tecrübesine dayanan; çabuk sonuç veren fakat tek taraflı kalabilen değerlendirme yöntemidir.",
+        "q": "Risk değerlendirmesinde tek bir uzmanın kişisel görüşüne dayanan, hızlı fakat tek taraflı kalabilen yaklaşım hangisidir?"
       },
       {
-        opt: "Birincil Risk Analizi (PRA)",
-        desc: "Formlar ve standart soru listeleri kullanılarak tesisin veya ekipmanın eksikliklerini belirleyen, proje öncesi çevresel değerlendirme niteliğindeki yöntemdir.",
-        q: "Sistemin potansiyel tehlikeli parçalarını kontrol listeleri (formlar) yardımıyla tespit eden ve proje aşaması öncesinde kullanılan yöntem nedir?"
+        "opt": "Takım Yaklaşımı",
+        "desc": "Farklı disiplinlerden gelen uzmanların, yöneticilerin ve çalışanların ortak aklıyla yürütülen; daha kapsamlı ve sahiplenilen değerlendirme yaklaşımıdır.",
+        "q": "Risk değerlendirmesinde farklı teknik disiplinlerin ve saha çalışanlarının ortak katılımıyla yürütülen kapsamlı yaklaşım hangisidir?"
       },
       {
-        opt: "Hata Türü ve Etkileri Analizi (FMEA)",
-        desc: "Sistem, Tasarım, Proses ve Servis FMEA olmak üzere 4 çeşidi olan; RÖS = Olasılık(P) x Şiddet(S) x Fark Edilebilirlik(D) (1-1000) ile skor üreten yöntemdir.",
-        q: "İlk olarak Kasım 1949'da ABD Ordusunda geliştirilen, otomotiv ve uzay sanayinde yaygın kullanılan ve RÖS = P x S x D formülünü kullanan yöntem nedir?"
+        "opt": "Önleme İlkeleri (Tasarım Safhası)",
+        "desc": "Tesis henüz kurulmadan önce, tasarım, imalat ve montaj aşamalarında riskleri kaynağında yok etmek için alınan mühendislik önlemleridir.",
+        "q": "Funda Hoca'nın 14 Temel İSG Prensibine göre tesisin henüz tasarım ve montaj aşamasında alınan tedbirlere ne ad verilir?"
       },
       {
-        opt: "FMEA'nın 4 Temel Çeşidi",
-        desc: "1. Sistem FMEA (fonksiyon eksiklikleri), 2. Tasarım FMEA (ürün tasarımı), 3. Proses FMEA (üretim ve montaj), 4. Servis FMEA (organizasyon ve hizmet aksaklıkları).",
-        q: "Funda Hoca'nın ders notlarına göre FMEA metodolojisi hangi 4 temel uygulama çeşidine ayrılır?"
+        "opt": "Koruma İlkeleri (İşletme Safhası)",
+        "desc": "Tesis işletmeye alındıktan sonra çalışma, bakım ve onarım sırasında çalışanları risklerden korumak için uygulanan prosedürlerdir.",
+        "q": "İşletme safhasında (günlük üretim, bakım ve onarım sırasında) alınan koruyucu tedbirler nasıl adlandırılır?"
       },
       {
-        opt: "Hata Ağacı Analizi (FTA)",
-        desc: "İstenmeyen en üst olaydan (Zirve Olay) başlayarak geriye doğru mantıksal VE (AND) ile VEYA (OR) kapılarını kullanan tümdengelimli analiz tekniğidir.",
-        q: "İstenmeyen bir tepe olaydan başlayıp hataların gidiş yollarını mantıksal 'VE' ve 'VEYA' kapılarıyla kök sebeplere bağlayan tümdengelim yöntemi nedir?"
+        "opt": "İlave Risk Oluşturmama Prensibi",
+        "desc": "Uygulanan bir güvenlik tedbirinin ortamda çalışanlar için yeni, beklenmeyen veya farklı bir tehlike/risk doğurmaması kuralıdır.",
+        "q": "Bir makineye takılan koruyucunun keskin kenarlarıyla işçiyi kesmesi veya görüşü kapatması hangi temel İSG prensibine aykırıdır?"
+      }
+    ]
+  },
+  {
+    "groupName": "Risk Analiz Yöntemleri ve Teknikleri",
+    "items": [
+      {
+        "opt": "Ön Tehlike Analizi (PHA)",
+        "desc": "Tesisin son tasarım aşamasında uygulanan, daha detaylı çalışmalara model teşkil eden ve hızla hazırlanabilen kalitatif yöntemdir.",
+        "q": "Tesisin son tasarım aşamasında uygulanan, daha detaylı çalışmalara model teşkil eden ve hızla hazırlanabilen kalitatif yöntem hangisidir?"
       },
       {
-        opt: "FTA Mantık Kapıları Kuralı",
-        desc: "Bir sonucun ortaya çıkması için bağlı olayların TÜMÜNÜN birlikte gerçekleşmesi gerekiyorsa 'VE', herhangi BİRİNİN gerçekleşmesi yetiyorsa 'VEYA' kapısı kullanılır.",
-        q: "Hata Ağacı Analizinde (FTA); sonucun ortaya çıkması için bağlı olaylardan sadece birinin gerçekleşmesi yeterli ise hangi mantık kapısı kullanılır?"
+        "opt": "Birincil Risk Analizi (PRA)",
+        "desc": "Formlar ve standart soru listeleri kullanılarak tesisin veya ekipmanın eksikliklerini belirleyen, proje öncesi çevresel değerlendirme yöntemidir.",
+        "q": "Sistemin potansiyel tehlikeli parçalarını kontrol listeleri (formlar) yardımıyla tespit eden ve proje aşaması öncesinde kullanılan yöntem nedir?"
       },
       {
-        opt: "Olay Ağacı Analizi (ETA)",
-        desc: "Nükleer santrallerde işletilebilme analizi olarak geliştirilmiş, bir başlangıç olayından hareketle güvenlik sistemlerinin durumuna göre sonuçları dallandıran tümevarım yöntemidir.",
-        q: "İlk olarak nükleer endüstri için geliştirilmiş olan, kaza öncesi ve sonrası senaryoları ileriye doğru sonuç analizine bağlayan tümevarım yöntemi nedir?"
+        "opt": "Hata Türü ve Etkileri Analizi (FMEA)",
+        "desc": "Kasım 1949'da ABD Ordusunda geliştirilen, otomotiv ve uzay sanayinde yaygın kullanılan ve RÖS = P x S x D formülünü kullanan yöntemdir.",
+        "q": "İlk olarak Kasım 1949'da ABD Ordusunda geliştirilen, otomotiv ve uzay sanayinde yaygın kullanılan ve RÖS = P x S x D formülünü kullanan yöntem nedir?"
       },
       {
-        opt: "What-If Yöntemi",
-        desc: "Genel soru olan 'Olursa Ne Olur?' sorgulamasıyla başlayan, özellikle mevcut tesiste bir takım değişiklikler düşünüldüğü aşamada sıkça başvurulan yöntemdir.",
-        q: "'Eğer şırınga hemşirenin eline batarsa ne olur?' gibi sorgulamalarla yürütülen ve özellikle tesiste değişiklik yapılacağı zaman uygulanan yöntem hangisidir?"
+        "opt": "Hata Ağacı Analizi (FTA)",
+        "desc": "İstenmeyen bir zirve tepe olaydan başlayarak geriye doğru mantıksal VE/VEYA kapılarıyla kök sebeplere inen tümdengelim yöntemidir.",
+        "q": "İstenmeyen bir tepe olaydan başlayıp hataların gidiş yollarını mantıksal 'VE' ve 'VEYA' kapılarıyla kök sebeplere bağlayan tümdengelim yöntemi nedir?"
       },
       {
-        opt: "HAZOP Yöntemi",
-        desc: "Kimya endüstrisinde basınç, sıcaklık ve akış sapmalarını 'Kılavuz Kelimeler' (Fazla, Az, Hiç, Ters) ile inceleyen, en az 5 yılda bir yenilenen ekip yöntemidir.",
-        q: "Kimya endüstrisi için geliştirilen, 'Fazla, Az, Hiç, Ters' gibi anahtar kelimeler kullanan ve en az 5 yılda bir yenilenmesi gereken risk analizi yöntemi nedir?"
+        "opt": "Olay Ağacı Analizi (ETA)",
+        "desc": "Nükleer endüstride geliştirilmiş, başlangıç olayından hareketle güvenlik sistemlerinin durumuna göre sonuçları dallandıran tümevarım yöntemidir.",
+        "q": "İlk olarak nükleer endüstri için geliştirilmiş olan, kaza öncesi ve sonrası senaryoları ileriye doğru sonuç analizine bağlayan tümevarım yöntemi nedir?"
       },
       {
-        opt: "HAZOP Çok Disiplinli Takımı",
-        desc: "İşveren vekili, fabrika müdürü, İGU, proses mühendisi, otomasyon mühendisi, elektrik mühendisi ve gerekirse inşaat mühendisinden oluşan uzman gruptur.",
-        q: "HAZOP çalışmasını yürüten çok disiplinli uzman takımda aşağıdakilerden hangisi yer almaz?"
+        "opt": "What-If Yöntemi",
+        "desc": "'Olursa Ne Olur?' sorgulamasıyla başlayan, özellikle mevcut tesiste bir takım değişiklikler düşünüldüğü aşamada sıkça başvurulan yöntemdir.",
+        "q": "'Eğer şırınga hemşirenin eline batarsa ne olur?' gibi sorgulamalarla yürütülen ve özellikle tesiste değişiklik yapılacağı zaman uygulanan yöntem hangisidir?"
       },
       {
-        opt: "Kinney Yöntemi Formülü ve Değişkenleri",
-        desc: "Risk Skoru = Olasılık (0,2 - 10) x Frekans (0,5 - 10) x Şiddet (1 - 100) formülüyle sayısal risk değeri hesaplayan kantitatif yöntemdir.",
-        q: "Kinney yönteminde risk skoru hangi 3 temel parametrenin sayısal değerlerinin çarpımı ile hesaplanır?"
+        "opt": "Tehlike ve İşletilebilirlik Analizi (HAZOP)",
+        "desc": "Kimya endüstrisinde kılavuz kelimeler (Fazla, Az, Hiç, Ters) kullanarak sapmaları inceleyen ve en az 5 yılda bir yenilenen yöntemdir.",
+        "q": "Kimya endüstrisi için geliştirilen, 'Fazla, Az, Hiç, Ters' gibi anahtar kelimeler kullanan ve en az 5 yılda bir yenilenmesi gereken risk analizi yöntemi nedir?"
       },
       {
-        opt: "Kinney Yönteminde Şiddet Puanı Kuralı",
-        desc: "Şiddet puanlamasında tek ölümlü kaza için 40 PUAN, birden fazla ölümlü kaza / çevresel felaket için ise 100 PUAN verilir.",
-        q: "Funda Hoca'nın belirttiği Kinney Şiddet tablosuna göre; tek kişinin öldüğü bir kaza ile birden fazla kişinin öldüğü felaketin puanı sırasıyla kaçtır?"
+        "opt": "Kinney Yöntemi",
+        "desc": "İhtimal, Şiddet ve Frekans parametrelerinin çarpımıyla risk skoru hesaplayan, şantiye ve sanayide yaygın kantitatif risk analiz yöntemidir.",
+        "q": "İhtimal, Şiddet ve Maruziyet Frekansı olmak üzere 3 değişkenin çarpımıyla risk skoru üreten kantitatif yöntem hangisidir?"
       },
       {
-        opt: "Kinney Yönteminde Düzeltici Faaliyetlerin Etkisi",
-        desc: "Alınan düzeltici önlemler şiddeti veya frekansı etkilemez; etkileyeceği TEK değişken OLASILIKTIR (örn. kemer takmak düşerse ölüm şiddetini değil, düşme olasılığını azaltır).",
-        q: "Kinney metodunda yapılan düzeltici faaliyetler frekans veya şiddeti etkilemez; uygulanan kontrol önleminin etkilediği TEK değişken hangisidir?"
+        "opt": "X Tipi (Çapraz) Risk Matrisi",
+        "desc": "L Tipi 5x5 matristen farklı olarak takım çalışması gerektiren, son 5 yıllık kaza verilerini ve tehlike transfer maliyetlerini analiz eden yöntemdir.",
+        "q": "L Tipi 5x5 matristen farklı olarak; takım çalışması gerektiren, işletmenin son 5 yıllık kaza verilerini ve tehlike transfer maliyetlerini analiz eden yöntem nedir?"
       },
       {
-        opt: "Kinney Yönteminde 400 Puan ve Üzeri Riskler",
-        desc: "Risk skoru 400'ün üzerinde çıkarsa tolerans gösterilemez kabul edilir; acil çözüm bulunmalı ve faaliyet mutlaka Genel Müdür ile paylaşılmalıdır.",
-        q: "Kinney metodunda risk skoru kaç puanın üzerinde çıktığında acil çözüm üretilmeli ve durum mutlaka Genel Müdür ile paylaşılmalıdır?"
+        "opt": "3T Metodu",
+        "desc": "A'dan E'ye kadar 5 Temel Modül ve F'den O'ya kadar 10 Özel Modülden oluşan kapsamlı modüler risk analiz metodudur.",
+        "q": "İşyerini Temel Modüller (A-E) ve Özel Modüller (F-O) olmak üzere harfli modüller halinde değerlendiren risk analizi metodu hangisidir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Kinney Yöntemi Risk Skoru Derecelendirme Aralıkları",
+    "items": [
+      {
+        "opt": "400 Puan ve Üzeri (Tolerans Gösterilemez Risk)",
+        "desc": "Kinney yönteminde derhal durdurma veya acil önlem gerektiren, durumun gecikmeksizin Genel Müdür/Üst Yönetim ile paylaşılmasını zorunlu kılan en tehlikeli risk bandıdır.",
+        "q": "Kinney metodunda risk skoru hangi puan bandında çıktığında faaliyet hemen durdurulmalı, acil çözüm üretilmeli ve durum Genel Müdür ile paylaşılmalıdır?"
       },
       {
-        opt: "L Tipi ve X Tipi Matris Farkı",
-        desc: "L Tipi matris tek analistle sebep-sonuç ilişkisini çözerken; X Tipi matris takım çalışması gerektirir, geçmiş 5 yıllık kaza verilerini ve önleme/transfer maliyetlerini kapsar.",
-        q: "L Tipi 5x5 matristen farklı olarak; takım çalışması gerektiren, işletmenin son 5 yıllık kaza verilerini ve tehlike transfer maliyetlerini analiz eden yöntem nedir?"
+        "opt": "200 - 400 Puan Arası (Esaslı Risk)",
+        "desc": "Kinney yönteminde kısa vadede (birkaç gün veya hafta içinde) mutlaka eylem planı hazırlanıp risk seviyesi düşürülmesi gereken risk düzeyidir.",
+        "q": "Kinney risk matrisinde 200 ile 400 puan arasına karşılık gelen ve kısa vadede eylem planı gerektiren risk kategorisi hangisidir?"
       },
       {
-        opt: "3T Metodu (Temel ve Özel Modüller)",
-        desc: "A'dan E'ye kadar 5 Temel Modül (kaza, fiziksel, kimyasal, kas-iskelet, psikososyal) ve F'den O'ya kadar 10 Özel Modülden oluşan kapsamlı modüler analizdir.",
-        q: "İşyerini Temel Modüller (A-E) ve Özel Modüller (F-O) olmak üzere harfli modüller halinde değerlendiren risk analizi metodu hangisidir?"
+        "opt": "70 - 200 Puan Arası (Önemli Risk)",
+        "desc": "Kinney yönteminde orta vadede düzeltici-önleyici faaliyet planına dahil edilerek iyileştirilmesi gereken standart risk düzeyidir.",
+        "q": "Kinney metodunda 70 ile 200 puan aralığına denk gelen risk sınıfı aşağıdakilerden hangisidir?"
+      },
+      {
+        "opt": "20 - 70 Puan Arası (Olası Risk)",
+        "desc": "Kinney yönteminde gözetim altında tutulması gereken, acil eylem gerektirmeyen ancak periyodik takip edilen risk bandıdır.",
+        "q": "Kinney risk değerlendirmesinde 20 ile 70 puan aralığında yer alan risk seviyesi nasıl tanımlanır?"
+      },
+      {
+        "opt": "20 Puan ve Altı (Önemsiz Risk)",
+        "desc": "Kinney yönteminde kabul edilebilir düzeyde olan, mevcut önlemlerin sürdürülmesinin yeterli görüldüğü en düşük risk bandıdır.",
+        "q": "Kinney skalasında 20 puan ve altında çıkan, kabul edilebilir seviyede görülen en düşük risk kategorisi hangisidir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Risk Analiz Formülleri ve Hesaplama Değişkenleri",
+    "items": [
+      {
+        "opt": "İhtimal x Şiddet x Frekans (R = İ x Ş x F)",
+        "desc": "Kinney yönteminde risk skorunu belirleyen ve her biri sayısal katsayılarla derecelendirilen 3 temel değişkenin çarpım formülüdür.",
+        "q": "Kinney yönteminde risk skoru hangi 3 temel parametrenin sayısal değerlerinin çarpımıyla hesaplanır?"
+      },
+      {
+        "opt": "Olasılık x Şiddet x Fark Edilebilirlik (RÖS = O x Ş x D)",
+        "desc": "FMEA metodolojisinde 1 ile 1000 arasında Risk Öncelik Sayısı (RÖS) hesaplamak için kullanılan üçlü çarpım bağıntısıdır.",
+        "q": "FMEA yönteminde Risk Öncelik Sayısı (RÖS) hangi üç faktörün çarpımı ile hesaplanır?"
+      },
+      {
+        "opt": "Olasılık x Şiddet (R = O x Ş)",
+        "desc": "L Tipi klasik 5x5 matriste risk puanını (1 ile 25 arası) belirlemek için kullanılan ikili temel bağıntıdır.",
+        "q": "Klasik L Tipi 5x5 risk matrisinde risk skoru hangi iki parametrenin çarpımı ile belirlenir?"
+      },
+      {
+        "opt": "40 Şiddet Puanı (Tek Kişinin Ölümü)",
+        "desc": "Kinney şiddet skalasında tek bir çalışanın ölümüyle sonuçlanan kaza tablosuna verilen standart şiddet katsayısıdır.",
+        "q": "Funda Hoca'nın belirttiği Kinney Şiddet tablosuna göre tek bir çalışanın hayatını kaybettiği kaza için kaç şiddet puanı verilir?"
+      },
+      {
+        "opt": "100 Şiddet Puanı (Birden Fazla Ölüm)",
+        "desc": "Kinney şiddet skalasında birden fazla çalışanın ölümü veya kitlesel çevresel felaket durumunda verilen maksimum şiddet katsayısıdır.",
+        "q": "Kinney risk metodunda birden fazla kişinin öldüğü felaket veya büyük çevresel yıkım durumunda verilen şiddet puanı kaçtır?"
+      },
+      {
+        "opt": "Olasılık (İhtimal) Değişkeni",
+        "desc": "Kinney metodunda yapılan düzeltici faaliyetlerin doğrudan etkilediği tek değişkendir; kaza şiddetini değil gerçekleşme olasılığını azaltır.",
+        "q": "Kinney metodunda sahada yapılan düzeltici-önleyici faaliyetler kaza şiddetini veya maruziyet frekansını etkilemez; uygulanan önlemin etkilediği TEK değişken hangisidir?"
+      }
+    ]
+  },
+  {
+    "groupName": "Sistem Hata Mantık Kapıları ve FMEA Çeşitleri",
+    "items": [
+      {
+        "opt": "VEYA (OR) Mantık Kapısı",
+        "desc": "Hata Ağacı Analizinde (FTA); bir üst tepe olayın meydana gelmesi için alt girdilerden tek bir tanesinin gerçekleşmesinin yeterli olduğu mantık kapısıdır.",
+        "q": "Hata Ağacı Analizinde (FTA); sonucun ortaya çıkması için bağlı olaylardan sadece birinin gerçekleşmesi yetiyorsa hangi mantık kapısı kullanılır?"
+      },
+      {
+        "opt": "VE (AND) Mantık Kapısı",
+        "desc": "Hata Ağacı Analizinde (FTA); tepe olayın gerçekleşmesi için ona bağlı tüm alt olayların aynı anda ve birlikte gerçekleşmesini şart koşan mantık kapısıdır.",
+        "q": "Hata Ağacı Analizinde (FTA); sonucun ortaya çıkması için bağlı tüm olayların mutlaka aynı anda birlikte gerçekleşmesi gerekiyorsa hangi mantık kapısı kullanılır?"
+      },
+      {
+        "opt": "Sistem FMEA",
+        "desc": "Sistemin tamamını ve alt sistemler arasındaki fonksiyonel eksiklikleri, uyumsuzlukları analiz eden FMEA çeşididir.",
+        "q": "FMEA metodolojisinde tüm sistemin genel fonksiyonel eksikliklerini ve alt sistemler arası uyumu inceleyen uygulama türü hangisidir?"
+      },
+      {
+        "opt": "Tasarım FMEA",
+        "desc": "Üretim aşamasına geçmeden önce ürünün tasarım hatalarını, malzeme seçimini ve tolerans kusurlarını inceleyen FMEA çeşididir.",
+        "q": "Seri üretime geçilmeden önce ürünün tasarım aşamasındaki mühendislik ve malzeme kusurlarını analiz eden FMEA türü hangisidir?"
+      },
+      {
+        "opt": "Proses FMEA",
+        "desc": "Üretim ve montaj hatlarındaki operasyonel aksaklıkları, tezgah ayarsızlıklarını ve montaj hatalarını inceleyen FMEA çeşididir.",
+        "q": "Üretim ve montaj hatlarında makine, aparat veya operatör kaynaklı imalat hatalarını inceleyen FMEA çeşidi nedir?"
+      },
+      {
+        "opt": "Servis FMEA",
+        "desc": "Ürün müşteriye ulaştıktan sonra satış sonrası hizmetler, servis organizasyonu ve bakım süreçlerindeki aksaklıkları inceleyen FMEA çeşididir.",
+        "q": "Ürünün satış sonrası servis, bakım, lojistik ve müşteri hizmetleri süreçlerindeki aksaklıkları inceleyen FMEA türü hangisidir?"
       }
     ]
   }

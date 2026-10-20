@@ -14,202 +14,302 @@ export const ilkyardimTestThemes = [
 
 export const ilkyardimConceptGroups = [
   {
-    groupName: '1. Modül: İSG Temel Kavramlar ve Tarihsel Gelişim (Doç. Dr. Mehtap Savran 1. PPTX)',
+    groupName: '1. Modül: İSG ve Tıp Tarihinin Öncü Bilim İnsanları',
     items: [
       {
-        opt: 'WHO ve ILO Ortak Sağlık Tanımı',
-        desc: '1. PPTX Slayt 2-3: İSG sadece çalışanların fiziksel iyilik halleriyle ilgilenmez; Dünya Sağlık Örgütü (WHO) ve Uluslararası Çalışma Örgütü (ILO) tanımına göre tüm mesleklerde işçilerin bedensel, ruhsal ve sosyal iyilik durumlarını en üst düzeye ulaştırmak ve işi insana, her insanı da kendi işine uyarlamaktır.',
-        q: 'Doç. Dr. Mehtap Savran\'ın 1. hafta sunumuna göre Dünya Sağlık Örgütü (WHO) ve Uluslararası Çalışma Örgütü (ILO) ortak İSG tanımının kapsamı aşağıdakilerden hangisidir?'
+        opt: 'Bergamalı Galen',
+        desc: '1. PPTX Slayt 5: Antik Roma gladyatörlerinin hekimi olan Bergamalı Galen, maden ocaklarındaki bakır sülfat dumanı ve asit buharlarının çalışanların akciğerlerine verdiği zararları ilk kez tanımlayan hekimdir.',
+        q: 'Antik çağda gladyatör hekimliği yapan, maden ocaklarındaki asit ve bakır sülfat buharlarının çalışanların solunum yollarına zararlarını inceleyen hekim kimdir?'
       },
       {
-        opt: 'Heredot ve Hipokrat',
-        desc: '1. PPTX Slayt 5: Heredot ilk kez çalışanların verimli olabilmesi için yüksek enerjili besinlerle beslenmeleri gerektiğine değinmiş; Hipokrat (M.Ö. 370) ise ilk kez kurşunun zararlı etkilerinden söz ederek kurşun koliğini ve kurşun anemisini tanımlamıştır.',
-        q: 'Sanayi Devrimi öncesi dönemde çalışanların verimli olması için yüksek enerjili besinlerle beslenmesi gerektiğini belirten düşünür ile tarihte ilk kez "kurşun koliği ve kurşun anemisini" tanımlayan hekim sırasıyla kimlerdir?'
+        opt: 'Hipokrat',
+        desc: '1. PPTX Slayt 5: Hipokrat (M.Ö. 370) tarihte ilk kez kurşunun zararlı etkilerinden söz ederek kurşun koliğini ve kurşun anemisini tanımlayan hekimdir.',
+        q: 'M.Ö. 370 yılında kurşunun zararlı etkilerinden ilk kez söz ederek "kurşun koliği" ve "kurşun anemisi" klinik tablosunu tanımlayan antik hekim kimdir?'
       },
       {
-        opt: 'Dioscorides ve Plini',
-        desc: '1. PPTX Slayt 6-7: Dioscorides zehirleri bitkisel, hayvansal ve mineral kaynaklı olarak üç gruba ayırmıştır. Plini (M.S. 23-79) ise çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine geçmek üzere başlarına torba geçirmelerini önermiştir.',
-        q: 'Antik Roma döneminde zehirleri "bitkisel, hayvansal ve mineral" kaynaklı olarak üçe ayıran bilim insanı ile tehlikeli tozlara karşı çalışanların başlarına torba (ilk maske/KKD) geçirmelerini öneren düşünür sırasıyla kimlerdir?'
+        opt: 'Dioscorides',
+        desc: '1. PPTX Slayt 6: Dioscorides zehirleri bitkisel, hayvansal ve mineral kaynaklı olmak üzere üç gruba ayırarak toksikolojinin temellerini atan hekimdir.',
+        q: 'Antik Roma döneminde zehirleri ilk kez "bitkisel, hayvansal ve mineral" kaynaklı olarak üç ana sınıfa ayıran bilim insanı kimdir?'
       },
       {
-        opt: 'Juvenal ve Paracelsus',
-        desc: '1. PPTX Slayt 7-8: Juvenal demircilerde göz hastalıklarının ve ayakta durarak çalışanlarda varislerin oluştuğundan söz etmiştir. Paracelsus (1493-1541) ise Tirol maden işletmelerinde işyeri hekimi olarak çalışmış, pnömokonyozları ve "Her madde zehirdir; zehir ile ilacı ayıran dozdur" ilkesini ortaya koymuştur.',
-        q: 'Demircilerde göz hastalıkları ve ayakta çalışanlarda varis geliştiğini belirten Juvenal\'in ardından, Tirol madenlerinde işyeri hekimi olarak çalışıp pnömokonyozları ve toksikolojinin temel "Doz" kavramını tanımlayan hekim kimdir?'
+        opt: 'Büyük Plinius (Plini)',
+        desc: '1. PPTX Slayt 7: Plini (M.S. 23-79) çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine başlarına torba geçirmelerini önermiştir.',
+        q: 'Çalışma ortamındaki tehlikeli tozlara karşı çalışanların başlarına torba (tarihteki ilk maske/KKD) geçirmelerini öneren Romalı düşünür kimdir?'
+      },
+      {
+        opt: 'Paracelsus',
+        desc: '1. PPTX Slayt 8: Paracelsus Tirol madenlerinde işyeri hekimi olarak çalışmış, pnömokonyozları incelemiş ve toksikolojinin "zehir ile ilacı ayıran dozdur" temel ilkesini ortaya koymuştur.',
+        q: 'Tirol madenlerinde işyeri hekimliği yaparak madencilerin meslek hastalıklarını inceleyen ve "Her madde zehirdir; zehir ile ilacı ayıran dozdur" ilkesini ortaya koyan hekim kimdir?'
       },
       {
         opt: 'Georgius Agricola',
-        desc: '1. PPTX Slayt 9: Georgius Agricola (1494-1555) dünyada ilk mineraloji bilginidir; "De Re Metallica" eserinde bazı zehirlerin etkilerini belirlemiş, madenlerde havalandırma ve iş kazalarına karşı koruyucu önlemler ileri sürmüştür.',
-        q: 'Dünyada "ilk mineraloji bilgini" olarak kabul edilen ve madenlerdeki zehirli etkiler ile iş kazalarına karşı koruyucu önlemleri "De Re Metallica" adlı eserinde ortaya koyan bilim insanı kimdir?'
+        desc: '1. PPTX Slayt 9: İlk mineraloji bilgini sayılan Agricola, "De Re Metallica" eserinde madenlerdeki zehirli gazları ve havalandırma önlemlerini açıklamıştır.',
+        q: 'Dünyada ilk mineraloji bilgini kabul edilen ve madencilikteki zehirli etkiler ile havalandırma önlemlerini "De Re Metallica" adlı eserinde toplayan bilim insanı kimdir?'
       },
       {
         opt: 'Bernardino Ramazzini',
-        desc: '1. PPTX Slayt 10: Bernardino Ramazzini "De Morbis Artificum Diatriba" (Meslek Hastalıkları) kitabının yazarıdır, iş sağlığının kurucusu sayılır, iş kazalarını önlemek için koruyucu güvenlik önlemleri önermiş, hekimlere hastalarının mesleğini sormalarını öğütlemiş ve işçi sağlığında ergonomi ilkelerini açıklamıştır.',
-        q: '1700 yılında yayınladığı "De Morbis Artificum Diatriba" adlı eseriyle iş sağlığının ve meslek hastalıkları biliminin kurucusu kabul edilen, ergonomi ilkelerini açıklayan ve hekimlere "Hastalarınıza ne iş yaptığını sorunuz" diyen İtalyan hekim kimdir?'
+        desc: '1. PPTX Slayt 10: Ramazzini "De Morbis Artificum Diatriba" kitabının yazarıdır, iş sağlığının kurucusu sayılır ve hekimlere "Hastalarınıza ne iş yaptığını sorunuz" tavsiyesinde bulunmuştur.',
+        q: '1700 yılında yayınladığı "De Morbis Artificum Diatriba" eseriyle iş sağlığının kurucusu kabul edilen ve hekimlere "Hastalarınıza ne iş yaptığını sorunuz" diyen İtalyan hekim kimdir?'
       },
       {
         opt: 'Percival Pott',
-        desc: '1. PPTX Slayt 13: İngiliz cerrah Percival Pott (1714-1788), baca temizleyicilerinde skrotum (testis) kanserini tanımlayarak mesleki kanserleri tarihte ilk kez ortaya koymuştur.',
-        q: 'Sanayi Devrimi döneminde baca temizleyicilerinde kurum/is maruziyetine bağlı gelişen "skrotum (testis) kanserini" tanımlayarak tarihteki ilk mesleki kanser ilişkisini ortaya koyan bilim insanı kimdir?'
-      },
-      {
-        opt: 'Robert Owen ve İngiliz Fabrikalar Yasası',
-        desc: '1. PPTX Slayt 12-15: İngiliz parlamento üyesi Anthony Ashley Cooper çalışma koşullarını düzeltmeye çalışmış; İskoçya\'da fabrika sahibi Robert Owen 10 yaşın altında kimseyi çalıştırmamış; Dr. Charles Turner Thackrah İngiltere\'de ilk meslek hastalıkları kitabını yazmış; 1833 Fabrikalar Yasası ile fabrika denetimi/müfettişliği başlamış; 1842\'de kadın ve 10 yaş altı çocukların madenlerde çalışması yasaklanmış; 1847\'de On Saat Yasası çıkarılmıştır.',
-        q: 'İngiltere\'de Sanayi Devrimi sonrasında İSG mevzuatının gelişimiyle ilgili aşağıdaki tarihsel eşleştirmelerden hangisi DOĞRUDUR?'
-      },
-      {
-        opt: 'Türkiye İSG ve Meslek Hastalıkları Tarihçesi',
-        desc: '1. PPTX Slayt 23-26: Cumhuriyet döneminde 1930 Umumi Hıfzıssıhha Kanunu (İşçiler Hıfzıssıhhası ve Gayrisıhhi Müesseseler), 1936\'da ilk İş Kanunu (3008 sayılı), 1945\'te Çalışma Bakanlığı ve İşçi Sigortaları İdaresi, 1949\'da ise ilk Meslek Hastalıkları Hastanesi (İstanbul Nişantaşı; 1977 Ankara ve İstanbul, 1994 Zonguldak) kurulmuştur.',
-        q: 'Doç. Dr. Mehtap Savran\'ın sunumuna göre Türkiye\'de Cumhuriyet dönemi İSG mevzuatı ve kurumlarının tarihsel gelişimiyle ilgili aşağıdakilerden hangisi DOĞRUDUR?'
+        desc: '1. PPTX Slayt 13: İngiliz cerrah Percival Pott, baca temizleyicilerinde is/kurum maruziyetine bağlı skrotum (testis) kanserini tanımlayarak ilk mesleki kanser ilişkisini ortaya koymuştur.',
+        q: 'Sanayi Devrimi döneminde baca temizleyicilerinde kurum maruziyetine bağlı skrotum kanserini tanımlayarak tarihte ilk kez bir kanser türünü mesleki maruziyetle ilişkilendiren cerrah kimdir?'
       }
     ]
   },
   {
-    groupName: '2. Modül: Sağlık Gözetimi, Muayeneler, MAC/TLV ve Sağlık Dosyası (Doç. Dr. Mehtap Savran 2. PPTX)',
+    groupName: '2. Modül: Sağlık Gözetimi ve Tıbbi Muayene Türleri',
     items: [
       {
-        opt: 'Toksisite ve Maruziyet Dozu',
-        desc: '2. PPTX Slayt 3: Toksisite bir kimyasalın vücudun belli bir bölgesinde yeterli konsantrasyona (doza) ulaştığı zaman oluşturduğu hasar veya zarar kapasitesidir; Maruziyet dozu ise vücut tarafından emilen ve o bölgede bulunan gerçek miktardır.',
-        q: '2. Hafta Sağlık Gözetimi sunumuna göre; "bir kimyasalın vücudun belli bir bölgesinde yeterli konsantrasyona ulaştığında oluşturduğu hasar kapasitesi" ile "vücut tarafından emilen gerçek miktar" sırasıyla hangi kavramlarla ifade edilir?'
-      },
-      {
         opt: 'İşe Giriş Muayenesi (Primer Koruma)',
-        desc: '2. PPTX Slayt 11-14: İşe giriş muayenesinin temel amacı "Uygun işe yerleştirme"dir (koruyucu sağlık hizmetleri kapsamında primer/birincil korumadır). Örneğin akciğer hastalığı olanlar tozlu ortamda, karaciğer hastalığı olanlar solventlerle, sigara içenler asbestle, kontakt dermatiti olanlar deterjanla çalıştırılmamalıdır.',
-        q: 'Sağlık gözetimi kapsamında "Uygun işe yerleştirme" (Primer/Birincil koruma) ilkesine göre aşağıdaki çalışan-iş eşleştirmelerinden hangisinde çalışanın o işte çalıştırılması SAKINCALIDIR?'
+        desc: 'Çalışanın fiziksel ve ruhsal özelliklerinin işin gerektirdiği niteliklerle eşleştirilmesini (uygun işe yerleştirme) amaçlayan birincil koruma muayenesidir.',
+        q: 'Çalışanın sağlık durumunun yapacağı işin risklerine uygun olup olmadığını belirlemek ve "uygun işe yerleştirmeyi" sağlamak amacıyla yapılan birincil (primer) koruma muayenesi hangisidir?'
       },
       {
-        opt: 'Tehlikeli ve Çok Tehlikeli İşlerde Çalışma Yasakları',
-        desc: '2. PPTX Slayt 15-16: Tehlikeli ve çok tehlikeli işlerde; çocuklar, 16 yaşını doldurmamış genç işçiler ve çalıştığı işle ilgili mesleki eğitim almamış işçiler kesinlikle çalıştırılamaz.',
-        q: 'Sağlık Gözetimi ders sunumuna göre "Tehlikeli ve Çok Tehlikeli" sınıftaki işlerde aşağıdakilerden hangileri kesinlikle çalıştırılamaz?'
-      },
-      {
-        opt: 'Periyodik Kontrol Muayeneleri (Sekonder Koruma)',
-        desc: '2. PPTX Slayt 17-18: Aralıklı kontrol muayeneleri sağlık sorunlarını erken yakalamada (Sekonder/İkincil koruma) çok önemlidir. Kurşun ve civa ile çalışanlarda her 3 ayda bir; arsenik ve insektisitlerle çalışanlarda her 6 ayda bir yapılır.',
-        q: 'Sağlık sorunlarını erken evrede yakalamayı hedefleyen (Sekonder/İkincil koruma) "Aralıklı Kontrol Muayeneleri", kurşun/civa ile çalışanlarda ve arsenik/insektisit ile çalışanlarda sırasıyla hangi sıklıkla yapılır?'
+        opt: 'Aralıklı (Periyodik) Kontrol Muayenesi',
+        desc: 'Çalışma ortamındaki zararlı faktörlerin neden olabileceği sağlık bozulmalarını erken evrede yakalamayı amaçlayan sekonder (ikincil) koruma muayenesidir.',
+        q: 'Çalışma ortamındaki fiziksel, kimyasal ve biyolojik risklerin çalışan üzerinde oluşturabileceği etkileri henüz klinik belirti vermeden "erken evrede yakalamak" amacıyla yapılan muayene hangisidir?'
       },
       {
         opt: 'Hastalık Sonu İşe Dönüş Muayenesi',
-        desc: '2. PPTX Slayt 19: Meslek hastalığı veya herhangi bir sağlık sorunu nedeniyle 21 gün işten ayrı kalmak zorunda olan işçilere, işe dönüşlerinde eski işinde çalışıp çalışamayacağını belirlemek üzere "Hastalık Sonu İşe Dönüş Muayenesi" yapılır.',
-        q: 'Sağlık Gözetimi sunumuna göre; herhangi bir sağlık sorunu veya kaza nedeniyle en az kaç gün işten ayrı kalmak zorunda olan işçilere eski işine dönmeden önce "Hastalık Sonu İşe Dönüş Muayenesi" yapılmalıdır?'
+        desc: 'Herhangi bir sağlık sorunu veya kaza nedeniyle en az 21 gün işten uzak kalan çalışanların eski işine dönmeden önce yapılan değerlendirme muayenesidir.',
+        q: 'Sağlık Gözetimi mevzuatına göre; sağlık sorunu nedeniyle en az 21 gün işten ayrı kalmak zorunda kalan işçilere işbaşı yapmadan önce uygulanan muayene türü hangisidir?'
       },
       {
-        opt: 'MAC / MAK Değeri',
-        desc: '2. PPTX Slayt 22-23: MAC (Maximum Allowable Concentration / Müsaade Edilen Azami Konsantrasyon - MAK), işyeri ortamında hiçbir zaman ulaşılmaması veya aşılmaması gereken kritik tavan düzeydir; aşılması durumunda akut toksik belirtilere yol açar.',
-        q: 'İşyeri ortam analizlerinde; çalışma ortamında HİÇBİR ZAMAN ulaşılmaması veya aşılmaması gereken, aşılması durumunda akut toksik belirtilere yol açan kritik düzeye ne ad verilir?'
+        opt: 'İş Değişikliği Muayenesi',
+        desc: 'İşyerinde mevcut görevinden farklı risk profiline ve çalışma ortamına sahip başka bir işe nakledilen çalışana yapılan değerlendirme muayenesidir.',
+        q: 'İşyerinde mevcut görevinden farklı fiziksel veya kimyasal risk faktörleri içeren başka bir bölüme nakledilecek personele yapılması zorunlu olan muayene türü hangisidir?'
       },
       {
-        opt: 'TLV / ESD Değeri',
-        desc: '2. PPTX Slayt 24-25: TLV (Threshold Limit Value / Eşik Sınır Değer - ESD), günde 8 ve haftada 40 saat çalışma ile çalışanlara zararlı etki göstermeden çalışılabilecek ortalama konsantrasyonu ifade eder; gün içinde kısa süreli aşılması akut toksik etki oluşturmaz.',
-        q: 'Günde 8 saat ve haftada 40 saatlik çalışma süresince çalışanlara zararlı etki göstermeden çalışılabilecek "ortalama konsantrasyonu" ifade eden değere ne ad verilir?'
-      },
-      {
-        opt: 'Sağlık Riskleri Kontrol Hiyerarşisi',
-        desc: '2. PPTX Slayt 26-30: Sağlık risklerinin kontrolünde en etkili yaklaşım Kaynakta Kontroldür (tehlikeli maddeyi kullanmama, azaltma, ikame/substitution, işlemi değiştirme, lokal havalandırma). İkinci adım Aradaki Yolda Kontrol (mesafeyi artırma, genel havalandırma, ayırma), son adım ise Kişisel Koruyucu ve Yönetsel uygulamalardır (rotasyon, süre kısaltma).',
-        q: 'İşyerinde sağlık risklerinin kontrolünde uygulanan yaklaşımlar etkinlik sırasına göre (en etkiliden başlayarak) nasıl sıralanır?'
-      },
-      {
-        opt: 'Kişisel Sağlık Dosyalarının Saklanma Süresi',
-        desc: '2. PPTX Slayt 41: İşveren ve işyeri sağlık birimi, çalışanların kişisel sağlık dosyalarını işten ayrılma tarihinden itibaren en az 15 yıl süreyle saklamak zorundadır.',
-        q: 'Sağlık gözetimi kayıtları ve çalışanların kişisel sağlık dosyaları, çalışanın işten ayrılma tarihinden itibaren en az kaç yıl süreyle saklanmak zorundadır?'
+        opt: 'Erken Ayrılma ve Maluliyet Muayenesi',
+        desc: 'Meslek hastalığı veya iş kazası neticesinde meslekte kazanma gücünü kaybedenlerin kayıp oranını tespit etmek amacıyla yetkili kurullarca yapılan muayenedir.',
+        q: 'Çalışanın meslekte kazanma gücünü hangi oranda kaybettiğini (%10, %60 vb.) tespit etmek amacıyla yetkili sağlık kurullarınca gerçekleştirilen resmi muayene hangisidir?'
       }
     ]
   },
   {
-    groupName: '3. Modül: İlk Yardım Temel Kavramlar, Yaşam Bulguları, Kanamalar ve Şok (3. PPTX + 14 Ekim Dersi)',
+    groupName: '2. Modül: Toksikolojik Maruziyet Sınırları ve Eşik Değerler',
     items: [
       {
-        opt: 'İlk Yardım ve Acil Tedavi Ayrımı',
-        desc: '3. PPTX Slayt 3-5: İlk yardım; olay yerinde, tıbbi araç gereç aranmaksızın eldeki olanaklarla yapılan ilaçsız uygulamalardır. Acil tedavi ise acil tedavi ünitelerinde doktor ve sağlık personeli tarafından gerekli donanımla yapılan tıbbi müdahaledir.',
-        q: 'Doç. Dr. Mehtap Savran\'ın İlk Yardım sunumuna göre "İlk Yardım" ile "Acil Tedavi" arasındaki en temel fark aşağıdakilerden hangisidir?'
+        opt: 'MAK / MAC (Müsaade Edilen Azami Konsantrasyon)',
+        desc: 'İşyeri ortam havasında hiçbir zaman ulaşılmaması ve aşılmaması gereken, aşılması halinde akut toksik semptomlara yol açan tavan sınır konsantrasyondur.',
+        q: 'İşyeri ortam analizlerinde; çalışma süresi boyunca HİÇBİR ZAMAN ulaşılmaması veya aşılmaması gereken, aşıldığında akut zehirlenmeye yol açan tavan değer hangisidir?'
       },
       {
-        opt: 'KBK İlkeleri ve Hayat Kurtarma Zinciri',
-        desc: '3. PPTX Slayt 7-18: İlk yardımda temel uygulamalar Koruma, Bildirme (112) ve Kurtarma (KBK)\'dır. Hayat kurtarma zincirinin 1. halkası (112\'ye haber verme) ve 2. halkası (Olay yerinde Temel Yaşam Desteği) ilk yardımcının görevidir; 3. ve 4. halkalar sağlık ekiplerinin görevidir.',
-        q: 'İlk yardımın temel uygulamaları olan "KBK" kısaltmasının açılımı ve "Hayat Kurtarma Zinciri"nin ilk yardımcıya ait olan halkaları hangisinde doğru verilmiştir?'
+        opt: 'ESD / TLV (Eşik Sınır Değer)',
+        desc: 'Günde 8 saat ve haftada 40 saatlik çalışma süresince çalışanların sağlığına zarar vermeden tolere edilebilen ortalama konsantrasyondur.',
+        q: 'Günde 8 saat ve haftada 40 saatlik standart çalışma periyodunda çalışanlarda zararlı etki yaratmadan çalışılabilecek "ortalama konsantrasyonu" ifade eden değer hangisidir?'
       },
       {
-        opt: 'Bilinç Değerlendirme Düzeyleri',
-        desc: '3. PPTX Slayt 27: Kişinin bilinci yerinde ise tüm uyarılara cevap verir. 1. Derece bilinç kaybında sözlü ve gürültülü uyaranlara cevap verir; 2. Derece bilinç kaybında ağrılı uyaranlara cevap verir; 3. Derece bilinç kaybında (Koma) ise tüm uyaranlara karşı tepkisizdir.',
-        q: 'İlk yardımda bilinç durumu değerlendirilirken; "yalnızca ağrılı uyaranlara cevap veren" hasta ile "tüm sözlü ve ağrılı uyaranlara tepkisiz olan" hasta sırasıyla kaçıncı derece bilinç kaybındadır?'
+        opt: 'STEL (Kısa Süreli Maruziyet Sınırı)',
+        desc: 'Vardiya boyunca herhangi bir anda 15 dakikayı geçmeyen ve günde en fazla 4 defa tekrarlanabilen kısa süreli tepe maruziyet sınırıdır.',
+        q: 'Çalışma ortamında herhangi bir anda 15 dakikalık süreyi aşmaması gereken ve gün içinde en fazla 4 kez tekrarlanabilen tepe maruziyet sınır değeri hangisidir?'
       },
       {
-        opt: 'Normal Solunum ve Nabız Değerleri',
-        desc: '3. PPTX Slayt 28-29: Sağlıklı bir yetişkinde dakikada solunum sayısı 12–20 (çocukta 16–22, bebekte 18–24); normal nabız sayısı ise yetişkinde 60–100/dk (çocukta 100–120/dk, bebekte 100–140/dk)\'dır. Bebeklerde nabız kol atardamarından (brakial arter) 5 saniye süreyle kontrol edilir.',
-        q: 'İlk Yardım Temel Kavramlar sunumuna göre sağlıklı bir yetişkinde dakikadaki normal "Solunum Sayısı" ve "Nabız Sayısı" aralıkları kaçtır?'
+        opt: 'TWA (Zaman Ağırlıklı Ortalama)',
+        desc: '8 saatlik bir çalışma vardiyası süresince maruz kalınan tüm konsantrasyonların zaman ağırlıklı aritmetik ortalamasıdır.',
+        q: '8 saatlik bir çalışma günü boyunca farklı zaman dilimlerinde ölçülen hava konsantrasyonlarının sürelerle çarpılıp toplam süreye bölünmesiyle bulunan ortalama değer hangisidir?'
       },
       {
-        opt: 'Vücut Sıcaklığı Sınırları',
-        desc: '3. PPTX Slayt 37: İlk yardımda vücut ısısı koltuk altından ölçülür (normali 36,5°C). 38°C üstü yüksek ateş, 41–42°C üstü ve 34,5°C altı hayati tehlike işareti, 31,0°C ve altı ise ölümcüldür.',
-        q: 'İlk yardımda vücut ısısının değerlendirilmesiyle ilgili olarak; ölçüm yapılan standart bölge, normal vücut ısısı ve ölümcül kabul edilen alt sınır sıcaklık hangisinde doğru verilmiştir?'
+        opt: 'LD50 (Ölümcül Doz 50)',
+        desc: 'Bir kimyasalın deney hayvanları grubunun %50\'sinin ölümüne yol açan, ağız, deri veya enjeksiyon yoluyla verilen miligram/kilogram cinsinden dozudur.',
+        q: 'Toksikolojide bir kimyasal maddenin test edilen deney popülasyonunun %50\'sinin ölümüne neden olan ve mg/kg olarak ifade edilen dozu hangisidir?'
       },
       {
-        opt: 'Kılcal, Toplar ve Atardamar Kanamaları',
-        desc: '14 Ekim Dersi (dk 05:00-09:30): 70 kg yetişkinde ~5-6 litre (vücut ağırlığının 1/13\'ü) kan bulunur ve %20 kan kaybı hayati tehlike yaratır. Atardamar kanaması temiz kan taşıdığı için parlak kırmızı ve kesik kesik fışkırır tarzda; toplardamar kanaması koyu kırmızı ve taşma/sızıntı şeklindedir. İlk bez kanlanınca ASLA kaldırılmaz, üzerine ikinci bez konur.',
-        q: '14 Ekim dersinde işlenen Kanamalar konusuna göre; "Atardamar kanaması" ve dış kanamalarda yara üzerine konulan "ilk bezin kanlanması" durumunda yapılacak doğru uygulama nedir?'
-      },
-      {
-        opt: 'Şok Pozisyonu ve Şok Türleri',
-        desc: '14 Ekim Dersi (dk 21:30-24:10): Şok; hücrelerin ve yaşamsal organların yeterince kanlanamamasıyla gelişen akut dolaşım yetmezliğidir. Kanama, yanık ve aşırı kusma/ishalde "Hipovolemik şok", kalp yetmezliğinde "Kardiyojenik şok" gelişir. Şok pozisyonunda hasta sırtüstü düz yatırılır ve bacakları 30 cm yukarı kaldırılır.',
-        q: '14 Ekim dersine göre; şiddetli kanama, ağır yanık veya aşırı sıvı kaybı sonucunda dolaşan kan hacminin (volümünün) azalmasına bağlı gelişen şok türüne ne ad verilir ve hastaya hangi pozisyon verilir?'
-      },
-      {
-        opt: 'Turnike (Boğucu Sargı) Uygulama Kuralları',
-        desc: '14 Ekim Dersi (dk 26:50-33:35): Turnike (diğer adıyla İspanyol sargısı) sadece çok sayıda yaralı varsa, yaralı zor koşullarda taşınacaksa veya uzuv kopması varsa uygulanır. Tek kemikli bölgeye (üst kol veya uyluk) uygulanır; ilk 1 saatte 15-20 dakikada bir (5-10 sn), 2. saatte ise 10 dakikada bir gevşetilir ve toplam 2 saati geçmez. Tansiyon aleti manşonuyla yapılırsa hastanın tansiyonunun 20-50 mmHg üstüne (120-250 mmHg) şişirilir.',
-        q: '14 Ekim dersinde Doç. Dr. Mehtap Savran\'ın vurguladığı "Turnike (İspanyol Sargısı)" kurallarıyla ilgili aşağıdakilerden hangisi DOĞRUDUR?'
-      },
-      {
-        opt: 'Kopan Uzuv ve Burun Kanaması İlk Yardımı',
-        desc: '14 Ekim Dersi (dk 33:45-45:10): Kopan uzuv temiz kuru poşete konur, o poşet 1 ölçek su + 2 ölçek buz bulunan ikinci bir poşete konur (doğrudan buzla temas ettirilmez). Burun kanamasında baş ÖNE eğilir ve burun kanatları 5 dk sıkılır. Kulak kanamasında bilinç kapalıysa kanayan kulak üzerine yan yatırılır. İleri yaşta ağrısız idrarda kanama (hematüri) aksi ispat edilmedikçe Mesane Kanseri habercisidir.',
-        q: '14 Ekim dersinde hocanın "Bugün her şeyi unutun ama bunu unutmayın" diyerek vurguladığı klinik uyarı ile kopan uzuv ve burun kanaması müdahalesi hangi seçenekte doğru verilmiştir?'
+        opt: 'LC50 (Ölümcül Konsantrasyon 50)',
+        desc: 'Belirli bir süre boyunca solunduğunda test edilen deney hayvanlarının %50\'sinin ölümüne neden olan havadaki kimyasal konsantrasyondur (ppm veya mg/m³).',
+        q: 'Hava yoluyla solunan toksik gaz veya buharların deney hayvanlarının %50\'sinin ölümüne yol açan havadaki hacimsel konsantrasyonu hangisidir?'
       }
     ]
   },
   {
-    groupName: '4. Modül: Meslek Hastalıklarına Giriş, Yükümlülük/Maruziyet Süreleri ve Tanı Süreci (Doç. Dr. Mehtap Savran 4. PPTX)',
+    groupName: '3. Modül: Bilinç Değerlendirme ve Yaşam Bulguları',
     items: [
       {
-        opt: 'Çalışanlarda Sağlık Sorunları Dağılımı',
-        desc: '4. PPTX Slayt 3-9: Çalışanlarda en sık "Genel sağlık sorunları", ikinci sıklıkta "İşle ilgili hastalıklar" (Koroner Kalp Hastalıkları - KKH, KOAH, Kas-İskelet Sistemi Hastalıkları - KİSH), en seyrek olarak ise "Meslek hastalıkları" görülür.',
-        q: '4. Hafta Meslek Hastalıklarına Giriş sunumuna göre; çalışanlarda görülen sağlık sorunlarının görülme sıklığı (en sıktan en seyreğe) ve en sık görülen "İşle İlgili Hastalıklar" hangisinde doğru verilmiştir?'
+        opt: '1. Derece Bilinç Kaybı',
+        desc: 'Sözlü, gürültülü ve sesli uyarılara cevap verebilen, hafif konfüzyon ve uykuya meyil ile seyreden bilinç düzeyi.',
+        q: 'İlk yardımda bilinç düzeyi değerlendirilirken; "yalnızca sesli ve sözlü uyarılara cevap veren" hasta kaçıncı derece bilinç kaybındadır?'
       },
       {
-        opt: 'Meslek Hastalığı ve İşle İlgili Hastalık Farkı',
-        desc: '4. PPTX Slayt 5-14: İşle ilgili hastalıklarda yapılan iş ile hastalık arasında doğrudan/spesifik bir neden-sonuç ilişkisi yoktur; çalışma koşulları hastalığın ortaya çıkmasını kolaylaştırıcı veya ağırlaştırıcı rol oynar. Meslek hastalıklarında ise çalışma koşullarındaki etken hastalığın doğrudan ve vazgeçilmez tek nedenidir (spesifik sebep-sonuç ilişkisi vardır).',
-        q: 'Hukuki ve tıbbi ayırıcı tanı açısından "Meslek Hastalığı" ile "İşle İlgili Hastalık" arasındaki en temel fark aşağıdakilerden hangisidir?'
+        opt: '2. Derece Bilinç Kaybı',
+        desc: 'Sözlü uyarılara hiçbir yanıt vermeyip sadece ağrılı uyarılara (omuz sıkma vb.) yanıt veren bilinç düzeyi.',
+        q: 'İlk yardımda sözlü uyarılara cevap vermeyen, ancak omzundan sıkıldığında ağrılı uyarana tepki veren bir kazazede kaçıncı derece bilinç kaybındadır?'
       },
       {
-        opt: 'Yükümlülük Süresi Tanımı',
-        desc: '4. PPTX Slayt 12 & 32: Yükümlülük süresi; çalışanın meslek hastalığına sebep olan işinden fiilen ayrıldığı tarih ile meslek hastalığının ortaya çıktığı tarih arasında geçen en uzun süredir (işten ayrıldıktan sonra hak iddia edebilme süresidir).',
-        q: 'Çalışanın meslek hastalığına sebep olan işinden fiilen ayrıldığı tarih ile meslek hastalığının ortaya çıktığı tarih arasında geçen EN UZUN süreye (işten ayrıldıktan sonra hak iddia edebilme süresine) ne ad verilir?'
+        opt: '3. Derece Bilinç Kaybı (Koma)',
+        desc: 'Sözlü ve ağrılı tüm uyarılara tamamen tepkisiz olan en derin ve hayati risk taşıyan bilinç kaybı tablosudur.',
+        q: 'İlk yardımda sözlü ve ağrılı tüm uyarılara karşı tamamen tepkisiz olan en ağır bilinç kaybı (Koma tablosu) kaçıncı derece bilinç kaybı olarak tanımlanır?'
       },
       {
-        opt: 'Meslek Hastalıklarında Yükümlülük Süreleri',
-        desc: '4. PPTX Slayt 33: Yükümlülük süreleri; Benzene bağlı lösemi -> 10 yıl, Silikozis -> 10 yıl, Bisinozis -> 3 yıl, Tozlu ortamda pnömokonyoz -> 3 yıl, Kronik kurşun zehirlenmesi -> 3 yıl, Gürültülü ortamda işitme kaybı -> 6 ay, Akut arsenik zehirlenmesi -> 1 aydır.',
-        q: '4. Hafta ders sunumunda yer alan tabloya göre; "Silikozis / Benzene bağlı lösemi", "Bisinozis / Kronik kurşun zehirlenmesi" ve "Gürültülü ortamda işitme kaybı" için belirlenen Yükümlülük Süreleri sırasıyla nedir?'
+        opt: 'Hipotermi (< 34.5°C)',
+        desc: 'Vücut sıcaklığının 34.5°C\'nin altına düşmesiyle yaşamsal fonksiyonların yavaşladığı, 31°C altında ise ölümcül olan vücut soğuması durumu.',
+        q: 'İlk yardımda vücut çekirdek sıcaklığının 34,5°C altına düşmesi ve 31°C altında ölümcül sonuçlar doğurması tablosu nasıl adlandırılır?'
       },
       {
-        opt: 'Maruziyet (Maruz Kalım) Süresi Tanımı',
-        desc: '4. PPTX Slayt 13 & 34: Maruz kalım (maruziyet) süresi; bir meslek hastalığının oluşabilmesi için risk faktörü ile karşılaşılması gereken EN AZ süredir. Mevzuatta yalnız iki hastalık için belirtilmiştir: Pnömokonyoz için en az 3 yıl; Gürültüye bağlı işitme kaybı için en az 2 yıl (gürültü şiddeti sürekli 85 dB\'nin üstünde ise en az 30 gün).',
-        q: 'Bir meslek hastalığının oluşabilmesi için zararlı etkenle karşılaşılması gereken EN AZ süreye ne ad verilir ve mevzuatta "Pnömokonyoz" ile "Gürültüye bağlı işitme kaybı (85 dB üstü)" için bu asgari süreler kaçtır?'
+        opt: 'Normal Vücut Sıcaklığı (36.5°C)',
+        desc: 'Koltuk altından ölçülen sağlıklı ve dengeli normotermik vücut sıcaklığı değeri.',
+        q: 'İlk yardım standartlarında koltuk altından ölçülen sağlıklı bir yetişkinin normal vücut ısısı referans değeri kaçtır?'
       },
       {
-        opt: 'Meslek Hastalıkları Listesi 5 Ana Grubu',
-        desc: '4. PPTX Slayt 18 & 36: Çalışma Gücü ve Meslekte Kazanma Gücü Kaybı Oranı Tespit İşlemleri Yönetmeliğine göre meslek hastalıkları 5 grupta sınıflandırılmıştır: A Grubu (Kimyasal), B Grubu (Mesleki Deri), C Grubu (Pnömokonyozlar ve Diğer Mesleki Solunum Sistemi), D Grubu (Mesleki Bulaşıcı), E Grubu (Fizik Etkenlerle Olan Meslek Hastalıkları).',
-        q: 'Mevzuatımızda 5 ana grupta (A, B, C, D, E) sınıflandırılan Meslek Hastalıkları listesinde "C Grubu" ve "E Grubu" sırasıyla hangi hastalıkları kapsar?'
+        opt: 'Hipertermi / Yüksek Ateş (> 38.0°C)',
+        desc: 'Vücut sıcaklığının 38.0°C üzerine çıkması; 41-42°C üzerine ulaştığında ise enzimlerin denatüre olarak hayati tehlike oluşturduğu durumdur.',
+        q: 'İlk yardımda vücut sıcaklığının 38,0°C\'nin üzerine çıkması ve 41-42°C\'yi aştığında beyin hasarı ve ölüm riski yaratması tablosu hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '3. Modül: Dolaşım Yetmezliği ve Akut Şok Türleri',
+    items: [
+      {
+        opt: 'Hipovolemik Şok',
+        desc: 'Şiddetli dış/iç kanama, ağır yanık veya aşırı sıvı kaybı (dehidratasyon) nedeniyle dolaşımdaki kan hacminin yetersiz kalmasıyla gelişen şok.',
+        q: 'Şiddetli kanama, geniş yanıklar veya aşırı kusma/ishal sonucunda vücuttaki sıvı ve kan hacminin (volümünün) azalmasına bağlı gelişen şok türü hangisidir?'
       },
       {
-        opt: 'Bisinozis ve Standart Akciğer Grafisi',
-        desc: '4. PPTX Slayt 21-22: Belirtilerin çalışma temposuyla ilişkisi tanı koydurucudur; "Pazartesi sabahları işe gelince artan nefes darlığı" pamuk tozuna bağlı Bisinozis için tipiktir. Mesleksel akciğer hastalıklarının (pnömokonyozların) tanısında ve ILO sınıflandırmasında en etkili yöntem radyolojik "Standart Akciğer Grafisi"dir.',
-        q: '4. Hafta ders sunumuna göre; "Pazartesi sabahları işe başlandığında artan tipik nefes darlığı" hangi meslek hastalığı için karakteristiktir ve mesleksel akciğer hastalıklarının sınıflandırılmasında en etkili radyolojik yöntem hangisidir?'
+        opt: 'Kardiyojenik Şok',
+        desc: 'Kalp krizinde miyokard dokusunun hasar görmesi sonucu kalbin dokulara yeterli kan pompalayamamasıyla gelişen şok türüdür.',
+        q: 'Kalp kasının enfarktüs veya yetmezlik nedeniyle vücudun ihtiyaç duyduğu debide kan pompalayamaması sonucu ortaya çıkan şok türü hangisidir?'
       },
       {
-        opt: 'Meslek Hastalıkları Görülme Sıklığı ve Rücu Davası',
-        desc: '4. PPTX Slayt 29-31: Meslek hastalıklarının görülme sıklığı tüm dünyada binde 4–12 iken, Türkiye\'de tanı/bildirim eksikliği nedeniyle binde 0,07 düzeyindedir. Meslek hastalığının oluşmasında işverenin önlem almada belirgin ihmali saptanırsa SGK ödediği tazminatı işverene "Rücu Davası" ile yöneltir.',
-        q: 'Doç. Dr. Mehtap Savran\'ın sunumuna göre; meslek hastalıklarının dünyada ve Türkiye\'de görülme sıklığı oranları ile işverenin ihmali durumunda sigortanın ödediği tazminatı işverene yöneltmesi davası hangisinde doğru verilmiştir?'
+        opt: 'Anafilaktik Şok',
+        desc: 'Alerjen madde, ilaç veya böcek sokması sonucu aşırı histamin salınımıyla periferik damarların aniden genişlemesiyle oluşan şiddetli alerjik şok.',
+        q: 'Arı sokması, antibiyotik veya yabancı protein maruziyeti sonucu yaygın damar genişlemesi ve hava yolu ödemiyle seyreden şiddetli alerjik şok türü hangisidir?'
       },
       {
-        opt: 'Meslek Hastalığı Tanısına Yetkili Sağlık Kurumları',
-        desc: '4. PPTX Slayt 37 & 39: Türkiye\'de yasal olarak meslek hastalığı tıbbi tanısı yalnız 3 sağlık kuruluşunda konulabilir: 1) Meslek Hastalıkları Hastaneleri (Ankara, İstanbul, Zonguldak), 2) Kamu Üniversitesi Tıp Fakültesi Hastaneleri, 3) Sağlık Bakanlığı Eğitim ve Araştırma Hastaneleri.',
-        q: '4. Hafta ders sonu sorularında da vurgulandığı üzere; Türkiye\'de yasal olarak "Meslek Hastalığı Tanısı" koymaya yetkili 3 sağlık kuruluşu aşağıdakilerden hangisidir?'
+        opt: 'Septik Şok',
+        desc: 'Ağır bakteriyel enfeksiyonlarda kana karışan toksinlerin tüm damar yatağını genişletmesi ve tansiyonu düşürmesiyle gelişen şok türüdür.',
+        q: 'Ağır bakteriyel enfeksiyonlar sonucu kana karışan mikroorganizma toksinlerinin dolaşım sistemini çökertmesiyle meydana gelen şok türü hangisidir?'
+      },
+      {
+        opt: 'Nörojenik Şok',
+        desc: 'Omurilik travması veya sinir sistemi hasarı sonucu vazomotor kontrolün kaybolmasıyla kanın genişleyen damarlarda göllenmesiyle oluşan şok.',
+        q: 'Omurilik yaralanmaları veya merkezi sinir sistemi travmaları neticesinde damar tonusunun kaybolması ve kanın alt ekstremitelerde göllenmesiyle gelişen şok hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '3. Modül: Kanama Çeşitleri ve Damar Özellikleri',
+    items: [
+      {
+        opt: 'Atardamar (Arteriyel) Kanaması',
+        desc: 'Kalp atımlarıyla uyumlu kesik kesik ve fışkırır tarzda, temiz oksijenli kan taşıdığı için parlak kırmızı renkte olan en tehlikeli kanama türüdür.',
+        q: '14 Ekim dersine göre; kalp atımlarıyla senkronize kesik kesik fışkıran ve açık parlak kırmızı renkte hızla boşalan kanama türü hangisidir?'
+      },
+      {
+        opt: 'Toplardamar (Venöz) Kanaması',
+        desc: 'Kirli kan taşıdığı için koyu kırmızı renkte olan, fışkırmadan sürekli bir sızıntı veya taşma şeklinde yavaşça akan kanama türüdür.',
+        q: 'Koyu kırmızı renkte olan, fışkırma göstermeksizin sürekli akıntı ve taşma şeklinde seyreden kanama türü hangisidir?'
+      },
+      {
+        opt: 'Kılcal Damar (Kapiller) Kanaması',
+        desc: 'Yüzeysel deri sıyrıklarında görülen, küçük damlacıklar halinde sızan ve genellikle pıhtılaşma mekanizmasıyla kendiliğinden duran kanama.',
+        q: 'Küçük kabarcıklar ve damlacıklar şeklinde sızan, basıncı en düşük olan ve genellikle kendiliğinden duran kanama türü hangisidir?'
+      },
+      {
+        opt: 'İç Kanama',
+        desc: 'Dışarıdan kan görülmeyen ancak kafatası, göğüs veya karın boşluğuna kan toplanmasıyla hızla şok tablosu geliştiren sinsi kanama türü.',
+        q: 'Dışarıya açık bir yara olmaksızın vücut boşluklarına veya organ içine kan birikmesiyle seyreden ve hipotansiyonla şoka götüren kanama türü hangisidir?'
+      },
+      {
+        opt: 'Doğal Deliklerden Olan Kanama',
+        desc: 'Kulak, burun, ağız, anüs veya ürogenital yoldan kaynaklanan ve iç organ hasarının veya kafa tabanı kırığının habercisi olan kanamalardır.',
+        q: 'Kulak, burun, anüs gibi organlardan gelen ve kafa tabanı kırığı ya da iç organ yaralanmasını işaret edebilen kanamalara ne ad verilir?'
+      }
+    ]
+  },
+  {
+    groupName: '4. Modül: Meslek Hastalıkları Yasal Süreleri ve Standartları',
+    items: [
+      {
+        opt: 'Yükümlülük Süresi',
+        desc: 'Çalışanın meslek hastalığına sebep olan işinden fiilen ayrıldığı tarih ile meslek hastalığının ortaya çıktığı tarih arasında geçen en uzun süredir.',
+        q: 'Çalışanın meslek hastalığına neden olan işinden fiilen ayrıldığı tarih ile meslek hastalığının ortaya çıktığı tarih arasında geçen EN UZUN yasal süreye ne ad verilir?'
+      },
+      {
+        opt: 'Maruziyet (Maruz Kalım) Süresi',
+        desc: 'Bir meslek hastalığının klinik olarak ortaya çıkabilmesi için zararlı etkenle karşılaşılması gereken asgari (en az) karşılaşma süresidir.',
+        q: 'Bir meslek hastalığının meydana gelebilmesi için zararlı risk faktörü ile karşılaşılması gereken EN AZ (asgari) süreye ne ad verilir?'
+      },
+      {
+        opt: 'Pnömokonyoz Maruziyet Süresi (3 Yıl)',
+        desc: 'Mevzuatta bir solunum yolu hastalığının tozlu ortamda meslek hastalığı sayılabilmesi için şart koşulan asgari 3 yıllık çalışma süresidir.',
+        q: 'Mevzuatımıza göre bir çalışanda Pnömokonyozun meslek hastalığı kabul edilebilmesi için tozlu ortamda en az kaç yıl fiilen çalışmış olması şarttır?'
+      },
+      {
+        opt: 'Gürültüye Bağlı İşitme Kaybı Maruziyet Süresi (2 Yıl)',
+        desc: 'Gürültülü ortamda işitme kaybının meslek hastalığı sayılabilmesi için aranan asgari 2 yıl (85 dB üstünde sürekli ise 30 gün) süredir.',
+        q: 'Gürültülü işlerde işitme kaybının meslek hastalığı sayılabilmesi için mevzuatta aranan genel asgari maruziyet süresi (ve 85 dB üstü istisnası) nedir?'
+      },
+      {
+        opt: 'Silikozis ve Lösemi Yükümlülük Süresi (10 Yıl)',
+        desc: 'Silis tozu ve benzene maruz kalan çalışanların işten ayrıldıktan sonra meslek hastalığı hak iddia edebileceği 10 yıllık yükümlülük süresidir.',
+        q: 'Ders notlarındaki tabloya göre; silis tozuna bağlı Silikozis ve benzene bağlı Lösemi için belirlenen yasal Yükümlülük Süresi kaç yıldır?'
+      },
+      {
+        opt: 'Gürültüye Bağlı İşitme Kaybı Yükümlülük Süresi (6 Ay)',
+        desc: 'Gürültülü iş yerinden ayrıldıktan sonra işitme kaybı iddiasıyla SGK\'ya başvurulabilecek azami 6 aylık yasal yükümlülük süresidir.',
+        q: 'Gürültülü ortamda çalışan bir işçinin işinden ayrıldıktan sonra gürültüye bağlı işitme kaybı için hak iddia edebileceği azami Yükümlülük Süresi nedir?'
+      }
+    ]
+  },
+  {
+    groupName: '4. Modül: Meslek Hastalıkları Yasal Listesi 5 Ana Grubu',
+    items: [
+      {
+        opt: 'A Grubu: Kimyasal Maddelerle Olan Meslek Hastalıkları',
+        desc: 'Ağır metaller (kurşun, civa, arsenik), organik solventler, gazlar ve kimyasalların yol açtığı meslek hastalıkları grubudur.',
+        q: 'Mevzuatımızdaki Meslek Hastalıkları Listesinde kurşun, cıva, arsenik ve solvent zehirlenmelerini içeren "A Grubu" hangi etkenleri kapsar?'
+      },
+      {
+        opt: 'B Grubu: Mesleki Deri Hastalıkları',
+        desc: 'Deri kanserleri, mesleki temas dermatiti, egzama ve derideki kimyasal/fiziksel lezyonları kapsayan meslek hastalıkları grubudur.',
+        q: 'Meslek Hastalıkları Listesinde yer alan ve mesleki temas dermatiti, egzama ve deri kanserlerini kapsayan grup hangisidir?'
+      },
+      {
+        opt: 'C Grubu: Pnömokonyozlar ve Solunum Sistemi Hastalıkları',
+        desc: 'Silikozis, asbestozis, kömür işçisi pnömokonyozu ve bisinozis gibi mesleksel akciğer hastalıklarını içeren gruptur.',
+        q: 'Meslek Hastalıkları Listesinde Silikozis, Asbestozis ve Bisinozis gibi mesleki akciğer hastalıklarını kapsayan "C Grubu" hangisidir?'
+      },
+      {
+        opt: 'D Grubu: Mesleki Bulaşıcı Hastalıklar',
+        desc: 'Sağlık çalışanları ve hayvancılık işlerinde görülen viral hepatit, tüberküloz, şarbon, bruselloz gibi enfeksiyonları kapsayan gruptur.',
+        q: 'Sağlık personeli ve hayvancılık çalışanlarında görülen viral hepatit, tüberküloz, şarbon ve bruselloz gibi hastalıklar hangi meslek hastalığı grubundadır?'
+      },
+      {
+        opt: 'E Grubu: Fizik Etkenlerle Olan Meslek Hastalıkları',
+        desc: 'Gürültüye bağlı işitme kaybı, el-kol/tüm vücut titreşimi, dekompresyon (vurgun), iyonlaştırıcı radyasyon hastalıklarını kapsayan gruptur.',
+        q: 'Meslek Hastalıkları Listesinde gürültüye bağlı işitme kaybı, titreşim bozuklukları ve termal radyasyon hastalıklarını kapsayan grup hangisidir?'
+      }
+    ]
+  },
+  {
+    groupName: '4. Modül: Meslek Hastalığı Tanı Yetkisi ve Yasal Kurumlar',
+    items: [
+      {
+        opt: 'Meslek Hastalıkları Hastaneleri',
+        desc: 'Ankara, İstanbul ve Zonguldak\'ta faaliyet gösteren ve meslek hastalığı tanısı koymaya yetkili özel dal kamu hastaneleridir.',
+        q: 'Türkiye\'de Ankara, İstanbul ve Zonguldak\'ta faaliyet gösteren ve meslek hastalıkları konusunda uzmanlaşmış yetkili sağlık kuruluşu hangisidir?'
+      },
+      {
+        opt: 'Üniversite Tıp Fakültesi Hastaneleri',
+        desc: 'Mevzuata göre Türkiye\'de yasal olarak meslek hastalığı tıbbi tanısı koymaya yetkili kamu üniversite hastaneleridir.',
+        q: 'Mevzuatımızda Meslek Hastalıkları Hastaneleri dışında meslek hastalığı tıbbi tanısı koymaya yasal olarak yetkili kılınan kamu yükseköğretim kurumları hangileridir?'
+      },
+      {
+        opt: 'Sağlık Bakanlığı Eğitim ve Araştırma Hastaneleri',
+        desc: 'Sağlık Bakanlığı\'na bağlı olarak meslek hastalığı tıbbi raporu ve tanısı düzenleme yetkisine sahip kamu hastaneleridir.',
+        q: 'Sağlık Bakanlığı bünyesinde bulunan ve meslek hastalığı tanısı koymaya yasal yetkisi olan üçüncü basamak kamu hastaneleri hangileridir?'
+      },
+      {
+        opt: 'Sosyal Güvenlik Yüksek Sağlık Kurulu',
+        desc: 'Meslek hastalığı tıbbi tanısı veya meslekte kazanma gücü kayıp oranına yapılan itirazları inceleyip nihai karara bağlayan en üst kuruldur.',
+        q: 'Meslek hastalığı tespitine ve iş göremezlik derecesine yapılan itirazları inceleyerek nihai karara bağlayan Sosyal Güvenlik Kurumu üst kurulu hangisidir?'
+      },
+      {
+        opt: 'SGK Rücu Davası',
+        desc: 'İşverenin İSG önlemlerini almaması veya ağır ihmali durumunda SGK\'nın işçiye ödediği tazminatı işverenden tahsil etmek için açtığı davadır.',
+        q: 'İşverenin önlem alma yükümlülüğünü ihlal etmesi durumunda SGK\'nın mağdur işçiye ödediği tedavi ve iş göremezlik bedellerini işverene rücu ettiği dava hangisidir?'
       }
     ]
   }
@@ -217,13 +317,13 @@ export const ilkyardimConceptGroups = [
 
 export const ilkyardimExtraFill = [
   { q: 'Dünya Sağlık Örgütü (WHO) ve ILO\'ya göre İSG; tüm mesleklerde işçilerin sadece fiziksel değil, _______, ruhsal ve sosyal iyilik durumlarını en üst düzeye ulaştırmak ve sürdürmektir.', a: 'bedensel', alts: ['fiziksel'], exp: '1. PPTX Slayt 3: Bedensel, ruhsal ve sosyal iyilik hali.' },
-  { q: 'M.Ö. 370 yılında kurşunun zararlı etkilerinden ilk kez söz ederek "kurşun koliği" ve "kurşun anemisi"ni tanımlayan antik çağ hekimi _______\'tır.', a: 'hipokrat', alts: ['hipokrates'], exp: '1. PPTX Slayt 5: Kurşun koliği ve anemisini ilk tanımlayan Hipokrat\'tır.' },
-  { q: 'Roma döneminde zehirleri "bitkisel, hayvansal ve mineral kaynaklı" olarak üç gruba ayıran bilim insanı _______\'tir.', a: 'dioscorides', alts: ['diaskorides'], exp: '1. PPTX Slayt 6: Zehirleri 3 gruba ayıran Dioscorides\'tir.' },
-  { q: 'Çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine geçmek üzere başlarına torba geçirmelerini öneren Romalı düşünür _______\'dir.', a: 'plini', alts: ['plinius', 'yaşlı plini'], exp: '1. PPTX Slayt 7: Toza karşı başa torba (maske) öneren Plini\'dir.' },
-  { q: 'Tirol maden işletmelerinde işyeri hekimi olarak çalışan, pnömokonyozları inceleyen ve toksikolojide "Doz" kavramını ortaya koyan Alman hekim _______\'tur.', a: 'paracelsus', alts: ['paraselsus'], exp: '1. PPTX Slayt 8: Tirol madenlerinde çalışan hekim Paracelsus\'tur.' },
-  { q: 'Dünyada ilk mineraloji bilgini kabul edilen ve madenlerdeki zehirler ile koruyucu önlemleri "De Re Metallica" eserinde anlatan bilim insanı Georgius _______\'dır.', a: 'agricola', alts: [], exp: '1. PPTX Slayt 9: İlk mineraloji bilgini Georgius Agricola\'dır.' },
-  { q: '1700 yılında yazdığı "De Morbis Artificum Diatriba" kitabıyla iş sağlığının kurucusu kabul edilen ve hekimlere "Hastalarınıza mesleğini sorunuz" diyen İtalyan hekim Bernardino _______\'dir.', a: 'ramazzini', alts: [], exp: '1. PPTX Slayt 10: İş sağlığının babası Bernardino Ramazzini\'dir.' },
-  { q: 'Sanayi Devrimi döneminde baca temizleyicilerinde kurum maruziyetine bağlı "skrotum (testis) kanserini" tanımlayan İngiliz cerrah Percival _______\'tur.', a: 'pott', alts: [], exp: '1. PPTX Slayt 13: Baca temizleyicilerinde skrotum kanserini tanımlayan Percival Pott\'tur.' },
+  { q: 'M.Ö. 370 yılında kurşunun zararlı etkilerinden ilk kez söz ederek "kurşun koliği" ve "kurşun anemisi"ni tanımlayan antik çağ hekimi ______\'tır.', a: 'hipokrat', alts: ['hipokrates'], exp: '1. PPTX Slayt 5: Kurşun koliği ve anemisini ilk tanımlayan Hipokrat\'tır.' },
+  { q: 'Roma döneminde zehirleri "bitkisel, hayvansal ve mineral kaynaklı" olarak üç gruba ayıran bilim insanı ______\'tir.', a: 'dioscorides', alts: ['diaskorides'], exp: '1. PPTX Slayt 6: Zehirleri 3 gruba ayıran Dioscorides\'tir.' },
+  { q: 'Çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine geçmek üzere başlarına torba geçirmelerini öneren Romalı düşünür ______\'dir.', a: 'plini', alts: ['plinius', 'yaşlı plini'], exp: '1. PPTX Slayt 7: Toza karşı başa torba (maske) öneren Plini\'dir.' },
+  { q: 'Tirol maden işletmelerinde işyeri hekimi olarak çalışan, pnömokonyozları inceleyen ve toksikolojide "Doz" kavramını ortaya koyan Alman hekim ______\'tur.', a: 'paracelsus', alts: ['paraselsus'], exp: '1. PPTX Slayt 8: Tirol madenlerinde çalışan hekim Paracelsus\'tur.' },
+  { q: 'Dünyada ilk mineraloji bilgini kabul edilen ve madenlerdeki zehirler ile koruyucu önlemleri "De Re Metallica" eserinde anlatan bilim insanı Georgius ______\'dır.', a: 'agricola', alts: [], exp: '1. PPTX Slayt 9: İlk mineraloji bilgini Georgius Agricola\'dır.' },
+  { q: '1700 yılında yazdığı "De Morbis Artificum Diatriba" kitabıyla iş sağlığının kurucusu kabul edilen ve hekimlere "Hastalarınıza mesleğini sorunuz" diyen İtalyan hekim Bernardino ______\'dir.', a: 'ramazzini', alts: [], exp: '1. PPTX Slayt 10: İş sağlığının babası Bernardino Ramazzini\'dir.' },
+  { q: 'Sanayi Devrimi döneminde baca temizleyicilerinde kurum maruziyetine bağlı "skrotum (testis) kanserini" tanımlayan İngiliz cerrah Percival ______\'tur.', a: 'pott', alts: [], exp: '1. PPTX Slayt 13: Baca temizleyicilerinde skrotum kanserini tanımlayan Percival Pott\'tur.' },
   { q: 'Türkiye\'de ilk Meslek Hastalıkları Hastanesi 1949 yılında _______ Nişantaşı\'nda kurulmuştur (ardından 1977 Ankara ve 1994 Zonguldak).', a: 'istanbul', alts: ['i̇stanbul'], exp: '1. PPTX Slayt 26: 1949 İstanbul Nişantaşı Meslek Hastalıkları Hastanesi.' },
   { q: 'Bir kimyasalın vücudun belli bir bölgesinde yeterli konsantrasyona (doza) ulaştığı zaman oluşturduğu hasar veya zarar kapasitesine _______ denir.', a: 'toksisite', alts: ['zehirlilik'], exp: '2. PPTX Slayt 3: Hasar veya zarar kapasitesine toksisite denir.' },
   { q: 'Çalışmaya başlamadan önce kişinin niteliklerinin belirlenmesi ve bu niteliklere uyan bir işe yerleştirilmesi (uygun işe yerleştirme) amacıyla yapılan muayeneye _______ muayenesi denir.', a: 'işe giriş', alts: ['ise giris', 'başlangıç'], exp: '2. PPTX Slayt 11: Uygun işe yerleştirme amacıyla işe giriş muayenesi yapılır.' },

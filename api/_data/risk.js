@@ -122,7 +122,7 @@ export const riskCourse = {
         "İş güvenliği uzmanı ve işyeri hekimi",
         "İşyerindeki çalışan temsilcileri",
         "İşyerindeki destek elemanları",
-        "İşyerinin mali müşaviri / vergi denetmeni"
+        "İşyerinin İnsan Kaynakları Müdürü / Bordro ve Özlük Şefi"
       ],
       answer: 4,
       explanation: "Risk değerlendirme ekibi; işveren/vekili, İSG uzmanı, işyeri hekimi, çalışan temsilcileri, destek elemanları ve işyerindeki tehlikeler konusunda bilgisi olan çalışanlardan oluşur.",
@@ -131,7 +131,7 @@ export const riskCourse = {
         "İş güvenliği uzmanı ve işyeri hekimi ekibin teknik ve tıbbi uzman üyeleridir.",
         "Çalışan temsilcileri saha çalışanlarının görüşlerini yansıtmak üzere ekipte zorunlu olarak yer alır.",
         "Destek elemanları (yangın, ilk yardım, arama-kurtarma görevlileri) ekipte yer alır.",
-        "DOĞRU (DEĞİLDİR): Mali müşavir veya vergi denetmeni Risk Değerlendirmesi Yönetmeliği'ndeki ekip üyeleri arasında yer almaz."
+        "DOĞRU (DEĞİLDİR): İnsan Kaynakları Müdürü veya Özlük Şefi Risk Değerlendirmesi Yönetmeliği Madde 6'da sayılan zorunlu ekip üyeleri arasında yer almaz."
       ]
     },
     {
@@ -233,19 +233,19 @@ export const riskCourse = {
       q: "İş Sağlığı ve Güvenliği Risk Değerlendirmesi Yönetmeliği'ne göre risk değerlendirmesi sürecinin 5 temel aşaması hangi sırayla yürütülür?",
       options: [
         "Tasarım -> Tehlikeleri tanımlama -> Riskleri belirleme ve analiz -> Risk kontrol tedbirleri -> Dokümantasyon",
-        "Dokümantasyon -> Ceza yazma -> Tehlike tanımlama -> Analiz -> KKD dağıtımı",
-        "KKD dağıtımı -> Risk analizi -> Tehlike tespiti -> Yenileme -> Kapatma",
-        "Ölçüm -> Kaza inceleme -> Tazminat -> Raporlama -> Arşivleme",
-        "Sadece saha turu ve fotoğraf çekimi"
+        "Risk analizi -> Tehlike tanımlama -> Dokümantasyon -> Risk kontrol adımları -> Denetim",
+        "Risk kontrol tedbirlerinin uygulanması -> Tehlike tanımlama -> Ramak kala bildirimi -> Dokümantasyon -> Arşivleme",
+        "Dokümantasyon -> Tehlikelerin belirlenmesi -> Risk analizi -> Acil durum planı -> Faaliyet durdurma",
+        "İş sağlığı gözetimi -> Tehlike analizi -> Kontrol önlemleri -> Yıllık değerlendirme raporu -> Sertifikasyon"
       ],
       answer: 0,
       explanation: "Süreç: 1) Tasarım/Planlama, 2) Tehlikelerin tanımlanması, 3) Risklerin belirlenmesi ve analizi, 4) Risk kontrol adımları, 5) Dokümantasyon (ve gerektiğinde yenileme) sırasıyla işler.",
       optionExplanations: [
         "DOĞRU: Yönetmelik Madde 7'ye göre: Tasarım -> Tehlikelerin tanımlanması -> Risklerin belirlenmesi ve analizi -> Risk kontrol adımları -> Dokümantasyon.",
-        "Dokümantasyon ilk değil son aşamadır; ayrıca risk değerlendirmesinin amacı ceza yazmak değildir.",
-        "Tehlike tespit edilmeden ve analiz yapılmadan KKD dağıtılamaz; KKD en son kontrol adımıdır.",
-        "Kaza inceleme ve tazminat reaktif süreçlerdir, proaktif risk değerlendirmesi aşamaları değildir.",
-        "Saha turu sadece veri toplama aracıdır, tek başına risk değerlendirmesi sayılmaz."
+        "Tehlikeler tanımlanmadan risk analizi yapılamaz; sıralama yanlıştır.",
+        "Risk kontrol tedbirleri tehlike ve risk analizi yapılmadan uygulanamaz.",
+        "Dokümantasyon ilk adım değil, sürecin son adımıdır.",
+        "İş sağlığı gözetimi hekim faaliyetidir; risk değerlendirmesinin 5 resmi mevzuat aşaması bu şekilde sıralanmaz."
       ]
     },
     {
@@ -283,20 +283,20 @@ export const riskCourse = {
     {
       q: "5x5 L Tipi Matris yönteminde Olasılık = 5 (Çok Yüksek) ve Şiddet = 5 (Ölüm / Sürekli İş Göremezlik) olarak belirlendiğinde Risk Skoru (25) hangi risk bölgesine girer ve ne yapılmalıdır?",
       options: [
-        "Katlanılamaz (Kabul Edilemez) Risk — İş derhal durdurulur, risk düşürülmeden işe başlanmaz",
-        "Önemsiz Risk — Hiçbir önlem gerekmez",
-        "Orta Risk — Mevcut kontroller sürdürülür",
-        "Düşük Risk — Uzun vadede izlenir",
-        "Kabul Edilebilir Risk — Çalışmaya devam edilir"
+        "Kabul Edilemez (Katlanılamaz) Risk (15-25) — İş derhal durdurulur, risk kabul edilebilir seviyeye düşürülmeden işe başlanamaz",
+        "Önemli Risk (9-12) — Risk azaltılıncaya kadar iş başlatılmaz, devam eden iş için acil termin planlanır",
+        "Orta Düzey Risk (4-8) — Belirlenen riskleri düşürmek için önleyici tedbirler planlanır, mevcut kontroller sürdürülür",
+        "Katlanılabilir Risk (2-3) — İlave kontrol sürecine ihtiyaç duyulmayabilir, periyodik izleme yapılır",
+        "Önemsiz Risk (1) — Mevcut kontrol tedbirleri yeterlidir, ilave önleme gerek duyulmaz"
       ],
       answer: 0,
       explanation: "5x5 matriste 15, 16, 20 ve 25 puanlık kırmızı bölge 'Kabul Edilemez (Katlanılamaz) Risk'tir; risk kabul edilebilir düzeye indirilinceye kadar iş başlatılmaz veya devam eden iş derhal durdurulur.",
       optionExplanations: [
-        "DOĞRU: 15-25 puan aralığı kırmızı (Kabul Edilemez) bölgedir; derhal çalışma durdurulur ve acil önlem alınır.",
-        "1-4 puan aralığı yeşil (Kabul Edilebilir / Önemsiz) bölgedir.",
-        "8-12 puan aralığı sarı/turuncu (Orta / Dikkate Değer) bölgedir.",
-        "5-6 puan aralığı düşük risk bölgesidir.",
-        "25 puan en yüksek ölümcül risktir, kesinlikle kabul edilebilir değildir."
+        "DOĞRU: 15-25 puan aralığı kırmızı (Kabul Edilemez / Katlanılamaz) bölgedir; derhal çalışma durdurulur ve acil önlem alınır.",
+        "9-12 puan aralığı turuncu (Önemli Risk) bölgesidir; 25 puan bu bölgeye girmez.",
+        "4-8 puan aralığı sarı (Orta Düzey Risk) bölgesidir.",
+        "2-3 puan aralığı açık yeşil (Katlanılabilir Risk) bölgesidir.",
+        "1 puan koyu yeşil (Önemsiz Risk) bölgesidir."
       ]
     },
     {
@@ -360,38 +360,38 @@ export const riskCourse = {
       q: "İşkazalarının oluşumunu 5 ardışık domino taşına (1-Sosyal çevre/Kalıtım, 2-Kişisel kusurlar, 3-Güvensiz hareket ve güvensiz durumlar, 4-Kaza, 5-Yaralanma/Zarar) benzeten ve kazaları önlemek için 3. taşın çekilmesi gerektiğini belirten araştırmacı ve oranı nedir?",
       options: [
         "H.W. Heinrich — %88 Hareket, %10 Durum, %2 Önlenemez",
-        "Isaac Newton — %50 Hareket, %50 Durum",
-        "Kinney — %100 Makine Hatası",
-        "Ramazzini — %90 Meslek Hastalığı",
-        "Taylor — %100 Yönetim Hatası"
+        "Frank E. Bird — %80 Yönetim Kusuru, %20 Çalışan Hatası",
+        "James Reason — %95 Örgütsel Hata, %5 Bireysel Kusur",
+        "W. Edwards Deming — %85 Sistemik Hata, %15 Operatör Kusuru",
+        "Dan Petersen — %100 Ergonomik Uyumsuzluk"
       ],
       answer: 0,
       explanation: "Heinrich'in Domino Teorisine göre kazaların %88'i insana bağlı güvensiz davranışlardan, %10'u ortama bağlı güvensiz durumlardan, %2'si ise kaçınılmaz/beklenmedik olaylardan kaynaklanır.",
       optionExplanations: [
         "DOĞRU: Heinrich Domino Teorisini ortaya koymuş ve %88 Güvensiz Hareket - %10 Güvensiz Durum - %2 Önlenemez kuralını tanımlamıştır.",
-        "Newton klasik mekaniğin kurucusudur, İSG kaza teorisyeni değildir.",
-        "Kinney, Fine-Kinney risk değerlendirme metodunu geliştiren araştırmacıdır.",
-        "Ramazzini meslek hastalıklarının babasıdır.",
-        "Taylor bilimsel yönetim yaklaşımının kurucusudur."
+        "Frank Bird Kayıp Kontrol Piramidini (1:10:30:600) ve kaza nedenleri teorisini geliştirmiştir.",
+        "James Reason İsviçre Peyniri Modelinde aktif ve gizli hataları açıklamıştır.",
+        "Deming Toplam Kalite Yönetimi ve PUKÖ döngüsünü geliştirmiştir.",
+        "Dan Petersen İSG yönetiminde insan faktörleri ve çalışan motivasyonu üzerine çalışmıştır."
       ]
     },
     {
       q: "Yeni kurulan bir işyerinde veya daha önce hiç risk değerlendirmesi yapılmamış bir işletmede risk değerlendirmesi çalışmasına ne zaman başlanır?",
       options: [
-        "İşyeri kurulduktan 2 yıl sonra",
-        "İlk iş kazası meydana geldikten hemen sonra",
-        "İşyerinin tasarım veya kuruluş aşamasından itibaren",
-        "Bakanlık müfettişi denetime geldiği gün",
-        "Çalışan sayısı 50'yi geçtiğinde"
+        "İşyerinin tasarım veya kuruluş aşamasından itibaren başlar",
+        "İşyerinde ilk çalışan SGK bildirimi yapıldıktan sonraki 30 gün içinde başlar",
+        "İşyerinin Tehlike Sınıfı Tebliği kapsamında tescil edilmesinden itibaren 6 ay içinde başlar",
+        "İşyerinde çalışan sayısı en az 50'ye ulaşıp İSG Kurulu kurulduğu tarihten itibaren başlar",
+        "Çalışma ve İş Kurumu İl Müdürlüğü'nden işletme belgesi alındıktan sonra başlar"
       ],
-      answer: 2,
+      answer: 0,
       explanation: "Risk Değerlendirmesi Yönetmeliği'ne göre risk değerlendirmesi işyerinin tasarım veya kuruluş aşamasında başlar; 1 çalışanı olan işyerinde dahi yapılması zorunludur.",
       optionExplanations: [
-        "2 yıl çok tehlikeli sınıfta 'yenileme' süresidir, ilk kez yapılma için 2 yıl beklenmez.",
-        "Kaza olmasını beklemek reaktif yaklaşımdır ve kanuna aykırıdır.",
         "DOĞRU: Risk değerlendirmesi proaktif bir süreçtir; işyerinin tasarım/kuruluş aşamasında başlar ve işyeri açılır açılmaz yürürlükte olmalıdır.",
-        "Denetimi beklemek idari para cezası ve işin durdurulması yaptırımına yol açar.",
-        "50 çalışan sınırı İSG Kurulu içindir; risk değerlendirmesi 1 çalışanı olan işyerinde bile zorunludur."
+        "İlk bildirimden sonra 30 gün beklenemez; faaliyet başlamadan önce analiz hazır olmalıdır.",
+        "6 aylık bir muafiyet süresi mevzuatta yoktur.",
+        "50 çalışan sınırı İSG Kurulu içindir; risk değerlendirmesi 1 çalışanı olan işyerinde bile zorunludur.",
+        "İşletme belgesi süreci beklenemez; tasarım aşamasından itibaren riskler tespit edilir."
       ]
     },
     {
@@ -401,7 +401,7 @@ export const riskCourse = {
         "Operatörün makine koruyucusunu sökerek çalışması",
         "Makinenin döner aksamında koruyucu kapağın bulunmaması veya zeminin yağlı/kaygan olması",
         "Forkliftin aşırı hızla kullanılması",
-        "Çalışanın şakalaşması"
+        "Yetkisiz ve ehliyetsiz personelin bakım onarım şalterine müdahale etmesi"
       ],
       answer: 2,
       explanation: "Güvensiz durum; çalışma ortamı, makine veya fiziksel şartlardaki eksikliktir (koruyucusuz makine, kaygan zemin, yetersiz aydınlatma). Diğer şıklar ise çalışanın yaptığı 'Güvensiz Hareket'tir.",
@@ -410,45 +410,45 @@ export const riskCourse = {
         "Mevcut koruyucuyu devre dışı bırakmak çalışanın yaptığı 'Güvensiz Hareket'tir.",
         "DOĞRU: Koruyucusu olmayan makine, kaygan zemin, bozuk topraklama veya yetersiz aydınlatma fiziksel ortama ait 'Güvensiz Durum'dur.",
         "Aşırı hız yapmak sürücünün yaptığı 'Güvensiz Hareket'tir.",
-        "İşyerinde tehlikeli şakalaşmak 'Güvensiz Hareket'tir."
+        "Yetkisiz personelin şaltere müdahalesi kişisel davranışa dayalı 'Güvensiz Hareket'tir."
       ]
     },
     {
       q: "Yapılan risk değerlendirmesi dokümanının sayfaları kimler tarafından paraflanır ve son sayfası kimler tarafından imzalanarak işyerinde saklanır?",
       options: [
-        "Sadece iş güvenliği uzmanı imzalar",
-        "Risk değerlendirmesi ekibinde yer alan tüm üyeler tarafından imzalanır",
-        "Sadece noter tarafından onaylanır",
-        "İmzaya gerek yoktur",
-        "Sadece çalışan temsilcisi imzalar"
+        "Risk değerlendirmesi ekibinde yer alan tüm üyeler tarafından sayfaları paraflanır ve son sayfası imzalanır",
+        "Yalnızca işveren veya işveren vekili tarafından imzalanması mevzuat açısından yeterlidir",
+        "Sadece iş güvenliği uzmanı ve işyeri hekimi tarafından imzalanarak onaylı deftere yapıştırılır",
+        "İşyeri hekimi ve çalışan temsilcisi tarafından imzalanarak İŞKUR İl Müdürlüğü'ne onaylatılır",
+        "İşyerinde kurulu İSG Kurul başkanı ve kurul sekreteri tarafından imzalanır"
       ],
-      answer: 1,
+      answer: 0,
       explanation: "Risk değerlendirmesi dokümanının her sayfası paraflanır ve son sayfası risk değerlendirmesi ekibinde yer alan tüm üyeler tarafından imzalanarak arşivlenir.",
       optionExplanations: [
-        "Sadece uzmanın imzası yeterli değildir; ekip çalışması olduğu için tüm ekip üyelerinin imzası şarttır.",
-        "DOĞRU: Yönetmeliğe göre dokümanın sayfaları numaralandırılarak paraflanır, son sayfası ise tüm ekip üyelerince imzalanır.",
-        "Risk değerlendirmesi raporu için noter onayı şartı yoktur (Onaylı Defter noter/İŞKUR onaylıdır).",
-        "İmzasız risk değerlendirmesi raporu hukuken geçersizdir.",
-        "Tek başına çalışan temsilcisinin imzası yeterli değildir."
+        "DOĞRU: Yönetmeliğe göre dokümanın sayfaları numaralandırılarak tüm ekip üyelerince paraflanır, son sayfası ise tüm ekip üyelerince imzalanır.",
+        "Tek başına işveren imzası yeterli değildir; tüm ekibin katılımı ve imzası şarttır.",
+        "Sadece uzman ve hekim imzası yeterli değildir; çalışan temsilcisi, destek elemanı ve işveren de imzalamalıdır.",
+        "İŞKUR'a onaylatma prosedürü yoktur; işyerinde muhafaza edilir.",
+        "İSG Kurulunun imzası değil, bizzat risk değerlendirmesi ekibi üyelerinin imzası aranır."
       ]
     },
     {
       q: "Aynı çalışma alanını birden fazla işverenin paylaşması durumunda (örneğin bir AVM, iş merkezi veya ortak şantiyede) risk değerlendirmesi nasıl yürütülür?",
       options: [
-        "Hiçbir işveren risk değerlendirmesi yapmaz",
-        "Her işveren kendi yürüttüğü işler için ayrı risk değerlendirmesi yapar ve diğer işverenlerle koordinasyon/işbirliği içinde ortak riskleri değerlendirir",
-        "Sadece en az çalışanı olan işveren yapar",
-        "Sadece bina sahibi kendi ofisi için yapar, diğerleri muaf olur",
-        "Risk değerlendirmesi 10 yılda bir yapılır"
+        "Her işveren kendi yürüttüğü işler için ayrı risk değerlendirmesi yapar; diğer işverenleri etkileyebilecek ortak riskler için işverenler arasında koordinasyon sağlanır",
+        "Ortak alandaki tüm riskler için yalnızca çalışan sayısı en fazla olan ana işveren tek bir değerlendirme yapar",
+        "Mülkiyet sahibi tek bir genel risk analizi hazırlayarak tüm kiracı işverenlere dağıtır ve kiracılar bireysel analizden muaf olur",
+        "Yalnızca çok tehlikeli sınıfta yer alan işveren değerlendirme yapar; az tehlikeli sınıftaki işverenlerin katılımı aranmaz",
+        "Ortak alandaki riskler yalnızca Çalışma ve Sosyal Güvenlik Bakanlığı müfettişlerince tespit edilir"
       ],
-      answer: 1,
+      answer: 0,
       explanation: "Yönetmelik Madde 14'e göre aynı çalışma alanını paylaşan işverenler, yürütülen işler için diğer işverenlerin yürüttüğü işleri de göz önünde bulundurarak ayrı ayrı risk değerlendirmesi gerçekleştirir ve koordinasyon sağlar.",
       optionExplanations: [
-        "Ortak alanda çalışmak risk değerlendirmesi yükümlülüğünü ortadan kaldırmaz.",
         "DOĞRU: Her işveren kendi faaliyetlerinden sorumludur; birbirlerinin çalışmalarından kaynaklanacak ortak tehlikeler için koordinasyon içinde hareket ederler.",
-        "Çalışan sayısına bakılmaksızın tüm işverenler sorumludur.",
-        "Hiçbir işveren muaf değildir.",
-        "Yenileme süreleri tehlike sınıfına göre 2, 4 ve 6 yıldır; 10 yıl diye bir süre yoktur."
+        "Çalışan sayısı en çok olan tek başına yapamaz; her işveren kendi işi için analiz yapmak zorundadır.",
+        "Mülk sahibinin genel analizi kiracıları kendi faaliyetlerinin risk değerlendirmesinden muaf tutamaz.",
+        "Tehlike sınıfı ne olursa olsun tüm işverenlerin katılımı ve koordinasyonu zorunludur.",
+        "Bakanlık denetim organıdır; risk değerlendirmesini yapmak işverenlerin kendi sorumluluğudur."
       ]
     },
     {

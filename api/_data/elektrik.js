@@ -112,20 +112,20 @@ export const elektrikCourse = {
     {
       q: "Elektrik akımına kapılmış bir kazazedeye müdahale ederken ilk yardımcının yapması gereken İLK işlem aşağıdakilerden hangisidir?",
       options: [
-        "Kazazedeyi çıplak elle çekip akımdan kurtarmak",
-        "Kazazedenin üstüne su dökmek",
-        "Önce kendi güvenliğini sağlayarak elektrik enerjisini (şalteri/fişi) kesmek",
-        "Derhal kazazedeye dokunarak kalp masajına başlamak",
-        "Kazazedeye ağzından su içirmek"
+        "Kazazedeyi korumasız elinden veya kolundan tutarak hızla akım bölgesinden çekmek",
+        "İletken profil veya metal çubuk ile kazazedenin üzerindeki kabloyu kenara itmek",
+        "Önce kendi güvenliğini sağlayarak elektrik enerjisini (şalteri/fişi) kesmek veya kuru yalıtkan cisimle teması ayırmak",
+        "Enerji kesilmeden doğrudan solunum ve nabız kontrolü için kazazedenin üzerine eğilmek",
+        "Kazazedenin altına ıslak branda sererek vücut direncini topraklamak"
       ],
       answer: 2,
-      explanation: "Elektrik kazalarında altın kural önce kurtarıcının kendi güvenliğidir: Şalter/sigorta kapatılarak enerji kesilmeli, kesilemiyorsa kuru ve yalıtkan bir cisimle temas ayrılmalıdır.",
+      explanation: "Elektrik kazalarında altın kural önce kurtarıcının kendi güvenliğidir: Şalter/sigorta kapatılarak enerji kesilmeli, kesilemiyorsa kuru ve dielektrik yalıtkan bir cisimle temas ayrılmalıdır.",
       optionExplanations: [
-        "Kazazedeye çıplak elle dokunmak kurtarıcının da elektrik akımına kapılmasına ve ikinci bir kazazedeye dönüşmesine neden olur.",
-        "Su elektriği ilettiği için hem kazazedeye hem kurtarıcıya ölümcül elektrik akımı geçişine sebep olur.",
+        "Kazazedeye korumasız elle temas etmek, kurtarıcının üzerinden de akım geçmesine ve ikinci bir kaza oluşmasına neden olur.",
+        "İletken metal çubuk elektriği doğrudan kurtarıcıya ileterek her iki kişinin de çarpılmasına yol açar.",
         "DOĞRU: İlk yardımın 1. adımı 'Koruma'dır; önce şalter/fiş çekilerek enerji kesilir veya yalıtkan cisimle (kuru tahta/plastik) temas ayrılır.",
-        "Kazazede halen elektrik akımı altındayken kalp masajı yapmak kurtarıcıyı da akıma kapılmasına yol açar.",
-        "Elektrik çarpması vakalarında ve bilinci kapalı/yarı kapalı hastalarda ağızdan su/yiyecek verilmesi soluk borusu tıkanmasına yol açar."
+        "Kazazede halen enerjili iletkenle temas halindeyken üzerine eğilmek ve dokunmak ölümcül elektrik akımına kapılmaya yol açar.",
+        "Islak branda iletkenliği artırarak elektrik devresini kurtarıcı üzerinden tamamlar ve durumu daha da ölümcül hale getirir."
       ]
     },
     {
@@ -195,20 +195,20 @@ export const elektrikCourse = {
     {
       q: "Elektrik tesislerinde 'Dolaylı Dokunma' (normalde gerilim altında olmayan metal gövdenin yalıtım hatası sonucu enerjilenmesi) riskine karşı alınan en temel koruma önlemi hangisidir?",
       options: [
-        "Koruma topraklaması ve Kaçak Akım Rölesi birlikte kullanımı",
-        "Sadece uyarı levhası asmak",
-        "İletken kesitini inceltmek",
-        "Sigorta değerini büyütmek",
-        "Faz sayısını artırmak"
+        "Koruma topraklaması ve Kaçak Akım Rölesi (RCD) ile beslemenin otomatik kesilmesi",
+        "Aktif faz iletkenlerinin en az IP2X standardında koruyucu muhafaza içine alınması",
+        "Gerilimli çıplak baraların erişilemeyecek yükseklik veya mesafeye yerleştirilmesi",
+        "Besleme hattındaki aşırı akım sigorta anma akımının yükseltilmesi",
+        "Enerjili bölümlerin etrafına dielektrik yalıtkan paravan ve koruyucu engel konulması"
       ],
       answer: 0,
-      explanation: "Dolaylı dokunmaya karşı metal gövdelerin topraklanması (koruma topraklaması) ve hata akımını algılayıp devreyi hızla açan Kaçak Akım Rölesi (RCD) kullanımı esastır.",
+      explanation: "Dolaylı dokunmaya karşı en etkili önlem; metal gövdelerin koruma topraklama iletkenine bağlanması ve hata akımında devreyi milisaniyeler içinde açan Kaçak Akım Rölesi (RCD) kullanımıdır.",
       optionExplanations: [
-        "DOĞRU: Metal gövdeye kaçak olduğunda akımın toprağa akması (koruma topraklaması) ve RCD'nin devreyi milisaniyeler içinde kesmesi en etkili korumadır.",
-        "Uyarı levhası sadece idari/bilgilendirici bir önlemdir; gövde kaçağını ve çarpılmayı fiziksel olarak engellemez.",
-        "İletken kesitini inceltmek kablonun aşırı ısınıp yangın çıkarmasına yol açar.",
-        "Sigorta değerini büyütmek hata akımında devrenin açılmasını geciktirerek tehlikeyi büyütür.",
-        "Faz sayısını artırmak güç ihtiyacına yöneliktir, dolaylı dokunma koruması sağlamaz."
+        "DOĞRU: Yalıtım hatasında gövdeye kaçan akım toprağa iletilir ve RCD devreyi milisaniyeler içinde açarak dokunma gerilimini tehlikesiz seviyede sınırlar.",
+        "Aktif faz iletkenlerinin IP2X muhafazaya alınması doğrudan dokunmaya karşı koruma önlemidir.",
+        "Çıplak baraların ulaşılamayacak mesafeye konulması doğrudan dokunmaya karşı koruma önlemidir.",
+        "Sigorta değerini yükseltmek aşırı akım ve yangın riskini artırır; küçük gövde kaçaklarını zaten algılayamaz.",
+        "Enerjili kısımların etrafına paravan konulması doğrudan dokunmayı engellemeye yöneliktir."
       ]
     },
     {
@@ -265,191 +265,191 @@ export const elektrikCourse = {
     {
       q: "Aşağıdakilerden hangisi elektrikte 'Doğrudan Dokunma'ya (normal işletme şartlarında gerilim altında bulunan aktif kısımlara temasa) karşı alınan koruma önlemlerinden biridir?",
       options: [
-        "Aktif bölümlerin yalıtılması, muhafaza içine alınması ve engel konulması",
-        "Cihazın metal gövdesinin boyanması",
-        "Çalışana pamuklu iş eldiveni verilmesi",
-        "Topraklama direncinin yükseltilmesi",
-        "Sadece yangın tüpü bulundurulması"
+        "Aktif bölümlerin yalıtılması, en az IP2X muhafaza içine alınması ve engel konulması",
+        "Cihaz metal gövdelerinin koruma topraklama barasına bağlanması",
+        "Metal gövdeler arasında potansiyel dengeleyici eşpotansiyel kuşaklama yapılması",
+        "Besleme hattına 300 mA yangın koruma rölesi konularak gövde kaçağının beklenmesi",
+        "Elektrik motoru gövdesinin nötr hattına irtibatlandırılması (Sıfırlama)"
       ],
       answer: 0,
       explanation: "Doğrudan dokunmaya karşı koruma; enerjili iletkenlerin yalıtılması, parmak girmeyecek (IP2X) pano/muhafaza içine alınması ve ulaşılamayacak uzaklığa konulması ile sağlanır.",
       optionExplanations: [
         "DOĞRU: Aktif enerjili kısımların izole edilmesi, kilitli pano/muhafaza içine alınması doğrudan dokunmayı fiziksel olarak engeller.",
-        "Metal gövdenin boyanması yalıtım sayılmaz ve doğrudan aktif iletkene teması önlemez.",
-        "Pamuklu eldiven elektriği (özellikle terli iken) iletir; elektrikte sadece TSE/EN 60903 standartlı izole eldiven kullanılır.",
-        "Topraklama direncinin yükseltilmesi tehlikelidir; aksine topraklama direnci mümkün olduğunca düşük olmalıdır.",
-        "Yangın tüpü yangın çıktıktan sonraki reaktif müdahale aracıdır, elektrik çarpmasını önlemez."
+        "Metal gövdelerin koruma topraklamasına bağlanması 'dolaylı dokunmaya' karşı bir önlemdir.",
+        "Eşpotansiyel kuşaklama adımla dokunma gerilimlerini eşitleyen dolaylı dokunma korumasıdır.",
+        "300 mA röle dolaylı dokunma ve yangın koruma içindir, doğrudan temas anında insanı koruyamaz.",
+        "Sıfırlama dolaylı dokunma için geçmişte kullanılan güvensiz bir yöntemdir; doğrudan dokunmayı önlemez."
       ]
     },
     {
       q: "Yüksek gerilim (YG) hücrelerinde ve enerji nakil hatlarında gerilim kesildikten sonra 4. güvenlik kuralı olarak 'Topraklama ve Kısa Devre Etme' işleminin yapılmasının temel amacı nedir?",
       options: [
-        "Sayacın daha az yazmasını sağlamak",
-        "Hatta kalan kapasitif yükü boşaltmak, komşu hatlardan indüklenen gerilimi veya yanlışlıkla tekrar enerji verilmesi durumunda akımı toprağa akıtarak çalışanı korumak",
-        "Kabloların rengini değiştirmek",
-        "Trafo gücünü artırmak",
-        "Aydınlatmayı güçlendirmek"
+        "Şebekenin güç faktörünü (Cos φ) düzelterek reaktif enerji akışını dengelemek",
+        "Hatta kalan kapasitif artık yükü boşaltmak, paralel hatlardan indüklenen gerilimi ve olası ters beslemede kısa devre akımını toprağa akıtarak koruma rölelerini açtırmak",
+        "Transformatör sargılarındaki artık mıknatisiyeti yok ederek boşta çalışma kayıplarını gidermek",
+        "Faz-toprak empedansını artırarak şebekedeki harmonik gerilim dalgalanmalarını sınırlamak",
+        "Yalnızca nötr hattındaki 3. harmonik akımları filtrelemek"
       ],
       answer: 1,
-      explanation: "Topraklama ve kısa devre etme işlemi; kablolardaki statik/kapasitif yükü deşarj eder, paralel hatlardan indüklenen gerilimi sıfırlar ve hat yanlışlıkla enerjilenirse kesiciyi వెంటనే açtırarak çalışanı korur.",
+      explanation: "Topraklama ve kısa devre etme işlemi; kablolardaki statik/kapasitif yükü deşarj eder, paralel hatlardan indüklenen gerilimi sıfırlar ve hat yanlışlıkla enerjilenirse kesiciyi hemen açtırarak çalışanı korur.",
       optionExplanations: [
-        "Topraklama ve kısa devre güvenlik amaçlıdır, elektrik sayacı veya tüketimle ilgisi yoktur.",
+        "Cos φ düzeltmesi kompanzasyon sistemlerinin görevidir; iş güvenliği topraklamasıyla ilgisi yoktur.",
         "DOĞRU: Kapasitif kalıntı yükü boşaltmak, indüksiyon gerilimini önlemek ve ters besleme/yanlış enerjilenmeye karşı tam koruma sağlamak için yapılır.",
-        "Kablo rengiyle hiçbir ilgisi yoktur.",
-        "Trafo gücü tasarım parametresidir; kısa devre işlemi enerji kesikken güvenlik için yapılır.",
-        "Aydınlatma ile ilgisi yoktur."
+        "Sargılardaki artık mıknatisiyetin güvenlik topraklaması ve kısa devre işlemiyle ilgisi yoktur.",
+        "Empedans artırılmaz; aksine arıza akımını güvenle toprağa akıtacak düşük dirençli yol oluşturulur.",
+        "Harmonik filtreleme güç kalitesi konusudur; can güvenliği kuralı değildir."
       ]
     },
     {
       q: "Kaçak Akım Rölesi (RCD / Artık Akım Anahtarı) çalışma prensibi olarak devredeki hangi durumu algılayarak enerjiyi keser?",
       options: [
-        "Faz iletkeninden giden akım ile nötr iletkeninden dönen akım arasındaki farkı",
-        "Sadece ortam sıcaklığının artışını",
-        "Şebeke frekansının 50 Hz olmasını",
-        "Prizdeki toplam güç tüketiminin az olmasını",
-        "Faz ile nötr arasındaki gerilimin 220 V olmasını"
+        "Faz iletkeninden giden akım ile nötr iletkeninden dönen akım arasındaki vektörel farkı (toroid akım trafosu ile)",
+        "Devreden geçen toplam akımın sigorta anma değerini (In) aşmasını",
+        "Faz ile nötr arasındaki gerilim düşümünün %3 yönetmelik limitini aşmasını",
+        "Kısa devre anında oluşan elektromanyetik alanın bimetal şeridi bükmesini",
+        "Şebeke frekansının 50 Hz nominal değerinden sapma miktarını"
       ],
       answer: 0,
-      explanation: "Kaçak akım rölesi içindeki toroidal akım trafosu, fazdan giren akım ile nötrden dönen akımı karşılaştırır. Fark 30 mA'i (veya 300 mA'i) aştığında toprağa/insana kaçak olduğunu anlayıp devreyi açar.",
+      explanation: "Kaçak akım rölesi içindeki toroidal akım trafosu, fazdan giren akım ile nötrden dönen akımı karşılaştırır. Vektörel fark 30 mA'i (veya 300 mA'i) aştığında toprağa/insana kaçak olduğunu anlayıp devreyi açar.",
       optionExplanations: [
-        "DOĞRU: Kirchhoff akım kanununa göre fazdan giden ve nötrden dönen akım eşit olmalıdır; fark oluşursa (insan veya gövde üzerinden toprağa kaçak varsa) RCD devreyi keser.",
-        "Sıcaklık artışını (aşırı yükü) algılayan eleman kaçak akım rölesi değil, termik sigortadır.",
-        "50 Hz normal şebeke frekansıdır, arıza durumu değildir.",
-        "Güç tüketiminin az olması normal bir işletme durumudur.",
-        "220 V normal şebeke gerilimidir; RCD gerilimi değil gelen-giden akım farkını ölçer."
+        "DOĞRU: Kirchhoff akım kanununa göre fazdan giden ve nötrden dönen akım vektörel toplamı sıfır olmalıdır; kaçak varsa toroid transformatör dengesizliği algılayarak devreyi keser.",
+        "Toplam akımın anma değerini aşması aşırı yüktür ve otomatik sigortanın (MCB) görevidir.",
+        "Gerilim düşümü kablo kesiti seçimiyle ilgilidir; RCD voltaj düşümünü değil artık akımı algılar.",
+        "Bimetal şerit termik sigortalarda ısınmayla aşırı akımı keser; RCD çalışma prensibi değildir.",
+        "Frekans sapması frekans koruma rölelerinin görevidir; kaçak akım algılamasıyla ilgisi yoktur."
       ]
     },
     {
       q: "Elektrik panolarının önünde çalışırken olası kaçaklara karşı zemin yalıtımını sağlamak amacıyla pano önüne serilmesi zorunlu olan yalıtkan malzeme nedir?",
       options: [
-        "Çelik sac levha",
-        "Standartlara uygun Yalıtkan Paspas veya yalıtkan sehpa",
-        "Islak ahşap palet",
-        "Alüminyum folyo",
-        "Bakır ızgara"
+        "Galvanizli çelik topraklama sacı",
+        "TS EN 61111 standartlarına uygun dielektrik Yalıtkan Paspas (İzole Halı) veya yalıtkan platform",
+        "Emprenye edilmiş nem tutucu ahşap ızgara",
+        "Statik yük boşaltıcı iletken vinil rulo",
+        "Eşpotansiyel bakır örgülü ızgara"
       ],
       answer: 1,
-      explanation: "Elektrik panoları önünde operatörün üzerinden toprağa akım geçişini engellemek için pano gerilim sınıfına uygun dielektrik 'Yalıtkan Paspas (İzole Halı)' bulundurulması zorunludur.",
+      explanation: "Elektrik panoları önünde operatörün üzerinden toprağa akım geçişini engellemek için pano gerilim sınıfına uygun dielektrik 'Yalıtkan Paspas (TS EN 61111)' bulundurulması zorunludur.",
       optionExplanations: [
-        "Çelik sac mükemmel bir iletkendir; çalışanı doğrudan toprağa irtibatlandırarak çarpılma şiddetini artırır.",
+        "Galvaniz sac mükemmel bir iletkendir; çalışanı doğrudan toprağa irtibatlandırarak çarpılma şiddetini artırır.",
         "DOĞRU: Pano önünde ayak-toprak temas direncini sonsuza yaklaştıran standartlara uygun izole halı/yalıtkan paspas kullanılır.",
-        "Islak ahşap suyu emdiği için elektrik iletkeni haline gelir ve koruma sağlamaz.",
-        "Alüminyum yüksek iletkenliğe sahip bir metaldir, yalıtkan değildir.",
-        "Bakır ızgara eşpotansiyel topraklama elemanıdır, yalıtkan paspas yerine geçmez."
+        "Ahşap ızgaralar nem ve kir tuttuğunda iletken hale gelir; yüksek dielektrik dayanım garantisi vermez.",
+        "İletken zemin kaplamaları statik yük boşaltımı içindir, şebeke geriliminde çalışan için ölümcül iletkenlik oluşturur.",
+        "Bakır ızgara potansiyel eşitleme içindir; zemin yalıtımı sağlamaz."
       ]
     },
     {
       q: "Elektrik tesislerinde kullanılan 'Sigorta' (Minyatür Devre Kesici / Otomat) ile 'Kaçak Akım Rölesi' arasındaki görev farkı nedir?",
       options: [
-        "Sigorta aşırı akım ve kısa devreye karşı tesisatı/kabloyu korur; Kaçak Akım Rölesi ise toprağa akan sızıntı akımlarına karşı insan hayatını ve yangını korur",
-        "Sigorta insanı korur, kaçak akım rölesi sadece lambaları korur",
-        "İkisi de tamamen aynı işi yapar, biri varsa diğerine gerek yoktur",
-        "Sigorta sadece doğru akımda çalışır",
-        "Kaçak akım rölesi kısa devrede çalışır, kaçakta çalışmaz"
+        "Sigorta aşırı akım ve kısa devreye karşı kablo/tesisatı korur; Kaçak Akım Rölesi ise toprağa sızan artık akımları algılayarak insan hayatını ve yangını korur",
+        "Sigorta doğrudan dokunmada insanı korur; Kaçak akım rölesi ise sadece trafo yıldız noktasını korur",
+        "Sigorta gövdeye kaçak olduğunda devreyi milisaniyede açar; Kaçak akım rölesi ise sadece metalik kısa devre akımını keser",
+        "Kaçak akım rölesi kabloların aşırı yükte ısınmasını önler; Sigorta ise doğrudan insan kalbini ventriküler fibrilasyondan korur",
+        "İkisi tamamen aynı işlevi görür; panoda otomatik sigorta varsa kaçak akım rölesi kullanılması mevzuatta ihtiyaridir"
       ],
       answer: 0,
       explanation: "Sigortalar (örneğin 16 A) kablonun aşırı ısınıp yanmasını ve kısa devreyi önler ancak 30 mA'lik ölümcül insan çarpılma akımında açmaz. İnsan hayatını 30 mA Kaçak Akım Rölesi korur.",
       optionExplanations: [
         "DOĞRU: Sigorta amper düzeyindeki (10A, 16A vb.) aşırı yük ve kısa devreyi keser; RCD ise miliamper (30 mA) düzeyindeki kaçak akımı keserek insanı korur.",
-        "16 Amperlik (16.000 mA) bir sigorta insan vücudundan geçen 100-200 mA ölümcül akımı algılayıp kesemez.",
-        "Görevleri farklı olduğu için birbirinin alternatifi değil tamamlayıcısıdır; her panoda ikisi birlikte bulunmalıdır.",
-        "Sigortalar hem AC hem DC tesisatlarda kullanılır.",
-        "Kaçak akım rölesinin asli görevi faz-toprak kaçağını algılamaktır."
+        "Sigortanın doğrudan dokunmada insanı koruduğu iddiası yanlıştır; 16 Amperlik sigorta 30 mA'de devreyi açamaz.",
+        "Gövde kaçağında milisaniyede devreyi açan eleman sigorta değil kaçak akım rölesidir.",
+        "Ters verilmiştir; kablo aşırı ısınmasını sigorta önler, kalbi ventriküler fibrilasyondan 30 mA RCD korur.",
+        "İki ekipmanın koruma prensipleri tamamen farklıdır ve panolarda her ikisinin de bulunması zorunludur."
       ]
     },
     {
       q: "Akaryakıt istasyonları, boyahaneler, un/kömür değirmenleri ve kimyasal tanker dolum tesisleri gibi patlayıcı ortam (Ex-proof) bulunan yerlerde statik elektrik birikimini önlemek için hangi teknik önlem alınır?",
       options: [
-        "Tüm metal gövdelerin ve dolum hortumlarının eşpotansiyel olarak topraklanması",
-        "Çalışanlara sentetik/naylon kıyafet giydirilmesi",
-        "Ortam neminin sıfıra düşürülmesi",
-        "Zeminin yalıtkan plastikle kaplanması",
-        "Topraklama hattının iptal edilmesi"
+        "Tüm metal aksamın, boru hatlarının ve dolum aparatlarının eşpotansiyel baraya topraklanması ve antistatik ekipman kullanımı",
+        "Statik elektrik deşarjını hızlandırmak için ortam bağıl neminin %20'nin altına düşürülmesi",
+        "Boru hatlarındaki akışkan transfer hızının sürtünmeyi önlemesi amacıyla en az 10 m/s üzerine çıkarılması",
+        "Metal dolum tabancasının tanker gövdesinden kauçuk contalarla elektriksel olarak izole edilmesi",
+        "Çalışanlara sürtünmeyle kıvılcım çıkarmaması için %100 sentetik polyester kıyafetler giydirilmesi"
       ],
       answer: 0,
-      explanation: "Sıvı ve toz akışı sırasında sürtünmeyle oluşan statik elektrik yükünün kıvılcım (ark) çıkararak patlama yapmasını önlemek için statik topraklama ve eşpotansiyel bağlantı yapılır.",
+      explanation: "Sıvı ve toz akışı sırasında sürtünmeyle oluşan statik elektrik yükünün kıvılcım çıkararak patlama yapmasını önlemek için statik topraklama, eşpotansiyel bağlama ve antistatik malzeme kullanımı şarttır.",
       optionExplanations: [
-        "DOĞRU: Statik yüklerin kıvılcım oluşturmadan toprağa akması için tanker/metal aksamlar topraklama pensesiyle topraklanır.",
-        "Sentetik ve yünlü kıyafetler sürtünmeyle statik elektrik üretir; bu ortamlarda %100 pamuklu/antistatik kıyafet giyilir.",
-        "Kuru hava statik elektrik birikimini artırır; bağıl nemin belirli bir seviyede (%50-60) tutulması statik yükü azaltır.",
-        "Tam yalıtkan zemin çalışanın üzerinde statik yük birikmesine yol açar; antistatik/iletken zemin ve antistatik ayakkabı kullanılır.",
-        "Topraklamanın iptali statik yükün birikip ilk temasta patlayıcı kıvılcım çıkarmasına neden olur."
+        "DOĞRU: Statik yüklerin kıvılcım oluşturmadan toprağa akması için tanker/metal aksamlar topraklanır ve antistatik donanım kullanılır.",
+        "Havanın kurutulması (%20 altı bağıl nem) statik yük birikimini katlayarak patlama riskini artırır; nem %50-60 civarında tutulmalıdır.",
+        "Akışkan hızı arttıkça boru cidarındaki sürtünme ve statik yük üretimi katlanarak artar; akış hızları standart limitlerde sınırlandırılmalıdır.",
+        "İzole etmek yük birikimine neden olur; aksine tabanca ile tanker gövdesi elektriksel olarak köprülenmelidir.",
+        "Sentetik polyester kıyafetler en yüksek triboelektrik (sürtünme) statik yükü üretir; patlayıcı ortamda kesinlikle yasaktır."
       ]
     },
     {
       q: "Elektrik panolarında gerçekleştirilen enerjili veya yakın çalışmalarda meydana gelebilecek 'Ark Patlaması (Arc Flash)' sırasında ortaya çıkan tehlikeler arasında aşağıdakilerden hangisi YER ALMAZ?",
       options: [
-        "Binlerce dereceye (15.000 - 20.000 °C) ulaşan aşırı termal ısı ve ağır yanıklar",
-        "Bakır/alüminyum iletkenlerin eriyip buharlaşarak yüksek basınç dalgası ve şarapnel etkisi yaratması",
-        "Gözde fotokeratit (kaynak alması) ve körlüğe yol açabilen yoğun UV/ışık parlaması",
-        "Yüksek şiddetli (140 dB üzeri) patlama gürültüsü",
-        "Ortam sıcaklığının eksi derecelere düşerek donma yapması"
+        "15.000 - 20.000 °C'ye ulaşan plazma ark sıcaklığı ve ölümcül termal yanıklar",
+        "Bakır ve metallerin anında buharlaşarak binlerce kat genleşmesiyle oluşan şiddetli basınç dalgası (Arc Blast)",
+        "Yoğun ultraviyole (UV) ve parlama ışını nedeniyle gözde fotokeratit ve kalıcı retina hasarı",
+        "140-165 dB seviyesine ulaşan patlama şok dalgasıyla kulak zarı yırtılması ve akciğer blast travması",
+        "Ortamdaki ark iyonizasyonunun şebeke gerilimini tüketerek çevredeki transformatör yağlarında donma ve kristalleşme oluşturması"
       ],
       answer: 4,
-      explanation: "Ark patlaması (Arc Flash); aşırı yüksek sıcaklık, erimiş metal sıçraması, basınç şok dalgası, yoğun UV ışık ve yüksek desibelli ses patlaması oluşturur; soğuma/donma yapmaz.",
+      explanation: "Ark patlaması (Arc Flash); aşırı yüksek sıcaklık (20.000 °C), erimiş metal sıçraması, basınç şok dalgası, yoğun UV ışık ve yüksek desibelli darbe gürültüsü oluşturur; soğuma veya donma oluşturmaz.",
       optionExplanations: [
-        "Ark merkezinde sıcaklık güneş yüzeyinden bile yüksek derecelere ulaşarak 3. derece ölümcül yanıklar oluşturur.",
-        "Bakırın aniden buharlaşmasıyla hacmi 67.000 kat genleşir ve şiddetli akustik/basınç şok dalgası yaratır.",
-        "Yoğun ultraviyole ve görünür ışık parlaması retinada ve korneada ağır hasar bırakır.",
-        "Patlama basıncı 140-160 dB darbe gürültüsü oluşturarak kulak zarını yırtabilir.",
-        "DOĞRU (YER ALMAZ): Ark patlaması dondurucu soğuk değil, binlerce derecelik aşırı ısı üretir."
+        "Ark merkezinde sıcaklık güneş yüzeyinden bile yüksek derecelere (20.000 °C) ulaşarak 3. ve 4. derece ölümcül yanıklar oluşturur.",
+        "Bakırın aniden katıdan gaza geçip buharlaşmasıyla hacmi 67.000 kat genleşir ve yıkıcı basınç şok dalgası yaratır.",
+        "Yoğun ultraviyole ve görünür ışık parlaması retinada ve korneada kalıcı körlüğe varan hasar bırakır.",
+        "Patlama basıncı 140-165 dB darbe gürültüsü oluşturarak kulak zarını yırtabilir.",
+        "DOĞRU (YER ALMAZ): Ark patlaması dondurucu soğuk ve kristalleşme değil, binlerce derecelik plazma ateşi ve aşırı termal radyasyon üretir."
       ]
     },
     {
       q: "Yüksek gerilim (YG) enerji nakil hatlarının yakınında vinç, ekskavatör veya beton pompası ile çalışırken İSG açısından uyulması gereken en kritik kural nedir?",
       options: [
-        "Vinç bomunun hatta emniyet mesafesinden fazla yaklaşmaması ve işaretçi bulundurulması",
-        "Vinç operatörünün güneş gözlüğü takması",
-        "Hattın altından hızlıca geçilmesi",
-        "Vinç bomuna bez bağlanması",
-        "Sadece gece saatlerinde çalışılması"
+        "Vinç bomu ile iletkenler arasında gerilime uygun emniyet mesafesi (en az 3-5 m) korunmalı ve işaretçi nezaretinde çalışılmalıdır",
+        "Vinç gövdesi seyyar bir bakır iletkenle havai hattın faz tellerinden birine bağlanarak potansiyel eşitlenmelidir",
+        "Vinç bomunun yüksekliği hat seviyesini aştığında hatta enerji kesilmeden yalnızca vinç lastiklerine izole kılıf takılması yeterlidir",
+        "Hat altından geçişlerde bom yere paralel indirilse dahi emniyet mesafesi kuralı aranmaz",
+        "Rüzgarlı havalarda hat tellerinin salınım miktarı dikkate alınmaksızın yalnızca statik dikey mesafe esas alınmalıdır"
       ],
       answer: 0,
-      explanation: "Yüksek gerilim hatlarında elektriğin çarpması için fiziksel temas şart değildir; emniyet (yaklaşma) mesafesine girildiğinde havadan ark atlaması gerçekleşir.",
+      explanation: "Yüksek gerilim hatlarında elektriğin çarpması için fiziksel temas şart değildir; emniyet (yaklaşma) mesafesine girildiğinde havadan ark atlaması gerçekleşir. Bu nedenle gerilime uygun yaklaşma mesafesi ve işaretçi zorunludur.",
       optionExplanations: [
-        "DOĞRU: YG hatlarında gerilim kademesine göre belirlenen emniyet mesafesine (1-5 metre) yaklaşıldığında temas olmadan da ark atlar.",
-        "Güneş gözlüğü yüksek gerilim ark atlamasına karşı hiçbir koruma sağlamaz.",
-        "Hızlı geçmek ark atlamasını engellemez; aksine kontrolsüz bom hareketiyle hatta çarpma riskini artırır.",
-        "Bez bağlamak yüksek gerilime karşı hiçbir yalıtım sağlamaz.",
-        "Gece karanlığında tellerin görülmesi daha da zorlaşacağı için kaza riski çok daha fazladır."
+        "DOĞRU: YG hatlarında gerilim kademesine göre belirlenen emniyet mesafesine (en az 3-5 metre) yaklaşıldığında temas olmadan da ark atlar; işaretçi kılavuzluğu zorunludur.",
+        "Vinç gövdesini faz teline bağlamak vinci doğrudan enerjilendirerek operatörü ve çevredeki herkesi anında öldürür.",
+        "Lastik kılıfı yüksek gerilim ark atlamasına karşı koruma sağlamaz; kritik olan hatta emniyet mesafesinin korunması veya hattın enerjisinin kestirilmesidir.",
+        "Bom yatayda olsa bile hat telleriyle arasındaki yaklaşma emniyet mesafesi kuralı her zaman geçerlidir.",
+        "Rüzgarlı havalarda tellerin salınımı yaklaşma mesafesini daraltır; salınım mutlaka hesaba katılmalıdır."
       ]
     },
     {
       q: "Elektrik tesisatlarında 'Sıfırlama' (TN-C sisteminde gövdenin nötr hattına bağlanması) uygulaması ile ilgili güvenlik açısından hangi risk söz konusudur?",
       options: [
-        "Nötr hattının kopması durumunda cihazların metal gövdelerinin doğrudan gerilim altında kalması",
-        "Cihazların hiç çalışmaması",
-        "Topraklama direncinin sıfır olması",
-        "Elektrik faturasının düşmesi",
-        "Gerilimin 12 Volt'a düşmesi"
+        "Nötr hattının kopması veya temassızlığı durumunda cihazların metal gövdelerine doğrudan faz gerilimi binerek ölümcül şok yaratması",
+        "Sıfırlama yapılan devrede aşırı akım sigortasının kısa devrede hiçbir zaman atmaması",
+        "Dağıtım transformatörünün yıldız noktasında aşırı ısınma oluşturarak şebeke frekansını bozması",
+        "Nötr hattındaki akımın faz iletkeninden ters yönde akarak sayacın ters dönmesine yol açması",
+        "Kaçak akım rölelerinin sıfırlama yapılan hatlarda hassasiyetini kaybederek hiç açma yapamaması"
       ],
       answer: 0,
-      explanation: "Klasik sıfırlamada nötr iletkeni şebekede bir yerden koparsa, fazdan gelen akım cihaz üzerinden geçip metal gövdeyi doğrudan 220 V enerjili hale getirir ve dokunan kişiyi çarpar.",
+      explanation: "Klasik sıfırlamada (PEN ayrılmamış TN-C), nötr iletkeni şebekede bir yerden koptuğunda fazdan gelen akım cihaz yükü üzerinden geçerek bağlı olduğu tüm metal gövdeleri doğrudan 220 V faz gerilimine maruz bırakır.",
       optionExplanations: [
-        "DOĞRU: Nötr hattı koptuğunda (PEN kopması) gövdeye bağlı nötr üzerinden tüm metal şasiye 220 V gerilim biner ve büyük tehlike yaratır.",
-        "Cihaz çalışmaya devam edebilir veya arızada gövde enerjilenir; sıfırlamanın tehlikesi çalışmaması değil gövdeye faz binmesidir.",
-        "Sıfırlama topraklama direncini sıfır yapmaz; nötr üzerinden dönüş sağlar.",
-        "Tüketim faturasıyla hiçbir ilgisi yoktur.",
-        "Gerilim 12 V'a düşmez, aksine arızada gövde gerilimi 220 V'a çıkar."
+        "DOĞRU: Nötr hattı koptuğunda (PEN kopması) gövdeye bağlı nötr üzerinden tüm metal şasiye 220 V gerilim biner ve dokunan herkes için ölümcül şok yaratır.",
+        "Sigorta metalik kısa devre anında atabilir; sıfırlamanın asıl ölümcül riski nötr kopması durumundaki gövde gerilimidir.",
+        "Frekans şebeke alternatörünün devir sayısıyla belirlenir; sıfırlamayla frekans bozulmaz.",
+        "Sayaç yönü veya tüketim sıfırlamanın temel güvenlik riski değildir.",
+        "Sıfırlama yapılan devrede RCD nötr-toprak birleşimi nedeniyle dengesizlik algılayıp tutmaz; ancak asıl hayati tehlike nötr kopmasındaki gövde gerilimidir."
       ]
     },
     {
       q: "Şantiyelerde ve açık alanlarda kullanılan seyyar uzatma kabloları ve elektrikli el aletleri ile ilgili aşağıdaki uygulamalardan hangisi DOĞRUDUR?",
       options: [
-        "Kabloların ek yerleri açıkta bırakılmalı ve su birikintisi içinden geçirilmelidir",
-        "Fiş yapısı kırık kablolar priz deliklerine çıplak telle takılmalıdır",
-        "Kablolar mekanik ezilmelere ve suya karşı korunmalı, 30 mA kaçak akım korumalı panodan beslenmelidir",
-        "Elektrikli el aletlerinin topraklama ucu iptal edilmelidir",
-        "Hasarlı kablolar sadece kağıt bantla sarılmalıdır"
+        "Şantiye koşullarında hafif hizmet tipi PVC kılıflı (H05VV-F) kablolar doğrudan zemin üzerinden geçirilerek 300 mA yangın koruma rölesine bağlanmalıdır",
+        "Kablo boyu 20 metreyi aştığında topraklama hattı iptal edilerek pano nötr barası üzerinden sıfırlama yapılmalıdır",
+        "Açık alan ve şantiyelerde ağır mekanik ve neme dayanıklı (H07RN-F kauçuk kılıflı) kablolar kullanılmalı, askıya alınmalı veya kablo köprüsüyle korunarak 30 mA RCD'den beslenmelidir",
+        "Çift yalıtımlı (Sınıf II) el aletleri kullanıldığında uzatma kablosunun koruma topraklamasız (iki iletkenli) seçilmesi mevzuata uygundur",
+        "Araç geçiş güzergahlarında kablolar zemine serilip üzerine kalas veya çakıl dökülerek mekanik koruma sağlanmalıdır"
       ],
       answer: 2,
-      explanation: "Şantiyelerde kablolar araç ve yaya geçişlerinden, keskin kenarlardan ve sudan korunmalı; sağlam fiş-priz kullanılmalı ve mutlaka 30 mA RCD'li panodan enerji alınmalıdır.",
+      explanation: "Şantiyelerde seyyar kablolar ağır mekanik darbelere ve suya dayanıklı H07RN-F kauçuk kılıflı olmalı, zemin üzerinde ezilmeye terk edilmemeli (askıya alınmalı veya kablo rampasıyla korunmalı) ve mutlaka 30 mA hayat koruma kaçak akım rölesinden beslenmelidir.",
       optionExplanations: [
-        "Açık ek yerleri ve su birikintisi şantiyelerdeki ölümlü elektrik kazalarının bir numaralı sebebidir.",
-        "Fişsiz çıplak kablo uçlarını prize sokmak doğrudan dokunma ve ark patlaması/yangın sebebidir, kesinlikle yasaktır.",
-        "DOĞRU: Kablolar ezilmeye ve ıslanmaya karşı askıya alınmalı/korunmalı ve 30 mA kaçak akım korumalı panodan beslenmelidir.",
-        "Topraklama ucunu iptal etmek (veya çift yalıtımsız cihazı topraksız kullanmak) gövde kaçağında ölüme yol açar.",
-        "Kağıt bant yalıtkan değildir ve mekanik/nem dayanımı yoktur."
+        "PVC kılıflı (H05VV-F) hafif kablolar şantiye mekanik şartlarına uygun değildir; zemin üzerinden korumasız geçirilemez ve can güvenliği için 30 mA röle zorunludur.",
+        "Topraklama hiçbir zaman iptal edilemez ve şantiye panolarında seyyar hatlar üzerinden sıfırlama yapılması kesinlikle yasaktır.",
+        "DOĞRU: Ağır hizmet kauçuk kılıflı (H07RN-F) kablolar tercih edilmeli, havadan askıya alınmalı veya araç geçişlerinde koruyucu köprü kullanılmalı ve 30 mA RCD devrede olmalıdır.",
+        "El aletinin kendisi Sınıf II olsa bile, şantiyedeki seyyar priz kombinasyon kutularına giden uzatma kabloları topraklama iletkenli (3 damarlı) olmak zorundadır.",
+        "Kalas veya çakıl dökmek kabloyu araç ağırlığının ezici basıncından korumaz, aksine taş batmasına ve ezilmeye yol açar; özel kablo koruma köprüleri (rampaları) kullanılmalıdır."
       ]
     }
   ],

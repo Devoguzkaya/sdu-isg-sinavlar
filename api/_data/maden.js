@@ -54,39 +54,39 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında elmas tel kesme işlemi sırasında oluşabilecek EN BÜYÜK ve ölümcül iş güvenliği riski aşağıdakilerden hangisidir?",
       options: [
-        "Telin koparak yüksek hızla savrulması ve kopan boncukların fırlaması",
-        "Sadece gürültü oluşması",
-        "Metan gazı birikmesi",
-        "Karanlıkta çalışma",
-        "Radyasyon yayılması"
+        "Elmas telin yüksek devirde koparak kırbaç etkisiyle fırlaması ve elmas boncukların şarapnel gibi saçılması",
+        "Kollu zincirli kesicinin raydan çıkarak kademe basamağından aşağı devrilmesi",
+        "Desandre tavanında konverjans sonucu galeri kesitinin daralması",
+        "Lağım deliklerinde yemleyici dinamit kartuşunun erken patlaması",
+        "Sulu kesim sırasında kesim çamurunun mermer gözeneklerinde kılcal çatlak oluşturması"
       ],
       answer: 0,
       explanation: "Elmas tel yüksek gerilim altında dönerken koparsa 'kamçı etkisi' yaratarak üzerindeki çelik boncukları mermi gibi fırlatır.",
       optionExplanations: [
         "DOĞRU: Yüksek hız ve gerginlikle dönen elmas tel koptuğunda kamçı gibi savrulur ve elmas boncukları mermi hızıyla fırlatarak ölüme yol açar.",
-        "Gürültü fiziksel bir risktir ancak mermer ocaklarındaki en ölümcül akut kaza riski tel kopması ve blok devrilmesidir.",
-        "Mermer ocakları açık işletme olduğu ve kömür damarı içermediği için metan (grizu) birikmesi söz konusu değildir.",
-        "Açık işletmelerde gündüz doğal ışık, gece ise projektör aydınlatması kullanılır.",
-        "Elmas tel kesme mekanik bir işlemdir, radyasyon yaymaz."
+        "Zincirli kollu kesici devrilmesi raylı sistem montaj hatasıdır; tel kesimindeki ani tel kopması ve şarapnel riski birincil ölümcül dinamiktir.",
+        "Desandre ve konverjans yer altı madenciliği terimleridir; açık mermer ocaklarında uygulanmaz.",
+        "Elmas tel kesiminde patlayıcı lağım delikleri delinmez; bloklar pürüzsüz mekanik kesimle çıkarılır.",
+        "Çamur oluşumu aşındırıcı ve kayganlık riskidir ancak tel kopmasındaki mekanik şarapnel etkisi yanında ölümcül değildir."
       ]
     },
     {
       q: "Elmas tel kesme işleminde su kullanılmasının hem teknik hem de İSG açısından temel amacı nedir?",
       options: [
-        "Mermeri boyamak",
-        "Elmas teli soğutmak, taş tozunu yıkayıp dışarı atmak ve toz çıkışını önlemek",
-        "Elektrik iletkenliğini artırmak",
-        "Şev açısını dikleştirmek",
-        "Makinenin ağırlığını artırmak"
+        "Mermer bloğun taban süreksizliğine yapışmasını önleyerek yüzey pürüzlülüğünü sıfırlamak",
+        "Elmas teli ve boncukları soğutmak, kesim yarığındaki pasa çamurunu dışarı atmak ve elmasların yanıp kopmasını önlemek",
+        "Kesim yarıklarında hidrostatik basınç oluşturarak mermer bloğu tabandan çatlatmak",
+        "Basamak şev açısının 90 dereceden 45 dereceye düşmesini sağlamak",
+        "Kesim motorunun devir sayısını mekanik olarak sınırlandırmak"
       ],
       answer: 1,
       explanation: "Su verilmezse sürtünme ısısından dolayı elmas boncuklar yanar, çelik halat genleşip kopar ve yoğun toz ortama yayılır.",
       optionExplanations: [
-        "Suyun mermeri boyama gibi bir işlevi yoktur.",
-        "DOĞRU: Su; sürtünme ısısını soğutarak tel kopmasını önler, kesim yarığındaki kırıntıları temizler ve tozu bastırır.",
-        "Elektrikli makinelerde elektrik iletkenliğini artırmak istenmez, aksine kaçak riskidir.",
-        "Kesim suyunun basamak şev açısıyla bir ilgisi yoktur.",
-        "Su kesim hattına verilir, makine ağırlığını artırmak için kullanılmaz."
+        "Su yüzey pürüzlülüğünü sıfırlamaz; pürüzlülük tel hızı ve boncuk kalitesiyle ilgilidir.",
+        "DOĞRU: Su; sürtünme ısısını soğutarak elmas boncukların ve halatın yanıp kopmasını önler, yarıktaki aşındırıcı çamuru dışarı atar ve tozu bastırır.",
+        "Hidrostatik basınçla blok çatlatma titano devirme yastığı veya hidrolik yarıcılarla yapılır; kesim suyu basınç oluşturmaz.",
+        "Kesim suyunun kademe şev açısıyla jeomekanik bir ilgisi yoktur.",
+        "Motor devri invertör/sürücü ile ayarlanır, soğutma suyuyla kontrol edilmez."
       ]
     },
     {
@@ -105,39 +105,39 @@ export const madenCourse = {
     {
       q: "Açık ocak madenlerinde kademe (basamak) şev açısı belirlenirken en kritik mühendislik ve güvenlik kriteri aşağıdakilerden hangisidir?",
       options: [
-        "Kamyonların rengi",
-        "Kayaç sağlamlığı, süreksizlik durumu ve şev duraylılığı",
-        "Yalnızca cevherin piyasa fiyatı",
-        "Çalışan sayısı",
-        "Vardiya saati"
+        "Ocağın deniz seviyesinden rakımı ve rüzgar gülünün hakim yönü",
+        "Kayaç sağlamlığı, süreksizlik (eklem/fay/tabaka) durumu, yeraltı suyu ve şev duraylılığı",
+        "Cevherin tüvenan tenör yüzdesi ve flotasyon zenginleştirme verimi",
+        "Kullanılan patlayıcı maddenin ANFO veya emülsiyon tipi olması",
+        "Ocağın karayolu bağlantısına olan nakliye mesafesi"
       ],
       answer: 1,
       explanation: "Sağlam kayaçlarda şev açısı daha dik olabilirken, gevşek/çatlaklı zeminlerde şev kaymasını ve göçüğü önlemek için şev açısı yatıklaştırılır.",
       optionExplanations: [
-        "Araç renginin jeomekanik tasarımla hiçbir ilgisi yoktur.",
+        "Rakım ve rüzgar yönü şev duraylılığının hesaplanmasında birincil jeomekanik parametre değildir.",
         "DOĞRU: Şev açısı; kayacın mekanik dayanımı, tabaka eğimi, çatlak/fay yapısı ve yeraltı suyu dikkate alınarak şev kaymasını önleyecek şekilde belirlenir.",
-        "Cevher fiyatı ekonomik faktördür ancak güvenliği tehlikeye atacak diklikte şev bırakılamaz.",
-        "Çalışan sayısı şevin fiziksel duraylılığını değiştirmez.",
-        "Vardiya saati operasyonel bir bilgidir, şev açısını belirlemez."
+        "Tenör ve flotasyon verimi cevher zenginleştirme parametreleridir, şev stabilitesini belirlemez.",
+        "Patlayıcı türü parçalanmayı etkiler ancak nihai şev açısının jeomekanik limitini belirleyen kayaç sağlamlığıdır.",
+        "Nakliye mesafesi maliyet parametresidir, şev tasarımında dikkate alınmaz."
       ]
     },
     {
       q: "Açık işletmelerde kaya kamyonları (damperli kamyonlar) kademe kenarından döküm yaparken kamyonun şevden aşağı yuvarlanmasını önlemek için döküm sahası kenarında bulunması zorunlu yapı nedir?",
       options: [
-        "Döküm yerinde kamyon tekerlek yüksekliğinin en az yarısı kadar güvenlik seti ve işaretçi",
-        "Sadece plastik şerit",
-        "Aydınlatma direği",
-        "Su birikintisi",
-        "Tahta takoz"
+        "Döküm sahası kenarında en büyük kamyon tekerlek çapının en az yarısı yüksekliğinde koruma seti (banket) ve işaretçi",
+        "Şev kenarına sadece reflektif uyarı bayrakları ve döküm levhaları konulması",
+        "Kamyonların şev kenarına dik değil paralel yanaşarak yandan boşaltma yapması",
+        "Döküm kenarına 30 cm yüksekliğinde çelik kılavuz ray yerleştirilmesi",
+        "Yalnızca kamyon geri vites ikaz sesinin desibel seviyesinin artırılması"
       ],
       answer: 0,
       explanation: "Açık ocak nakliye yolları ve döküm sahalarının uçurum kenarlarında araçların devrilmesini önleyecek yükseklikte güvenlik setleri (banket/berm) bırakılması zorunludur.",
       optionExplanations: [
         "DOĞRU: Döküm kenarında en büyük kamyonun tekerlek çapının en az yarısı yüksekliğinde toprak/kaya güvenlik seti (banket) ve manevra işaretçisi bulunmalıdır.",
-        "Plastik uyarı şeridi yüzlerce tonluk kaya kamyonunu durduramaz.",
-        "Aydınlatma direği gece görüşü içindir, kamyonun geri manevrada uçuruma düşmesini fiziksel olarak engellemez.",
-        "Su birikintisi zemini yumuşatarak şev göçmesine ve kamyonun kaymasına yol açar.",
-        "Küçük tahta takoz dev maden kamyonlarının döküm kenarında durmasını sağlayamaz."
+        "Sadece tabela ve bayrak koymak tonlarca ağırlıktaki kamyonun mekanik olarak aşağı kaymasını engelleyemez.",
+        "Paralel yanaşma şev kenarındaki zayıf zemin oturmasında kamyonun komple yan devrilmesine neden olur; döküm arkadan dik yapılır.",
+        "30 cm çelik ray kaya kamyonunun tekerleğini tutamaz, üzerinden geçer.",
+        "Sesli ikaz personeli uyarır, kamyonun fiziksel olarak tekerlek setine dayanmasını sağlamaz."
       ]
     },
     {
@@ -181,20 +181,20 @@ export const madenCourse = {
     {
       q: "Açık ocaklarda delik delme makineleri (rok/foraj) çalışırken ortaya çıkan yoğun taş tozunun çalışanlarda 'Silikozis' (pnömokonyoz) yapmasını önlemek için makinede bulunması gereken sistem nedir?",
       options: [
-        "Islak delme veya siklonlu toz toplama sistemi",
-        "Sadece egzoz susturucusu",
-        "Havalı korna",
-        "Yüksek devirli fan ile tozu havaya savurma",
-        "Kuru delme"
+        "Islak delme (su enjeksiyonu) veya siklonlu vakumlu toz toplama sistemi",
+        "Delik ağzına sadece egzoz susturucusu ve titreşim sönümleyici takılması",
+        "Delme devir sayısının ve darbe frekansının maksimuma çıkarılması",
+        "Delik içine basınçlı hava püskürtülerek tozun açık atmosfere savrulması",
+        "Operatörün delgi tabancasını yağlayarak kuru sürtünmeyi azaltması"
       ],
       answer: 0,
       explanation: "Delme makinelerinde tozu kaynağında bastırmak için su enjeksiyonu (ıslak delme) veya kuru toz emici filtre/siklon tertibatı kullanılması zorunludur.",
       optionExplanations: [
         "DOĞRU: Solunabilir tozu kaynağında bastırmak için suyla ıslak delme veya vakumlu siklon filtre (toz toplayıcı) kullanılır.",
         "Egzoz susturucusu motor gürültüsünü azaltır, delik ağzından çıkan taş tozunu engellemez.",
-        "Havalı korna uyarı donanımıdır, toz kontrolü sağlamaz.",
+        "Devir sayısını artırmak tozumayı daha da şiddetlendirir.",
         "Tozu havaya savurmak solunabilir silis tozunun tüm ocağa yayılmasına ve maruziyetin artmasına neden olur.",
-        "Önlemsiz kuru delme yoğun toz bulutu oluşturarak ağır pnömokonyoz (silikozis) hastalığına yol açar."
+        "Yağlama sürtünmeyi azaltır ancak delme tozunu ortadan kaldırmaz; ıslak delme veya siklon zorunludur."
       ]
     },
     {
@@ -219,11 +219,11 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında dağdan kesilen büyük ana kütlenin (bloğun) devrilmesi işleminde, devrilen bloğun kırılmasını önlemek ve sarsıntıyı sönümlemek için bloğun düşeceği zemine ne serilir?",
       options: [
-        "Beton zemin dökülür",
-        "İnce toprak veya pasa yastığı serilir",
-        "Çelik plakalar dizilir",
-        "Su havuzu yapılır",
-        "Ahşap kalaslar dikey konur"
+        "Düşme alanına sert ve pürüzsüz C30 sınıfı beton zemin inşa edilir",
+        "Bloğun düşeceği basamak tabanına darbe emici ince pasa veya toprak yastığı serilir",
+        "Bloğun altına çelik rulo silindirler yerleştirilerek kayması sağlanır",
+        "Basamak tabanı suyla doldurularak hidrostatik sönümleme havuzu oluşturulur",
+        "Düşme bölgesine dikey ahşap takozlar çakılarak bloğun havada asılı kalması sağlanır"
       ],
       answer: 1,
       explanation: "Yüksek ağırlıktaki ana mermer kütlesi hidrolik yastık veya kriko ile devrilirken, zemine serilen gevşek pasa/toprak yığını darbe enerjisini sönümler.",
@@ -238,20 +238,20 @@ export const madenCourse = {
     {
       q: "Açık ocaklarda iş makineleri ve dev kaya kamyonlarıyla ilgili yaşanan ölümlü kazaların en önemli nedenlerinden biri nedir?",
       options: [
-        "Araçların çok yavaş gitmesi",
-        "Büyük kamyonların geniş kör noktalarında yaya veya küçük araç ezilmesi",
-        "Lastiklerin küçük olması",
-        "Kabin içinde klima bulunması",
-        "Farların güçlü olması"
+        "Kamyonların nakliye rampasında motor retarderi ile güvenli hızda inmesi",
+        "Devasa kaya kamyonlarının kör nokta genişliği ve küçük hizmet araçları veya yayaları görememesi",
+        "Damper hidrolik hortumlarının basınca dayanıklı çift kat çelik örgülü olması",
+        "Kamyon takip mesafesinin duruş mesafesinin üzerinde tutulması",
+        "Kamyon lastik hava basınçlarının üretici katalog değerinde tutulması"
       ],
       answer: 1,
       explanation: "Dev maden kamyonlarının operatör kabini çok yüksekte olduğundan aracın önü, sağı ve arkası geniş kör noktalara sahiptir.",
       optionExplanations: [
-        "Yavaş gitmek kaza nedeni değil, aksine ocak içi hız sınırı güvenlik önlemidir.",
+        "Retarder kullanımı güvenli iniş sağlayan bir kontrol önlemidir; kaza sebebi değildir.",
         "DOĞRU: Kaya kamyonlarının (off-highway trucks) kabini metrelerce yüksekte olduğu için etrafındaki binek araçları ve yayaları göremez (kör nokta kazaları).",
-        "Kaya kamyonlarının lastikleri insan boyundan büyüktür (3-4 metre çapında).",
-        "Kabin kliması operatörün termal konforunu ve dikkatini koruyan olumlu bir ergonomik özelliktir.",
-        "Güçlü aydınlatma gece vardiyasında görüşü artıran bir güvenlik unsurudur."
+        "Çelik örgülü hortum hidrolik patlama riskini önleyen emniyet standardıdır.",
+        "Takip mesafesinin korunması çarpışmaları önler.",
+        "Doğru lastik basıncı devrilmeyi önleyen bakım parametresidir."
       ]
     },
     {
@@ -271,19 +271,19 @@ export const madenCourse = {
       q: "Maden işyerlerinde acil durumlar, göçük, patlama ve kurtarma faaliyetleri açısından her maden ocağında görevlendirilmesi zorunlu olan teknik yönetici kimdir?",
       options: [
         "Daimi Nezaretçi (Maden Mühendisi)",
-        "Muhasebe Müdürü",
-        "Pazarlama Uzmanı",
-        "Çevre Mühendisi",
-        "Jeofizik Teknisyeni"
+        "Teknik Nezaretçi (Jeoloji Mühendisi)",
+        "Vardiya Çavuşu (Ateşleyici Belgesine Sahip Madenci)",
+        "Maden Teknikeri (Harita ve Ölçüm Sorumlusu)",
+        "İşletme İdari Amiri (Personel Müdürü)"
       ],
       answer: 0,
       explanation: "Maden mevzuatına göre maden işletmelerinde üretimin güvenli yürütülmesinden sorumlu olarak en az bir maden mühendisi 'Daimi Nezaretçi' olarak görevlendirilir.",
       optionExplanations: [
         "DOĞRU: Maden Kanunu ve ilgili yönetmelikler uyarınca maden işletmelerinde teknik ve emniyet gözetimi için maden mühendisi 'Daimi Nezaretçi' atanması zorunludur.",
-        "Muhasebe müdürü mali işlerden sorumludur, ocak teknik nezaretçisi olamaz.",
-        "Pazarlama uzmanı satış süreçleriyle ilgilenir.",
-        "Çevre mühendisi ÇED ve atık süreçlerinde görev alır, daimi nezaretçi maden mühendisi olmak zorundadır.",
-        "Jeofizik teknisyeni arama aşamasında çalışır, daimi nezaretçilik yetkisi yoktur."
+        "Teknik nezaretçilik geçmişte uygulanmış genel bir statüdür; sahada sürekli bulunması gereken yasal teknik yönetici Daimi Nezaretçi Maden Mühendisidir.",
+        "Vardiya çavuşu usta düzeyindedir, kanunun aradığı teknik yönetici mühendislik vasfını taşımaz.",
+        "Maden teknikeri harita ve operasyonda yardımcı teknik elemandır; daimi nezaretçilik imza ve yönetim yetkisi yoktur.",
+        "İdari amir personel işlerinden sorumludur, maden teknik emniyetini yönetemez."
       ]
     },
     {
@@ -340,39 +340,39 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında dağdan (ana kayadan) elmas telle arkası ve yanları kesilerek ayrılan dev mermer kütlesini yatırmak (devirmek) için kesim yarığının içine yerleştirilen ve su veya hava basıncıyla şişirilen ekipmana ne ad verilir?",
       options: [
-        "Basınçlı devirme yastığı ve hidrolik kriko",
-        "Dinamit lokumu",
-        "El arabası",
-        "Manyetik tutucu",
-        "Helezon konveyör"
+        "Basınçlı devirme yastıkları (hava/su yastığı - titano) ve hidrolik devirme krikoları",
+        "Yüksek patlama hızlı dinamit lokumları ve gecikmeli elektrikli kapsüller",
+        "Ekskavatör kepçe tırnağı ile doğrudan bloğun üst köşesinden itme yapılması",
+        "Makaralı ceraskal ve kule vinç halat sistemleri ile çekme",
+        "Bloğun alt kenarına helezon konveyör yerleştirilerek gevşetilmesi"
       ],
       answer: 0,
       explanation: "Mermer bloklarının çatlamadan ana kayadan ayrılması için patlayıcı kullanılmaz; kesim yarığına çelik/kevlar 'Su veya Hava Yastıkları' ve 'Hidrolik Krikolar' yerleştirilerek blok kontrollü şekilde itilip devrilir.",
       optionExplanations: [
         "DOĞRU: Kesilen dar yarığa sokulan çelik/kevlar yastıklar yüksek basınçlı su veya hava ile şişirilerek yüzlerce tonluk bloğu çatlatmadan öne doğru iter.",
-        "Mermer blok üretiminde dinamit gibi yüksek kırıcı patlayıcılar mermeri parçalayıp çatlatacağı için kullanılmaz.",
-        "El arabası blok devirmede kullanılamaz.",
-        "Mermer (kalsiyum karbonat) manyetik özellik taşımaz, mıknatısla çekilemez.",
-        "Helezon konveyör toz ve taneli malzemeleri taşımak için kullanılır."
+        "Mermer blok üretiminde dinamit gibi patlayıcılar taşı parçalayıp mikro çatlak oluşturacağı için kesinlikle kullanılmaz.",
+        "Kepçe tırnağıyla itmek bloğun kontrolsüz kırılmasına veya devrilerek ekskavatörün üzerine yıkılmasına yol açar.",
+        "Ceraskal ve vinç halatları yüzlerce tonluk dev kaya bloklarının devrilmesinde kopma ve kamçılama riski yaratır.",
+        "Helezon konveyör katı taneli malzeme taşımak içindir, blok devirmede yeri yoktur."
       ]
     },
     {
       q: "Açık ocaklarda kademe yüksekliği, kademe genişliği ve şev açısı belirlenirken aşağıdaki faktörlerden hangisi dikkate alınır?",
       options: [
-        "Kullanılan iş makinelerinin (ekskavatör kepçe erişim yüksekliği, delici makine boyu, kamyon dönüş yarıçapı) boyutları ve kayaç sağlamlığı",
-        "Sadece ocak sahibinin isteği",
-        "Yalnızca rüzgar hızı",
-        "Bölgedeki bitki örtüsü türü",
-        "Mesai başlangıç saati"
+        "Kullanılan iş makinelerinin (ekskavatör erişim yüksekliği, delici makine boyu, kamyon dönüş yarıçapı) boyutları ve kayaç sağlamlığı",
+        "Çıkarılan tüvenan cevherin borsa satış fiyatı ve kırma-eleme tesisinin saatlik kapasitesi",
+        "Ocak sahasının il merkezine olan karayolu nakliye mesafesi ve akaryakıt tüketimi",
+        "Bölgenin bitki örtüsü tipi ve yıllık ortalama yağış miktarı",
+        "İşletmede uygulanan vardiya sistemi ve günlük çalışma saati sayısı"
       ],
       answer: 0,
       explanation: "Kademe yüksekliği ekskavatörün güvenli kazı yüksekliğine ve kayaç yapısına göre; kademe (basamak) genişliği ise kamyon ve iş makinelerinin güvenli manevra ve nakliye genişliğine göre belirlenir.",
       optionExplanations: [
         "DOĞRU: Kademe geometrisi; hem kayaç mekaniği (şev stabilitesi) hem de kullanılan ekskavatör, delici ve kamyonların teknik boyutlarına göre tasarlanır.",
-        "Maden tasarımı keyfi isteğe göre değil, Maden İSG Yönetmeliği ve kaya mekaniği hesaplarına göre yapılır.",
-        "Rüzgar hızı toz dağılımını etkiler ancak kademe yüksekliğini belirlemez.",
-        "Bitki örtüsü dekapaj öncesi sıyrılan nebati topraktır, alt kademelerin geometrisini belirlemez.",
-        "Mesai saati idari bir konudur."
+        "Cevher borsa fiyatı ve tesis kapasitesi basamak geometrisinin jeomekanik dayanım parametresi değildir.",
+        "Nakliye mesafesi lojistik parametredir; basamak yüksekliği ve şev açısı hesabında yer almaz.",
+        "Bitki örtüsü sıyrılan nebati topraktır, kademe geometrisini belirlemez.",
+        "Vardiya sistemi operasyonel çalışma düzenidir; kademe mühendislik parametresi değildir."
       ]
     },
     {
@@ -429,20 +429,20 @@ export const madenCourse = {
     {
       q: "Açık ocak madenlerinde nakliye yollarının (rampaların) güvenliği ile ilgili aşağıdakilerden hangisi DOĞRUDUR?",
       options: [
-        "Yol eğimleri kontrol altında tutulmalı, kenar güvenlik seti (banket) bulunmalı ve toz için düzenli sulanmalıdır",
-        "Yollar tek şeritli ve çok dik (%40 eğimli) yapılmalıdır",
-        "Toz bulutu oluşması kamyonların birbirini görmesi için faydalıdır",
-        "Yol kenarlarına güvenlik seti (banket) yapılmasına gerek yoktur",
-        "Kamyonlar rampa aşağı vitesi boşa alarak inmelidir"
+        "Rampa eğimleri araç fren/retarder kapasitesine uygun olmalı (azami %8-10), kenar güvenlik seti bulunmalı ve düzenli sulanmalıdır",
+        "Rampa inişlerinde kamyonların motor freni (retarder) kapatılarak yakıt tasarrufu için vites boşa alınmalıdır",
+        "Nakliye yolu genişliği en büyük kamyon genişliğinin en fazla 1,5 katı ile sınırlandırılmalıdır",
+        "Kuru havalarda tekerlek tutunmasını artırmak için yollar kesinlikle arazöz ile sulanmamalıdır",
+        "Virajlarda araçların dışa savrulmasını önlemek için viraj dış kenarı iç kenardan daha alçak inşa edilmelidir"
       ],
       answer: 0,
       explanation: "Ocak içi nakliye yollarında uygun eğim (%8-10 civarı), yeterli genişlik, kenar güvenlik seti (banket) ve görüşü kapatan tozu bastırmak için düzenli sulama yapılması hayati İSG kurallarıdır.",
       optionExplanations: [
         "DOĞRU: Uygun rampa eğimi, kenar güvenlik seti (banket) ve görüş kaybını/tozu önleyen arazözle sulama açık ocak nakliye güvenliğinin temelidir.",
-        "%40 eğimde yüklü kaya kamyonları tırmanamaz ve inişte frenleri tutmayarak devrilir.",
-        "Yoğun toz bulutu görüş mesafesini sıfıra indirerek kamyonların çarpışmasına ve uçuruma yuvarlanmasına yol açar.",
-        "Güvenlik seti (banket) olmayan uçurum kenarlı ocak yolları ölümlü devrilme kazalarının baş sebebidir.",
-        "Ağır tonajlı kamyonlarda vitesi boşa almak motor frenini (retarder) devre dışı bırakır ve aracın kontrolden çıkmasına neden olur."
+        "Retarderi kapatıp vitesi boşa almak mekanik frenleri aşırı ısıtarak patlatır ve kontrolsüz ölümcül rampa kaçışına yol açar.",
+        "Mevzuata göre çift şeritli yollarda genişlik en büyük kamyon genişliğinin en az 3-3,5 katı olmalıdır; 1,5 kat tek şeritte bile dardır.",
+        "Arazözle sulama yapılmazsa oluşan toz bulutu görüşü tamamen sıfırlar ve zincirleme kazalara neden olur.",
+        "Virajlarda merkezkaç kuvvetini dengelemek için dış kenar daha yüksek (deverli) yapılır; dışın alçak olması aracı doğrudan uçuruma savurur."
       ]
     },
     {

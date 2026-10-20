@@ -291,20 +291,20 @@ export const makineCourse = {
     {
       q: "Makine tasarımında bir parçanın emniyetle taşıyabileceği 'Emniyet Gerilmesi (σ_em)' hesaplanırken, malzemenin Akma (veya Kopma) Dayanımının hangi değere bölünmesi gerekir?",
       options: [
-        "Emniyet Katsayısına",
-        "Sıfıra",
-        "Ortam sıcaklığına",
-        "Makinenin rengine",
-        "Çalışma saatine"
+        "Emniyet (Güvenlik) Katsayısına (S)",
+        "Malzemenin Poisson Oranına (ν)",
+        "Malzemenin Elastisite Modülüne (E)",
+        "Çentik Darbe Tokluk Değerine (Charpy Dayanımı)",
+        "Malzemenin Lineer Isıl Genleşme Katsayısına (α)"
       ],
       answer: 0,
       explanation: "Mühendislikte parçaların kırılmaması için Emniyet Gerilmesi = Akma Dayanımı / Emniyet Katsayısı (σ_em = σ_akma / S) formülüyle hesaplanır.",
       optionExplanations: [
         "DOĞRU: Malzemenin akma veya kopma sınırının 1'den büyük bir 'Emniyet Katsayısına (S)' bölünmesiyle güvenli çalışma gerilmesi bulunur.",
-        "Bir sayının sıfıra bölünmesi tanımsızdır (sonsuz).",
-        "Ortam sıcaklığı doğrudan bölünen bir katsayı değildir.",
-        "Rengin mukavemet hesabıyla ilgisi yoktur.",
-        "Çalışma saati yorulma çevrim sayısını etkiler, doğrudan statik emniyet gerilmesi böleni değildir."
+        "Poisson oranı enine birim uzamanın boyuna birim uzamaya oranıdır; emniyet gerilmesi böleni değildir.",
+        "Elastisite modülü (E) gerilme ile birim uzama arasındaki orantı katsayısıdır (Hooke Kanunu).",
+        "Çentik darbe tokluğu malzemenin dinamik darbelere karşı kırılma enerjisidir.",
+        "Isıl genleşme katsayısı sıcaklık değişimindeki boyutsal uzamayı hesaplar."
       ]
     },
     {
@@ -329,20 +329,20 @@ export const makineCourse = {
     {
       q: "Oksijen tüpleri ve oksijen regülatörleri/valfleri ile çalışırken aşağıdaki maddelerden hangisiyle temas etmesi şiddetli patlama ve yangına yol açacağı için KESİNLİKLE YASAKTIR?",
       options: [
-        "Yağ, gres yağı ve yağlı el/eldiven/üstübü",
-        "Hava",
-        "Kuru bez",
-        "Sabunlu su",
-        "Metal anahtar"
+        "Yağ, gres yağı ve hidrokarbon bazlı organik kirleticiler",
+        "Tüp kaçak kontrolünde kullanılan gliserinsiz sabun köpüğü solüsyonu",
+        "Valf sızdırmazlığında kullanılan saf PTFE (Teflon) bant",
+        "Kıvılcım çıkarmaz bronz-berilyum alaşımlı servis anahtarları",
+        "Atmosfer havasının %78'ini oluşturan kuru saf azot gazı"
       ],
       answer: 0,
       explanation: "Yüksek basınçlı saf oksijen, hidrokarbon bazlı yağ ve gres ile temas ettiğinde kıvılcıma gerek kalmadan kendiliğinden şiddetle tutuşup patlar!",
       optionExplanations: [
         "DOĞRU: Basınçlı oksijen tüpü valflerine yağlı elle, yağlı eldivenle dokunmak veya gres sürmek ani oksidasyon patlamasına yol açar; kesinlikle yasaktır!",
-        "Normal atmosfer havası zaten %21 oksijen içerir, patlama yapmaz.",
-        "Temiz ve yağsız kuru bez tehlike oluşturmaz.",
-        "Gaz kaçak kontrolü çakmakla değil, yağsız sabunlu su köpüğü ile yapılır.",
-        "Uygun ağızlı anahtar valf bağlantısında kullanılır (ancak bakır/pirinç kıvılcım çıkarmayan aletler tercih edilir)."
+        "Gliserinsiz sabun köpüğü oksijen kaçak kontrolü için onaylanmış güvenli kontrol yöntemidir.",
+        "Saf teflon (PTFE) bant oksijen tesisatlarında onaylı sızdırmazlık malzemesidir; hidrokarbon içermez.",
+        "Kıvılcım çıkarmaz (non-sparking) aletler mekanik kıvılcımı önlemek için tercih edilir.",
+        "Azot inert gazdır, oksijenle temasında patlama riski oluşturmaz."
       ]
     },
     {
@@ -367,20 +367,20 @@ export const makineCourse = {
     {
       q: "Oksi-gaz (oksi-asetilen) kaynak ve kesme sistemlerinde alevin hortum içinden geriye doğru yürüyerek tüpe ulaşmasını ve tüpün patlamasını önleyen zorunlu emniyet elemanı nedir?",
       options: [
-        "Alev Geri Tepme Emniyet Valfi",
-        "Su sayacı",
-        "Termometre",
-        "Susturucu",
-        "Tahliye musluğu"
+        "Alev Geri Tepme Emniyet Valfi (Flashback Arrestor)",
+        "Basınç Düşürücü Çift Kademeli Regülatör (Manometre)",
+        "Ters Akış Çekvalfi (Tek Yönlü Vana)",
+        "Manyetik Emniyet Solenoid Ventili",
+        "Aşırı Akış Sınırlama Memesi"
       ],
       answer: 0,
       explanation: "Üfleçte ve regülatör çıkışında hem gazın geri kaçmasını hem de alevin tüpe yürümesini engelleyen 'Alev Geri Tepme Emniyet Valfi (Flashback Arrestor)' bulunması zorunludur.",
       optionExplanations: [
         "DOĞRU: Alev geri tepme emniyet valfi, geri tepen alevi sinterlenmiş metal filtreyle söndürür ve gaz akışını keserek tüp patlamasını önler.",
-        "Su sayacı su debisi ölçer, gaz kaynak sisteminde bulunmaz.",
-        "Termometre sıcaklık ölçer, alevi durduramaz.",
-        "Susturucu pnömatik egzoz gürültüsünü azaltır.",
-        "Tahliye musluğu sıvı kaplarında kullanılır."
+        "Regülatör tüpteki yüksek depolama basıncını işletme basıncına düşürür; alevi durdurma özelliği yoktur.",
+        "Tek yönlü çekvalf gazın ters akışını engeller ancak arkasından gelen alevi söndüremez; alev için sinter filtreli alev tutucu gereklidir.",
+        "Solenoid ventil elektrik sinyaliyle gazı açıp kapatır, mekanik alev tutucu değildir.",
+        "Akış sınırlama memesi debiyi ayarlar, alev geri tepmesini durduramaz."
       ]
     },
     {
