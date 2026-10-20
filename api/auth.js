@@ -1,36 +1,9 @@
-// Vercel Serverless Function — Login, Signup, Plan Management & Admin API with Cloud KV
+// Vercel Serverless Function — Login, Signup, Plan Management & Admin API
 import crypto from 'crypto';
 
-const DEFAULT_KV_BUCKET = 'XDdUb2W7LRjEjWdzcBhfzB';
-const USERS_KEY = 'sdu_isg_users_v2';
+const DB_OBJECT_ID = 'ff808181a09d98f701a15a6cccf13285';
+const DB_URL = `https://api.restful-api.dev/objects/${DB_OBJECT_ID}`;
 const ADMIN_USERS = ['oguzhan', 'admin', 'devoguzkaya'];
-
-const DEFAULT_USERS = {
-  oguzhan: {
-    username: 'oguzhan',
-    fullName: 'Oğuzhan Kaya',
-    passHash: hashPassword('170717'),
-    role: 'admin',
-    plan: 'pro',
-    createdAt: '2026-10-20T10:00:00.000Z'
-  },
-  admin: {
-    username: 'admin',
-    fullName: 'Oğuzhan Kaya (Admin)',
-    passHash: hashPassword('170717'),
-    role: 'admin',
-    plan: 'pro',
-    createdAt: '2026-10-20T10:00:00.000Z'
-  },
-  devoguzkaya: {
-    username: 'devoguzkaya',
-    fullName: 'Oğuzhan Kaya (Dev)',
-    passHash: hashPassword('170717'),
-    role: 'admin',
-    plan: 'pro',
-    createdAt: '2026-10-20T10:00:00.000Z'
-  }
-};
 
 function hashPassword(pw) {
   return crypto.createHash('sha256').update(pw + '_sdu_isg_salt').digest('hex');
@@ -52,28 +25,29 @@ function formatPublicUser(u) {
 }
 
 async function getUsers() {
-  const url = `https://kvdb.io/${DEFAULT_KV_BUCKET}/${USERS_KEY}`;
   try {
-    const res = await fetch(url);
-    if (res.status === 404) return { ...DEFAULT_USERS };
-    const text = await res.text();
-    const remote = text ? JSON.parse(text) : {};
-    return { ...DEFAULT_USERS, ...remote };
+    const res = await fetch(DB_URL, { signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return {};
+    const json = await res.json();
+    return json?.data?.users || {};
   } catch {
-    return { ...DEFAULT_USERS };
+    return {};
   }
 }
 
 async function saveUsers(users) {
-  const url = `https://kvdb.io/${DEFAULT_KV_BUCKET}/${USERS_KEY}`;
   try {
-    await fetch(url, {
-      method: 'POST',
+    await fetch(DB_URL, {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(users)
+      body: JSON.stringify({
+        name: 'sdu_isg_users_db',
+        data: { users }
+      }),
+      signal: AbortSignal.timeout(5000)
     });
   } catch (e) {
-    // Graceful fallback if kvdb bucket is protected
+    console.error('Failed to persist users to cloud:', e);
   }
 }
 
@@ -88,7 +62,7 @@ export default async function handler(req, res) {
 
     const users = await getUsers();
 
-    // 1. Refresh current user's live plan/role from Cloud KV
+    // 1. Refresh current user's live plan/role from Cloud DB
     if (action === 'me') {
       const cleanUser = (username || '').trim().toLowerCase();
       const existing = users[cleanUser];
@@ -172,7 +146,9 @@ export default async function handler(req, res) {
     }
 
     const passHash = hashPassword(password);
-    const isAdm = isAdminUsername(cleanUser);
+    // Any user created when database is empty becomes ADMIN, or if username is in ADMIN_USERS
+    const isFirstUser = Object.keys(users).length === 0;
+    const isAdm = isFirstUser || isAdminUsername(cleanUser);
 
     if (action === 'signup') {
       if (users[cleanUser] && !isAdminUsername(cleanUser)) {
@@ -180,7 +156,7 @@ export default async function handler(req, res) {
       }
       const userObj = {
         username: cleanUser,
-        fullName: (fullName || (isAdminUsername(cleanUser) ? 'Oğuzhan Kaya' : cleanUser)).trim(),
+        fullName: (fullName || cleanUser).trim(),
         passHash,
         role: isAdm ? 'admin' : 'user',
         plan: isAdm ? 'pro' : 'free',
@@ -197,7 +173,7 @@ export default async function handler(req, res) {
     if (action === 'login') {
       const existing = users[cleanUser];
       if (!existing || existing.passHash !== passHash) {
-        return res.status(401).json({ error: 'Kullanıcı adı veya şifre hatalı!' });
+        return res.status(401).json({ error: 'Kullanıcı adı veya şifre hatalı! Henüz hesap açmadıysan lütfen "Kayıt Ol" sekmesinden hesabını oluştur.' });
       }
       if (isAdm && (existing.role !== 'admin' || existing.plan !== 'pro')) {
         existing.role = 'admin';
