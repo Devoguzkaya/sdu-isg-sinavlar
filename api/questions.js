@@ -36,6 +36,15 @@ function getSanitizedCourses() {
     hex: c.hex,
     badge: c.badge,
     tips: c.tips,
+    tests: (c.tests || []).map((t) => ({
+      testId: t.testId,
+      title: t.title,
+      shortTitle: t.shortTitle,
+      theme: t.theme,
+      mcStart: t.mcStart,
+      fillStart: t.fillStart,
+      wordBank: t.wordBank
+    })),
     wordBank: c.fillQuestions
       .map((f) => f.answers[0])
       .sort((a, b) => a.localeCompare(b, 'tr')),
@@ -92,9 +101,9 @@ export default async function handler(req, res) {
         });
       }
 
-      // 3. Batch evaluate user's saved answers (or reveal all for a course)
+      // 3. Batch evaluate user's saved answers (or reveal a specific test / all tests for a course)
       if (action === 'evaluate_all') {
-        const { userAnswers, revealCourseId } = body;
+        const { userAnswers, revealCourseId, revealTestIdx } = body;
         const feedback = {};
         const updatedUserAnswers = userAnswers ? JSON.parse(JSON.stringify(userAnswers)) : {};
 
@@ -104,10 +113,15 @@ export default async function handler(req, res) {
             updatedUserAnswers[c.id] = { mc: {}, fill: {} };
           }
           const st = updatedUserAnswers[c.id];
-          const isReveal = revealCourseId === c.id;
+          const isRevealCourse = revealCourseId === c.id;
 
           c.mcQuestions.forEach((q, idx) => {
-            if (isReveal && st.mc[idx] === undefined) {
+            const inTargetTest =
+              revealTestIdx === undefined ||
+              revealTestIdx === 'all' ||
+              (idx >= revealTestIdx * 10 && idx < (revealTestIdx + 1) * 10);
+
+            if (isRevealCourse && inTargetTest && st.mc[idx] === undefined) {
               st.mc[idx] = q.answer;
             }
             if (st.mc[idx] !== undefined) {
@@ -121,7 +135,12 @@ export default async function handler(req, res) {
           });
 
           c.fillQuestions.forEach((q, idx) => {
-            if (isReveal && (!st.fill[idx] || !st.fill[idx].checked)) {
+            const inTargetTest =
+              revealTestIdx === undefined ||
+              revealTestIdx === 'all' ||
+              (idx >= revealTestIdx * 5 && idx < (revealTestIdx + 1) * 5);
+
+            if (isRevealCourse && inTargetTest && (!st.fill[idx] || !st.fill[idx].checked)) {
               st.fill[idx] = { val: q.answers[0], checked: true };
             }
             const f = st.fill[idx];

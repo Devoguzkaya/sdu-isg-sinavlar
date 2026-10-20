@@ -20,7 +20,8 @@ import {
   Lock,
   UserPlus,
   LogIn,
-  ShieldCheck
+  ShieldCheck,
+  Layers
 } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
@@ -55,6 +56,7 @@ export default function App() {
   const [authLoading, setAuthLoading] = useState(false);
 
   const [activeCourseId, setActiveCourseId] = useState('elektrik');
+  const [activeTestIdx, setActiveTestIdx] = useState(0); // 0..9 for Test 1..10, or 'all'
   const [mode, setMode] = useState('study'); // 'study' | 'exam'
   const [filter, setFilter] = useState('all'); // 'all' | 'mc' | 'fill'
   const [showWordBank, setShowWordBank] = useState(true);
@@ -86,7 +88,7 @@ export default function App() {
   }, []);
 
   // Helper to batch-evaluate existing answers on the backend
-  const evaluateAllOnBackend = async (userAns, revealCourseId = null) => {
+  const evaluateAllOnBackend = async (userAns, revealCourseId = null, revealTestIdx = undefined) => {
     try {
       const r = await fetch('/api/questions', {
         method: 'POST',
@@ -94,7 +96,8 @@ export default function App() {
         body: JSON.stringify({
           action: 'evaluate_all',
           userAnswers: userAns,
-          revealCourseId
+          revealCourseId,
+          revealTestIdx
         })
       });
       if (r.ok) {
@@ -247,15 +250,22 @@ export default function App() {
   const courseFeedback = (activeCourse && feedback[activeCourse.id]) || { mc: {}, fill: {} };
   const showFeedback = mode === 'study' || examSubmitted;
 
-  const getStats = (course) => {
+  // Stats for an entire course (150 questions) or a specific test (0..9 => 15 questions)
+  const getStats = (course, testIdx = 'all') => {
     const st = answers[course.id] || { mc: {}, fill: {} };
     const fb = feedback[course.id] || { mc: {}, fill: {} };
     let correct = 0;
     let wrong = 0;
     let answered = 0;
-    const total = course.mcQuestions.length + course.fillQuestions.length;
 
-    course.mcQuestions.forEach((_, idx) => {
+    const mcStart = testIdx === 'all' ? 0 : testIdx * 10;
+    const mcEnd = testIdx === 'all' ? course.mcQuestions.length : Math.min((testIdx + 1) * 10, course.mcQuestions.length);
+    const fillStart = testIdx === 'all' ? 0 : testIdx * 5;
+    const fillEnd = testIdx === 'all' ? course.fillQuestions.length : Math.min((testIdx + 1) * 5, course.fillQuestions.length);
+
+    const total = (mcEnd - mcStart) + (fillEnd - fillStart);
+
+    for (let idx = mcStart; idx < mcEnd; idx++) {
       if (st.mc?.[idx] !== undefined) {
         answered++;
         if (fb.mc?.[idx]) {
@@ -263,9 +273,9 @@ export default function App() {
           else wrong++;
         }
       }
-    });
+    }
 
-    course.fillQuestions.forEach((_, idx) => {
+    for (let idx = fillStart; idx < fillEnd; idx++) {
       const f = st.fill?.[idx];
       if (f && f.checked) {
         answered++;
@@ -274,7 +284,7 @@ export default function App() {
           else wrong++;
         }
       }
-    });
+    }
 
     const score = total > 0 ? Math.round((correct / total) * 100) : 0;
     return { correct, wrong, answered, total, score };
@@ -384,21 +394,40 @@ export default function App() {
     } catch (e) {}
   };
 
-  const handleRevealAllCourse = async () => {
-    await evaluateAllOnBackend(answers, activeCourse.id);
+  const handleRevealCurrentView = async () => {
+    await evaluateAllOnBackend(answers, activeCourse.id, activeTestIdx);
     setExamSubmitted(true);
   };
 
-  const handleResetCourse = () => {
+  const handleResetCurrentView = () => {
     const cId = activeCourse.id;
-    setAnswers((prev) => ({
-      ...prev,
-      [cId]: { mc: {}, fill: {} }
-    }));
-    setFeedback((prev) => ({
-      ...prev,
-      [cId]: { mc: {}, fill: {} }
-    }));
+    if (activeTestIdx === 'all') {
+      setAnswers((prev) => ({
+        ...prev,
+        [cId]: { mc: {}, fill: {} }
+      }));
+      setFeedback((prev) => ({
+        ...prev,
+        [cId]: { mc: {}, fill: {} }
+      }));
+    } else {
+      const mcStart = activeTestIdx * 10;
+      const fillStart = activeTestIdx * 5;
+      setAnswers((prev) => {
+        const nextMc = { ...(prev[cId]?.mc || {}) };
+        const nextFill = { ...(prev[cId]?.fill || {}) };
+        for (let i = mcStart; i < mcStart + 10; i++) delete nextMc[i];
+        for (let i = fillStart; i < fillStart + 5; i++) delete nextFill[i];
+        return { ...prev, [cId]: { mc: nextMc, fill: nextFill } };
+      });
+      setFeedback((prev) => {
+        const nextMc = { ...(prev[cId]?.mc || {}) };
+        const nextFill = { ...(prev[cId]?.fill || {}) };
+        for (let i = mcStart; i < mcStart + 10; i++) delete nextMc[i];
+        for (let i = fillStart; i < fillStart + 5; i++) delete nextFill[i];
+        return { ...prev, [cId]: { mc: nextMc, fill: nextFill } };
+      });
+    }
     setExamSubmitted(false);
   };
 
@@ -422,7 +451,7 @@ export default function App() {
                 SDÜ İSG Yüksek Lisans
               </h1>
               <p className="text-xs font-bold text-slate-900/80">
-                Vize Sınav & Çalışma Portalı (6 Ders • 240 Soru)
+                Vize Sınav & Çalışma Portalı (6 Ders • 60 Test • 900 Soru)
               </p>
             </div>
           </div>
@@ -561,10 +590,31 @@ export default function App() {
     );
   }
 
-  const activeStats = getStats(activeCourse);
+  const activeStats = getStats(activeCourse, activeTestIdx);
+  const overallCourseStats = getStats(activeCourse, 'all');
   const pointsPerQuestion = +(100 / activeStats.total).toFixed(1);
   const totalAllCoursesMC = courses.reduce((acc, c) => acc + c.mcQuestions.length, 0);
   const totalAllCoursesFill = courses.reduce((acc, c) => acc + c.fillQuestions.length, 0);
+
+  // Slice MC and Fill questions according to selected Test (0..9) or 'all'
+  const mcStartIdx = activeTestIdx === 'all' ? 0 : activeTestIdx * 10;
+  const mcEndIdx =
+    activeTestIdx === 'all'
+      ? activeCourse.mcQuestions.length
+      : Math.min((activeTestIdx + 1) * 10, activeCourse.mcQuestions.length);
+
+  const fillStartIdx = activeTestIdx === 'all' ? 0 : activeTestIdx * 5;
+  const fillEndIdx =
+    activeTestIdx === 'all'
+      ? activeCourse.fillQuestions.length
+      : Math.min((activeTestIdx + 1) * 5, activeCourse.fillQuestions.length);
+
+  const visibleMC = activeCourse.mcQuestions.slice(mcStartIdx, mcEndIdx);
+  const visibleFill = activeCourse.fillQuestions.slice(fillStartIdx, fillEndIdx);
+
+  const activeTestMeta =
+    activeTestIdx !== 'all' && activeCourse.tests ? activeCourse.tests[activeTestIdx] : null;
+  const currentWordBank = activeTestMeta?.wordBank || activeCourse.wordBank || [];
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
@@ -579,12 +629,12 @@ export default function App() {
               <h1 className="text-lg font-extrabold tracking-tight flex items-center gap-2">
                 SDÜ İSG Yüksek Lisans — Vize Sınav Portalı
                 <span className="hidden sm:inline-flex items-center gap-1 text-[10px] bg-emerald-950 border border-emerald-600 text-emerald-300 px-2 py-0.5 rounded-full font-bold">
-                  <ShieldCheck className="w-3 h-3" /> Backend Korumalı
+                  <ShieldCheck className="w-3 h-3" /> 60 Deneme Sınavı • Backend Korumalı
                 </span>
               </h1>
               <p className="text-xs text-slate-400">
-                6 Ders • {totalAllCoursesMC} Çoktan Seçmeli Test + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
-                {totalAllCoursesMC + totalAllCoursesFill} Soru • Şık Analizli)
+                6 Ders × 10 Test = 60 Sınav • {totalAllCoursesMC} Çoktan Seçmeli + {totalAllCoursesFill} Boşluk Doldurma (Toplam{' '}
+                {totalAllCoursesMC + totalAllCoursesFill} Soru)
               </p>
             </div>
           </div>
@@ -707,7 +757,7 @@ export default function App() {
         {/* 6 Course Selector Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 mb-6">
           {courses.map((course) => {
-            const st = getStats(course);
+            const st = getStats(course, 'all');
             const isSelected = course.id === activeCourse.id;
             return (
               <button
@@ -740,7 +790,7 @@ export default function App() {
 
                 <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
                   <span className="text-slate-500">
-                    {st.answered}/{st.total} Soru
+                    10 Test • {st.answered}/{st.total}
                   </span>
                   <span
                     className={
@@ -749,7 +799,7 @@ export default function App() {
                         : 'text-slate-700 font-bold'
                     }
                   >
-                    {st.score} Puan
+                    %{st.score}
                   </span>
                 </div>
               </button>
@@ -759,7 +809,7 @@ export default function App() {
 
         {/* Active Course Banner & Score Card */}
         <div
-          className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-6 flex flex-col lg:flex-row justify-between gap-6"
+          className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-5 flex flex-col lg:flex-row justify-between gap-6"
           style={{ borderLeft: `6px solid ${activeCourse.hex}` }}
         >
           <div className="flex-1">
@@ -788,8 +838,11 @@ export default function App() {
 
           {/* Score Box */}
           <div className="lg:w-72 bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col items-center justify-center text-center shrink-0">
+            <div className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1">
+              {activeTestIdx === 'all' ? 'Tüm 10 Test Genel Puanı' : `Test ${activeTestIdx + 1} Puanı`}
+            </div>
             <Award
-              className={`w-8 h-8 mb-1 ${
+              className={`w-7 h-7 mb-1 ${
                 activeStats.score >= 70 ? 'text-emerald-600' : 'text-amber-500'
               }`}
             />
@@ -809,7 +862,7 @@ export default function App() {
               )}
             </div>
 
-            <div className="grid grid-cols-3 gap-2 w-full mt-4 pt-3 border-t border-slate-200 text-xs font-bold">
+            <div className="grid grid-cols-3 gap-2 w-full mt-3.5 pt-3 border-t border-slate-200 text-xs font-bold">
               <div className="text-emerald-700">
                 <div className="text-base">{activeStats.correct}</div>
                 Doğru
@@ -823,8 +876,130 @@ export default function App() {
                 Boş
               </div>
             </div>
+
+            <div className="w-full mt-3 pt-2.5 border-t border-slate-200 text-[11px] font-bold text-slate-500 flex items-center justify-between">
+              <span>Ders Genel (10 Test):</span>
+              <span className="text-slate-800">
+                {overallCourseStats.answered}/{overallCourseStats.total} Soru (%{overallCourseStats.score})
+              </span>
+            </div>
           </div>
         </div>
+
+        {/* 10-TEST SELECTOR BAR (Test 1 .. Test 10 + Tüm 10 Test) */}
+        {activeCourse.tests && activeCourse.tests.length > 0 && (
+          <div className="bg-white rounded-xl border border-slate-200 p-4 mb-5 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-slate-800">
+                <Layers className="w-4 h-4 text-amber-600" />
+                <span>
+                  {activeCourse.code} — 10 Ayrı Deneme Sınavı Seçimi (Her Test: 10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru)
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  setActiveTestIdx('all');
+                  setExamSubmitted(false);
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition border ${
+                  activeTestIdx === 'all'
+                    ? 'bg-amber-500 text-slate-950 border-amber-600 shadow'
+                    : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
+                }`}
+              >
+                📚 Tüm 10 Testi Birlikte Göster (150 Soru)
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
+              {activeCourse.tests.map((t, idx) => {
+                const tStat = getStats(activeCourse, idx);
+                const isSelected = activeTestIdx === idx;
+                const isDone = tStat.answered === tStat.total && tStat.total > 0;
+                return (
+                  <button
+                    key={t.testId}
+                    onClick={() => {
+                      setActiveTestIdx(idx);
+                      setExamSubmitted(false);
+                    }}
+                    title={t.title}
+                    className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
+                      isSelected
+                        ? 'bg-slate-900 text-white border-slate-900 shadow-md -translate-y-0.5'
+                        : isDone
+                        ? 'bg-emerald-50/70 border-emerald-300 text-slate-900 hover:border-emerald-500'
+                        : 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-white hover:border-slate-400'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1">
+                        <span
+                          className={`text-xs font-black ${
+                            isSelected ? 'text-amber-400' : 'text-slate-900'
+                          }`}
+                        >
+                          {t.shortTitle}
+                        </span>
+                        <span
+                          className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                            isSelected
+                              ? 'bg-slate-800 text-slate-200'
+                              : isDone
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-slate-200 text-slate-700'
+                          }`}
+                        >
+                          {tStat.answered}/{tStat.total}
+                        </span>
+                      </div>
+                      <div
+                        className={`text-[11px] font-medium mt-1 line-clamp-2 leading-tight ${
+                          isSelected ? 'text-slate-300' : 'text-slate-600'
+                        }`}
+                      >
+                        {t.theme}
+                      </div>
+                    </div>
+
+                    <div
+                      className={`mt-2 pt-1.5 border-t text-[10px] font-extrabold flex items-center justify-between ${
+                        isSelected ? 'border-slate-700 text-amber-300' : 'border-slate-200 text-slate-500'
+                      }`}
+                    >
+                      <span>Puan:</span>
+                      <span
+                        className={
+                          tStat.score >= 70
+                            ? isSelected
+                              ? 'text-emerald-400'
+                              : 'text-emerald-700'
+                            : ''
+                        }
+                      >
+                        {tStat.score}/100
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {activeTestMeta && (
+              <div className="mt-3 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <div className="font-extrabold text-slate-900 flex items-center gap-2">
+                  <span className="bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded font-black">
+                    AKTİF SINAV: {activeTestMeta.shortTitle.toUpperCase()}
+                  </span>
+                  <span>{activeTestMeta.theme}</span>
+                </div>
+                <span className="text-slate-500 font-semibold">
+                  10 Çoktan Seçmeli + 5 Boşluk Doldurma = 15 Soru (Her soru {pointsPerQuestion} Puan)
+                </span>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Filter & Action Bar */}
         <div className="bg-white rounded-xl border border-slate-200 p-3.5 mb-6 flex flex-wrap items-center justify-between gap-3 shadow-sm">
@@ -847,7 +1022,7 @@ export default function App() {
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              Çoktan Seçmeli Test ({activeCourse.mcQuestions.length})
+              Çoktan Seçmeli Test ({visibleMC.length})
             </button>
             <button
               onClick={() => setFilter('fill')}
@@ -857,7 +1032,7 @@ export default function App() {
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              Boşluk Doldurma ({activeCourse.fillQuestions.length})
+              Boşluk Doldurma ({visibleFill.length})
             </button>
           </div>
 
@@ -870,18 +1045,18 @@ export default function App() {
               {showWordBank ? 'Kelime Havuzunu Gizle' : 'Kelime Havuzunu Göster'}
             </button>
             <button
-              onClick={handleRevealAllCourse}
+              onClick={handleRevealCurrentView}
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700"
             >
               <Eye className="w-3.5 h-3.5 text-blue-600" />
-              Tüm Cevapları Göster
+              {activeTestIdx === 'all' ? 'Tüm 150 Cevabı Göster' : `Test ${activeTestIdx + 1} Cevaplarını Göster`}
             </button>
             <button
-              onClick={handleResetCourse}
+              onClick={handleResetCurrentView}
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-rose-200 bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              Bu Dersi Sıfırla
+              {activeTestIdx === 'all' ? 'Tüm Dersi Sıfırla' : `Test ${activeTestIdx + 1}'i Sıfırla`}
             </button>
           </div>
         </div>
@@ -891,15 +1066,19 @@ export default function App() {
           <section className="mb-10">
             <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
               <h3 className="text-lg font-extrabold text-slate-900">
-                📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({activeCourse.mcQuestions.length} Soru)
+                📋 Bölüm 1: Çoktan Seçmeli Test Soruları ({visibleMC.length} Soru)
               </h3>
               <span className="text-xs font-bold text-slate-500">
-                Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan şık analizi gelir
+                Her soru {pointsPerQuestion} puandır • Cevaplandığında sunucudan 5 şık analizi gelir
               </span>
             </div>
 
             <div className="space-y-5">
-              {activeCourse.mcQuestions.map((q, qIdx) => {
+              {visibleMC.map((q, localIdx) => {
+                const qIdx = mcStartIdx + localIdx;
+                const testNumber = Math.floor(qIdx / 10) + 1;
+                const questionInTest = (qIdx % 10) + 1;
+
                 const userChoice = courseState.mc?.[qIdx];
                 const hasAnswered = userChoice !== undefined;
                 const qFb = courseFeedback.mc?.[qIdx];
@@ -918,9 +1097,16 @@ export default function App() {
                     className={`bg-white rounded-xl border ${borderClass} p-5 shadow-sm transition`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
-                        TEST SORU {qIdx + 1}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
+                          TEST {testNumber} • SORU {questionInTest}
+                        </span>
+                        {activeTestIdx === 'all' && (
+                          <span className="text-xs font-bold text-slate-500">
+                            (Genel #{qIdx + 1})
+                          </span>
+                        )}
+                      </div>
                       <span className="text-xs font-bold text-slate-400">
                         Çoktan Seçmeli • {pointsPerQuestion} Puan
                       </span>
@@ -1080,20 +1266,20 @@ export default function App() {
           <section>
             <div className="flex items-center justify-between border-b-2 border-slate-300 pb-2 mb-4">
               <h3 className="text-lg font-extrabold text-slate-900">
-                ✍️ Bölüm 2: Boşluk Doldurma Soruları ({activeCourse.fillQuestions.length} Soru)
+                ✍️ Bölüm 2: Boşluk Doldurma Soruları ({visibleFill.length} Soru)
               </h3>
               <span className="text-xs font-bold text-slate-500">
                 Her soru {pointsPerQuestion} puandır
               </span>
             </div>
 
-            {showWordBank && activeCourse.wordBank && (
+            {showWordBank && currentWordBank.length > 0 && (
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
                 <div className="text-xs font-extrabold uppercase tracking-wide text-blue-900 mb-2">
-                  🔑 Bu Dersin Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
+                  🔑 {activeTestIdx === 'all' ? 'Bu Dersin' : `Test ${activeTestIdx + 1}`} Boşluk Doldurma Kelime Havuzu (Karışık Sıralı — Tıklayıp Kopyalayabilirsin)
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {activeCourse.wordBank.map((word, idx) => (
+                  {currentWordBank.map((word, idx) => (
                     <span
                       key={idx}
                       className="bg-white border border-blue-300 text-blue-900 px-3 py-1 rounded-md text-xs font-bold shadow-sm select-all"
@@ -1106,7 +1292,11 @@ export default function App() {
             )}
 
             <div className="space-y-4">
-              {activeCourse.fillQuestions.map((q, qIdx) => {
+              {visibleFill.map((q, localIdx) => {
+                const qIdx = fillStartIdx + localIdx;
+                const testNumber = Math.floor(qIdx / 5) + 1;
+                const fillInTest = (qIdx % 5) + 1;
+
                 const fState = courseState.fill?.[qIdx] || {
                   val: '',
                   checked: false
@@ -1126,9 +1316,16 @@ export default function App() {
                     className={`bg-white rounded-xl border ${borderClass} p-5 shadow-sm transition`}
                   >
                     <div className="flex items-center justify-between gap-2 mb-2.5">
-                      <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
-                        BOŞLUK DOLDURMA {qIdx + 1}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="bg-slate-900 text-white text-xs font-extrabold px-2.5 py-1 rounded">
+                          TEST {testNumber} • BOŞLUK DOLDURMA {fillInTest}
+                        </span>
+                        {activeTestIdx === 'all' && (
+                          <span className="text-xs font-bold text-slate-500">
+                            (Genel #{qIdx + 1})
+                          </span>
+                        )}
+                      </div>
                       <span className="text-xs font-bold text-slate-400">
                         Kavram & Sınır Değer • {pointsPerQuestion} Puan
                       </span>
