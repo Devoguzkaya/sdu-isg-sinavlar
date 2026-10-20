@@ -80,11 +80,11 @@ export const riskCourse = {
     {
       q: "Risklerin kontrol altına alınması aşamasında uygulanacak 'Risk Kontrol Tedbirleri Hiyerarşisi'nde EN SON başvurulması gereken yöntem aşağıdakilerden hangisidir?",
       options: [
-        "Tehlikenin kaynağında yok edilmesi (Eliminasyon)",
-        "Tehlikelinin daha az tehlikeli olanla değiştirilmesi (İkame)",
+        "Tehlikenin kaynağında yok edilmesi",
+        "Tehlikelinin daha az tehlikeli olanla değiştirilmesi",
         "Toplu koruma ve mühendislik önlemleri",
-        "İdari önlemler (çalışma süreleri, işaretlemeler)",
-        "Kişisel Koruyucu Donanım (KKD) kullanımı"
+        "İdari önlemler",
+        "Kişisel Koruyucu Donanım kullanımı"
       ],
       answer: 4,
       explanation: "Risk kontrol hiyerarşisinde öncelik kaynağında yok etme, ikame ve toplu korumadır. Kişisel Koruyucu Donanım (KKD) her zaman EN SON çaredir.",
@@ -156,8 +156,8 @@ export const riskCourse = {
     {
       q: "Boyahanede kullanılan kanserojen 'solvent bazlı boya' yerine, sağlığa zararı çok daha düşük olan 'su bazlı boya' kullanılmaya başlanması risk kontrol hiyerarşisinde hangi adıma örnektir?",
       options: [
-        "Eliminasyon (Yok etme)",
-        "İkame (Yerine koyma / Değiştirme)",
+        "Eliminasyon",
+        "İkame",
         "Kişisel koruyucu donanım",
         "İdari önlem",
         "Risk transferi"
@@ -195,7 +195,7 @@ export const riskCourse = {
       q: "Fine-Kinney risk analiz yönteminde risk değeri (R) hesaplanırken kullanılan üç parametre hangisidir?",
       options: [
         "Olasılık x Şiddet x Maliyet",
-        "Olasılık (İhtimal) x Frekans (Maruziyet sıklığı) x Şiddet (Etki)",
+        "Olasılık x Frekans x Şiddet",
         "Sıcaklık x Nem x Basınç",
         "Kusur x Keşfedilebilirlik x Önem",
         "Tehlike x Zaman x Alan"
@@ -302,7 +302,7 @@ export const riskCourse = {
     {
       q: "Hata Türü ve Etkileri Analizi (FMEA) yönteminde Risk Öncelik Sayısı (RÖS / RPN) hangi üç parametrenin çarpımıyla (1 ile 1000 arasında) hesaplanır?",
       options: [
-        "Olasılık (O) x Şiddet (Ş) x Farkedilebilirlik / Keşfedilebilirlik (F)",
+        "Olasılık x Şiddet x Farkedilebilirlik",
         "Olasılık x Frekans x Maliyet",
         "Tehlike x Süre x Mesafe",
         "Sıcaklık x Basınç x Hacim",
@@ -321,7 +321,7 @@ export const riskCourse = {
     {
       q: "Özellikle kimya, petrokimya ve proses endüstrisinde boru hatları ve reaktörlerdeki akış, basınç, sıcaklık sapmalarını 'Kılavuz Kelimeler' (Az, Çok, Hiç, Ters, Başka vb.) kullanarak analiz eden ekip çalışması yöntemi hangisidir?",
       options: [
-        "HAZOP (Tehlike ve İşletilebilirlik Analizi)",
+        "HAZOP",
         "L Tipi 5x5 Matris",
         "Kontrol Listesi (Checklist)",
         "JSA (İş Güvenliği Analizi)",
@@ -380,7 +380,7 @@ export const riskCourse = {
       options: [
         "İşyeri kurulduktan 2 yıl sonra",
         "İlk iş kazası meydana geldikten hemen sonra",
-        "İşyerinin tasarım veya kuruluş aşamasından itibaren (faaliyete geçmeden / çalışmaya başlamadan önce)",
+        "İşyerinin tasarım veya kuruluş aşamasından itibaren",
         "Bakanlık müfettişi denetime geldiği gün",
         "Çalışan sayısı 50'yi geçtiğinde"
       ],

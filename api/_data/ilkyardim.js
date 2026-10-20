@@ -113,7 +113,7 @@ export const ilkyardimCourse = {
       q: "İlk yardımın 3 temel uygulaması (KBK kuralı) aşağıdakilerden hangisinde doğru sırayla verilmiştir?",
       options: [
         "Kurtarma - Koruma - Bildirme",
-        "Koruma - Bildirme (112) - Kurtarma (Müdahale)",
+        "Koruma - Bildirme - Kurtarma",
         "Bildirme - İlaç verme - Taşıma",
         "Tanı koyma - Tedavi etme - Ameliyat",
         "Kurtarma - İlaç verme - Kapatma"
@@ -171,7 +171,7 @@ export const ilkyardimCourse = {
       options: [
         "Hipovolemik şok",
         "Kardiyojenik şok",
-        "Anafilaktik (Toksik/Alerjik) şok",
+        "Anafilaktik şok",
         "Psikojenik şok",
         "Travmatik şok"
       ],
@@ -284,7 +284,7 @@ export const ilkyardimCourse = {
       q: "İşyeri hekimi tarafından çalışanlara düzenli olarak yapılan 'Periyodik Sağlık Muayeneleri' (işitme testi, akciğer grafisi, kan/idrar tahlili vb.) ile meslek hastalığının henüz başlangıç evresinde tespit edilmesi hangi korunma basamağıdır?",
       options: [
         "Birincil (Primer) Koruma",
-        "İkincil (Sekonder) Koruma — Erken Tanı ve Tarama",
+        "İkincil (Sekonder) Koruma",
         "Üçüncül (Tersiyer) Koruma",
         "Kaynağında yok etme",
         "Toplu koruma"

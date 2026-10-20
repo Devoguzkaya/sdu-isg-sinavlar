@@ -175,7 +175,7 @@ export const fkruCourse = {
     {
       q: "Radyasyondan korunmada ALARA (makul ölçüde ulaşılabilecek en düşük düzey) prensibinin 3 temel dış radyasyon korunma kuralı nedir?",
       options: [
-        "Zamanı kısaltmak - Mesafeyi artırmak - Zırhlama (engel) kullanmak",
+        "Zamanı kısaltmak - Mesafeyi artırmak - Zırhlama kullanmak",
         "Süreyi uzatmak - Kaynağa yaklaşmak - Maske takmak",
         "Sıcaklığı artırmak - Havalandırma açmak - Kulaklık takmak",
         "Topraklama yapmak - Sigorta takmak - Eldiven giymek",
@@ -270,7 +270,7 @@ export const fkruCourse = {
     {
       q: "Dr. Öğr. Üyesi Dicle Özdemir Küçükçapraz'ın dersinde vize notunun %80-90'ını oluşturacağını belirttiği ödevin temel konusu ve geçme notu kriteri nedir?",
       options: [
-        "Fiziksel risk unsurları kapsamında yaşanmış/potansiyel bir iş kazası haberinin vaka analizi ('Sen olsan ne yapardın?') - Geçme notu ortalaması en az 70",
+        "Fiziksel risk unsurları kapsamında bir iş kazasının vaka analizi - Geçme notu 70",
         "Kimyasal laboratuvar deneyi - Geçme notu 50",
         "Sadece makale çevirisi - Geçme notu 60",
         "Ödev yoktur",
@@ -289,7 +289,7 @@ export const fkruCourse = {
     {
       q: "Çalışanların Titreşimle İlgili Risklerden Korunmalarına Dair Yönetmelik'e göre; traktör, ekskavatör, kamyon ve iş makinesi operatörlerinin maruz kaldığı 'Bütün Vücut Titreşimi' için 8 saatlik günlük maruziyet eylem değeri ve sınır değeri sırasıyla kaç m/s²'dir?",
       options: [
-        "0,5 m/s² (Eylem Değeri) ve 1,15 m/s² (Sınır Değeri)",
+        "0,5 m/s² ve 1,15 m/s²",
         "2,5 m/s² ve 5,0 m/s²",
         "1,0 m/s² ve 3,0 m/s²",
         "5,0 m/s² ve 10,0 m/s²",

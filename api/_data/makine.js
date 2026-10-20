@@ -74,7 +74,7 @@ export const makineCourse = {
     {
       q: "Uluslararası Birim Sistemi'nde (SI) 'Basınç' ve 'Mekanik Gerilme' birimi olan Pascal (Pa) aşağıdakilerden hangisine eşittir?",
       options: [
-        "1 Pa = 1 N / m² (Metrekareye düşen Newton kuvveti)",
+        "1 Pa = 1 N / m²",
         "1 Pa = 1 N . m (Joule)",
         "1 Pa = 1 J / s (Watt)",
         "1 Pa = 1 kg . m",
@@ -138,7 +138,7 @@ export const makineCourse = {
     {
       q: "Birbirine zıt yönde dönen iki silindir, dişli çark veya kayış-kasnak arasına el veya elbisenin kapılması mekanik tehlikelerden hangisine girer?",
       options: [
-        "İçeri çekilme / Kapma (Kıstırma noktası)",
+        "İçeri çekilme ve kapma",
         "Yüksek sıcaklık",
         "Elektrik çarpması",
         "Radyasyon",
@@ -272,7 +272,7 @@ export const makineCourse = {
     {
       q: "Bir malzemeye uygulanan çekme kuvveti kaldırıldığında, malzemenin kalıcı şekil değiştirmeye uğramadan ilk boyutlarına tamamen geri dönebildiği en yüksek gerilme sınırına (ve kalıcı uzamanın başladığı sınıra) ne ad verilir?",
       options: [
-        "Elastik Sınır / Akma Dayanımı (Yield Strength - Re)",
+        "Elastik Sınır / Akma Dayanımı",
         "Kopma Uzaması",
         "Sünme Sınırı",
         "Yorulma Sınırı",
@@ -367,7 +367,7 @@ export const makineCourse = {
     {
       q: "Oksi-gaz (oksi-asetilen) kaynak ve kesme sistemlerinde alevin hortum içinden geriye doğru yürüyerek tüpe ulaşmasını ve tüpün patlamasını önleyen zorunlu emniyet elemanı nedir?",
       options: [
-        "Alev Geri Tepme Emniyet Valfi (Çekvalf + Alev Tutucu)",
+        "Alev Geri Tepme Emniyet Valfi",
         "Su sayacı",
         "Termometre",
         "Susturucu",

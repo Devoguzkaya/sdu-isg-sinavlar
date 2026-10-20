@@ -18,8 +18,8 @@ export const madenCourse = {
       options: [
         "Doğal havalandırmanın yeterli olması ve grizu patlaması riskinin bulunmaması",
         "Gün ışığı ile doğal aydınlatma sağlanabilmesi",
-        "Galeri tahkimatı (direk/tavan desteklemesi) gerektirmemesi",
-        "İklim ve hava koşullarından (yağmur, kar, sis, don) hiçbir şekilde etkilenmemesi",
+        "Galeri tahkimatı gerektirmemesi",
+        "İklim ve hava koşullarından hiçbir şekilde etkilenmemesi",
         "Büyük iş makinelerinin rahat manevra yapabilmesi"
       ],
       answer: 3,
@@ -54,7 +54,7 @@ export const madenCourse = {
     {
       q: "Mermer ocaklarında elmas tel kesme işlemi sırasında oluşabilecek EN BÜYÜK ve ölümcül iş güvenliği riski aşağıdakilerden hangisidir?",
       options: [
-        "Telin koparak yüksek hızla savrulması (kamçılama etkisi) ve kopan boncukların fırlaması",
+        "Telin koparak yüksek hızla savrulması ve kopan boncukların fırlaması",
         "Sadece gürültü oluşması",
         "Metan gazı birikmesi",
         "Karanlıkta çalışma",
@@ -74,7 +74,7 @@ export const madenCourse = {
       q: "Elmas tel kesme işleminde su kullanılmasının hem teknik hem de İSG açısından temel amacı nedir?",
       options: [
         "Mermeri boyamak",
-        "Elmas teli ve boncukları soğutmak, kesim oluğundaki taş tozunu (çamuru) yıkayıp dışarı atmak ve toz çıkışını önlemek",
+        "Elmas teli soğutmak, taş tozunu yıkayıp dışarı atmak ve toz çıkışını önlemek",
         "Elektrik iletkenliğini artırmak",
         "Şev açısını dikleştirmek",
         "Makinenin ağırlığını artırmak"
@@ -106,7 +106,7 @@ export const madenCourse = {
       q: "Açık ocak madenlerinde kademe (basamak) şev açısı belirlenirken en kritik mühendislik ve güvenlik kriteri aşağıdakilerden hangisidir?",
       options: [
         "Kamyonların rengi",
-        "Kayaç/zemin sağlamlığı, süreksizlik (çatlak/fay) durumu ve şev duraylılığı (heyelan/göçük riski)",
+        "Kayaç sağlamlığı, süreksizlik durumu ve şev duraylılığı",
         "Yalnızca cevherin piyasa fiyatı",
         "Çalışan sayısı",
         "Vardiya saati"
@@ -124,7 +124,7 @@ export const madenCourse = {
     {
       q: "Açık işletmelerde kaya kamyonları (damperli kamyonlar) kademe kenarından döküm yaparken kamyonun şevden aşağı yuvarlanmasını önlemek için döküm sahası kenarında bulunması zorunlu yapı nedir?",
       options: [
-        "Döküm yerinde kamyon tekerlek yüksekliğinin en az yarısı kadar güvenlik seti (topuk/banket) ve işaretçi",
+        "Döküm yerinde kamyon tekerlek yüksekliğinin en az yarısı kadar güvenlik seti ve işaretçi",
         "Sadece plastik şerit",
         "Aydınlatma direği",
         "Su birikintisi",
@@ -181,7 +181,7 @@ export const madenCourse = {
     {
       q: "Açık ocaklarda delik delme makineleri (rok/foraj) çalışırken ortaya çıkan yoğun taş tozunun çalışanlarda 'Silikozis' (pnömokonyoz) yapmasını önlemek için makinede bulunması gereken sistem nedir?",
       options: [
-        "Islak delme (su enjeksiyonu) veya siklonlu toz toplama (emme) sistemi",
+        "Islak delme veya siklonlu toz toplama sistemi",
         "Sadece egzoz susturucusu",
         "Havalı korna",
         "Yüksek devirli fan ile tozu havaya savurma",
@@ -200,7 +200,7 @@ export const madenCourse = {
     {
       q: "Prof. Dr. Servet Demirdağ'ın dersin girişinde vurguladığı üzere, insanlığın kullandığı hammaddelerin kökeni ifade edilirken kullanılan temel madencilik mottosu nedir?",
       options: [
-        "Yetiştirilemiyorsa (tarım değilse), mutlaka madencilikle çıkarılıyordur",
+        "Yetiştirilemiyorsa, mutlaka madencilikle çıkarılıyordur",
         "Tüm hammaddeler sentetik olarak üretilir",
         "Madencilik sadece kömür üretir",
         "Doğal taşlar madencilik sayılmaz",

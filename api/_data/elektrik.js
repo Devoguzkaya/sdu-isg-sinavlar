@@ -115,7 +115,7 @@ export const elektrikCourse = {
         "Kazazedeyi çıplak elle çekip akımdan kurtarmak",
         "Kazazedenin üstüne su dökmek",
         "Önce kendi güvenliğini sağlayarak elektrik enerjisini (şalteri/fişi) kesmek",
-        "Derhal kalp masajına başlamak (iletken üzerindeyken)",
+        "Derhal kazazedeye dokunarak kalp masajına başlamak",
         "Kazazedeye ağzından su içirmek"
       ],
       answer: 2,
@@ -195,7 +195,7 @@ export const elektrikCourse = {
     {
       q: "Elektrik tesislerinde 'Dolaylı Dokunma' (normalde gerilim altında olmayan metal gövdenin yalıtım hatası sonucu enerjilenmesi) riskine karşı alınan en temel koruma önlemi hangisidir?",
       options: [
-        "Koruma topraklaması ve Kaçak Akım Rölesi (otomatik açma) birlikte kullanımı",
+        "Koruma topraklaması ve Kaçak Akım Rölesi birlikte kullanımı",
         "Sadece uyarı levhası asmak",
         "İletken kesitini inceltmek",
         "Sigorta değerini büyütmek",
@@ -232,7 +232,7 @@ export const elektrikCourse = {
     },
     {
       q: "Elektrik tesislerinde topraklama ölçümleri ve paratoner (yıldırımdan korunma) tesisatı periyodik kontrolleri İş Ekipmanları Yönetmeliği'ne göre azami hangi periyotta yapılmalıdır?",
-      options: ["3 ayda bir", "6 ayda bir", "Yılda 1 (1 Yıl)", "2 yılda bir", "5 yılda bir"],
+      options: ["3 ayda bir", "6 ayda bir", "Yılda 1 kez", "2 yılda bir", "5 yılda bir"],
       answer: 2,
       explanation: "Elektrik tesisatı, topraklama tesisatı, paratoner ve akümülatör/transformatör periyodik kontrolleri standartlarda aksi belirtilmedikçe yılda en az 1 kez yetkili elektrik mühendisi/teknikeri tarafından yapılır.",
       optionExplanations: [
@@ -323,7 +323,7 @@ export const elektrikCourse = {
       q: "Elektrik panolarının önünde çalışırken olası kaçaklara karşı zemin yalıtımını sağlamak amacıyla pano önüne serilmesi zorunlu olan yalıtkan malzeme nedir?",
       options: [
         "Çelik sac levha",
-        "Standartlara uygun Yalıtkan Paspas (İzole Halı) veya yalıtkan sehpa",
+        "Standartlara uygun Yalıtkan Paspas veya yalıtkan sehpa",
         "Islak ahşap palet",
         "Alüminyum folyo",
         "Bakır ızgara"
@@ -437,7 +437,7 @@ export const elektrikCourse = {
       q: "Şantiyelerde ve açık alanlarda kullanılan seyyar uzatma kabloları ve elektrikli el aletleri ile ilgili aşağıdaki uygulamalardan hangisi DOĞRUDUR?",
       options: [
         "Kabloların ek yerleri açıkta bırakılmalı ve su birikintisi içinden geçirilmelidir",
-        "Fiş yapısı kırık kablolar priz deliklerine çıplak telle (kibrit çöpü sıkıştırılarak) takılmalıdır",
+        "Fiş yapısı kırık kablolar priz deliklerine çıplak telle takılmalıdır",
         "Kablolar mekanik ezilmelere ve suya karşı korunmalı, 30 mA kaçak akım korumalı panodan beslenmelidir",
         "Elektrikli el aletlerinin topraklama ucu iptal edilmelidir",
         "Hasarlı kablolar sadece kağıt bantla sarılmalıdır"
