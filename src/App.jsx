@@ -50,7 +50,8 @@ export default function App() {
   const [showWordBank, setShowWordBank] = useState(true);
   const [examSubmitted, setExamSubmitted] = useState(false);
 
-  // Answers state persisted to localStorage
+  // Answers state persisted to localStorage + Vercel Storage (/api/sync)
+  const [cloudStatus, setCloudStatus] = useState('local'); // 'local' | 'synced' | 'saving'
   const [answers, setAnswers] = useState(() => {
     try {
       const saved = localStorage.getItem('sdu_isg_react_vize_v2');
@@ -63,10 +64,38 @@ export default function App() {
     return init;
   });
 
+  // Load from Vercel Storage on initial mount if available
+  useEffect(() => {
+    fetch('/api/sync')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.configured) {
+          setCloudStatus('synced');
+          if (res.data) {
+            setAnswers(res.data);
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   useEffect(() => {
     try {
       localStorage.setItem('sdu_isg_react_vize_v2', JSON.stringify(answers));
     } catch (e) {}
+
+    if (cloudStatus === 'local') return;
+    setCloudStatus('saving');
+    const timer = setTimeout(() => {
+      fetch('/api/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers)
+      })
+        .then((r) => (r.ok ? setCloudStatus('synced') : null))
+        .catch(() => {});
+    }, 800);
+    return () => clearTimeout(timer);
   }, [answers]);
 
   // 45-min Timer
