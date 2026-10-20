@@ -135,6 +135,36 @@ export const fkruConceptGroups = [
         opt: 'Biyolojik Risk Grupları (Grup 1, Grup 2, Grup 3 ve Grup 4)',
         desc: 'Grup 1: İnsanda hastalık yapma ihtimali olmayan; Grup 2: Hastalık yapabilen, tedavisi olan; Grup 3: Ağır hastalık yapan, topluma yayılma riski olan ancak etkili korunma/tedavisi OLAN; Grup 4: Ağır hastalık yapan, yayılma riski yüksek ve etkili korunma/tedavisi OLMAYAN (örn. Ebola) etkenlerdir.',
         q: 'Biyolojik Etkenlere Maruziyet Risklerinin Önlenmesi Hakkında Yönetmeliğe göre "İnsanda ağır bir hastalığa neden olan, topluma yayılma riski yüksek olan ancak etkili korunma ve tedavi yöntemi BULUNMAYAN" biyolojik etkenler hangi gruptadır?'
+      },
+      {
+        opt: 'Patlamadan Korunma Dokümanı (PKD) ve Ex-Proof (ATEX) Ekipman Kategorileri (Kategori 1, 2 ve 3)',
+        desc: 'Bölge 0 ve 20\'de Kategori 1 (çok yüksek koruma), Bölge 1 ve 21\'de Kategori 1 veya 2 (yüksek koruma), Bölge 2 ve 22\'de ise Kategori 1, 2 veya 3 ekipman kullanılır.',
+        q: 'ATEX Yönetmeliğine göre Bölge 0 veya Bölge 20 olarak sınıflandırılan patlayıcı ortamlarda kullanılacak Ex-Proof ekipmanlar en az hangi kategoride olmalıdır?'
+      },
+      {
+        opt: 'Alt Patlama Sınırı (LEL / Alt Patlama Limiti) ve Üst Patlama Sınırı (UEL)',
+        desc: 'Yanıcı bir gaz veya buharın hava içinde patlama oluşturabileceği en düşük konsantrasyona LEL (Lower Explosive Limit), en yüksek konsantrasyona ise UEL (Upper Explosive Limit) denir.',
+        q: 'Yanıcı gaz veya buharların hava ile karıştığında kıvılcımla patlama oluşturabileceği "En Düşük Konsantrasyon Sınırı" ve "En Yüksek Konsantrasyon Sınırı" kısaltmaları hangileridir?'
+      },
+      {
+        opt: 'Dekompresyon (Vurgun / Caisson) Hastalığı ve Azot (N2) Narkozu',
+        desc: 'Yüksek basınç altında çalışan dalgıç ve tünel işçileri normal basınca hızla çıktığında dokularda çözünmüş Azot (N2) gazının kabarcıklaşarak damarları tıkaması sonucu Vurgun (Dekompresyon) oluşur.',
+        q: 'Dalgıçlarda ve basınçlı tünel (keson) işçilerinde yüksek basınçtan normal atmosfer basıncına hızlı çıkış sırasında kanda hangi gazın kabarcıklaşması "Vurgun (Dekompresyon)" hastalığına neden olur?'
+      },
+      {
+        opt: 'Bruselloz, Şarbon (Antraks) ve Tetanoz (Zoonotik ve Tarımsal Biyolojik Riskler)',
+        desc: 'Hayvancılık, mezbaha, veterinerlik ve deri/yün işlerinde çalışanlarda hayvanlardan bulaşan Şarbon (Bacillus anthracis) ve Bruselloz; paslı/topraklı yaralanmalarda ise Tetanoz (Clostridium tetani) meslek hastalığı görülür.',
+        q: 'Hayvancılık, mezbaha, deri ve yün işleme işlerinde çalışanlarda enfekte hayvanlardan bulaşan başlıca zoonotik meslek hastalıkları hangileridir?'
+      },
+      {
+        opt: 'Güvenlik Bilgi Formu (GBF / MSDS / SDS — 16 Standart Başlık)',
+        desc: 'Tehlikeli kimyasalların fiziksel/kimyasal özelliklerini, sağlık/çevre tehlikelerini, ilk yardım, yangın, depolama ve KKD önlemlerini içeren 16 standart bölümden oluşan yasal bilgi formudur.',
+        q: 'Kimyasal maddelerin tedarikçisi tarafından işverene verilmesi zorunlu olan ve 16 standart bölümden oluşan teknik güvenlik belgesinin adı nedir?'
+      },
+      {
+        opt: 'Pnömokonyoz Türleri: Silikozis (Kuvars/SiO2), Asbestozis (Asbest), Bisinozis (Pamuk), Siderozis (Demir)',
+        desc: 'İnorganik/organik tozların akciğerde birikmesiyle oluşur: Kristal silis -> Silikozis, Kömür tozu -> Antrakozis, Pamuk tozu -> Bisinozis, Demir tozu -> Siderozis, Berilyum -> Berilyozis.',
+        q: 'Mesleki toz maruziyeti sonucu gelişen akciğer hastalıklarından (pnömokonyozlar) Kuvars (Silis), Pamuk tozu ve Demir tozunun neden olduğu hastalıklar sırasıyla hangileridir?'
       }
     ]
   }
