@@ -3,14 +3,14 @@ export const madenCourse = {
   code: "12227ISG002",
   title: "Maden İşyerlerinde İş Sağlığı ve Güvenliği",
   instructor: "Prof. Dr. Servet DEMİRDAĞ",
-  examInfo: "Yüz Yüze Vize & Final (Kasım İlk Haftaları) | Çoktan Seçmeli Test + Boşluk Doldurma | 70 Sf. Ders Notu",
+  examInfo: "Yüz Yüze Vize & Final (2-6 Kasım Vize Haftası) | Çoktan Seçmeli Test + Boşluk Doldurma | 70 Sf. Ders Notu",
   color: "emerald",
   hex: "#059669",
   badge: "Pazartesi • 40 Soru (25 Test + 15 Boşluk)",
   tips: [
-    "Servet Hoca sınavın hem TEST hem BOŞLUK DOLDURMA olacağını açıkça belirtti!",
-    "İlk 7 hafta konusu 'Açık Ocak İşletmeciliği ve Mermer/Doğal Taş Ocakları'dır.",
-    "Mermer ocaklarında elmas telin metre başına 2 tur burulması, basamak yükseklikleri (elle kazıda 3 m), açık işletmenin İSG avantajları, kavlak sökümü ve delme-patlatma güvenliği banko sorulardır."
+    "19 Ekim dersinde Servet Hoca kesinleştirdi: '2-6 Kasım vize haftasında tüm derslerin sınavı Isparta'da hafta sonuna doğru tek günde yüz yüze yapılacak.'",
+    "Servet Hoca sınavın hem TEST hem BOŞLUK DOLDURMA olacağını ve soruların doğrudan 70 sayfalık kitapçıktaki terimlerden geleceğini belirtti!",
+    "Mermer ocaklarında basamakların 90° dikliği, elmas tel çevre hızı (36-40 m/sn), titano/hava yastığı kullanımı, açık ocak hız limitleri (40/20/10 km/h) ve takip mesafesi (50 m) banko sorulardır."
   ],
   mcQuestions: [
     {

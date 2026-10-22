@@ -8,9 +8,9 @@ export const makineCourse = {
   hex: "#4f46e5",
   badge: "Salı • 40 Soru (25 Test + 15 Boşluk)",
   tips: [
+    "20 Ekim (6. hafta) dersinde İbrahim Hoca bizzat açıkladı: 'Burada anlattığımız şeylerden soruyoruz. Ders sonlarında paylaştığım örnek sorulara ve soru bankası sorularına benzer olacak. Sadece şıkları değiştiriyorum; soru bankasında doğru şık A ise sınavda B, C veya E olabiliyor.'",
     "İbrahim Hoca derste bizzat söyledi: 'Makine, Teçhizat, Cihaz, Motor ve İş Makinesi arasındaki tanım farkları test sınavında tekrar tekrar karşınıza gelir!'",
-    "SI Birim Sistemi (Kuvvet: Newton, Basınç: Pascal, Enerji: Joule, Güç: Watt) ve malzeme mekanik özellikleri (akma, çekme, gevreklik, yorulma, sünme) çok önemlidir.",
-    "13 Ekim (5. hafta) dersinde işlenen 'Talaşlı İmalat ve Taşlama Tezgahları Güvenliği' (zımpara taşı, mesnet açıklığı 3 mm) ve 6. hafta sunumu vize kapsamındadır."
+    "SI Birim Sistemi (Kuvvet: Newton, Basınç: Pascal, Enerji: Joule, Güç: Watt) ve malzeme mekanik özellikleri (akma, çekme, gevreklik, yorulma, sünme) en yüksek ağırlığa sahiptir."
   ],
   mcQuestions: [
     {
