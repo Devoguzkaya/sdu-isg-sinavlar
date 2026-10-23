@@ -473,80 +473,80 @@ export const ilkyardimCourse = {
   ],
   fillQuestions: [
     {
-      q: "'Hastalarınıza ne iş yaptığını sorunuz' diyen ve meslek hastalıklarının babası kabul edilen İtalyan hekim Bernardino ________'dir.",
-      answers: ["Ramazzini", "ramazzini"],
-      hint: "Mehtap Hoca'nın sınavda kesin çıkacağını söylediği isim",
-      explanation: "Bernardino Ramazzini, 1700 yılında yayımladığı eseriyle İş Sağlığı ve Meslek Hastalıkları biliminin kurucusu kabul edilir."
+      q: "Osmanlı Devleti'nde işçi sağlığı alanında yayımlanan ilk yasal düzenleme, 1865 yılında Ereğli kömür havzasındaki madenciler için çıkarılan ________ Nizamnamesi'dir.",
+      answers: ["Dilaver Paşa","dilaver pasa","dilaverpaşa"],
+      hint: "1865 tarihli ilk Osmanlı maden nizamnamesi",
+      explanation: "1865 Dilaver Paşa Nizamnamesi maden işçilerinin çalışma saatlerini ve barınma koşullarını düzenleyen ilk belgedir."
     },
     {
       q: "Kişisel sağlık dosyaları, çalışanın işten ayrılma tarihinden itibaren en az ________ yıl süreyle saklanmak zorundadır.",
-      answers: ["15", "on beş", "onbes"],
+      answers: ["15","on beş","onbes"],
       hint: "Yönetmelikteki saklama süresi (yıl)",
       explanation: "İSG mevzuatına göre sağlık gözetimi kayıtları işten ayrılma tarihinden itibaren en az 15 yıl saklanır."
     },
     {
-      q: "Şiddetli kanama, ağır yanık veya sıvı kaybı sonucu dolaşan kan hacminin azalmasıyla ortaya çıkan şok türüne ________ şok denir.",
-      answers: ["hipovolemik"],
-      hint: "Hacim (volüm) azalmasına bağlı şok",
-      explanation: "Damar içi kan veya sıvı hacminin (volüm) azalmasına bağlı gelişen şoka Hipovolemik Şok denir."
+      q: "Kalp krizine bağlı olarak kalbin pompalama gücünün aniden yetersiz kalması sonucu gelişen dolaşım şokuna ________ şok denir.",
+      answers: ["kardiyojenik","kardiyak"],
+      hint: "Kalp kaynaklı şok türü",
+      explanation: "Kardiyojenik şok, kalp kasının yeterli kan pompalayamaması nedeniyle dokuların oksijensiz kalmasıdır."
     },
     {
       q: "Şok pozisyonunda kazazede sırtüstü düz yatırılır ve bacakları yaklaşık ________ cm yukarı kaldırılır.",
-      answers: ["30", "otuz"],
+      answers: ["30","otuz"],
       hint: "Ayakların kaldırılma yüksekliği (cm)",
       explanation: "Şok pozisyonunda beyin ve kalbe kan dönüşünü artırmak için bacaklar 30 cm yukarı kaldırılır."
     },
     {
       q: "Yetişkinlerde Temel Yaşam Desteğinde ________ kalp masajı ve 2 suni solunum döngüsü uygulanır.",
-      answers: ["30", "otuz"],
+      answers: ["30","otuz"],
       hint: "Göğüs basısı sayısı",
       explanation: "Yetişkinlerde Temel Yaşam Desteği 30 göğüs basısı / 2 kurtarıcı soluk oranıyla dakikada 100-120 bası hızında yapılır."
     },
     {
-      q: "Soluk borusunun yabancı cisimle tam tıkanması durumunda bilinci açık kazazedeye ________ manevrası uygulanır.",
-      answers: ["Heimlich", "heimlich"],
-      hint: "Karın basısı manevrasının adı",
-      explanation: "Tam tıkanmada diyafram altına içe ve yukarı doğru yapılan karın basısına Heimlich Manevrası denir."
+      q: "Soluk borusuna yabancı cisim kaçan ancak öksürebilen, konuşabilen ve hava girişi olan kazazedeye ________ tıkanma teşhisi konur ve sadece öksürmeye teşvik edilir.",
+      answers: ["kısmi","kismi"],
+      hint: "Öksürmeye teşvik edilen tıkanma türü",
+      explanation: "Kısmi tıkanmada kazazedeye kesinlikle dokunulmaz, sırtına vurulmaz; yabancı cismin daha derine kaçmaması için öksürmesi söylenir."
     },
     {
       q: "İşten ayrıldığı tarih ile meslek hastalığının ortaya çıktığı tarih arasında geçebilecek azami kanuni süreye ________ süresi denir.",
-      answers: ["yükümlülük", "yukumluluk"],
+      answers: ["yükümlülük","yukumluluk"],
       hint: "SGK mevzuatındaki kanuni süre kavramı",
       explanation: "Sigortalının işten ayrılmasından sonra meslek hastalığının ortaya çıkabileceği en uzun kanuni süreye Yükümlülük Süresi denir."
     },
     {
       q: "Parlak kırmızı renkli olan ve kalp atımlarıyla uyumlu olarak fışkırır tarzda akan kanama türü ________ kanamasıdır.",
-      answers: ["atardamar", "arter"],
+      answers: ["atardamar","arter"],
       hint: "En tehlikeli damar kanaması",
       explanation: "Atardamar (arter) kanamaları oksijence zengin olduğu için parlak kırmızıdır ve basınçla fışkırır tarzda akar."
     },
     {
       q: "Tarihte kurşun madeninde çalışanlarda kurşun koliğini ilk kez tanımlayan antik çağ hekimi ________'tır.",
-      answers: ["Hipokrat", "hipokrat"],
+      answers: ["Hipokrat","hipokrat"],
       hint: "Tıbbın babası sayılan hekim",
       explanation: "Tıbbın babası Hipokrat, kurşun madencilerinde kurşun zehirlenmesini (kurşun koliği) ilk tanımlayan kişidir."
     },
     {
       q: "Meslek hastalıkları sınıflandırmasında ________ Grubu, pnömokonyozlar ve diğer mesleki solunum sistemi hastalıklarını kapsar.",
-      answers: ["C", "c"],
+      answers: ["C","c"],
       hint: "A, B, C, D, E gruplarından hangisi?",
       explanation: "SGK sınıflandırmasında A: Kimyasal, B: Cilt, C: Pnömokonyoz/Solunum, D: Bulaşıcı, E: Fiziksel etkenlerdir."
     },
     {
-      q: "'Her madde zehirdir; zehri ilaçtan ayıran tek şey dozdur' ilkesini ortaya koyan toksikolojinin kurucusu ________'tur.",
-      answers: ["Paracelsus", "paracelsus"],
-      hint: "Doz kavramını tanımlayan bilim insanı",
-      explanation: "Paracelsus, doz-etki ilişkisini tanımlayarak modern toksikolojinin temelini atmıştır."
+      q: "İlk yardımın temel ilkelerinden 'Bildirme' aşamasında Türkiye'de tüm acil çağrıları (ambulans, polis, itfaiye) tek çatı altında toplayan telefon numarası ________'dir.",
+      answers: ["112","yüz on iki"],
+      hint: "Tek acil çağrı merkezi numarası",
+      explanation: "Türkiye'de tüm acil yardım hatları 112 Acil Çağrı Merkezi bünyesinde birleştirilmiştir."
     },
     {
       q: "Arı sokması, ilaç veya gıda alerjisi gibi şiddetli alerjik reaksiyonlar sonucu gelişen şok türüne ________ şok denir.",
-      answers: ["anafilaktik", "alerjik"],
+      answers: ["anafilaktik","alerjik"],
       hint: "Ağır alerji şoku",
       explanation: "Alerjen maddelere karşı gelişen akut sistemik reaksiyon şokuna Anafilaktik Şok denir."
     },
     {
       q: "Bilinci kapalı ancak solunumu ve nabzı olan kazazedeye hava yolu açıklığını korumak için ________ pozisyonu (yarı yüzükoyun yan yatış) verilir.",
-      answers: ["koma", "derleme"],
+      answers: ["koma","derleme"],
       hint: "Yarı yüzükoyun yan yatış pozisyonu",
       explanation: "Bilinci kapalı, solunumu normal olan hastaya dilin geriye kaçmasını önlemek için Koma Pozisyonu verilir."
     },
@@ -558,7 +558,7 @@ export const ilkyardimCourse = {
     },
     {
       q: "Periyodik sağlık muayeneleri ve tarama testleri ile meslek hastalığının erken tanı aşamasında tespit edilmesi ________ (sekonder) koruma basamağına girer.",
-      answers: ["ikincil", "2."],
+      answers: ["ikincil","2."],
       hint: "Birincil (önleme) ve Üçüncül (rehabilitasyon) arasındaki basamak",
       explanation: "Erken tanı ve periyodik sağlık muayeneleri İkincil (Sekonder) Koruma basamağıdır."
     }

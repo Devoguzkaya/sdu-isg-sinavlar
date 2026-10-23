@@ -443,32 +443,32 @@ export const makineCourse = {
   ],
   fillQuestions: [
     {
-      q: "Herhangi bir enerji türünü başka bir enerjiye dönüştürerek belirli bir iş yapan mekanik düzeneklere ________ denir.",
-      answers: ["makine", "makina"],
-      hint: "İbrahim Hoca'nın 1. temel tanımı",
-      explanation: "Enerjiyi başka bir enerjiye dönüştürerek kuvvet uygulayan ve iş yapan düzeneklere Makine denir."
+      q: "Prof. Dr. İbrahim Üçgül'ün ders anlatımına göre insanın kas gücünü veya algılarını artıran düzeneklerin en üst çatı sınıflandırmasına teknik olarak ________ denir.",
+      answers: ["sistem","Sistem"],
+      hint: "Makine, tesisat ve cihazı kapsayan üst kavram",
+      explanation: "İbrahim Hoca'nın Slayt 10 tanımına göre Sistem; makine, tesisat ve cihazları kapsayan genel yapıdır."
     },
     {
-      q: "Malzemeyi çeviren, ileten, biriktiren ve depolayan boru hattı, tank gibi sistemlere ________ (veya tesisat) denir.",
-      answers: ["teçhizat", "techizat"],
-      hint: "İbrahim Hoca'nın 2. temel tanımı",
-      explanation: "Malzemeyi ileten, biriktiren ve depolayan sistemler Teçhizat olarak tanımlanır."
+      q: "Mühendislikte SI birim sisteminde Basınç ve Gerilme büyüklüklerinin standart birimi metrekareye düşen Newton ($N/m^2$) yani ________'dır.",
+      answers: ["pascal","pa","Pascal"],
+      hint: "Basınç ve gerilme birimi (Pa)",
+      explanation: "SI birim sisteminde gerilme ve basınç birimi Pascal ($N/m^2$)'dır."
     },
     {
-      q: "İnsanların bilgi ve sezgilerini artıran kontrol, ölçme ve muayene düzeneklerine ________ denir.",
-      answers: ["cihaz", "aygıt", "aygit"],
-      hint: "İbrahim Hoca'nın 3. temel tanımı",
-      explanation: "Ölçme, kontrol ve muayene amacıyla insan duyularını/bilgisini artıran düzeneklere Cihaz denir."
+      q: "Mekanikte yapılan İş veya harcanan Enerjinin SI birim sistemindeki türetilmiş birimi Newton çarpı metre ($N \\cdot m$) yani ________'dür.",
+      answers: ["joule","jul","Joule"],
+      hint: "İş ve enerji birimi (J)",
+      explanation: "SI sisteminde iş ve enerjinin birimi Joule ($N \\cdot m$)'dür."
     },
     {
-      q: "Isı, elektrik veya hidrolik enerjiyi mekanik enerjiye çeviren makinelere ________ denir.",
-      answers: ["motor"],
-      hint: "İş makinesine mekanik enerji veren sistem",
-      explanation: "Çeşitli enerji türlerini mekanik enerjiye çeviren kuvvet makinelerine Motor denir."
+      q: "Talaşlı imalat yöntemlerinden biri olan ve iş parçasının kendi ekseni etrafında dönerken kesici kalemin doğrusal ilerlediği tezgaha ________ tezgahı denir.",
+      answers: ["torna","Torna"],
+      hint: "Silindirik parçaların işlendiği temel tezgah",
+      explanation: "Torna tezgahında iş parçası fener milinde döner, kesici kalem parçadan talaş kaldırır."
     },
     {
       q: "Taşlama tezgahlarında iş parçası dayama mesnedi ile zımpara taşı arasındaki açıklık en fazla ________ mm olmalıdır.",
-      answers: ["3", "üç", "uc"],
+      answers: ["3","üç","uc"],
       hint: "13 Ekim dersinde vurgulanan mesnet mesafesi (mm)",
       explanation: "Parçanın taş ile mesnet arasına sıkışıp taşı patlatmaması için açıklık azami 3 mm olmalıdır."
     },
@@ -479,56 +479,56 @@ export const makineCourse = {
       explanation: "Dinamik/tekrarlı yükler altında oluşan çatlama ve kırılma olayına Yorulma (Fatigue) denir."
     },
     {
-      q: "Torna ve matkap gibi döner tezgahlarda elin kapılma/sarılma tehlikesi nedeniyle ________ giyilmesi kesinlikle yasaktır.",
-      answers: ["eldiven"],
-      hint: "Ele takılan ve döner aksamda yasak olan KKD",
-      explanation: "Döner milli tezgahlarda eldiven lifleri parçaya sarılarak uzuv kopmasına yol açtığı için eldiven kullanımı yasaktır."
+      q: "Taşlama tezgahlarında zımpara taşının devir hızının tezgah mil hızından ________ olması feci bir taş patlamasına yol açar.",
+      answers: ["düşük","dusuk","az","küçük"],
+      hint: "Taşın nominal hızının mil hızına göre durumu",
+      explanation: "Taşın güvenli çalışma hızı mil devrinden düşük olursa merkezkaç kuvveti taşı parçalar."
     },
     {
       q: "SI birim sisteminde birim yüzeye dik etkiyen kuvvetin (N/m²) yani basıncın birimi ________'dır.",
-      answers: ["Pascal", "pascal", "Pa"],
+      answers: ["Pascal","pascal","Pa"],
       hint: "1 N/m² karşılığı birim",
       explanation: "SI sisteminde basınç ve mekanik gerilme birimi Pascal (Pa = N/m²)'dır."
     },
     {
       q: "Basınçlı kapların hidrostatik testlerinde test basıncı, aksi belirtilmedikçe işletme basıncının ________ katı olarak uygulanır.",
-      answers: ["1,5", "1.5", "bir buçuk"],
+      answers: ["1,5","1.5","bir buçuk"],
       hint: "Standart hidrostatik test katsayısı",
       explanation: "Basınçlı kaplarda hidrostatik test basıncı işletme basıncının 1,5 katıdır."
     },
     {
-      q: "Kalıcı plastik şekil değiştirme göstermeden aniden kırılan malzemelere (cam, dökme demir vb.) ________ malzeme denir.",
-      answers: ["gevrek"],
-      hint: "Sünek malzemenin zıttı",
-      explanation: "Plastik uzama göstermeden aniden kırılan malzemelere Gevrek malzeme denir."
+      q: "Minerallerin birbirini çizme direncine göre sıralandığı ve en yumuşak mineralin Talk (1), en sert mineralin ise Elmas (10) olduğu mineral sertlik skalasına ________ skalası denir.",
+      answers: ["Mohs","mohs","Mohs sertlik"],
+      hint: "1 Talk - 10 Elmas çizme sertliği skalası",
+      explanation: "Mohs sertlik skalası, Avusturyalı mineralog Friedrich Mohs tarafından minerallerin çizilme direncini sınıflandırmak için geliştirilmiştir."
     },
     {
       q: "Malzemelerin yüksek sıcaklık ve sabit yük altında zamanla yavaş yavaş kalıcı olarak uzaması olayına ________ (creep) denir.",
-      answers: ["sünme", "sunme"],
+      answers: ["sünme","sunme"],
       hint: "Yüksek sıcaklıkta zamana bağlı uzama",
       explanation: "Sabit yük ve yüksek sıcaklık altında zamanla oluşan kalıcı deformasyona Sünme (Creep) denir."
     },
     {
       q: "SI birim sisteminde birim zamanda yapılan işin (Joule / saniye) yani Gücün birimi ________'tır.",
-      answers: ["Watt", "watt", "W"],
+      answers: ["Watt","watt","W"],
       hint: "J/s karşılığı güç birimi",
       explanation: "Birim zamanda yapılan iş güçtür ve SI birimi Watt (1 W = 1 J/s)'tır."
     },
     {
       q: "Oksijen tüplerinin valf ve regülatörlerine kendiliğinden patlama riski nedeniyle kesinlikle ________ (veya gres) sürülmemelidir.",
-      answers: ["yağ", "yag", "gres"],
+      answers: ["yağ","yag","gres"],
       hint: "Oksijenle temas ettiğinde patlayan madde",
       explanation: "Basınçlı saf oksijen yağ ve gres ile temas ettiğinde şiddetli patlama meydana gelir."
     },
     {
-      q: "Oksi-asetilen kaynak sistemlerinde alevin hortumdan tüpe yürümesini önlemek için alev ________ tepme emniyet valfi kullanılır.",
-      answers: ["geri"],
-      hint: "Alevin ters yönde yürümesini ifade eden kelime",
-      explanation: "Tüp patlamalarını önlemek için üfleç ve regülatörde Alev Geri Tepme Emniyet Valfi kullanılır."
+      q: "Basınçlı gaz tüpleri depolanırken dolu ve boş tüpler birbirinden ayrılmalı, devrilmeyi önlemek için duvara veya sepetlere sağlam ________ ile bağlanmalıdır.",
+      answers: ["zincir","zincirle","kelepçe","kelepce"],
+      hint: "Devrilmeyi önleyen bağlama elemanı",
+      explanation: "Gaz tüpleri devrilme ve vana kırılması sonucu füzeye dönüşme riskine karşı mutlaka kelepçe veya çelik zincirle sabitlenmelidir."
     },
     {
       q: "Kaldırma ve iletme ekipmanlarının (vinç, forklift vb.) periyodik kontrollerinde statik yük testi katsayısı genel kural olarak beyan yükünün ________ katıdır.",
-      answers: ["1,25", "1.25"],
+      answers: ["1,25","1.25"],
       hint: "Dinamik testte 1,1 olan katsayının statik testteki karşılığı",
       explanation: "Kaldırma ekipmanlarında statik yük testi beyan yükünün 1,25 katı, dinamik test ise 1,1 katı ile yapılır."
     }

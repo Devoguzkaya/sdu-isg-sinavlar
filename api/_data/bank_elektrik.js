@@ -555,214 +555,214 @@ export const elektrikConceptGroups = [
 ];
 
 export const elektrikExtraFills = [
-  {
-    q: "Kehribarın sürtünmeyle kumaş ve saman parçalarını çektiğini keşfederek elektriğin temellerini atan Antik Yunan filozofu ________'tir.",
-    answers: ["thales", "tales"],
-    hint: "M.Ö. 600'lerde yaşamış Miletli filozof",
-    explanation: "Thales, kehribarın (Yunanca elektron) sürtünme elektriği özelliğini keşfeden ilk düşünürdür."
-  },
-  {
-    q: "1600 yılında yayımladığı 'De Magnete' adlı eserinde kehribar benzeri çekim yapan maddeler için ilk kez ________ (Latincesi electricus) terimini William Gilbert türetmiştir.",
-    answers: ["elektrik", "electricus"],
-    hint: "Gilbert'ın türettiği terim",
-    explanation: "William Gilbert kehribardan türeterek 'electricus' (elektrik) sözcüğünü literatüre kazandırmıştır."
-  },
-  {
-    q: "1729 yılında elektriğin maddeler üzerinden aktarılabildiğini bularak iletken ve yalıtkan ayrımını yapan bilim insanı Stephen ________'dir.",
-    answers: ["gray", "grey"],
-    hint: "İngiliz bilim insanının soyadı",
-    explanation: "Stephen Gray elektrik yükünün iletkenlerle taşınabildiğini ve insan vücudunun iletken olduğunu kanıtlamıştır."
-  },
-  {
-    q: "1745-1746'da icat edilen, elektriği depolayan ilk kapasitör sayılan ve kaynak kesilse bile artık yük tehlikesi barındıran düzeneğe ________ Şişesi denir.",
-    answers: ["leyden"],
-    hint: "Hollanda'daki üniversite şehrinin adını taşıyan şişe",
-    explanation: "Leyden Şişesi ilk elektrik kapasitörüdür; enerji depolayarak kaynak kesildikten sonra bile sert şok verir."
-  },
-  {
-    q: "1746 yılında 180 kraliyet muhafızını el ele tutuşturup Leyden şişesiyle aynı anda elektrik şoku vererek akımın hızını test eden fizikçi Abbé ________'tir.",
-    answers: ["nollet", "nolet"],
-    hint: "180 muhafıza toplu şok veren Fransız fizikçi",
-    explanation: "Jean-Antoine Nollet 180 askere el ele tutuşturup toplu elektrik şoku deneyi yapmıştır."
-  },
-  {
-    q: "1753 yılında St. Petersburg'da fırtınada paratoner deneyi yaparken top yıldırımının çarpması sonucu hayatını kaybeden ilk bilim insanı Georg Wilhelm ________'dır.",
-    answers: ["richmann", "rihman", "rikman"],
-    hint: "Yıldırım deneyinde ölen fizikçinin soyadı",
-    explanation: "Georg Wilhelm Richmann, tarihe elektrik deneyi sırasında hayatını kaybeden ilk bilim insanı olarak geçmiştir."
-  },
-  {
-    q: "Türkiye'de modern elektrik üretiminin başlangıcı; 1902 yılında Berdan Çayı un değirmenine bağlı 2 kW su türbiniyle Mersin'in ________ ilçesinde gerçekleşmiştir.",
-    answers: ["tarsus"],
-    hint: "Berdan Çayı'nın geçtiği tarihi ilçe",
-    explanation: "Türkiye'de ilk elektrik 1902'de Tarsus'ta un değirmenine bağlanan 2 kW dinamo ile üretilmiştir."
-  },
-  {
-    q: "Van'da yapılan adli tıp otopsi araştırmasına göre elektrik kaynaklı iş kazası ölümlerinin yaklaşık %________'i ALÇAK GERİLİM (220-380 V) kaynaklıdır.",
-    answers: ["80", "seksen"],
-    hint: "Yüzde seksen oranı (sayısal)",
-    explanation: "Otopsi çalışmaları elektrik ölümlerinin %80'inin alçak gerilimden kaynaklandığını kanıtlamaktadır."
-  },
-  {
-    q: "ESFI araştırmasına göre işyerlerinde elektrik çarpması sonucu hayatını kaybedenlerin %________'inden fazlası elektrikçi OLMAYAN çalışanlardır.",
-    answers: ["70", "yetmiş", "yetmis"],
-    hint: "Yüzde yetmiş oranı (sayısal)",
-    explanation: "Elektrik ölümlerinin %70'inden fazlası boyacı, ağaç budama, vinç operatörü ve inşaat işçileridir."
-  },
-  {
-    q: "Yüksek gerilim enerji nakil hatlarında bakım ve onarım yapan işçilerin ölüm riski, tüm sektörler genel iş kazası ortalamasının yaklaşık ________ katıdır.",
-    answers: ["55", "elli beş", "ellibes"],
-    hint: "50'den büyük katsayı (sayısal)",
-    explanation: "Enerji nakil hattı çalışanlarının ölüm riski genel kaza ortalamasının 55 katına ulaşmaktadır."
-  },
-  {
-    q: "Farklı sektörlerin ve ülkelerin elektrik kaza risklerini adil karşılaştırabilmek için veriler yıllık ________ çalışan yılı başına standardize edilir.",
-    answers: ["100000", "100.000", "yüz bin", "yuz bin"],
-    hint: "Yüz bin çalışan tabanı",
-    explanation: "OSHA ve SGK istatistiklerinde kaza sıklık ve ağırlık oranları 100.000 çalışan yılı bazında hesaplanır."
-  },
-  {
-    q: "Bir kazanın tek bir hatayla değil, savunma katmanlarındaki boşlukların üst üste gelmesiyle oluştuğunu açıklayan modele James Reason'ın İsviçre ________ Modeli denir.",
-    answers: ["peyniri", "peynir"],
-    hint: "Delikli İsviçre yiyeceği modeli",
-    explanation: "Reason İsviçre Peyniri Modeli aktif hatalar ile gizli koşulların kesişmesini açıklar."
-  },
-  {
-    q: "İsviçre Peyniri Modeli'nde çalışanın sahadaki anlık dikkatsizliğine 'aktif hata' denirken, panoda RCD olmaması veya bakım yapılmamasına ________ koşul denir.",
-    answers: ["gizli"],
-    hint: "Sistemde önceden var olan sinsi koşul",
-    explanation: "Yönetimsel ve teknik eksiklikler sistemde önceden beri var olan 'gizli koşullar'dır."
-  },
-  {
-    q: "Heinrich kaza piramidine göre her 1 ölümlü veya ağır kazanın tabanında ________ adet ramak kala (hasarsız tehlikeli olay) yer alır.",
-    answers: ["300", "üç yüz", "uc yuz"],
-    hint: "1 - 29 - ... piramidinin taban sayısı",
-    explanation: "Heinrich piramidinde 1 ağır kaza, 29 hafif kaza ve 300 ramak kala ilişkisi vardır."
-  },
-  {
-    q: "1,7 milyon endüstriyel kaza analizine dayanan Frank ________ kaza piramidinde oran 1 - 10 - 30 - 600 olarak tanımlanmıştır.",
-    answers: ["bird"],
-    hint: "İngilizce 'kuş' anlamına gelen araştırmacı soyadı",
-    explanation: "Frank Bird kaza piramidi 1.7 milyon kazayı inceleyerek 600 ramak kalayı belirlemiştir."
-  },
-  {
-    q: "Alternatif akımda parmak ucunda hafif karıncalanma olarak hissedilen yaklaşık 0,5 - 1 mA değerine ________ eşiği denir.",
-    answers: ["algılama", "algilama", "hissetme"],
-    hint: "İlk hissetme sınırı",
-    explanation: "0,5 - 1 mA AC akım insan vücudunda ilk hissedilen Algılama Eşiğidir."
-  },
-  {
-    q: "Alternatif akımda 10 - 15 mA seviyesinde ön kol kaslarının kasılarak iletkenin elden bırakılamadığı sınıra ________ eşiği denir.",
-    answers: ["tutma", "bırakamama", "birakamama"],
-    hint: "Let-go eşiğinin Türkçesi",
-    explanation: "10-15 mA tutma (bırakamama / let-go) eşiği olup kas kilitlenmesine yol açar."
-  },
-  {
-    q: "Akımın 20 - 30 mA seviyesinde diyafram kaslarını kilitleyerek nefes almayı durdurması sonucu gelişen oksijensizliğe bağlı boğulmaya ________ denir.",
-    answers: ["asfiksi", "boğulma", "bogulma"],
-    hint: "Solunum durması tıbbi terimi",
-    explanation: "Solunum kaslarının kasılması asfiksiye (oksijensiz kalarak boğulmaya) neden olur."
-  },
-  {
-    q: "Elektrik çarpmasında kalbin elektriksel ritminin bozularak kan pompalayamaması durumuna ventriküler ________ adı verilir.",
-    answers: ["fibrilasyon", "fibrilasyonu"],
-    hint: "Ölümcül kalp ritim bozukluğu",
-    explanation: "50-100 mA akım ventriküler fibrilasyon oluşturarak ölüme neden olur."
-  },
-  {
-    q: "Ev ve işyerlerinde insan hayatını solunum felci ve fibrilasyondan koruyan kaçak akım rölesinin nominal açma akımı ________ mA'dir.",
-    answers: ["30", "otuz"],
-    hint: "Hayat koruma kaçak akım eşiği (mA)",
-    explanation: "30 mA kaçak akım rölesi insan hayatını doğrudan korumak için zorunludur."
-  },
-  {
-    q: "Ana elektrik panolarında izolasyon hatalarından kaynaklı yangınları önlemek için kullanılan kaçak akım rölesinin eşiği ________ mA'dir.",
-    answers: ["300", "üç yüz", "uc yuz"],
-    hint: "Yangın koruma kaçak akım eşiği (mA)",
-    explanation: "300 mA kaçak akım rölesi elektrik ark yangınlarını önlemek için kullanılır."
-  },
-  {
-    q: "Normal kuru ortamlarda alternatif akım (AC) için insan vücudunda kabul edilen tehlikeli gerilim sınırı ________ Volt'tur.",
-    answers: ["50", "elli"],
-    hint: "AC tehlikeli gerilim sınırı (V)",
-    explanation: "Alternatif akımda tehlikeli dokunma gerilimi sınırı 50 Volt'tur."
-  },
-  {
-    q: "Doğru akımda (DC) dalgalanmasız gerilim için kabul edilen tehlikeli dokunma gerilimi üst sınırı ________ Volt'tur.",
-    answers: ["120", "yüz yirmi", "yuzyirmi"],
-    hint: "DC tehlikeli gerilim sınırı (V)",
-    explanation: "Doğru akımda güvenli gerilim üst sınırı 120 Volt'tur."
-  },
-  {
-    q: "Kazan içi veya metal tank gibi dar ve iletken hacimlerde kullanılan seyyar lambalarda azami ________ Volt güvenlik gerilimi uygulanmalıdır.",
-    answers: ["24", "yirmi dört", "yirmidort"],
-    hint: "Kazan içi küçük gerilim (V)",
-    explanation: "Dar iletken kazan içlerinde güvenlik gerilimi 24 Volt (en fazla 42 V) olmalıdır."
-  },
-  {
-    q: "Mevzuata göre etkin değeri ________ Volt ve altındaki gerilimler Alçak Gerilim (AG), üzerindekiler ise Yüksek Gerilim (YG) kabul edilir.",
-    answers: ["1000", "1.000", "bin"],
-    hint: "AG ile YG arasındaki sınır (V)",
-    explanation: "AC'de 1000 V ve altı Alçak Gerilim (AG), 1000 V üzeri Yüksek Gerilim (YG)'dir."
-  },
-  {
-    q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 2. adımı; şalteri kilitleyip etiketleyerek tekrar gerilim verilmesini ________ (LOTO/EKED) adımıdır.",
-    answers: ["önlemek", "onlemek", "engellemek"],
-    hint: "Şalteri asma kilitle kitleme amacı",
-    explanation: "2. kural şalterin başkası tarafından habersiz açılmasını önlemektir."
-  },
-  {
-    q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 4. adımı: Tesisatı topraklamak ve ________ devre etmektir.",
-    answers: ["kısa", "kisa"],
-    hint: "Topraklama ile birlikte yapılan işlem",
-    explanation: "4. adım çalışma sahasını topraklamak ve kısa devre etmektir."
-  },
-  {
-    q: "Yüksek gerilim trafo merkezlerinde devreyi gözle görülür şekilde ayıran ancak yük altında KESİNLİKLE açılmaması gereken elemana ________ (seksiyoner) denir.",
-    answers: ["ayırıcı", "ayirici", "seksiyoner"],
-    hint: "Kesici açıldıktan sonra açılan YG elemanı",
-    explanation: "Ayırıcı yüksüz devreyi ayırır; yük altında açılırsa büyük ark patlaması oluşturur."
-  },
-  {
-    q: "Yüksek gerilim devrelerini hem yük altında hem de kısa devre anında arkı söndürerek güvenle kesebilen elemana ________ (disjonktör) denir.",
-    answers: ["kesici", "disjonktör", "disjonktor"],
-    hint: "Yük altında açma yapabilen YG elemanı",
-    explanation: "Kesici (disjonktör) ark söndürme hücresiyle yük ve kısa devre akımını keser."
-  },
-  {
-    q: "Yere düşen yüksek gerilim hattı çevresinde kişinin iki ayağı arasındaki gerilim farkından dolayı maruz kaldığı gerilime ________ gerilimi denir.",
-    answers: ["adım", "adim"],
-    hint: "Ayakları birleştirerek uzaklaşmayı gerektiren gerilim",
-    explanation: "Adım gerilimi toprağa yayılan akımın iki ayak arasında oluşturduğu potansiyel farktır."
-  },
-  {
-    q: "Elektrik ark patlamasına (Arc Flash) karşı kullanılan koruyucu elbiselerin termal koruma kapasitesi cal/________ birimiyle ifade edilir.",
-    answers: ["cm2", "cm²"],
-    hint: "Santimetrekare başına düşen kalori enerjisi",
-    explanation: "Ark koruyucu KKD'lerin ATPV değeri cal/cm² birimiyle ölçülür."
-  },
-  {
-    q: "İzole elektrikçi eldivenleri her kullanım öncesinde içine ________ üflenerek/şişirilerek delik kontrolünden geçirilmelidir.",
-    answers: ["hava"],
-    hint: "Şişirme için kullanılan gaz",
-    explanation: "Dielektrik eldivenler mikroskobik deliklere karşı hava ile şişirilerek test edilir."
-  },
-  {
-    q: "Trafo nötrü topraktan izole edilen ve hastane ameliyathaneleri ile madenlerde ilk hatada enerjiyi kesmeyen şebeke tipi ________ şebekedir.",
-    answers: ["IT", "it"],
-    hint: "İzole nötr harf kodu",
-    explanation: "IT şebekede trafo nötrü yalıtılmıştır ve ilk faz-gövde hatasında elektrik kesilmez."
-  },
-  {
-    q: "Topraklama yayılma direncini ve kablo yalıtkanlık direncini ölçmek için kullanılan cihaza toprak ________ (veya Megger) denir.",
-    answers: ["megeri", "meger", "meggeri", "megger"],
-    hint: "Topraklama ölçüm aleti",
-    explanation: "Topraklama geçiş direnci ve yalıtkanlık Meger cihazı ile test edilir."
-  },
-  {
-    q: "Patlayıcı gaz, buhar veya toz bulunan ortamlarda kıvılcım sızdırmayan özel korumalı elektrik tesisatına ________ (veya ATEX) tesisat denir.",
-    answers: ["ex-proof", "exproof", "ex"],
-    hint: "Patlamaya karşı korumalı elektrik cihazı",
-    explanation: "Patlayıcı ortamlarda ark ve yüzey sıcaklığı sızdırmayan Ex-Proof ekipmanlar kullanılır."
-  }
+    {
+      q: "Kehribarın sürtünmeyle kumaş ve saman parçalarını çektiğini keşfederek elektriğin temellerini atan Antik Yunan filozofu ________'tir.",
+      answers: ["thales","tales"],
+      hint: "M.Ö. 600'lerde yaşamış Miletli filozof",
+      explanation: "Thales, kehribarın (Yunanca elektron) sürtünme elektriği özelliğini keşfeden ilk düşünürdür."
+    },
+    {
+      q: "1752 yılında uçurtma deneyiyle yıldırımın bir elektrik olayı olduğunu kanıtlayarak paratoneri icat eden Amerikalı bilim insanı Benjamin ________'tir.",
+      answers: ["franklin"],
+      hint: "Paratoneri icat eden bilim insanı",
+      explanation: "Benjamin Franklin yıldırımın elektrik olduğunu kanıtlamış ve artı-eksi yük kavramını literatüre kazandırmıştır."
+    },
+    {
+      q: "1729 yılında elektriğin maddeler üzerinden aktarılabildiğini bularak iletken ve yalıtkan ayrımını yapan bilim insanı Stephen ________'dir.",
+      answers: ["gray","grey"],
+      hint: "İngiliz bilim insanının soyadı",
+      explanation: "Stephen Gray elektrik yükünün iletkenlerle taşınabildiğini ve insan vücudunun iletken olduğunu kanıtlamıştır."
+    },
+    {
+      q: "1827 yılında gerilim, akım ve elektriksel direnç arasındaki matematiksel bağıntıyı (V = I · R) formüle ederek devre teorisinin temelini atan Alman fizikçi Georg Simon ________'dur.",
+      answers: ["ohm","Ohm"],
+      hint: "Direnç birimine adını veren bilim insanı",
+      explanation: "Georg Simon Ohm, 1827 yılında V = I · R bağıntısını yayımlayarak elektrik devre analizinin temel kanununu ortaya koymuştur."
+    },
+    {
+      q: "1746 yılında 180 kraliyet muhafızını el ele tutuşturup Leyden şişesiyle aynı anda elektrik şoku vererek akımın hızını test eden fizikçi Abbé ________'tir.",
+      answers: ["nollet","nolet"],
+      hint: "180 muhafıza toplu şok veren Fransız fizikçi",
+      explanation: "Jean-Antoine Nollet 180 askere el ele tutuşturup toplu elektrik şoku deneyi yapmıştır."
+    },
+    {
+      q: "1753 yılında St. Petersburg'da fırtınada paratoner deneyi yaparken top yıldırımının çarpması sonucu hayatını kaybeden ilk bilim insanı Georg Wilhelm ________'dır.",
+      answers: ["richmann","rihman","rikman"],
+      hint: "Yıldırım deneyinde ölen fizikçinin soyadı",
+      explanation: "Georg Wilhelm Richmann, tarihe elektrik deneyi sırasında hayatını kaybeden ilk bilim insanı olarak geçmiştir."
+    },
+    {
+      q: "Türkiye'de modern elektrik üretiminin başlangıcı; 1902 yılında Berdan Çayı un değirmenine bağlı 2 kW su türbiniyle Mersin'in ________ ilçesinde gerçekleşmiştir.",
+      answers: ["tarsus"],
+      hint: "Berdan Çayı'nın geçtiği tarihi ilçe",
+      explanation: "Türkiye'de ilk elektrik 1902'de Tarsus'ta un değirmenine bağlanan 2 kW dinamo ile üretilmiştir."
+    },
+    {
+      q: "Van'da yapılan adli tıp otopsi araştırmasına göre elektrik kaynaklı iş kazası ölümlerinin yaklaşık %________'i ALÇAK GERİLİM (220-380 V) kaynaklıdır.",
+      answers: ["80","seksen"],
+      hint: "Yüzde seksen oranı (sayısal)",
+      explanation: "Otopsi çalışmaları elektrik ölümlerinin %80'inin alçak gerilimden kaynaklandığını kanıtlamaktadır."
+    },
+    {
+      q: "ESFI araştırmasına göre işyerlerinde elektrik çarpması sonucu hayatını kaybedenlerin %________'inden fazlası elektrikçi OLMAYAN çalışanlardır.",
+      answers: ["70","yetmiş","yetmis"],
+      hint: "Yüzde yetmiş oranı (sayısal)",
+      explanation: "Elektrik ölümlerinin %70'inden fazlası boyacı, ağaç budama, vinç operatörü ve inşaat işçileridir."
+    },
+    {
+      q: "Yüksek gerilim enerji nakil hatlarında bakım ve onarım yapan işçilerin ölüm riski, tüm sektörler genel iş kazası ortalamasının yaklaşık ________ katıdır.",
+      answers: ["55","elli beş","ellibes"],
+      hint: "50'den büyük katsayı (sayısal)",
+      explanation: "Enerji nakil hattı çalışanlarının ölüm riski genel kaza ortalamasının 55 katına ulaşmaktadır."
+    },
+    {
+      q: "Farklı sektörlerin ve ülkelerin elektrik kaza risklerini adil karşılaştırabilmek için veriler yıllık ________ çalışan yılı başına standardize edilir.",
+      answers: ["100000","100.000","yüz bin","yuz bin"],
+      hint: "Yüz bin çalışan tabanı",
+      explanation: "OSHA ve SGK istatistiklerinde kaza sıklık ve ağırlık oranları 100.000 çalışan yılı bazında hesaplanır."
+    },
+    {
+      q: "W.H. Heinrich'in kaza teorisine göre işyerlerindeki kazaların %88'i çalışanların güvensiz hareketlerinden, %10'u güvensiz çalışma şartlarından, %________'si ise önlenemez doğa olaylarından kaynaklanır.",
+      answers: ["2","iki"],
+      hint: "Heinrich'in kaçınılmaz doğa payı yüzdesi",
+      explanation: "Heinrich'in 88-10-2 oranına göre kazaların %2'si deprem, yıldırım gibi önlenemez doğa koşullarından kaynaklanır."
+    },
+    {
+      q: "Heinrich'in 5 aşamalı kaza zincirini (Domino Teorisi) kırmak ve kazayı engellemek için aradan çekilmesi gereken en temel 3. domino taşı güvensiz ________ ve güvensiz durumlardır.",
+      answers: ["davranış","davranis","hareket"],
+      hint: "Heinrich'in zincirden çıkarılmasını istediği taş (güvensiz ...)",
+      explanation: "Heinrich Domino Teorisinde güvensiz davranış veya güvensiz durum ortadan kaldırılırsa kaza ve yaralanma domino taşları devrilmez."
+    },
+    {
+      q: "Heinrich kaza piramidine göre her 1 ölümlü veya ağır kazanın tabanında ________ adet ramak kala (hasarsız tehlikeli olay) yer alır.",
+      answers: ["300","üç yüz","uc yuz"],
+      hint: "1 - 29 - ... piramidinin taban sayısı",
+      explanation: "Heinrich piramidinde 1 ağır kaza, 29 hafif kaza ve 300 ramak kala ilişkisi vardır."
+    },
+    {
+      q: "Frank Bird'ün 1969 yılında yaptığı ve 1-10-30-600 oranını ortaya koyan kaza piramidi çalışması toplam ________ milyon kaza ve olay raporunun analizine dayanır.",
+      answers: ["1,7","1.7"],
+      hint: "Bird araştırmasının vaka sayısı (milyon)",
+      explanation: "Frank Bird 1,75 milyon endüstriyel olayı inceleyerek 1 ölümlü, 10 ciddi, 30 hafif hasarlı, 600 hasarsız olay oranını belirlemiştir."
+    },
+    {
+      q: "Alternatif akımda parmak ucunda hafif karıncalanma olarak hissedilen yaklaşık 0,5 - 1 mA değerine ________ eşiği denir.",
+      answers: ["algılama","algilama","hissetme"],
+      hint: "İlk hissetme sınırı",
+      explanation: "0,5 - 1 mA AC akım insan vücudunda ilk hissedilen Algılama Eşiğidir."
+    },
+    {
+      q: "Alternatif akımda 10 - 15 mA seviyesinde ön kol kaslarının kasılarak iletkenin elden bırakılamadığı sınıra ________ eşiği denir.",
+      answers: ["tutma","bırakamama","birakamama"],
+      hint: "Let-go eşiğinin Türkçesi",
+      explanation: "10-15 mA tutma (bırakamama / let-go) eşiği olup kas kilitlenmesine yol açar."
+    },
+    {
+      q: "Akımın 20 - 30 mA seviyesinde diyafram kaslarını kilitleyerek nefes almayı durdurması sonucu gelişen oksijensizliğe bağlı boğulmaya ________ denir.",
+      answers: ["asfiksi","boğulma","bogulma"],
+      hint: "Solunum durması tıbbi terimi",
+      explanation: "Solunum kaslarının kasılması asfiksiye (oksijensiz kalarak boğulmaya) neden olur."
+    },
+    {
+      q: "Elektrik çarpmasında kalbin elektriksel ritminin bozularak kan pompalayamaması durumuna ventriküler ________ adı verilir.",
+      answers: ["fibrilasyon","fibrilasyonu"],
+      hint: "Ölümcül kalp ritim bozukluğu",
+      explanation: "50-100 mA akım ventriküler fibrilasyon oluşturarak ölüme neden olur."
+    },
+    {
+      q: "Elektrik akımının göğüs kafesi ve diyafram kaslarından geçerek nefes alıp vermeyi durdurması durumuna solunum ________ adı verilir.",
+      answers: ["felci","durmasi","durması","arresti"],
+      hint: "Diyaframın durması durumu",
+      explanation: "20-30 mA üzerindeki akımlar diyafram ve göğüs kaslarını kilitleyerek solunum felcine ve boğulmaya yol açar."
+    },
+    {
+      q: "Ana elektrik panolarında izolasyon hatalarından kaynaklı yangınları önlemek için kullanılan kaçak akım rölesinin eşiği ________ mA'dir.",
+      answers: ["300","üç yüz","uc yuz"],
+      hint: "Yangın koruma kaçak akım eşiği (mA)",
+      explanation: "300 mA kaçak akım rölesi elektrik ark yangınlarını önlemek için kullanılır."
+    },
+    {
+      q: "Normal kuru ortamlarda alternatif akım (AC) için insan vücudunda kabul edilen tehlikeli gerilim sınırı ________ Volt'tur.",
+      answers: ["50","elli"],
+      hint: "AC tehlikeli gerilim sınırı (V)",
+      explanation: "Alternatif akımda tehlikeli dokunma gerilimi sınırı 50 Volt'tur."
+    },
+    {
+      q: "Doğru akımda (DC) dalgalanmasız gerilim için kabul edilen tehlikeli dokunma gerilimi üst sınırı ________ Volt'tur.",
+      answers: ["120","yüz yirmi","yuzyirmi"],
+      hint: "DC tehlikeli gerilim sınırı (V)",
+      explanation: "Doğru akımda güvenli gerilim üst sınırı 120 Volt'tur."
+    },
+    {
+      q: "Kazan içi veya metal tank gibi dar ve iletken hacimlerde kullanılan seyyar lambalarda azami ________ Volt güvenlik gerilimi uygulanmalıdır.",
+      answers: ["24","yirmi dört","yirmidort"],
+      hint: "Kazan içi küçük gerilim (V)",
+      explanation: "Dar iletken kazan içlerinde güvenlik gerilimi 24 Volt (en fazla 42 V) olmalıdır."
+    },
+    {
+      q: "Islak hacimlerde, madenlerde ve kazan içi gibi dar iletken çalışma alanlarında alternatif akım için izin verilen maksimum güvenlik gerilimi sınırı ________ Volt'tur.",
+      answers: ["25","yirmi bes","yirmi beş"],
+      hint: "Islak ortam güvenlik gerilim sınırı (V)",
+      explanation: "Islak ve rutubetli ortamlarda vücut direnci düştüğü için tehlikeli gerilim sınırı 25 Volt'a indirilir."
+    },
+    {
+      q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 2. adımı; şalteri kilitleyip etiketleyerek tekrar gerilim verilmesini ________ (LOTO/EKED) adımıdır.",
+      answers: ["önlemek","onlemek","engellemek"],
+      hint: "Şalteri asma kilitle kitleme amacı",
+      explanation: "2. kural şalterin başkası tarafından habersiz açılmasını önlemektir."
+    },
+    {
+      q: "Gerilimsiz çalışmada 5 Temel Güvenlik Kuralının 4. adımı: Tesisatı topraklamak ve ________ devre etmektir.",
+      answers: ["kısa","kisa"],
+      hint: "Topraklama ile birlikte yapılan işlem",
+      explanation: "4. adım çalışma sahasını topraklamak ve kısa devre etmektir."
+    },
+    {
+      q: "Yüksek gerilim trafo merkezlerinde devreyi gözle görülür şekilde ayıran ancak yük altında KESİNLİKLE açılmaması gereken elemana ________ (seksiyoner) denir.",
+      answers: ["ayırıcı","ayirici","seksiyoner"],
+      hint: "Kesici açıldıktan sonra açılan YG elemanı",
+      explanation: "Ayırıcı yüksüz devreyi ayırır; yük altında açılırsa büyük ark patlaması oluşturur."
+    },
+    {
+      q: "Yüksek gerilim devrelerini hem yük altında hem de kısa devre anında arkı söndürerek güvenle kesebilen elemana ________ (disjonktör) denir.",
+      answers: ["kesici","disjonktör","disjonktor"],
+      hint: "Yük altında açma yapabilen YG elemanı",
+      explanation: "Kesici (disjonktör) ark söndürme hücresiyle yük ve kısa devre akımını keser."
+    },
+    {
+      q: "Yere düşen yüksek gerilim hattı çevresinde kişinin iki ayağı arasındaki gerilim farkından dolayı maruz kaldığı gerilime ________ gerilimi denir.",
+      answers: ["adım","adim"],
+      hint: "Ayakları birleştirerek uzaklaşmayı gerektiren gerilim",
+      explanation: "Adım gerilimi toprağa yayılan akımın iki ayak arasında oluşturduğu potansiyel farktır."
+    },
+    {
+      q: "Elektrik ark patlamasına (Arc Flash) karşı kullanılan koruyucu elbiselerin termal koruma kapasitesi cal/________ birimiyle ifade edilir.",
+      answers: ["cm2","cm²"],
+      hint: "Santimetrekare başına düşen kalori enerjisi",
+      explanation: "Ark koruyucu KKD'lerin ATPV değeri cal/cm² birimiyle ölçülür."
+    },
+    {
+      q: "İzole elektrikçi eldivenleri her kullanım öncesinde içine ________ üflenerek/şişirilerek delik kontrolünden geçirilmelidir.",
+      answers: ["hava"],
+      hint: "Şişirme için kullanılan gaz",
+      explanation: "Dielektrik eldivenler mikroskobik deliklere karşı hava ile şişirilerek test edilir."
+    },
+    {
+      q: "Trafo nötrü topraktan izole edilen ve hastane ameliyathaneleri ile madenlerde ilk hatada enerjiyi kesmeyen şebeke tipi ________ şebekedir.",
+      answers: ["IT","it"],
+      hint: "İzole nötr harf kodu",
+      explanation: "IT şebekede trafo nötrü yalıtılmıştır ve ilk faz-gövde hatasında elektrik kesilmez."
+    },
+    {
+      q: "Topraklama yayılma direncini ve kablo yalıtkanlık direncini ölçmek için kullanılan cihaza toprak ________ (veya Megger) denir.",
+      answers: ["megeri","meger","meggeri","megger"],
+      hint: "Topraklama ölçüm aleti",
+      explanation: "Topraklama geçiş direnci ve yalıtkanlık Meger cihazı ile test edilir."
+    },
+    {
+      q: "Patlayıcı gaz, buhar veya toz bulunan ortamlarda kıvılcım sızdırmayan özel korumalı elektrik tesisatına ________ (veya ATEX) tesisat denir.",
+      answers: ["ex-proof","exproof","ex"],
+      hint: "Patlamaya karşı korumalı elektrik cihazı",
+      explanation: "Patlayıcı ortamlarda ark ve yüzey sıcaklığı sızdırmayan Ex-Proof ekipmanlar kullanılır."
+    }
 ];

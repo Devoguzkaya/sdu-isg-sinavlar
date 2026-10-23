@@ -480,79 +480,79 @@ export const fkruCourse = {
   fillQuestions: [
     {
       q: "Gürültü Yönetmeliği'ne göre çalışanların kulak koruyucu donanım kullanmasının zorunlu olduğu En Yüksek Maruziyet Eylem Değeri ________ dB(A)'dır.",
-      answers: ["85", "seksen beş", "seksenbes"],
+      answers: ["85","seksen beş","seksenbes"],
       hint: "80 - ? - 87 dB(A) üçlüsündeki zorunlu kullanım sınırı",
       explanation: "80 dB(A)'da kulak koruyucu hazır bulundurulur, 85 dB(A)'da ise kullanımı yasal olarak zorunludur."
     },
     {
       q: "Gürültü Yönetmeliği'nde KKD etkisi de dikkate alınarak hiçbir koşulda aşılmaması gereken Maruziyet Sınır Değeri ________ dB(A)'dır.",
-      answers: ["87", "seksen yedi", "seksenyedi"],
+      answers: ["87","seksen yedi","seksenyedi"],
       hint: "Gürültüdeki en üst sınır değer",
       explanation: "Gürültüde Maruziyet Sınır Değeri 87 dB(A)'dır."
     },
     {
       q: "El-kol titreşimi için 8 saatlik günlük maruziyet eylem değeri 2,5 m/s², maruziyet sınır değeri ise ________ m/s²'dir.",
-      answers: ["5", "5,0", "5.0", "beş"],
+      answers: ["5","5,0","5.0","beş"],
       hint: "El-kol titreşimi sınır değeri",
       explanation: "El-kol titreşiminde günlük eylem değeri 2,5 m/s², sınır değer ise 5,0 m/s²'dir."
     },
     {
       q: "Bütün vücut titreşimi için 8 saatlik günlük maruziyet eylem değeri ________ m/s², sınır değeri ise 1,15 m/s²'dir.",
-      answers: ["0,5", "0.5", "yarım"],
+      answers: ["0,5","0.5","yarım"],
       hint: "Bütün vücut titreşimi eylem değeri",
       explanation: "Bütün vücut titreşiminde günlük eylem değeri 0,5 m/s², sınır değer ise 1,15 m/s²'dir."
     },
     {
       q: "Yüksek basınç altında çalışan dalgıç ve keson işçilerinde basınç hızla düştüğünde kanda ________ gazı kabarcıklarının oluşmasıyla 'Vurgun' (dekompresyon) meydana gelir.",
-      answers: ["azot", "nitrojen", "N2"],
+      answers: ["azot","nitrojen","N2"],
       hint: "Havanın %78'ini oluşturan gaz",
       explanation: "Basınç hızla düştüğünde dokularda çözünen Azot (N2) gazı kabarcıklaşarak damarları tıkar ve vurgun yapar."
     },
     {
-      q: "Dönen makine parçalarının floresan ışık frekansıyla çakışarak duruyormuş gibi görünmesi yanılsamasına ________ etki denir.",
-      answers: ["stroboskopik"],
-      hint: "Optik yanılma etkisi",
-      explanation: "Işık titreşim frekansı ile döner parça hızının çakışmasıyla oluşan optik yanılmaya Stroboskopik Etki denir."
+      q: "Işık kaynağının birim zamanda yaydığı toplam ışık miktarını (ışık gücünü) belirten ve birimi Lümen (lm) olan kavrama Işık ________ denir.",
+      answers: ["akısı","akisi","Akısı"],
+      hint: "Lümen cinsinden ölçülen büyüklük (Işık ...)",
+      explanation: "Işık akısı (Lümen), kaynaktan çıkan toplam görünür ışık enerjisidir; Lüks ise metrekareye düşen lümendir."
     },
     {
-      q: "Aydınlatma şiddetinin birimi ________ olup, işyerlerinde Lüksmetre cihazı ile ölçülür.",
-      answers: ["lüks", "luks", "lux"],
-      hint: "Lümen / m² karşılığı birim",
-      explanation: "Aydınlatma şiddeti birimi Lüks (Lux = Lümen/m²)'tür."
+      q: "Gözü yormayan homojen bir aydınlatma sağlamak ve doğrudan veya yansımayla göze gelen aşırı parlaklığı engellemek için parıltı ve ________ kontrolü yapılmalıdır.",
+      answers: ["kamaşma","kamasma","parlama"],
+      hint: "Aşırı ışık nedeniyle gözün rahatsız olması",
+      explanation: "Kamaşma (glare), görüş alanındaki parlaklık farklarının aşırı olması sonucu gözün görme yeteneğinin bozulmasıdır."
     },
     {
       q: "Radyasyondan korunmada dış maruziyeti azaltmanın 3 temel yolu: Zamanı kısaltmak, Mesafeyi artırmak ve ________ kullanmaktır.",
-      answers: ["zırhlama", "zirhlama"],
+      answers: ["zırhlama","zirhlama"],
       hint: "Kurşun veya beton bariyer kullanımı",
       explanation: "Dış radyasyondan korunmanın 3 temel kuralı: Zaman, Mesafe ve Zırhlama'dır."
     },
     {
       q: "Radyasyon görevlileri için ardışık 5 yılın ortalaması yıllık etkin doz sınırı ________ mSv, tek bir yılda ise en fazla 50 mSv'tir.",
-      answers: ["20", "yirmi"],
+      answers: ["20","yirmi"],
       hint: "Yıllık ortalama radyasyon doz sınırı (mSv)",
       explanation: "Radyasyon görevlileri için 5 yıllık ortalama etkin doz sınırı yılda 20 mSv, tek bir yılda maksimum 50 mSv'tir."
     },
     {
       q: "Termal konfor ölçümlerinde ortamdaki radyant ısıyı (ışıma ısısını) ölçmek için siyah küreli ________ termometre kullanılır.",
-      answers: ["glob", "globe"],
+      answers: ["glob","globe"],
       hint: "Siyah küreli termometre türü",
       explanation: "Radyant (ışıma) ısısını ölçmek için mat siyah küreli Glob Termometre kullanılır."
     },
     {
       q: "Her ikisi de 80 dB(A) gürültü yayan iki makine aynı anda çalıştığında toplam gürültü düzeyi +3 dB artarak ________ dB(A) olur.",
-      answers: ["83", "seksen üç", "seksenuc"],
+      answers: ["83","seksen üç","seksenuc"],
       hint: "Logaritmik toplama (+3 dB kuralı)",
       explanation: "Eşit iki ses kaynağı birleştiğinde toplam gürültü düzeyi 3 dB artar (80 + 3 = 83 dB)."
     },
     {
       q: "El-kol titreşimine maruz kalan çalışanlarda soğuk etkisiyle parmak uçlarının beyazlaşması ve his kaybı ile seyreden meslek hastalığına Beyaz Parmak (________ fenomeni) denir.",
-      answers: ["Raynaud", "raynaud"],
+      answers: ["Raynaud","raynaud"],
       hint: "Titreşime bağlı damar büzülmesi sendromu",
       explanation: "El-kol titreşiminin damar ve sinirlerde yaptığı hasara Beyaz Parmak Hastalığı (Raynaud Fenomeni) denir."
     },
     {
       q: "İyonlaştırıcı radyasyon türlerinden kağıt tabakası veya deri ile durdurulabilen, ancak solunduğunda iç organlarda çok ağır hasar yapan parçacık radyasyonu ________ radyasyonudur.",
-      answers: ["alfa", "alpha"],
+      answers: ["alfa","alpha"],
       hint: "Helyum çekirdeği olan parçacık (α)",
       explanation: "Alfa parçacıkları dıştan deriyi geçemez ancak solunduğunda iç maruziyette en tehlikeli iyonlaştırıcı radyasyondur."
     },
@@ -564,7 +564,7 @@ export const fkruCourse = {
     },
     {
       q: "Radyasyon Güvenliği Yönetmeliği'ne göre radyasyon görevlisi olmayan sivil toplum üyeleri (halk) için yıllık etkin doz sınırı ________ mSv'tir.",
-      answers: ["1", "bir"],
+      answers: ["1","bir"],
       hint: "Halk için yıllık sınır (mSv)",
       explanation: "Sivil halk (ve gebelerde fetüs) için yıllık etkin radyasyon doz sınırı 1 mSv'tir."
     }

@@ -462,13 +462,13 @@ export const madenCourse = {
   fillQuestions: [
     {
       q: "Mermer ocaklarında elmas tel kesme makinesinde telin tek taraflı aşınmasını önlemek için tel uçları birleştirilirken metre başına ________ kez burulması gerekir.",
-      answers: ["2", "iki"],
+      answers: ["2","iki"],
       hint: "Servet Hoca'nın 12 Ekim dersinde vurguladığı sayı",
       explanation: "Elmas telin kesim sırasında kendi ekseni etrafında dönerek boncukların homojen aşınması için tel metre başına 2 tur burulur."
     },
     {
       q: "Açık işletmelerde elle yapılan kazılarda basamak (kademe) yüksekliği en fazla ________ metre olabilir.",
-      answers: ["3", "üç", "uc"],
+      answers: ["3","üç","uc"],
       hint: "Maden İSG Yönetmeliği'ndeki sınır (metre)",
       explanation: "Maden İşyerlerinde İSG Yönetmeliği'ne göre elle yapılan açık ocak kazılarında kademe yüksekliği 3 metreyi geçemez."
     },
@@ -480,7 +480,7 @@ export const madenCourse = {
     },
     {
       q: "Açık ocak patlatmalarında en yaygın kullanılan ve Amonyum Nitrat ile Fuel-Oil (mazot) karışımından oluşan patlayıcıya ________ denir.",
-      answers: ["ANFO", "anfo"],
+      answers: ["ANFO","anfo"],
       hint: "4 harfli patlayıcı kısaltması",
       explanation: "ANFO (%94 Amonyum Nitrat + %6 Fuel-Oil), kuru deliklerde güvenli ve ekonomik olduğu için açık ocaklarda en çok kullanılan patlayıcıdır."
     },
@@ -492,61 +492,61 @@ export const madenCourse = {
     },
     {
       q: "Açık ocak madenlerinde doğal ________ ve doğal aydınlatma sağlandığı için yeraltı ocaklarındaki gibi grizu birikimi yaşanmaz.",
-      answers: ["havalandırma", "havalandirma"],
+      answers: ["havalandırma","havalandirma"],
       hint: "Temiz hava akışı",
       explanation: "Açık işletmelerin İSG açısından en büyük üstünlüğü doğal havalandırma ve doğal aydınlatmaya sahip olmasıdır."
     },
     {
       q: "Mermer ocağında elmas telin kopması durumunda boncukların mermi gibi fırlamasına ________ etkisi denir.",
-      answers: ["kamçı", "kamçılama", "kamci", "kamcilama"],
+      answers: ["kamçı","kamçılama","kamci","kamcilama"],
       hint: "Telin savrulma hareketi",
       explanation: "Gergin elmas tel koptuğunda kamçı etkisiyle savrularak ölümcül yaralanmalara yol açabilir."
     },
     {
       q: "Maden ocaklarında delme işlemi sırasında çıkan kristal yapılı serbest silis (kuvars) tozlarının solunması sonucu akciğerlerde oluşan meslek hastalığına ________ denir.",
-      answers: ["silikozis", "pnömokonyoz", "pnomokonyoz"],
+      answers: ["silikozis","pnömokonyoz","pnomokonyoz"],
       hint: "Toz hastalığı / taş ciğeri",
       explanation: "Solunabilir silis ve taş tozlarının akciğer alveollerinde birikmesiyle oluşan geri dönüşümsüz meslek hastalığı silikozisdir (pnömokonyoz)."
     },
     {
       q: "Açık işletmelerde basamak yatay düzlemi ile basamak şev yüzeyi arasındaki açıya ________ açısı denir.",
-      answers: ["şev", "sev"],
+      answers: ["şev","sev"],
       hint: "Yamaç eğim açısı",
       explanation: "Basamak yüzeyinin yatayla yaptığı açıya şev açısı denir; kayaç sağlamlığına göre belirlenir."
     },
     {
-      q: "Maden işletmelerinde teknik ve emniyet yönünden nezaret görevini yürüten maden mühendisine ________ nezaretçi denir.",
-      answers: ["daimi"],
-      hint: "Sürekli görev yapan nezaretçi unvanı",
-      explanation: "Her maden ocağında işin güvenli yürütülmesi için en az bir maden mühendisi Daimi Nezaretçi olarak görevlendirilir."
+      q: "Maden İşyerlerinde İSG Yönetmeliği'ne göre maden işletmelerinde acil durum planları ve tatbikatları en geç yılda ________ defa yenilenmelidir.",
+      answers: ["1","bir","1 kez"],
+      hint: "Madenlerde tatbikat sıklığı (yılda ...)",
+      explanation: "Maden işyerlerinde acil durum tatbikatları yılda en az 1 kez tekrarlanmak zorundadır."
     },
     {
       q: "Cevherin üzerini örten ekonomik değeri olmayan örtü tabakasına (yan taşa) ________, bu örtü tabakasının kazılıp kaldırılması işlemine ise dekapaj denir.",
-      answers: ["pasa", "örtü", "ortu"],
+      answers: ["pasa","örtü","ortu"],
       hint: "Ekonomik değeri olmayan kısır taş/toprak",
       explanation: "Ekonomik değeri olmayan yan taş ve örtü malzemesine 'pasa' adı verilir."
     },
     {
-      q: "Maden ocağından çıkarıldığı ham, elenmemiş ve hiçbir zenginleştirme işlemi görmemiş cevhere ________ cevher denir.",
-      answers: ["tüvenan", "tuvenan"],
-      hint: "Ham cevher terimi",
-      explanation: "Ocaktan çıktığı ilk ham haldeki cevhere Tüvenan (ROM) cevher denir."
+      q: "Yeraltı kömür ocaklarında ocak havasındaki oksijen oranının hacimce en az yüzde ________ olması yasal bir zorunluluktur.",
+      answers: ["19","%19","on dokuz"],
+      hint: "Ocak havasındaki asgari oksijen yüzdesi",
+      explanation: "Mevzuata göre yeraltı maden ocaklarında temiz hava akımındaki oksijen oranı %19'un altına düşemez."
     },
     {
-      q: "Patlatma deliklerinde patlayıcı şarjının üzerine delik ağzına kadar ince killi/kırıntılı malzeme doldurularak gazların kaçmasını ve taş savrulmasını önleme işlemine ________ denir.",
-      answers: ["sıkılama", "sikilama"],
-      hint: "Delik ağzının kapatılması işlemi",
-      explanation: "Delik üst kısmının patlayıcı olmayan malzemeyle doldurulmasına sıkılama denir."
+      q: "Yeraltı maden ocaklarında birincil ve ikincil hava yollarında hava akım hızının saniyede en fazla ________ metreyi aşmaması gerekir (insan nakli yapılan galerilerde üst sınır).",
+      answers: ["6","altı","8","sekiz"],
+      hint: "Yeraltında izin verilen maksimum hava hızı (m/s)",
+      explanation: "Maden İşyerlerinde İSG Yönetmeliğine göre galerilerde hava akım hızı en fazla 6-8 m/s ile sınırlandırılır."
     },
     {
-      q: "Mermer ocaklarında ana kayadan kesilerek devrilen büyük kütlenin, taşınabilir ticari boyutlu bloklara bölünmesi işlemine ________ denir.",
-      answers: ["sayalama", "ebatlama"],
-      hint: "Ana kütleyi bloklara ayırma işlemi",
-      explanation: "Devrilen büyük mermer kütlesinin standart ticari bloklara kesilmesine sayalama adı verilir."
+      q: "Yeraltı madenlerinde patlama, yangın veya zehirli gaz basması durumunda işçilerin ocağı güvenle terk edebilmesi için yeryüzüne açılan en az ________ ayrı kuyu veya galeri çıkışı bulunması zorunludur.",
+      answers: ["2","iki"],
+      hint: "Asgari bağımsız ocak çıkış yolu sayısı",
+      explanation: "Maden mevzuatına göre yeraltı ocaklarında çalışanların güvenli tahliyesi için birbirinden bağımsız en az 2 çıkış yolu bulunmalıdır."
     },
     {
       q: "Patlatma ve kazı işlemlerinin yalnızca Ateşleyici ________ Belgesi'ne sahip yetkili personel tarafından yapılması yasal zorunluluktur.",
-      answers: ["yeterlilik", "ehliyet"],
+      answers: ["yeterlilik","ehliyet"],
       hint: "Ateşleyicinin sahip olması gereken belge",
       explanation: "Patlayıcı madde doldurma ve ateşleme işlemleri sadece Ateşleyici Yeterlilik Belgesi bulunan kişilerce yapılabilir."
     }

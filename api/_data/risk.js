@@ -473,10 +473,10 @@ export const riskCourse = {
   ],
   fillQuestions: [
     {
-      q: "İşyerinde var olan ya da dışarıdan gelebilecek, çalışanı veya işyerini etkileyebilecek zarar veya hasar verme potansiyeline ________ denir.",
-      answers: ["tehlike"],
-      hint: "Zarar verme potansiyeli",
-      explanation: "6331 sayılı Kanun'da zarar veya hasar verme potansiyeli 'Tehlike' olarak tanımlanmıştır."
+      q: "Risk değerlendirmesi sürecinde tehlikeler belirlenirken çalışanların temsilcisi, işyeri hekimi ve iş güvenliği uzmanının birlikte yer aldığı kurula Risk Değerlendirmesi ________ denir.",
+      answers: ["ekibi","takımı"],
+      hint: "İşyerinde analizi yürüten çalışma grubu",
+      explanation: "Yönetmeliğe göre risk değerlendirmesi işveren başkanlığında uzman, hekim ve çalışan temsilcisinden oluşan bir 'ekip' tarafından yürütülür."
     },
     {
       q: "Tehlikeden kaynaklanacak kayıp, yaralanma ya da başka zararlı sonuç meydana gelme ihtimaline ________ denir.",
@@ -485,20 +485,20 @@ export const riskCourse = {
       explanation: "Tehlikenin gerçekleşme olasılığı ve yaratacağı şiddetin bileşkesine 'Risk' denir."
     },
     {
-      q: "Çalışan, işyeri ya da ekipmanı zarara uğratma potansiyeli olduğu halde zarara uğratmayan olaya ________ olay denir.",
-      answers: ["ramak kala", "ramakkala"],
-      hint: "Ucuz atlatılan olay",
-      explanation: "Zarar potansiyeli taşıdığı halde yaralanma veya hasar doğurmayan olaylara Ramak Kala Olay denir."
+      q: "İş kazalarının önlenmesinde sadece teknik cihaz ve koruyuculara değil; çalışanların tutum, inanç ve davranışlarına odaklanan kültüre ________ kültürü denir.",
+      answers: ["güvenlik","isg"],
+      hint: "Kurumun genel emniyet yaklaşımı (... kültürü)",
+      explanation: "Güvenlik kültürü, işyerindeki tüm çalışanların güvenlik kurallarını içselleştirmesini ve alışkanlık haline getirmesini hedefler."
     },
     {
-      q: "Kaza veya hastalık meydana gelmeden ÖNCE tehlikeleri tespit edip önlem almaya dayanan modern İSG yaklaşımına ________ yaklaşım denir.",
-      answers: ["proaktif", "önleyici", "onleyici"],
-      hint: "Reaktif yaklaşımın zıttı",
-      explanation: "Modern İSG anlayışı, olaylar yaşanmadan önce önlem alan Proaktif (Önleyici) yaklaşıma dayanır."
+      q: "İş kazası oluştuktan SONRA devreye giren, sadece ceza veya tazminata odaklanan geleneksel eski yaklaşım modeline ________ (reaktif/tepkisel) yaklaşım denir.",
+      answers: ["reaktif","tepkisel"],
+      hint: "Olay sonrası devreye giren geleneksel yaklaşım",
+      explanation: "Reaktif yaklaşım kaza olduktan sonra önlem almaya çalışır; modern İSG ise proaktiftir."
     },
     {
       q: "Risk değerlendirmesi; Çok Tehlikeli sınıfta 2 yılda bir, Tehlikeli sınıfta ________ yılda bir, Az Tehlikeli sınıfta ise 6 yılda bir yenilenir.",
-      answers: ["4", "dört", "dort"],
+      answers: ["4","dört","dort"],
       hint: "2 - ? - 6 yıl kuralı",
       explanation: "Yönetmeliğe göre yenileme periyotları Çok Tehlikeli: 2 yıl, Tehlikeli: 4 yıl, Az Tehlikeli: 6 yıldır."
     },
@@ -509,58 +509,58 @@ export const riskCourse = {
       explanation: "Tehlikeli madde veya prosesin daha az tehlikeli olanla değiştirilmesine İkame denir."
     },
     {
-      q: "Risk kontrol adımları hiyerarşisinde en son çare olarak ________ koruyucu donanım (KKD) kullanımı uygulanır.",
-      answers: ["kişisel", "kisisel"],
-      hint: "Toplu korumanın aksine bireysel olan",
-      explanation: "Eliminasyon, ikame, toplu koruma ve idari önlemlerden sonra en son başvurulan adım Kişisel Koruyucu Donanımdır."
+      q: "Risk kontrol hiyerarşisinde tehlikeli olan bir kimyasalın veya makinenin yerine daha az tehlikeli olanının konulması adımına ________ (yerine koyma) adı verilir.",
+      answers: ["ikame","yerine koyma"],
+      hint: "Tehlikeliyi zararsızla değiştirme adımı",
+      explanation: "İkame (substitution), tehlikeyi tamamen yok edemiyorsak daha az zararlı olan bir alternatifle değiştirme adımıdır."
     },
     {
-      q: "5x5 L Tipi Matris yönteminde Risk Skoru; ________ ile Şiddet değerlerinin çarpılmasıyla bulunur.",
-      answers: ["olasılık", "olasilik", "ihtimal"],
-      hint: "R = ? x Şiddet",
-      explanation: "L Tipi Matriste Risk = Olasılık (İhtimal) x Şiddet formülüyle hesaplanır."
+      q: "Risk değerlendirmesinde toplanan verilerin işyerinde çalışanların ve denetim elemanlarının incelemesine hazır şekilde saklanması gereken yasal süre en az ________ yıldır.",
+      answers: ["10","on"],
+      hint: "Risk değerlendirmesi evraklarının saklanma süresi",
+      explanation: "İşyerinde tutulan risk analiz raporları ve periyodik ölçüm evrakları en az 10 yıl süreyle arşivde saklanmalıdır."
     },
     {
-      q: "6331 sayılı Kanun'a göre risklerden korunma ilkelerinde ________ korunma tedbirlerine, kişisel korunma tedbirlerine göre öncelik verilir.",
-      answers: ["toplu"],
-      hint: "Bütün çalışanları aynı anda koruyan tedbir türü",
-      explanation: "Kanun gereği mühendislik ve Toplu Korunma tedbirleri her zaman bireysel KKD'den önce gelir."
+      q: "5x5 L Tipi Matris yönteminde en düşük risk skoru 1x1=1 iken, en yüksek kabul edilemez risk skoru 5x5=________'tir.",
+      answers: ["25","yirmi beş","yirmi bes"],
+      hint: "5x5 matrisin tepe skoru",
+      explanation: "5x5 L Tipi matris 1 ile 25 arasında skor üretir; 15-25 arası katlanılamaz kırmızı risktir."
     },
     {
-      q: "Fine-Kinney risk değerlendirme metodunda Risk Değeri = Olasılık x ________ x Şiddet formülü ile hesaplanır.",
-      answers: ["frekans", "sıklık", "siklik"],
-      hint: "Tehlikeye maruz kalma tekrarı/sıklığı",
-      explanation: "Fine-Kinney yönteminde 3 çarpan kullanılır: İhtimal (Olasılık) x Frekans (Sıklık) x Şiddet."
+      q: "İş Sağlığı ve Güvenliği Risk Değerlendirmesi Yönetmeliği'ne göre 'Çok Tehlikeli' sınıftaki bir maden veya inşaat işyerinde risk değerlendirmesi en geç ________ yılda bir yenilenir.",
+      answers: ["2","iki"],
+      hint: "Çok tehlikeli sınıf yenileme periyodu (yıl)",
+      explanation: "Yenileme süreleri: Çok Tehlikeli 2 yıl, Tehlikeli 4 yıl, Az Tehlikeli 6 yıldır."
     },
     {
       q: "Hata Türü ve Etkileri Analizi (FMEA) yönteminde Risk Öncelik Sayısı (RÖS); Olasılık x Şiddet x ________ çarpımıyla hesaplanır.",
-      answers: ["farkedilebilirlik", "keşfedilebilirlik", "kesfedilebilirlik"],
+      answers: ["farkedilebilirlik","keşfedilebilirlik","kesfedilebilirlik"],
       hint: "Hatanın gerçekleşmeden önce tespit edilebilme derecesi",
       explanation: "FMEA'da RÖS (1-1000) = Olasılık (1-10) x Şiddet (1-10) x Farkedilebilirlik (1-10) ile bulunur."
     },
     {
       q: "Heinrich'in Domino Teorisine göre iş kazalarının %88'i insana bağlı güvensiz ________, %10'u ise ortama bağlı güvensiz durumlardan kaynaklanır.",
-      answers: ["hareketlerden", "davranışlardan", "hareket", "davranış"],
+      answers: ["hareketlerden","davranışlardan","hareket","davranış"],
       hint: "Çalışanın yaptığı hatalı eylem",
       explanation: "Heinrich'e göre kazaların %88'i güvensiz hareketlerden (davranışlardan), %10'u güvensiz durumlardan kaynaklanır."
     },
     {
-      q: "6331 sayılı İSG Kanunu'na göre işyerinde risk değerlendirmesi yapmak veya yaptırmak ________ asli yükümlülüğüdür.",
-      answers: ["işverenin", "isverenin", "işveren", "isveren"],
-      hint: "İşyerinin sahibi / en üst sorumlusu",
-      explanation: "Risk değerlendirmesinin yapılmasını sağlamak doğrudan işverenin yasal sorumluluğudur."
+      q: "6331 sayılı İSG Kanunu'na göre işyerinde risk değerlendirmesi yapılmış olması, işverenin işyerinde iş sağlığı ve güvenliğini sağlama ________ ortadan kaldırmaz.",
+      answers: ["yükümlülüğünü","sorumluluğunu","yukumlulugunu","sorumlulugunu"],
+      hint: "İşverenin devam eden hukuki mesuliyeti",
+      explanation: "Risk değerlendirmesi yapılmış olması, işverenin İSG sağlama yönündeki asli hukuki ve cezai sorumluluğunu kaldırmaz."
     },
     {
       q: "Kimya ve proses endüstrisinde 'Az, Çok, Hiç, Ters' gibi kılavuz kelimeler kullanılarak sapmaların incelendiği risk analiz yönteminin kısaltması ________'tur.",
-      answers: ["HAZOP", "hazop"],
+      answers: ["HAZOP","hazop"],
       hint: "Hazard and Operability Study kısaltması",
       explanation: "HAZOP, proses parametrelerindeki sapmaları kılavuz kelimelerle analiz eden yöntemdir."
     },
     {
-      q: "Yasal yükümlülüklere ve işyerinin önleme politikasına uygun, kayıp veya yaralanma oluşturmayacak düzeye indirilmiş riske ________ edilebilir risk seviyesi denir.",
-      answers: ["kabul"],
-      hint: "Tolere edilebilir / onaylanabilir anlamındaki kelime",
-      explanation: "Önlemler alındıktan sonra zarar oluşturmayacak düzeye indirilen riske 'Kabul edilebilir risk seviyesi' denir."
+      q: "Funda Hoca'nın belirttiği risk analiz adımlarında, belirlenen risklerin mevzuat ve şirket hedeflerine göre tolere edilip edilemeyeceğine karar verilmesine risk ________ aşaması denir.",
+      answers: ["derecelendirme","puanlama","onceliklendirme","önceliklendirme"],
+      hint: "Risklerin tolere edilebilirlik sıralaması",
+      explanation: "Risk puanlandıktan sonra kabul edilebilirlik düzeyine göre aksiyon öncelik sırasına dizilir."
     }
   ]
 };

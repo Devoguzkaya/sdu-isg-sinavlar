@@ -306,39 +306,214 @@ export const madenConceptGroups = [
 ];
 
 export const madenExtraFill = [
-  { q: 'Maden Kanunu\'na göre mermer, traverten, granit gibi blok olarak üretilen taşlar _______ (IIb) grubu madenler içinde yer alır.', a: '2. grup', alts: ['2', 'ikinci grup', 'iib', 'ii. grup'], exp: 'Ders Kitapçığı Sayfa 1: Blok mermer ve doğal taşlar 2. grup (IIb) madenlerdir.' },
-  { q: 'Boyutları ve tenörü belirlenmiş üretilebilir kesin cevher kütlesine _______ rezerv denir ve hata sınırı genellikle ±%20 (iyi bilinen yataklarda ±%5) kabul edilir.', a: 'görünür', alts: ['gorunur'], exp: 'Ders Kitapçığı Sayfa 4: Kesin cevher kütlesine görünür rezerv denir.' },
-  { q: 'Ocakta üretilen, pasayı da içeren ve henüz zenginleştirilmemiş durumdaki ham cevhere _______ cevher denir.', a: 'tüvenan', alts: ['tuvenan'], exp: 'Ders Kitapçığı Sayfa 5: Zenginleştirilmemiş ham cevhere tüvenan denir.' },
-  { q: 'Cevherin içerdiği faydalı mineralin ağırlık cinsinden yüzdesine _______ adı verilir.', a: 'tenör', alts: ['tenor'], exp: 'Ders Kitapçığı Sayfa 6: Faydalı mineralin ağırlıkça yüzdesine tenör denir.' },
-  { q: 'Açık işletmecilikte cevherin üzerini kaplayan işe yaramaz örtü tabakasının kazılarak uzaklaştırılması ve cevherin üstünün açılması işlemine _______ (örtü kazısı) denir.', a: 'dekapaj', alts: ['örtü kazısı'], exp: 'Ders Kitapçığı Sayfa 6: Örtü tabakasının kazılmasına dekapaj denir.' },
-  { q: 'Taş içerisinde sürülen galeriye veya patlayıcı madde doldurmak için delinen deliğe _______ adı verilir.', a: 'lağım', alts: ['lagim'], exp: 'Ders Kitapçığı Sayfa 5 & 39: Taş içinde sürülen galeriye veya patlayıcı deliğine lağım denir.' },
-  { q: 'Yeraltında iki kat arasında açılmış ve yeryüzüne kadar uzanmayan (yerüstüyle bağlantısı olmayan) tali iç kuyulara _______ (fere) denir.', a: 'bür', alts: ['bur', 'fere', 'kör kuyu'], exp: 'Ders Kitapçığı Sayfa 3 & 38: Yerüstüyle bağlantısı olmayan kuyuya bür (fere) denir.' },
-  { q: 'Üzerinde bir veya birden fazla martoperfaratör bulunan yüksek randımanlı delik delme arabalarına _______ denir.', a: 'jumbo', alts: [], exp: 'Ders Kitapçığı Sayfa 4: Çoklu delik delme arabasına jumbo denir.' },
-  { q: 'Yeraltında açılan galerilerin arazi basıncı etkisiyle zamanla kesitinin daralmasına _______ denir ve % olarak ifade edilir.', a: 'konverjans', alts: [], exp: 'Ders Kitapçığı Sayfa 4: Galeri kesit daralmasına konverjans denir.' },
-  { q: 'Cevher veya pasa yüklü vagonların yüklerini boşaltabilmeleri için 360° dönebilen beşik gibi tesislere _______ denir.', a: 'tumba', alts: [], exp: 'Ders Kitapçığı Sayfa 5: 360 derece dönerek vagon boşaltan tesise tumba denir.' },
-  { q: 'Eğimli düzey üzerinde yerçekiminden yararlanarak dolu araba aşağı inerken boş arabanın yukarı çıkmasını sağlayan halatlı ve frenli taşıma yerine _______ denir.', a: 'varagel', alts: [], exp: 'Ders Kitapçığı Sayfa 6 & 39: Karşılıklı ağırlık esasına göre çalışan eğimli taşıma yoluna varagel denir.' },
-  { q: 'Açık ocaklarda tüm basamakların uç noktalarından geçen hayali (sanal) doğrunun yatayla yaptığı açıya _______ şev açısı denir ve hafriyat hesabında baz alınır.', a: 'genel', alts: [], exp: 'Ders Kitapçığı Sayfa 9: Tüm basamak uçlarından geçen sanal doğrunun açısı genel şev açısıdır.' },
-  { q: 'Açık işletmelerde zemin hazırlamada ilk iş, tarıma elverişli üst toprağın sıyrılarak stoklanması ve ardından ilk basamağın düzenlenmesi için bir _______ açılmasıdır.', a: 'yarma', alts: [], exp: 'Ders Kitapçığı Sayfa 9: İlk basamağın düzenlenmesi için bir yarma açılır.' },
-  { q: 'Patlayıcı madde ateşlendiğinde oluşan çatlaklara sızarak kayacın parçalanmasında EN ETKİN rolü oynayan basınç _______ basıncıdır.', a: 'gaz', alts: [], exp: 'Ders Kitapçığı Sayfa 10: Kayacın parçalanmasında en etkin rolü gaz basıncı oynar.' },
-  { q: 'Patlayıcı maddenin oluşabilmesi/patlayabilmesi için gerekli minimum enerji gereksinimine _______ adı verilir.', a: 'duyarlılık', alts: ['duyarlilik', 'hassasiyet'], exp: 'Ders Kitapçığı Sayfa 11: Patlama için gerekli minimum enerjiye duyarlılık denir.' },
-  { q: 'Açık işletmelerde ana patlayıcı olarak kullanılan ANFO, toz halindeki teknik amonyum nitrat içine %_______ oranında mazot (fuel-oil) karıştırılmasıyla elde edilir.', a: '6', alts: ['altı', 'alti'], exp: 'Ders Kitapçığı Sayfa 11: ANFO = Amonyum nitrat + %6 mazot.' },
-  { q: 'Ateşleme deliğine patlayıcı doldurulduktan sonra deliğin kalan üst 1/3\'lük kısmının kırıntılarla doldurulması işlemine _______ denir.', a: 'sıkılama', alts: ['sikilama'], exp: 'Ders Kitapçığı Sayfa 12 & 39: Deliğin üst 1/3 boşluğunun doldurulmasına sıkılama denir.' },
-  { q: 'Çoklu delik patlatmalarında _______ adetten az sayıda delik patlatılacaksa, kopukluk halinde hiçbir deliğin patlamaması avantajı nedeniyle "Seri bağlantı" kullanılır.', a: '50', alts: ['elli'], exp: 'Ders Kitapçığı Sayfa 13: 50\'den az sayıda delik patlatılacaksa seri bağlantı kullanılır.' },
-  { q: 'Ateşleme sırasında patlayıcı maddenin toplam kimyasal enerjisinin sadece %_______\'si kayanın kırılmasında kullanılır, geri kalan %80\'i atık enerjidir.', a: '20', alts: ['yirmi'], exp: 'Ders Kitapçığı Sayfa 14: Toplam enerjinin sadece %20\'si kayanın kırılmasında kullanılır.' },
-  { q: 'Açık ocaklarda nakliye yolunda maksimum hız sınırı _______ km/h, ocak rampalarında ve ocak içi yollarda 20 km/h, kritik yerlerde ise 10 km/h\'dir.', a: '40', alts: ['kırk', 'kirk'], exp: 'Ders Kitapçığı Sayfa 16: Nakliye yolunda maksimum hız 40 km/h\'dir.' },
-  { q: 'Açık ocaklarda çalışmakta olan bir ekskavatöre veya hareketli iş makinesine hiçbir araç veya ekipman _______ metreden fazla yaklaşmamalıdır.', a: '30', alts: ['otuz'], exp: 'Ders Kitapçığı Sayfa 16: Çalışan ekskavatöre 30 metreden fazla yaklaşılmaz.' },
-  { q: 'Açık ocak yollarında bir kamyonun arkasından giden araç en az _______ metrelik bir emniyet takip mesafesi bırakmalıdır.', a: '50', alts: ['elli'], exp: 'Ders Kitapçığı Sayfa 16: Kamyon takip mesafesi en az 50 metredir.' },
-  { q: 'Açık ocaklarda yol işareti olmayan kavşaklarda geçiş önceliği _______ gelen aracındır.', a: 'soldan', alts: ['sol taraftan'], exp: 'Ders Kitapçığı Sayfa 16: Yol işareti olmayan kavşaklarda öncelik soldan gelenindir.' },
-  { q: 'Bantlı konveyörlerin her iki yanında bakım ve güvenli geçiş için en az _______ cm genişliğinde açık alan bulunmalıdır.', a: '75', alts: ['yetmiş beş', 'yetmis bes'], exp: 'Ders Kitapçığı Sayfa 16: Bantların her iki yanında 75 cm genişliğinde açık alan bulunmalıdır.' },
-  { q: 'Elektrikli kapsüllerin erken ateşlenmesini önlemek için patlatma sahasının _______ metre yakınına kadar cep telefonu ve telsizler kapatılmalıdır.', a: '10', alts: ['on'], exp: 'Ders Kitapçığı Sayfa 17: Patlatma sahasının 10 m yakınına kadar cep telefonu ve telsizler kapatılır.' },
-  { q: 'Açık ocaklarda patlatma yapılmadan önce en az _______ metreden duyulabilecek uyarıcı siren sesi çalınmalıdır.', a: '750', alts: ['yedi yüz elli', 'yediyüzelli'], exp: 'Ders Kitapçığı Sayfa 17: Patlatma öncesinde en az 750 m\'den duyulabilecek siren çalınmalıdır.' },
-  { q: 'Patlamamış bir lağım deliğindeki patlayıcı su veya basınçlı havayla çıkarılamıyorsa, deliğin _______ cm yanından paralel bir delik delinip doldurularak ateşlenir.', a: '20-30', alts: ['20', '30', 'yirmi', 'otuz'], exp: 'Ders Kitapçığı Sayfa 12 & 17: Patlamamış deliğin 20-30 cm yanından paralel delik delinir.' },
-  { q: 'Ateşlemeden ve aşırı yağıştan sonra işe başlamadan önce şev yüzeyinde ana kütleden ayrılmış düşebilecek taşların temizlenmesi için _______ (çatlak) kontrolü ve sökümü yapılmalıdır.', a: 'kavlak', alts: ['çatlak', 'catlak'], exp: 'Ders Kitapçığı Sayfa 17 & 38: Şev yüzeyinde kavlak (çatlak) kontrolü ve sökümü yapılır.' },
-  { q: 'Mermer ocaklarının diğer açık ocaklardan en temel geometrik farkı, basamakların şev açısının _______ derece (dik) olması ve patlayıcı kullanılmamasıdır.', a: '90', alts: ['doksan'], exp: 'Ders Kitapçığı Sayfa 33: Mermer ocaklarında basamakların şev açısı 90 derecedir (diktir).' },
-  { q: 'Mermer ocaklarında ana kütleden kesilerek devrilen büyük bloğun daha küçük bloklara bölünmesi işlemine _______ adı verilir.', a: 'sayalama', alts: ['ebatlama'], exp: 'Ders Kitapçığı Sayfa 33: Devrilen bloğun daha küçük bloklara bölünmesine sayalama denir.' },
-  { q: 'Mermer ocaklarında yüzeyleri elmas telle kesilen bloğun devrilmesinde _______, hava yastığı, su yastığı veya kepçeli iş makineleri kullanılır.', a: 'titano', alts: [], exp: 'Ders Kitapçığı Sayfa 35: Blok devirmede titano, hava yastığı veya su yastığı kullanılır.' },
-  { q: 'Elmas tel kesme makinesi aynadan en az _______ metre uzağa yerleştirilmeli ve ray uzunluğu kesilecek yüzeyden %10 daha fazla olmalıdır.', a: '3', alts: ['üç', 'uc'], exp: 'Ders Kitapçığı Sayfa 36: Makine aynadan en az 3 m uzağa yerleştirilmelidir.' },
-  { q: 'Elmas tel kesme işleminde uygun tel hızı _______ m/sn olmalı ve telin homojen aşınması için tele burgu verilmelidir.', a: '36-40', alts: ['36', '40', '36 - 40'], exp: 'Ders Kitapçığı Sayfa 36: Uygun elmas tel hızı 36-40 m/sn\'dir.' },
-  { q: 'Maden işletmelerinde üretim, maden mühendisi olan bir _______ nezaretçinin denetiminde yapılır ve iş güvenliği uzmanının A sınıfı olması gerekir.', a: 'daimi', alts: ['fenni', 'teknik'], exp: 'Ders Kitapçığı Sayfa 38: Üretim maden mühendisi olan daimi (fenni) nezaretçi denetiminde yapılır.' },
-  { q: 'Maden İşyerlerinde İSG Yönetmeliğine göre işveren çalışmaya başlanılmadan önce _______ ve Güvenlik Dokümanı hazırlanmasını sağlar ve yılda en az 1 defa acil durum tatbikatı yapılır.', a: 'sağlık', alts: ['saglik'], exp: 'Ders Kitapçığı Sayfa 40: Sağlık ve Güvenlik Dokümanı çalışmaya başlanılmadan önce hazırlanır.' }
+    {
+      q: "Maden Kanunu'na göre mermer, traverten, granit gibi blok olarak üretilen taşlar _______ (IIb) grubu madenler içinde yer alır.",
+      answers: ["2. grup","2","ikinci grup","iib","ii. grup"],
+      hint: "Ders Kitapçığı Sayfa 1: Blok mermer ve doğal ",
+      explanation: "Ders Kitapçığı Sayfa 1: Blok mermer ve doğal taşlar 2. grup (IIb) madenlerdir."
+    },
+    {
+      q: "Boyutları ve tenörü belirlenmiş üretilebilir kesin cevher kütlesine _______ rezerv denir ve hata sınırı genellikle ±%20 (iyi bilinen yataklarda ±%5) kabul edilir.",
+      answers: ["görünür","gorunur"],
+      hint: "Ders Kitapçığı Sayfa 4: Kesin cevher kütlesin",
+      explanation: "Ders Kitapçığı Sayfa 4: Kesin cevher kütlesine görünür rezerv denir."
+    },
+    {
+      q: "Ocakta üretilen, pasayı da içeren ve henüz zenginleştirilmemiş durumdaki ham cevhere _______ cevher denir.",
+      answers: ["tüvenan","tuvenan"],
+      hint: "Ders Kitapçığı Sayfa 5: Zenginleştirilmemiş h",
+      explanation: "Ders Kitapçığı Sayfa 5: Zenginleştirilmemiş ham cevhere tüvenan denir."
+    },
+    {
+      q: "Yeraltı galerilerinde tavan ve yan duvarlardaki çatlaklı kaya bloklarını ana kütleye sabitlemek için delik içine kimyasal reçine veya harçla yerleştirilen çelik çubuklara kaya ________ (ankraj) denir.",
+      answers: ["saplaması","civata","cıvatası","bulonu"],
+      hint: "Kaya tahkimat çubuğu (kaya ...)",
+      explanation: "Kaya saplamaları (kaya bulonları), gevşek kaya katmanlarını ana sağlam kayaya bağlayarak tavan göçmelerini önler."
+    },
+    {
+      q: "Kömür madenlerinde kömür tozu patlamalarını ve zincirleme alev ilerlemesini önlemek amacıyla galerilere püskürtülen ve yanmayan toza ________ tozu denir.",
+      answers: ["taş","kireç"],
+      hint: "Grizu ve kömür tozu zincirini kesen toz",
+      explanation: "Taş tozu serpme uygulaması (en az %80 yanmayan madde oranı), kömür tozu patlamalarının yayılmasını engeller."
+    },
+    {
+      q: "Taş içerisinde sürülen galeriye veya patlayıcı madde doldurmak için delinen deliğe _______ adı verilir.",
+      answers: ["lağım","lagim"],
+      hint: "Ders Kitapçığı Sayfa 5 & 39: Taş içinde sürül",
+      explanation: "Ders Kitapçığı Sayfa 5 & 39: Taş içinde sürülen galeriye veya patlayıcı deliğine lağım denir."
+    },
+    {
+      q: "Yeraltında iki kat arasında açılmış ve yeryüzüne kadar uzanmayan (yerüstüyle bağlantısı olmayan) tali iç kuyulara _______ (fere) denir.",
+      answers: ["bür","bur","fere","kör kuyu"],
+      hint: "Ders Kitapçığı Sayfa 3 & 38: Yerüstüyle bağla",
+      explanation: "Ders Kitapçığı Sayfa 3 & 38: Yerüstüyle bağlantısı olmayan kuyuya bür (fere) denir."
+    },
+    {
+      q: "Maden ocaklarında zehirli karbonmonoksit (CO) gazı için izin verilen 8 saatlik azami çalışma ortamı maruziyet sınır değeri ________ ppm'dir.",
+      answers: ["50","elli"],
+      hint: "CO gazı yasal sınır konsantrasyonu (ppm)",
+      explanation: "Karbonmonoksit renksiz ve kokusuz ölümcül bir gaz olup yasal ortam maruziyet üst sınırı 50 ppm'dir."
+    },
+    {
+      q: "Varagel ve desandre gibi eğimli maden nakliyat yollarında vagonların aşırı hızlanmasını ve kaçmasını önleyen mekanik fren tertibatına ________ denir.",
+      answers: ["freno"],
+      hint: "Servet Hoca'nın slaytındaki eğimli yol freni",
+      explanation: "Freno, varagel hatlarında yüklü iniş hızını kontrol altında tutan el veya hidrolik kumandalı fren sistemidir."
+    },
+    {
+      q: "Yeraltı kömür ocaklarında metan gazının havayla yaptığı en şiddetli ve tahripkar patlama konsantrasyon oranı yüzde ________'tir.",
+      answers: ["9.5","9,5"],
+      hint: "Maksimum grizu şiddeti yüzdesi",
+      explanation: "Metan %4-15 arasında patlar; ancak en tam ve şiddetli patlama stokiometrik oran olan %9.5'te meydana gelir."
+    },
+    {
+      q: "Eğimli düzey üzerinde yerçekiminden yararlanarak dolu araba aşağı inerken boş arabanın yukarı çıkmasını sağlayan halatlı ve frenli taşıma yerine _______ denir.",
+      answers: ["varagel"],
+      hint: "Ders Kitapçığı Sayfa 6 & 39: Karşılıklı ağırl",
+      explanation: "Ders Kitapçığı Sayfa 6 & 39: Karşılıklı ağırlık esasına göre çalışan eğimli taşıma yoluna varagel denir."
+    },
+    {
+      q: "Mermer ocaklarında ana kayadan tel kesmeyle ayrılan devasa monoblok kütleleri tabana kontrollü devirmek için arkasına yerleştirilen su/hava basınçlı metal yastıklara ________ yastığı denir.",
+      answers: ["titano","hava","devirme"],
+      hint: "Servet Hoca'nın slaytındaki İtalyan patenti yastık",
+      explanation: "Titano veya çelik hava yastıkları, bloğu emniyetle basamak tabanındaki pasa yatağına devirmek için kullanılır."
+    },
+    {
+      q: "Açık işletmelerde zemin hazırlamada ilk iş, tarıma elverişli üst toprağın sıyrılarak stoklanması ve ardından ilk basamağın düzenlenmesi için bir _______ açılmasıdır.",
+      answers: ["yarma"],
+      hint: "Ders Kitapçığı Sayfa 9: İlk basamağın düzenle",
+      explanation: "Ders Kitapçığı Sayfa 9: İlk basamağın düzenlenmesi için bir yarma açılır."
+    },
+    {
+      q: "Patlayıcı madde ateşlendiğinde oluşan çatlaklara sızarak kayacın parçalanmasında EN ETKİN rolü oynayan basınç _______ basıncıdır.",
+      answers: ["gaz"],
+      hint: "Ders Kitapçığı Sayfa 10: Kayacın parçalanması",
+      explanation: "Ders Kitapçığı Sayfa 10: Kayacın parçalanmasında en etkin rolü gaz basıncı oynar."
+    },
+    {
+      q: "Patlayıcı maddenin oluşabilmesi/patlayabilmesi için gerekli minimum enerji gereksinimine _______ adı verilir.",
+      answers: ["duyarlılık","duyarlilik","hassasiyet"],
+      hint: "Ders Kitapçığı Sayfa 11: Patlama için gerekli",
+      explanation: "Ders Kitapçığı Sayfa 11: Patlama için gerekli minimum enerjiye duyarlılık denir."
+    },
+    {
+      q: "Açık işletmelerde ana patlayıcı olarak kullanılan ANFO, toz halindeki teknik amonyum nitrat içine %_______ oranında mazot (fuel-oil) karıştırılmasıyla elde edilir.",
+      answers: ["6","altı","alti"],
+      hint: "Ders Kitapçığı Sayfa 11: ANFO = Amonyum nitra",
+      explanation: "Ders Kitapçığı Sayfa 11: ANFO = Amonyum nitrat + %6 mazot."
+    },
+    {
+      q: "Açık ocak kamyon nakliyat yollarının uçurum tarafındaki kenarlarına yapılan güvenlik seddesinin yüksekliği, kullanılan en büyük kamyon tekerleği çapının en az ________ kadar olmalıdır.",
+      answers: ["yarısı","1/2","%50"],
+      hint: "Kamyon tekerlek çapı oranı",
+      explanation: "Maden güvenliği kurallarına göre yol kenar koruma seddeleri en az kamyon teker çapının yarısı (h/2) yüksekliğinde inşa edilmelidir."
+    },
+    {
+      q: "Çoklu delik patlatmalarında _______ adetten az sayıda delik patlatılacaksa, kopukluk halinde hiçbir deliğin patlamaması avantajı nedeniyle \"Seri bağlantı\" kullanılır.",
+      answers: ["50","elli"],
+      hint: "Ders Kitapçığı Sayfa 13: 50'den az sayıda del",
+      explanation: "Ders Kitapçığı Sayfa 13: 50'den az sayıda delik patlatılacaksa seri bağlantı kullanılır."
+    },
+    {
+      q: "Ateşleme sırasında patlayıcı maddenin toplam kimyasal enerjisinin sadece %_______'si kayanın kırılmasında kullanılır, geri kalan %80'i atık enerjidir.",
+      answers: ["20","yirmi"],
+      hint: "Ders Kitapçığı Sayfa 14: Toplam enerjinin sad",
+      explanation: "Ders Kitapçığı Sayfa 14: Toplam enerjinin sadece %20'si kayanın kırılmasında kullanılır."
+    },
+    {
+      q: "Açık ocaklarda nakliye yolunda maksimum hız sınırı _______ km/h, ocak rampalarında ve ocak içi yollarda 20 km/h, kritik yerlerde ise 10 km/h'dir.",
+      answers: ["40","kırk","kirk"],
+      hint: "Ders Kitapçığı Sayfa 16: Nakliye yolunda maks",
+      explanation: "Ders Kitapçığı Sayfa 16: Nakliye yolunda maksimum hız 40 km/h'dir."
+    },
+    {
+      q: "Açık ocaklarda çalışmakta olan bir ekskavatöre veya hareketli iş makinesine hiçbir araç veya ekipman _______ metreden fazla yaklaşmamalıdır.",
+      answers: ["30","otuz"],
+      hint: "Ders Kitapçığı Sayfa 16: Çalışan ekskavatöre ",
+      explanation: "Ders Kitapçığı Sayfa 16: Çalışan ekskavatöre 30 metreden fazla yaklaşılmaz."
+    },
+    {
+      q: "Açık ocak yollarında bir kamyonun arkasından giden araç en az _______ metrelik bir emniyet takip mesafesi bırakmalıdır.",
+      answers: ["50","elli"],
+      hint: "Ders Kitapçığı Sayfa 16: Kamyon takip mesafes",
+      explanation: "Ders Kitapçığı Sayfa 16: Kamyon takip mesafesi en az 50 metredir."
+    },
+    {
+      q: "Açık ocaklarda yol işareti olmayan kavşaklarda geçiş önceliği _______ gelen aracındır.",
+      answers: ["soldan","sol taraftan"],
+      hint: "Ders Kitapçığı Sayfa 16: Yol işareti olmayan ",
+      explanation: "Ders Kitapçığı Sayfa 16: Yol işareti olmayan kavşaklarda öncelik soldan gelenindir."
+    },
+    {
+      q: "Bantlı konveyörlerin her iki yanında bakım ve güvenli geçiş için en az _______ cm genişliğinde açık alan bulunmalıdır.",
+      answers: ["75","yetmiş beş","yetmis bes"],
+      hint: "Ders Kitapçığı Sayfa 16: Bantların her iki ya",
+      explanation: "Ders Kitapçığı Sayfa 16: Bantların her iki yanında 75 cm genişliğinde açık alan bulunmalıdır."
+    },
+    {
+      q: "Elektrikli kapsüllerin erken ateşlenmesini önlemek için patlatma sahasının _______ metre yakınına kadar cep telefonu ve telsizler kapatılmalıdır.",
+      answers: ["10","on"],
+      hint: "Ders Kitapçığı Sayfa 17: Patlatma sahasının 1",
+      explanation: "Ders Kitapçığı Sayfa 17: Patlatma sahasının 10 m yakınına kadar cep telefonu ve telsizler kapatılır."
+    },
+    {
+      q: "Açık ocaklarda patlatma yapılmadan önce en az _______ metreden duyulabilecek uyarıcı siren sesi çalınmalıdır.",
+      answers: ["750","yedi yüz elli","yediyüzelli"],
+      hint: "Ders Kitapçığı Sayfa 17: Patlatma öncesinde e",
+      explanation: "Ders Kitapçığı Sayfa 17: Patlatma öncesinde en az 750 m'den duyulabilecek siren çalınmalıdır."
+    },
+    {
+      q: "Patlamamış bir lağım deliğindeki patlayıcı su veya basınçlı havayla çıkarılamıyorsa, deliğin _______ cm yanından paralel bir delik delinip doldurularak ateşlenir.",
+      answers: ["20-30","20","30","yirmi","otuz"],
+      hint: "Ders Kitapçığı Sayfa 12 & 17: Patlamamış deli",
+      explanation: "Ders Kitapçığı Sayfa 12 & 17: Patlamamış deliğin 20-30 cm yanından paralel delik delinir."
+    },
+    {
+      q: "Ateşlemeden ve aşırı yağıştan sonra işe başlamadan önce şev yüzeyinde ana kütleden ayrılmış düşebilecek taşların temizlenmesi için _______ (çatlak) kontrolü ve sökümü yapılmalıdır.",
+      answers: ["kavlak","çatlak","catlak"],
+      hint: "Ders Kitapçığı Sayfa 17 & 38: Şev yüzeyinde k",
+      explanation: "Ders Kitapçığı Sayfa 17 & 38: Şev yüzeyinde kavlak (çatlak) kontrolü ve sökümü yapılır."
+    },
+    {
+      q: "Mermer ocaklarının diğer açık ocaklardan en temel geometrik farkı, basamakların şev açısının _______ derece (dik) olması ve patlayıcı kullanılmamasıdır.",
+      answers: ["90","doksan"],
+      hint: "Ders Kitapçığı Sayfa 33: Mermer ocaklarında b",
+      explanation: "Ders Kitapçığı Sayfa 33: Mermer ocaklarında basamakların şev açısı 90 derecedir (diktir)."
+    },
+    {
+      q: "Mermer ocaklarında ana kütleden kesilerek devrilen büyük bloğun daha küçük bloklara bölünmesi işlemine _______ adı verilir.",
+      answers: ["sayalama","ebatlama"],
+      hint: "Ders Kitapçığı Sayfa 33: Devrilen bloğun daha",
+      explanation: "Ders Kitapçığı Sayfa 33: Devrilen bloğun daha küçük bloklara bölünmesine sayalama denir."
+    },
+    {
+      q: "Mermer ocaklarında yüzeyleri elmas telle kesilen bloğun devrilmesinde _______, hava yastığı, su yastığı veya kepçeli iş makineleri kullanılır.",
+      answers: ["titano"],
+      hint: "Ders Kitapçığı Sayfa 35: Blok devirmede titan",
+      explanation: "Ders Kitapçığı Sayfa 35: Blok devirmede titano, hava yastığı veya su yastığı kullanılır."
+    },
+    {
+      q: "Elmas tel kesme makinesi aynadan en az _______ metre uzağa yerleştirilmeli ve ray uzunluğu kesilecek yüzeyden %10 daha fazla olmalıdır.",
+      answers: ["3","üç","uc"],
+      hint: "Ders Kitapçığı Sayfa 36: Makine aynadan en az",
+      explanation: "Ders Kitapçığı Sayfa 36: Makine aynadan en az 3 m uzağa yerleştirilmelidir."
+    },
+    {
+      q: "Elmas tel kesme işleminde uygun tel hızı _______ m/sn olmalı ve telin homojen aşınması için tele burgu verilmelidir.",
+      answers: ["36-40","36","40","36 - 40"],
+      hint: "Ders Kitapçığı Sayfa 36: Uygun elmas tel hızı",
+      explanation: "Ders Kitapçığı Sayfa 36: Uygun elmas tel hızı 36-40 m/sn'dir."
+    },
+    {
+      q: "Maden işletmelerinde üretim, maden mühendisi olan bir _______ nezaretçinin denetiminde yapılır ve iş güvenliği uzmanının A sınıfı olması gerekir.",
+      answers: ["daimi","fenni","teknik"],
+      hint: "Ders Kitapçığı Sayfa 38: Üretim maden mühendi",
+      explanation: "Ders Kitapçığı Sayfa 38: Üretim maden mühendisi olan daimi (fenni) nezaretçi denetiminde yapılır."
+    },
+    {
+      q: "Maden İşyerlerinde İSG Yönetmeliğine göre işveren çalışmaya başlanılmadan önce _______ ve Güvenlik Dokümanı hazırlanmasını sağlar ve yılda en az 1 defa acil durum tatbikatı yapılır.",
+      answers: ["sağlık","saglik"],
+      hint: "Ders Kitapçığı Sayfa 40: Sağlık ve Güvenlik D",
+      explanation: "Ders Kitapçığı Sayfa 40: Sağlık ve Güvenlik Dokümanı çalışmaya başlanılmadan önce hazırlanır."
+    }
 ];

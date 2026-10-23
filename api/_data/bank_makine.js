@@ -421,39 +421,214 @@ export const makineConceptGroups = [
 ];
 
 export const makineExtraFill = [
-  { q: 'Herhangi bir enerji türünü başka bir enerjiye dönüştürmek veya belli bir güçten yararlanarak bir işi yapmak için çeşitli mekanik parçalardan oluşan düzenekler bütününe _______ denir.', a: 'makina', alts: ['makine'], exp: '1. Hafta ders sunumu ve örnek soru 1: Bu düzenekler bütününe makina denir.' },
-  { q: 'İnsanın gücünü veya sezgilerini artıran araç ve gereçlere _______ denir ve bu kavram makina, tesisat ve cihaz olmak üzere üç gruba ayrılır.', a: 'sistem', alts: [], exp: '1. Hafta ders sunumu: Sistem; makina, tesisat ve cihaz olmak üzere üçe ayrılır.' },
-  { q: 'Sistem sınıflandırmasında malzeme çeviren, ileten veya biriktiren sistemlere (buhar, ısıtma, soğutma, sıhhi vb.) _______ adı verilir.', a: 'tesisat', alts: [], exp: 'Malzeme çeviren, ileten veya biriktiren sistemlere tesisat denir.' },
-  { q: 'İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek, denetlemek ve ölçmek amacıyla kullanılan sistemlere _______ denir.', a: 'cihaz', alts: [], exp: 'Haberleşme, röntgen, ölçüm aletleri gibi sistemlere cihaz denir.' },
-  { q: 'Enerji dönüştürücü makinalardan; ısı, hidrolik veya elektrik enerjisini mekanik enerjiye çeviren makinalara _______ denir.', a: 'motor', alts: ['motorlar', 'kuvvet makinesi'], exp: 'Motorlar aldığı enerjiyi mekanik enerjiye çeviren makinalardır.' },
-  { q: 'Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, vinçler, pompalar vb.) _______ makinaları denir.', a: 'iş', alts: ['is', 'iş makinası', 'iş makinesi'], exp: 'Mekanik enerjiyi yararlı işe dönüştüren makinalara iş makinaları denir.' },
-  { q: 'Soğutma tesisatının dört temel elemanı: Kompresör, yoğuşturucu (kondanser), kısılma vanası ve _______ (evaporatör) elemanıdır.', a: 'buharlaştırıcı', alts: ['buharlastirici', 'evaporatör'], exp: '1. Hafta örnek soru 3: Kompresör, yoğuşturucu, kısılma vanası ve buharlaştırıcı.' },
-  { q: 'Kapalı kaplardaki basıncı ölçen cihazlara _______, açık hava (atmosfer) basıncını ölçen cihazlara ise barometre denir.', a: 'manometre', alts: [], exp: '1. Hafta örnek soru 4: Basınç ölçüm cihazı manometredir.' },
-  { q: 'SI birim sisteminde iş veya enerjinin birim zamandaki değişimi olan Güç birimi _______ (Watt) olarak ifade edilir.', a: 'j/s', alts: ['watt', 'joule/saniye'], exp: '1. Hafta örnek soru 6: Güç birimi J/s (Watt) veya kW / BG\'dir.' },
-  { q: 'Maddelerin mevcut durma hâlini ya da hareket konumunu koruma eğilimine _______ denir ve büyüklüğü kütle ile doğru orantılıdır.', a: 'eylemsizlik', alts: ['atalet'], exp: '2. Hafta Malzeme Bilgisi: Eylemsizlik maddenin kütlesiyle orantılıdır.' },
-  { q: 'Katı hâldeki bir maddenin sıvı hâle geçmeden doğrudan gaz hâline geçmesine _______ adı verilir.', a: 'süblimleşme', alts: ['sublimlesme'], exp: 'Katıdan doğrudan gaza geçiş süblimleşmedir.' },
-  { q: 'Atom çekirdeğinde yer alan proton ve nötron sayılarının toplamı o atomun _______ numarasını verir.', a: 'kütle', alts: ['kutle'], exp: 'Proton + Nötron sayısı = Kütle numarasıdır.' },
-  { q: 'Metaller ile ametaller arasında elektron alışverişiyle oluşan, yüksek ergime noktasına sahip, sert ve kırılgan olan ancak katı hâlde elektriği iletmeyen bağ türüne _______ bağ denir.', a: 'iyonik', alts: [], exp: '2. Hafta örnek soru 3: İyonik bağ katı hâlde elektriği iletmez.' },
-  { q: 'Moleküller veya atom gruplarını zayıf elektrostatik çekimlerle birbirine bağlayan ikincil bağ türüne _______ bağı denir.', a: 'van der waals', alts: ['vanderwaals', 'van der wals'], exp: '2. Hafta örnek soru 4: Zayıf elektrostatik ikincil bağ Van der Waals bağıdır.' },
-  { q: 'Cam, fayans, porselen, oksitler ve karbürler gibi yüksek ergime sıcaklığına ve yüksek ısıl/kimyasal kararlılığa sahip ancak kırılgan ve yalıtkan olan inorganik malzemelere _______ denir.', a: 'seramik', alts: ['seramikler'], exp: 'Seramikler yüksek ısıl/kimyasal kararlılığa sahip ancak kırılgan malzemelerdir.' },
-  { q: 'İki ya da daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle elde edilen malzemelere _______ malzeme denir; tarihteki en eski ve basit örneği çamur ve samandan yapılan kerpiçtir.', a: 'kompozit', alts: ['karma'], exp: 'Çamur ve samandan oluşan kerpiç en basit kompozit malzemedir.' },
-  { q: 'Uygulanan kuvvet ortadan kalktığında malzemenin eski boyutuna geri döndüğü geçici şekil değişimine _______ deformasyon denir.', a: 'elastik', alts: ['esnek'], exp: 'Kuvvet kalkınca geri dönen şekil değişimi elastik deformasyondur.' },
-  { q: 'Uygulanan gerilmenin elastiklik sınırını aşması sonucunda malzemede meydana gelen kalıcı şekil değişimine _______ deformasyon denir.', a: 'plastik', alts: ['kalıcı'], exp: 'Kalıcı şekil değişimine plastik deformasyon denir.' },
-  { q: 'Çok az veya hiç plastik deformasyon olmadan, düşük toklukla ve akma gerilmesinden küçük gerilmelerde çatlağın hızla ilerlemesiyle oluşan tehlikeli kırılma türüne _______ kırılma denir.', a: 'gevrek', alts: [], exp: '2. Hafta örnek soru 5: Gevrek kırılma akma gerilmesinden küçük gerilmelerde ani oluşur.' },
-  { q: 'Servis altındaki parçaların fiziki yapısına hiçbir zarar vermeden iç bünye ve dış yüzey süreksizliklerini tespit etmeye yarayan yöntemlere _______ muayene yöntemleri denir.', a: 'tahribatsız', alts: ['tahribatsiz', 'ndt'], exp: 'Parçaya zarar vermeden yapılan kontrole tahribatsız muayene denir.' },
-  { q: 'Sökülürken tahrip olduğu için tekrar kullanılamayan perçin, lehim, kaynak ve yapıştırıcı gibi elemanlara _______ bağlama elemanları denir.', a: 'çözülemeyen', alts: ['cozulemeyen', 'sökülemeyen'], exp: '3. Hafta: Perçin, lehim, kaynak ve yapıştırıcı çözülemeyen bağlama elemanlarıdır.' },
-  { q: 'İki metal parçanın kendilerinden daha düşük sıcaklıkta ergiyen ilave bir metal alaşımı yardımıyla ana metaller ergitilmeden birleştirilmesi işlemine _______ denir.', a: 'lehimleme', alts: ['lehim'], exp: 'Ana metal ergimeden düşük sıcaklıkta ergiyen ilave metalle yapılan birleştirme lehimlemedir.' },
-  { q: 'Aynı veya farklı iki malzemenin metalik olmayan bir ara malzeme (zamk) ile adhezyon ve kohezyon kuvvetleri sayesinde çözülemeyecek şekilde birleştirilmesine _______ bağlantısı denir.', a: 'yapıştırıcı', alts: ['yapistirici', 'yapıştırma'], exp: 'Zamk ile yapılan birleştirme yapıştırıcı bağlantısıdır.' },
-  { q: 'Vida bağlantılarında dış vidaya cıvata, iç vidaya ise _______ adı verilir.', a: 'somun', alts: [], exp: 'Cıvata dış vida, somun iç vidadır.' },
-  { q: 'Mil ile göbek arasında moment iletmek amacıyla kullanılan ve mil eksenine paralel (boyuna/feder) veya dik (enine) monte edilen prizmatik elemanlara _______ denir.', a: 'kama', alts: ['kamalar', 'feder'], exp: 'Mil-göbek arasında şekil veya kuvvet bağı kuran prizmatik eleman kamadır.' },
-  { q: 'Milin dış çapının göbeğin delik çapından biraz büyük işlenerek basınçla veya ısıtma/soğutma ile monte edildiği çözülebilen bağlantıya _______ geçme denir.', a: 'sıkı', alts: ['siki', 'pres'], exp: 'Çap farkı ve yüzey basıncıyla moment ileten bağlantı sıkı geçmedir.' },
-  { q: 'Dönme-dönme hareket iletim mekanizmalarında döndüren elemanın hızının döndürülen elemanın hızına oranına _______ oranı denir.', a: 'çevrim', alts: ['cevrim', 'iletim'], exp: '4. Hafta: Dönme-dönme elemanlarının en önemli özelliği çevrim oranıdır.' },
-  { q: 'Eksenleri kesişen iki mil arasında hareket ileten dişlilere _______ dişli, dönme hareketini doğrusal harekete çeviren düz çubuk dişliye ise kremayer dişli denir.', a: 'konik', alts: [], exp: 'Kesişen eksenli dişliler konik dişlilerdir.' },
-  { q: 'Elastik bir kayış yardımıyla kasnaklar arasında hareket ileten, darbeleri sönümleyen ancak %1-%2 oranında kısmi kayma yapan mekanizmaya _______ mekanizması denir.', a: 'kayış-kasnak', alts: ['kayis-kasnak', 'kayış kasnak'], exp: '4. Hafta: Kayış-kasnak mekanizmasında %1-2 kısmi kayma vardır.' },
-  { q: 'Dökümde kalıp boşluğunu oluşturmak için kullanılan ve katılaşma sırasındaki hacimsel büzülmeyi karşılamak üzere boyutlarına "çekme payı" eklenen kopyaya _______ denir.', a: 'model', alts: [], exp: '5. Hafta: Kalıp boşluğunu oluşturan parçaya model denir.' },
-  { q: 'Döküm parçalarının boş (delik veya oyuk) çıkması istenen iç kısımlarını oluşturmak için kalıp içine yerleştirilen kumdan yapılmış özel parçaya _______ denir.', a: 'maça', alts: ['maca'], exp: '5. Hafta: İç boşlukları oluşturmak için kumdan yapılan parçaya maça denir.' },
-  { q: 'Kalıp malzemesi olarak kum yerine çelik veya dökme demir gibi metal kalıpların kullanıldığı döküm yöntemine _______ döküm denir.', a: 'kokil', alts: ['metal kalıba'], exp: '5. Hafta: Metal kalıba döküm yöntemine kokil döküm adı verilir.' },
-  { q: 'Parçaların birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılıp boyunun uzatıldığı plastik şekil verme yöntemine _______ denir.', a: 'haddeleme', alts: [], exp: '5. Hafta: İki merdane arasından geçirerek şekillendirme haddelemedir.' },
-  { q: 'Metal tozlarının kalıpta yüksek basınçla (300-800 MPa) preslendikten sonra ergime sıcaklığının altında fırınlanarak mukavemet kazandırılması işlemine _______ denir.', a: 'sinterleme', alts: ['toz metalurjisi'], exp: '5. Hafta: Preslenen toz parçaların ısıl işlemle bağlanması sinterlemedir.' },
-  { q: 'Argon (TIG) kaynağında erime noktası çok yüksek olduğu için kaynak esnasında erimeyen _______ elektrot kullanılır.', a: 'tungsten', alts: ['wolfram'], exp: '5. Hafta: Argon (TIG) kaynağında erimeyen Tungsten elektrot kullanılır.' }
+    {
+      q: "Ağırlıkça karbon oranı %0,022 ile %2,14 arasında olan demir-karbon alaşımlarına endüstride ________ adı verilir.",
+      answers: ["çelik","celik","Çelik"],
+      hint: "En yaygın kullanılan demir-karbon alaşımı",
+      explanation: "Karbon oranı %0.022-%2.14 arası çelik, %2.14 üzeri dökme demirdir."
+    },
+    {
+      q: "İnsanın gücünü veya sezgilerini artıran araç ve gereçlere _______ denir ve bu kavram makina, tesisat ve cihaz olmak üzere üç gruba ayrılır.",
+      answers: ["sistem"],
+      hint: "1. Hafta ders sunumu: Sistem; makina, tesisat",
+      explanation: "1. Hafta ders sunumu: Sistem; makina, tesisat ve cihaz olmak üzere üçe ayrılır."
+    },
+    {
+      q: "Sistem sınıflandırmasında malzeme çeviren, ileten veya biriktiren sistemlere (buhar, ısıtma, soğutma, sıhhi vb.) _______ adı verilir.",
+      answers: ["tesisat"],
+      hint: "Malzeme çeviren, ileten veya biriktiren siste",
+      explanation: "Malzeme çeviren, ileten veya biriktiren sistemlere tesisat denir."
+    },
+    {
+      q: "İnsanların bilgilerini ve sezgilerini artırmak, olayları gözlemek, denetlemek ve ölçmek amacıyla kullanılan sistemlere _______ denir.",
+      answers: ["cihaz"],
+      hint: "Haberleşme, röntgen, ölçüm aletleri gibi sist",
+      explanation: "Haberleşme, röntgen, ölçüm aletleri gibi sistemlere cihaz denir."
+    },
+    {
+      q: "Enerji dönüştürücü makinalardan; ısı, hidrolik veya elektrik enerjisini mekanik enerjiye çeviren makinalara _______ denir.",
+      answers: ["motor","motorlar","kuvvet makinesi"],
+      hint: "Motorlar aldığı enerjiyi mekanik enerjiye çev",
+      explanation: "Motorlar aldığı enerjiyi mekanik enerjiye çeviren makinalardır."
+    },
+    {
+      q: "Motordan aldığı mekanik enerjiyi yararlı işe dönüştüren makinalara (takım tezgahları, vinçler, pompalar vb.) _______ makinaları denir.",
+      answers: ["iş","is","iş makinası","iş makinesi"],
+      hint: "Mekanik enerjiyi yararlı işe dönüştüren makin",
+      explanation: "Mekanik enerjiyi yararlı işe dönüştüren makinalara iş makinaları denir."
+    },
+    {
+      q: "Soğutma tesisatının dört temel elemanı: Kompresör, yoğuşturucu (kondanser), kısılma vanası ve _______ (evaporatör) elemanıdır.",
+      answers: ["buharlaştırıcı","buharlastirici","evaporatör"],
+      hint: "1. Hafta örnek soru 3: Kompresör, yoğuşturucu",
+      explanation: "1. Hafta örnek soru 3: Kompresör, yoğuşturucu, kısılma vanası ve buharlaştırıcı."
+    },
+    {
+      q: "Kapalı kaplardaki basıncı ölçen cihazlara _______, açık hava (atmosfer) basıncını ölçen cihazlara ise barometre denir.",
+      answers: ["manometre"],
+      hint: "1. Hafta örnek soru 4: Basınç ölçüm cihazı ma",
+      explanation: "1. Hafta örnek soru 4: Basınç ölçüm cihazı manometredir."
+    },
+    {
+      q: "1 bar basınç değeri, SI birim sisteminde tam olarak 100.000 yani 10 üzeri ________ Pascal'a eşittir.",
+      answers: ["5","beş","bes"],
+      hint: "1 bar = 10^? Pa",
+      explanation: "1 bar = 100 kPa = 100.000 Pa = 10^5 Pa'dır."
+    },
+    {
+      q: "Maddelerin mevcut durma hâlini ya da hareket konumunu koruma eğilimine _______ denir ve büyüklüğü kütle ile doğru orantılıdır.",
+      answers: ["eylemsizlik","atalet"],
+      hint: "2. Hafta Malzeme Bilgisi: Eylemsizlik maddeni",
+      explanation: "2. Hafta Malzeme Bilgisi: Eylemsizlik maddenin kütlesiyle orantılıdır."
+    },
+    {
+      q: "Katı hâldeki bir maddenin sıvı hâle geçmeden doğrudan gaz hâline geçmesine _______ adı verilir.",
+      answers: ["süblimleşme","sublimlesme"],
+      hint: "Katıdan doğrudan gaza geçiş süblimleşmedir.",
+      explanation: "Katıdan doğrudan gaza geçiş süblimleşmedir."
+    },
+    {
+      q: "Atom çekirdeğinde yer alan proton ve nötron sayılarının toplamı o atomun _______ numarasını verir.",
+      answers: ["kütle","kutle"],
+      hint: "Proton + Nötron sayısı = Kütle numarasıdır.",
+      explanation: "Proton + Nötron sayısı = Kütle numarasıdır."
+    },
+    {
+      q: "Metaller ile ametaller arasında elektron alışverişiyle oluşan, yüksek ergime noktasına sahip, sert ve kırılgan olan ancak katı hâlde elektriği iletmeyen bağ türüne _______ bağ denir.",
+      answers: ["iyonik"],
+      hint: "2. Hafta örnek soru 3: İyonik bağ katı hâlde ",
+      explanation: "2. Hafta örnek soru 3: İyonik bağ katı hâlde elektriği iletmez."
+    },
+    {
+      q: "Pozitif yüklü metal katyonları ile negatif yüklü ametal anyonları arasındaki elektrostatik çekim kuvvetine dayanan kimyasal bağ türüne ________ bağ denir.",
+      answers: ["iyonik","Iyonik","İyonik"],
+      hint: "Elektron alışverişine dayanan zıt yüklü bağ",
+      explanation: "İyonik bağ, elektron vererek pozitif yüklenen metal ile elektron alarak negatif yüklenen ametal arasındaki kuvvetli elektrostatik çekimdir."
+    },
+    {
+      q: "Elastik deformasyon bölgesinde gerilme ile birim şekil değişimi (uzama) arasındaki doğru orantıyı ifade eden temel fizik yasasına ________ kanunu denir.",
+      answers: ["Hooke","hooke","huk"],
+      hint: "Esneklik kanununu bulan İngiliz bilim insanı",
+      explanation: "Hooke Yasası (Gerilme = E · Birim Uzama), malzemenin elastiklik sınırı içerisinde gerilme ile uzamanın doğrusal olduğunu açıklar."
+    },
+    {
+      q: "İki ya da daha fazla malzemenin makroskopik düzeyde birleştirilmesiyle elde edilen malzemelere _______ malzeme denir; tarihteki en eski ve basit örneği çamur ve samandan yapılan kerpiçtir.",
+      answers: ["kompozit","karma"],
+      hint: "Çamur ve samandan oluşan kerpiç en basit komp",
+      explanation: "Çamur ve samandan oluşan kerpiç en basit kompozit malzemedir."
+    },
+    {
+      q: "Uygulanan kuvvet ortadan kalktığında malzemenin eski boyutuna geri döndüğü geçici şekil değişimine _______ deformasyon denir.",
+      answers: ["elastik","esnek"],
+      hint: "Kuvvet kalkınca geri dönen şekil değişimi ela",
+      explanation: "Kuvvet kalkınca geri dönen şekil değişimi elastik deformasyondur."
+    },
+    {
+      q: "Malzemelerin çekme gerilimi altında kalıcı olarak şekil değiştirmeden, yük kaldırıldığında orijinal boyutlarına tamamen geri dönebildiği bölgeye ________ bölge denir.",
+      answers: ["elastik","Elastik"],
+      hint: "Hooke yasasının geçerli olduğu esnek bölge",
+      explanation: "Elastik deformasyon Hooke yasasına uyar; gerilme kalkınca cisim ilk şeklini alır."
+    },
+    {
+      q: "Malzemenin darbe ve ani yüklemelere karşı kırılmadan enerji sönümleme ve plastik deformasyon yapabilme yeteneğine malzemenin ________ özelliği denir.",
+      answers: ["tokluk","tokluğu","Tokluk"],
+      hint: "Gevreğin zıttı, darbe emme kabiliyeti",
+      explanation: "Tokluk, bir malzemenin kırılana kadar yutabildiği toplam mekanik enerjidir."
+    },
+    {
+      q: "Ferromanyetik metallerin yüzey ve yüzeye çok yakın çatlaklarını tespit etmek için parçaya manyetik alan uygulayarak demir tozu püskürtülen tahribatsız muayene yöntemine Manyetik ________ Muayenesi (MT) denir.",
+      answers: ["parçacık","parcacik","toz"],
+      hint: "Manyetik NDT yönteminin adı",
+      explanation: "Manyetik parçacık testi (MT), manyetik kaçak akı prensibiyle yüzey çatlaklarını demir tozlarıyla görünür kılar."
+    },
+    {
+      q: "Sökülürken tahrip olduğu için tekrar kullanılamayan perçin, lehim, kaynak ve yapıştırıcı gibi elemanlara _______ bağlama elemanları denir.",
+      answers: ["çözülemeyen","cozulemeyen","sökülemeyen"],
+      hint: "3. Hafta: Perçin, lehim, kaynak ve yapıştırıc",
+      explanation: "3. Hafta: Perçin, lehim, kaynak ve yapıştırıcı çözülemeyen bağlama elemanlarıdır."
+    },
+    {
+      q: "İki metal parçanın kendilerinden daha düşük sıcaklıkta ergiyen ilave bir metal alaşımı yardımıyla ana metaller ergitilmeden birleştirilmesi işlemine _______ denir.",
+      answers: ["lehimleme","lehim"],
+      hint: "Ana metal ergimeden düşük sıcaklıkta ergiyen ",
+      explanation: "Ana metal ergimeden düşük sıcaklıkta ergiyen ilave metalle yapılan birleştirme lehimlemedir."
+    },
+    {
+      q: "Aynı veya farklı iki malzemenin metalik olmayan bir ara malzeme (zamk) ile adhezyon ve kohezyon kuvvetleri sayesinde çözülemeyecek şekilde birleştirilmesine _______ bağlantısı denir.",
+      answers: ["yapıştırıcı","yapistirici","yapıştırma"],
+      hint: "Zamk ile yapılan birleştirme yapıştırıcı bağl",
+      explanation: "Zamk ile yapılan birleştirme yapıştırıcı bağlantısıdır."
+    },
+    {
+      q: "Dairesel kesitli tellerin helis şeklinde sarılmasıyla üretilen ve basma, çekme veya burulma enerjisi depolayan elastik makine elemanlarına ________ denir.",
+      answers: ["yay","yaylar","helis yay"],
+      hint: "Enerji depolayan esnek tel eleman",
+      explanation: "Yaylar mekanik enerjiyi depolayıp gerektiğinde geri veren esnek elemanlardır."
+    },
+    {
+      q: "Miller üzerinde dönme hareketini kayıpsız iletmek, sürtünmeyi ve aşınmayı azaltmak için bilyalı veya makaralı yuvarlanma elemanları içeren yataklara ________ denir.",
+      answers: ["rulman","rulmanlar","rulmanlı yatak"],
+      hint: "Bilyalı sürtünmesiz yatak elemanı",
+      explanation: "Rulmanlar mil ile gövde arasındaki sürtünmeyi yuvarlanma sürtünmesine çevirerek verimi artırır."
+    },
+    {
+      q: "Milin dış çapının göbeğin delik çapından biraz büyük işlenerek basınçla veya ısıtma/soğutma ile monte edildiği çözülebilen bağlantıya _______ geçme denir.",
+      answers: ["sıkı","siki","pres"],
+      hint: "Çap farkı ve yüzey basıncıyla moment ileten b",
+      explanation: "Çap farkı ve yüzey basıncıyla moment ileten bağlantı sıkı geçmedir."
+    },
+    {
+      q: "Dönme-dönme hareket iletim mekanizmalarında döndüren elemanın hızının döndürülen elemanın hızına oranına _______ oranı denir.",
+      answers: ["çevrim","cevrim","iletim"],
+      hint: "4. Hafta: Dönme-dönme elemanlarının en önemli",
+      explanation: "4. Hafta: Dönme-dönme elemanlarının en önemli özelliği çevrim oranıdır."
+    },
+    {
+      q: "Eksenleri kesişen iki mil arasında hareket ileten dişlilere _______ dişli, dönme hareketini doğrusal harekete çeviren düz çubuk dişliye ise kremayer dişli denir.",
+      answers: ["konik"],
+      hint: "Kesişen eksenli dişliler konik dişlilerdir.",
+      explanation: "Kesişen eksenli dişliler konik dişlilerdir."
+    },
+    {
+      q: "Elastik bir kayış yardımıyla kasnaklar arasında hareket ileten, darbeleri sönümleyen ancak %1-%2 oranında kısmi kayma yapan mekanizmaya _______ mekanizması denir.",
+      answers: ["kayış-kasnak","kayis-kasnak","kayış kasnak"],
+      hint: "4. Hafta: Kayış-kasnak mekanizmasında %1-2 kı",
+      explanation: "4. Hafta: Kayış-kasnak mekanizmasında %1-2 kısmi kayma vardır."
+    },
+    {
+      q: "Isıtılmış metal kütlenin bir matris deliğinden yüksek basınçla basılarak sabit kesitli uzun profiller ve borular üretilmesi işlemine ________ denir.",
+      answers: ["ekstrüzyon","ekstruzyon"],
+      hint: "Matris deliğinden basarak profil üretme",
+      explanation: "Ekstrüzyon, metalin matris şeklini alarak sürekli profil, ray veya boru haline getirilmesi yöntemidir."
+    },
+    {
+      q: "Döküm parçalarının boş (delik veya oyuk) çıkması istenen iç kısımlarını oluşturmak için kalıp içine yerleştirilen kumdan yapılmış özel parçaya _______ denir.",
+      answers: ["maça","maca"],
+      hint: "5. Hafta: İç boşlukları oluşturmak için kumda",
+      explanation: "5. Hafta: İç boşlukları oluşturmak için kumdan yapılan parçaya maça denir."
+    },
+    {
+      q: "Kalıp malzemesi olarak kum yerine çelik veya dökme demir gibi metal kalıpların kullanıldığı döküm yöntemine _______ döküm denir.",
+      answers: ["kokil","metal kalıba"],
+      hint: "5. Hafta: Metal kalıba döküm yöntemine kokil ",
+      explanation: "5. Hafta: Metal kalıba döküm yöntemine kokil döküm adı verilir."
+    },
+    {
+      q: "Parçaların birbirine zıt yönde dönen iki merdane arasından geçirilerek kesitinin daraltılıp boyunun uzatıldığı plastik şekil verme yöntemine _______ denir.",
+      answers: ["haddeleme"],
+      hint: "5. Hafta: İki merdane arasından geçirerek şek",
+      explanation: "5. Hafta: İki merdane arasından geçirerek şekillendirme haddelemedir."
+    },
+    {
+      q: "Sıcak veya soğuk haldeki metalin iki döner silindir arasından geçirilerek kalınlığının azaltılması ve levha haline getirilmesi işlemine ________ adı verilir.",
+      answers: ["haddeleme","Haddeleme"],
+      hint: "Sac ve profil üretimindeki silindirli şekil verme",
+      explanation: "Haddeleme, metallere plastik şekil vermede en yaygın kullanılan talaşsız yöntemdir."
+    },
+    {
+      q: "Argon (TIG) kaynağında erime noktası çok yüksek olduğu için kaynak esnasında erimeyen _______ elektrot kullanılır.",
+      answers: ["tungsten","wolfram"],
+      hint: "5. Hafta: Argon (TIG) kaynağında erimeyen Tun",
+      explanation: "5. Hafta: Argon (TIG) kaynağında erimeyen Tungsten elektrot kullanılır."
+    }
 ];

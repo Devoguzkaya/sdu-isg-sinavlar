@@ -455,35 +455,35 @@ export const elektrikCourse = {
   ],
   fillQuestions: [
     {
-      q: "İnsan hayatını korumak amacıyla kullanılan kaçak akım rölesinin (RCD) nominal açma akımı ________ mA, yangın koruma rölesinin açma akımı ise 300 mA'dir.",
-      answers: ["30", "30 mA", "otuz"],
-      hint: "Solunum felci eşiğinin altındaki standart değer (sayısal)",
-      explanation: "30 mA kaçak akım rölesi insan vücudunda solunum felci ve ventriküler fibrilasyon oluşmadan önce devreyi keser; 300 mA ise elektrik ark yangınlarını önler."
-    },
+    q: "M.Ö. 6. yüzyılda kehribarın kumaşa sürtüldüğünde samanları çektiğini keşfederek elektrik tarihinin başlangıcı kabul edilen Antik Yunan filozofu ________'tir.",
+    answers: ["thales", "tales"],
+    hint: "Kehribar sürtünme elektriğini ilk gözlemleyen Miletli filozof",
+    explanation: "Miletli Thales, kehribarın (Yunanca elektron) sürtünme elektriği özelliğini keşfeden ilk düşünürdür."
+  },
     {
-      q: "Bakım ve onarım sırasında enerjinin yanlışlıkla tekrar verilmesini önlemek için kesicilerin kilitlenmesi ve uyarı kartı takılması prosedürüne ________ (Kilitleme - Etiketleme) denir.",
-      answers: ["LOTO", "EKED", "loto", "eked"],
-      hint: "İngilizce kısaltması (4 harf) veya Türkçe kısaltması",
-      explanation: "Lockout-Tagout (LOTO) / Enerji Kesme-Etiketleme (EKED), bakım sırasında şalterin başkası tarafından kaldırılmasını fiziksel kilitle engelleyen hayati prosedürdür."
-    },
+    q: "1753 yılında St. Petersburg'da paratoner deneyi yaparken başına top yıldırım isabet etmesi sonucu hayatını kaybeden tarihteki ilk elektrik kurbanı bilim insanı Georg Wilhelm ________'dir.",
+    answers: ["richmann", "rihman"],
+    hint: "Tarihteki ilk elektrik kurbanı bilim insanı",
+    explanation: "Georg Wilhelm Richmann, yıldırım deneyi sırasında top yıldırım çarpması sonucu hayatını kaybeden ilk bilim insanıdır."
+  },
     {
-      q: "Elektrik akımının kalp kaslarında düzensiz titreşimlere yol açarak kan pompalama işlevini durdurması durumuna ventriküler ________ adı verilir.",
-      answers: ["fibrilasyon", "fibrilasyonu"],
-      hint: "Kalp şok cihazının (defibrilatör) düzelttiği ölümcül ritim bozukluğu",
-      explanation: "50-100 mA üzerindeki alternatif akım kalbin elektriksel düzenini bozarak ventriküler fibrilasyona ve ölüme yol açar."
-    },
+    q: "Türkiye'de elektrik enerjisiyle aydınlatılan ilk yerleşim yeri 1902 yılında Berdan Çayı üzerine kurulan hidroelektrik santraliyle Mersin'in ________ ilçesidir.",
+    answers: ["tarsus"],
+    hint: "Türkiye'de ilk elektriğin geldiği ilçe (Mersin)",
+    explanation: "1902 yılında Tarsus'ta Berdan Çayı üzerinde kurulan su değirmeni santraliyle Türkiye'de ilk elektrik enerjisi üretilmiştir."
+  },
     {
-      q: "Alternatif akımda etkin değeri ________ Volt ve altındaki gerilimler Alçak Gerilim (AG), üzerindeki gerilimler ise Yüksek Gerilim (YG) olarak tanımlanır.",
-      answers: ["1000", "1.000", "bin"],
-      hint: "AG / YG sınır gerilim değeri",
-      explanation: "Mevzuata göre AC'de 1000 V ve altı Alçak Gerilim (AG), 1000 V üzeri Yüksek Gerilim (YG) kabul edilir."
-    },
+    q: "Elektrik akımının bir iletken veya insan dokusu üzerinden geçerken elektrik enerjisini ısı enerjisine dönüştürmesi olayına ________ kanunu (ısınma prensibi) denir.",
+    answers: ["joule", "jul"],
+    hint: "Isınma kanunu (Q = I²·R·t)",
+    explanation: "Joule kanununa göre iletkenden geçen akımın karesi, direnç ve zamanın çarpımı kadar ısı açığa çıkar."
+  },
     {
-      q: "İnsanlar için alternatif akımda (AC) tehlikeli gerilim sınırı (güvenli dokunma gerilimi üst sınırı) normal kuru ortamlarda ________ Volt olarak kabul edilir.",
-      answers: ["50", "elli"],
-      hint: "AC tehlikeli gerilim sınırı (V)",
-      explanation: "Alternatif akımda 50 V (doğru akımda 120 V) üzerindeki gerilimler insan vücudu için tehlikeli gerilim sınırıdır."
-    },
+    q: "1831 yılında elektromanyetik indüksiyon prensibini bularak modern jeneratörlerin temelini atan ve elektrostatik zırhlama kafesini icat eden İngiliz fizikçi Michael ________'dır.",
+    answers: ["faraday"],
+    hint: "İndüksiyon ve kafes korumasını bulan fizikçi",
+    explanation: "Michael Faraday elektromanyetik indüksiyonu ve iletken kafeslerle elektrostatik korumayı bulan fizikçidir."
+  },
     {
       q: "Yere düşen yüksek gerilim hattı çevresinde toprağa yayılan akım nedeniyle kişinin iki ayağı arasında oluşan potansiyel farkına ________ gerilimi denir.",
       answers: ["adım", "adim"],

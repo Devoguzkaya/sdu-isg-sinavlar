@@ -316,39 +316,214 @@ export const ilkyardimConceptGroups = [
 ];
 
 export const ilkyardimExtraFill = [
-  { q: 'Dünya Sağlık Örgütü (WHO) ve ILO\'ya göre İSG; tüm mesleklerde işçilerin sadece fiziksel değil, _______, ruhsal ve sosyal iyilik durumlarını en üst düzeye ulaştırmak ve sürdürmektir.', a: 'bedensel', alts: ['fiziksel'], exp: '1. PPTX Slayt 3: Bedensel, ruhsal ve sosyal iyilik hali.' },
-  { q: 'M.Ö. 370 yılında kurşunun zararlı etkilerinden ilk kez söz ederek "kurşun koliği" ve "kurşun anemisi"ni tanımlayan antik çağ hekimi ______\'tır.', a: 'hipokrat', alts: ['hipokrates'], exp: '1. PPTX Slayt 5: Kurşun koliği ve anemisini ilk tanımlayan Hipokrat\'tır.' },
-  { q: 'Roma döneminde zehirleri "bitkisel, hayvansal ve mineral kaynaklı" olarak üç gruba ayıran bilim insanı ______\'tir.', a: 'dioscorides', alts: ['diaskorides'], exp: '1. PPTX Slayt 6: Zehirleri 3 gruba ayıran Dioscorides\'tir.' },
-  { q: 'Çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine geçmek üzere başlarına torba geçirmelerini öneren Romalı düşünür ______\'dir.', a: 'plini', alts: ['plinius', 'yaşlı plini'], exp: '1. PPTX Slayt 7: Toza karşı başa torba (maske) öneren Plini\'dir.' },
-  { q: 'Tirol maden işletmelerinde işyeri hekimi olarak çalışan, pnömokonyozları inceleyen ve toksikolojide "Doz" kavramını ortaya koyan Alman hekim ______\'tur.', a: 'paracelsus', alts: ['paraselsus'], exp: '1. PPTX Slayt 8: Tirol madenlerinde çalışan hekim Paracelsus\'tur.' },
-  { q: 'Dünyada ilk mineraloji bilgini kabul edilen ve madenlerdeki zehirler ile koruyucu önlemleri "De Re Metallica" eserinde anlatan bilim insanı Georgius ______\'dır.', a: 'agricola', alts: [], exp: '1. PPTX Slayt 9: İlk mineraloji bilgini Georgius Agricola\'dır.' },
-  { q: '1700 yılında yazdığı "De Morbis Artificum Diatriba" kitabıyla iş sağlığının kurucusu kabul edilen ve hekimlere "Hastalarınıza mesleğini sorunuz" diyen İtalyan hekim Bernardino ______\'dir.', a: 'ramazzini', alts: [], exp: '1. PPTX Slayt 10: İş sağlığının babası Bernardino Ramazzini\'dir.' },
-  { q: 'Sanayi Devrimi döneminde baca temizleyicilerinde kurum maruziyetine bağlı "skrotum (testis) kanserini" tanımlayan İngiliz cerrah Percival ______\'tur.', a: 'pott', alts: [], exp: '1. PPTX Slayt 13: Baca temizleyicilerinde skrotum kanserini tanımlayan Percival Pott\'tur.' },
-  { q: 'Türkiye\'de ilk Meslek Hastalıkları Hastanesi 1949 yılında _______ Nişantaşı\'nda kurulmuştur (ardından 1977 Ankara ve 1994 Zonguldak).', a: 'istanbul', alts: ['i̇stanbul'], exp: '1. PPTX Slayt 26: 1949 İstanbul Nişantaşı Meslek Hastalıkları Hastanesi.' },
-  { q: 'Bir kimyasalın vücudun belli bir bölgesinde yeterli konsantrasyona (doza) ulaştığı zaman oluşturduğu hasar veya zarar kapasitesine _______ denir.', a: 'toksisite', alts: ['zehirlilik'], exp: '2. PPTX Slayt 3: Hasar veya zarar kapasitesine toksisite denir.' },
-  { q: 'Çalışmaya başlamadan önce kişinin niteliklerinin belirlenmesi ve bu niteliklere uyan bir işe yerleştirilmesi (uygun işe yerleştirme) amacıyla yapılan muayeneye _______ muayenesi denir.', a: 'işe giriş', alts: ['ise giris', 'başlangıç'], exp: '2. PPTX Slayt 11: Uygun işe yerleştirme amacıyla işe giriş muayenesi yapılır.' },
-  { q: 'Sağlık Gözetimi ders notlarına göre akciğer hastalığı olanlar tozlu işlerde, karaciğer hastalığı olanlar solventlerle, _______ içenler ise asbestle çalışılan yerlerde çalıştırılmamalıdır.', a: 'sigara', alts: ['tütün'], exp: '2. PPTX Slayt 13: Sigara içenler asbestle çalışılan yerlerde uygun değildir.' },
-  { q: 'Tehlikeli ve çok tehlikeli işlerde çocuklar, mesleki eğitim almamış işçiler ve _______ yaşını doldurmamış genç işçiler çalıştırılamaz.', a: '16', alts: ['on altı', 'onaltı'], exp: '2. PPTX Slayt 16: 16 yaşını doldurmamış genç işçiler tehlikeli ve çok tehlikeli işlerde çalıştırılamaz.' },
-  { q: 'Sağlık sorunlarını erken yakalamada (sekonder koruma) yapılan aralıklı kontrol muayeneleri; kurşun ve civa ile çalışanlarda her _______ ayda bir, arsenik ile çalışanlarda 6 ayda bir yapılır.', a: '3', alts: ['üç', 'uc'], exp: '2. PPTX Slayt 18: Kurşun ve civa ile çalışanlarda her 3 ayda bir yapılır.' },
-  { q: 'Herhangi bir sağlık sorunu nedeniyle _______ gün işten ayrı kalmak zorunda olan işçilere işe başlamadan önce "Hastalık Sonu İşe Dönüş Muayenesi" yapılır.', a: '21', alts: ['yirmi bir', 'yirmibir'], exp: '2. PPTX Slayt 19: 21 gün işten ayrı kalan işçilere işe dönüş muayenesi yapılır.' },
-  { q: 'İşyeri ortamında hiçbir zaman ulaşılmaması veya aşılmaması gereken, aşılması durumunda akut toksik belirtilere yol açan kritik tavan düzeye _______ (Müsaade Edilen Azami Konsantrasyon) değeri denir.', a: 'mak', alts: ['mac'], exp: '2. PPTX Slayt 22-23: Hiçbir zaman aşılmaması gereken kritik düzey MAK (MAC) değeridir.' },
-  { q: 'Günde 8, haftada 40 saatlik çalışmada çalışanlara zararlı etki göstermeden çalışılabilecek ortalama konsantrasyonu ifade eden değere _______ (Eşik Sınır Değer / TLV) denir.', a: 'esd', alts: ['tlv', 'eşik sınır değer'], exp: '2. PPTX Slayt 24-25: Ortalama konsantrasyon sınırına ESD (TLV) denir.' },
-  { q: 'Sağlık gözetimine ait çalışanların kişisel sağlık dosyaları, işten ayrılma tarihinden itibaren en az _______ yıl süreyle saklanmak zorundadır.', a: '15', alts: ['on beş', 'onbeş'], exp: '2. PPTX Slayt 41: Kişisel sağlık dosyaları işten ayrılma tarihinden itibaren 15 yıl saklanır.' },
-  { q: 'Olay yerinde, sağlık görevlileri gelinceye kadar tıbbi araç-gereç aranmaksızın eldeki olanaklarla yapılan İLAÇSIZ uygulamalara _______ denir.', a: 'ilk yardım', alts: ['ilkyardım', 'ilkyardim'], exp: '3. PPTX Slayt 3-5: İlaçsız müdahaleye ilk yardım denir.' },
-  { q: 'İlk yardımda temel uygulamalar KBK harfleriyle kodlanır: _______, Bildirme (112) ve Kurtarma (Müdahale).', a: 'koruma', alts: [], exp: '3. PPTX Slayt 7: KBK = Koruma, Bildirme, Kurtarma.' },
-  { q: 'Tüm sözlü ve ağrılı uyaranlara karşı hastanın hiçbir tepki vermediği 3. derece en ağır bilinç kaybı tablosuna _______ denir.', a: 'koma', alts: [], exp: '3. PPTX Slayt 27: Tüm uyaranlara tepkisiz 3. derece bilinç kaybı komadır.' },
-  { q: 'Sağlıklı bir yetişkinde dakikadaki normal solunum sayısı 12–20 iken, dakikadaki normal nabız sayısı _______–100 arasındadır.', a: '60', alts: ['altmış'], exp: '3. PPTX Slayt 28-29: Yetişkin normal nabız sayısı 60-100/dk\'dır.' },
-  { q: '0–1 yaş arası bebeklerde nabız değerlendirmesi en sık kolun iç yüzündeki _______ arterden (kol atardamarından) 3 parmakla 5 saniye süreyle yapılır.', a: 'brakial', alts: ['kol', 'brakiyal'], exp: '3. PPTX Slayt 35 & 46: Bebeklerde nabız brakial arterden (kol atardamarından) alınır.' },
-  { q: 'İlk değerlendirme sonucu bilinci kapalı ancak solunumu ve nabzı OLAN hasta/yaralıya hava yolunun açık kalması için yan yatış şeklinde _______ pozisyonu verilir.', a: 'koma', alts: ['derlenme', 'yarı yüzükoyun yan'], exp: '3. PPTX Slayt 46: Bilinci kapalı ama solunumu/nabzı olana koma pozisyonu verilir.' },
-  { q: 'Oluşmasında çalışma ortamı ve şeklinin diğer faktörlerle birlikte kolaylaştırıcı/ağırlaştırıcı rol oynadığı (KKH, KOAH, KİSH gibi) kompleks etyolojili hastalıklara _______ ilgili hastalıklar denir.', a: 'işle', alts: ['isle', 'iş ile'], exp: '4. PPTX Slayt 5-9: KKH, KOAH ve KİSH işle ilgili hastalıklardır.' },
-  { q: 'Çalışanın meslek hastalığına sebep olan işinden fiilen ayrıldığı tarih ile hastalığın ortaya çıktığı tarih arasında geçen en uzun süreye _______ süresi denir.', a: 'yükümlülük', alts: ['yukumluluk'], exp: '4. PPTX Slayt 12 & 32: İşten ayrıldıktan sonra geçen en uzun süre yükümlülük süresidir.' },
-  { q: 'Çalışanın zararlı etkenle karşılaşmaya başlamasıyla meslek hastalığının oluşabilmesi için geçmesi gereken en az süreye _______ (maruz kalım) süresi denir.', a: 'maruziyet', alts: ['maruz kalım', 'maruz kalma'], exp: '4. PPTX Slayt 13 & 34: En az karşılaşma süresine maruziyet (maruz kalım) süresi denir.' },
-  { q: 'Mevzuatımızda Pnömokonyozun meslek hastalığı sayılabilmesi için işçinin tozlu ortamda en az _______ yıl çalışmış olması (maruz kalım süresi) şarttır.', a: '3', alts: ['üç', 'uc'], exp: '4. PPTX Slayt 34: Pnömokonyoz maruz kalım süresi en az 3 yıldır.' },
-  { q: 'Pamuk tozuna maruz kalan tekstil işçilerinde "Pazartesi sabahları artan nefes darlığı" ile karakterize mesleki solunum sistemi hastalığına _______ denir.', a: 'bisinozis', alts: ['bissinozis'], exp: '4. PPTX Slayt 21: Pazartesi sabahı artan nefes darlığı Bisinozis için tipiktir.' },
-  { q: 'Meslek hastalığının meydana gelmesinde işverenin önlem almada belirgin ihmali saptanırsa SGK ödediği tazminatı işverene _______ davası ile yöneltir.', a: 'rücu', alts: ['rucu'], exp: '4. PPTX Slayt 31: Sigortanın tazminatı kusurlu işverene yöneltmesi Rücu Davasıdır.' },
-  { q: '14 Ekim dersine göre kalp atımlarıyla uyumlu olarak kesik kesik fışkırır tarzda ve parlak kırmızı renkte akan kanama türü _______ kanamasıdır.', a: 'atardamar', alts: ['arter', 'arteriyel'], exp: '14 Ekim dersi: Parlak kırmızı ve fışkırır tarzda kanama atardamar kanamasıdır.' },
-  { q: 'Kanama, yanık veya aşırı kusma/ishal sonucu vücutta dolaşan kan/sıvı hacminin azalmasına bağlı gelişen şok tablosuna _______ şok denir.', a: 'hipovolemik', alts: [], exp: '14 Ekim dersi dk 23:34: Kan/sıvı hacmi azalmasına bağlı şok hipovolemik şoktur.' },
-  { q: 'Şok pozisyonunda hasta/yaralı düz bir zemine sırtüstü yatırılır ve bacakları yaklaşık _______ cm yukarı kaldırılarak desteklenir.', a: '30', alts: ['otuz'], exp: '14 Ekim dersi dk 21:45: Şok pozisyonunda bacaklar 30 cm kaldırılır.' },
-  { q: 'Turnike (İspanyol sargısı) uygulamasında alttaki dokunun kangren/nekroz olmasını önlemek için ilk 1 saatte _______ dakikada bir 5–10 saniye gevşetilir ve toplamda 2 saatten uzun tutulmaz.', a: '20', alts: ['15-20', 'yirmi'], exp: '14 Ekim dersi dk 30:37: İlk bir saatte 20 dakikada bir (ikinci saatte 10 dakikada bir) gevşetilir.' },
-  { q: 'Burun kanamasında yapılan en büyük hata başı geriye eğmektir; doğrusu hastayı oturtup başını _______ doğru eğerek burun kanatlarına 5 dakika bası uygulamaktır.', a: 'öne', alts: ['one', 'ön tarafa'], exp: '14 Ekim dersi dk 42:39: Burun kanamasında baş öne eğilir.' }
+    {
+      q: "Dünya Sağlık Örgütü (WHO) ve ILO'ya göre İSG; tüm mesleklerde işçilerin sadece fiziksel değil, _______, ruhsal ve sosyal iyilik durumlarını en üst düzeye ulaştırmak ve sürdürmektir.",
+      answers: ["bedensel","fiziksel"],
+      hint: "1. PPTX Slayt 3: Bedensel, ruhsal ve sosyal i",
+      explanation: "1. PPTX Slayt 3: Bedensel, ruhsal ve sosyal iyilik hali."
+    },
+    {
+      q: "M.Ö. 370 yılında kurşunun zararlı etkilerinden ilk kez söz ederek \"kurşun koliği\" ve \"kurşun anemisi\"ni tanımlayan antik çağ hekimi ______'tır.",
+      answers: ["hipokrat","hipokrates"],
+      hint: "1. PPTX Slayt 5: Kurşun koliği ve anemisini i",
+      explanation: "1. PPTX Slayt 5: Kurşun koliği ve anemisini ilk tanımlayan Hipokrat'tır."
+    },
+    {
+      q: "Roma döneminde zehirleri \"bitkisel, hayvansal ve mineral kaynaklı\" olarak üç gruba ayıran bilim insanı ______'tir.",
+      answers: ["dioscorides","diaskorides"],
+      hint: "1. PPTX Slayt 6: Zehirleri 3 gruba ayıran Dio",
+      explanation: "1. PPTX Slayt 6: Zehirleri 3 gruba ayıran Dioscorides'tir."
+    },
+    {
+      q: "Çalışma ortamındaki tehlikeli tozlara karşı çalışanların korunması amacıyla maske yerine geçmek üzere başlarına torba geçirmelerini öneren Romalı düşünür ______'dir.",
+      answers: ["plini","plinius","yaşlı plini"],
+      hint: "1. PPTX Slayt 7: Toza karşı başa torba (maske",
+      explanation: "1. PPTX Slayt 7: Toza karşı başa torba (maske) öneren Plini'dir."
+    },
+    {
+      q: "Tirol maden işletmelerinde işyeri hekimi olarak çalışan, pnömokonyozları inceleyen ve toksikolojide \"Doz\" kavramını ortaya koyan Alman hekim ______'tur.",
+      answers: ["paracelsus","paraselsus"],
+      hint: "1. PPTX Slayt 8: Tirol madenlerinde çalışan h",
+      explanation: "1. PPTX Slayt 8: Tirol madenlerinde çalışan hekim Paracelsus'tur."
+    },
+    {
+      q: "Dünyada ilk mineraloji bilgini kabul edilen ve madenlerdeki zehirler ile koruyucu önlemleri \"De Re Metallica\" eserinde anlatan bilim insanı Georgius ______'dır.",
+      answers: ["agricola"],
+      hint: "1. PPTX Slayt 9: İlk mineraloji bilgini Georg",
+      explanation: "1. PPTX Slayt 9: İlk mineraloji bilgini Georgius Agricola'dır."
+    },
+    {
+      q: "1700 yılında yazdığı \"De Morbis Artificum Diatriba\" kitabıyla iş sağlığının kurucusu kabul edilen ve hekimlere \"Hastalarınıza mesleğini sorunuz\" diyen İtalyan hekim Bernardino ______'dir.",
+      answers: ["ramazzini"],
+      hint: "1. PPTX Slayt 10: İş sağlığının babası Bernar",
+      explanation: "1. PPTX Slayt 10: İş sağlığının babası Bernardino Ramazzini'dir."
+    },
+    {
+      q: "Sanayi Devrimi döneminde baca temizleyicilerinde kurum maruziyetine bağlı \"skrotum (testis) kanserini\" tanımlayan İngiliz cerrah Percival ______'tur.",
+      answers: ["pott"],
+      hint: "1. PPTX Slayt 13: Baca temizleyicilerinde skr",
+      explanation: "1. PPTX Slayt 13: Baca temizleyicilerinde skrotum kanserini tanımlayan Percival Pott'tur."
+    },
+    {
+      q: "Türkiye'de ilk Meslek Hastalıkları Hastanesi 1949 yılında _______ Nişantaşı'nda kurulmuştur (ardından 1977 Ankara ve 1994 Zonguldak).",
+      answers: ["istanbul","i̇stanbul"],
+      hint: "1. PPTX Slayt 26: 1949 İstanbul Nişantaşı Mes",
+      explanation: "1. PPTX Slayt 26: 1949 İstanbul Nişantaşı Meslek Hastalıkları Hastanesi."
+    },
+    {
+      q: "Bir kimyasalın vücudun belli bir bölgesinde yeterli konsantrasyona (doza) ulaştığı zaman oluşturduğu hasar veya zarar kapasitesine _______ denir.",
+      answers: ["toksisite","zehirlilik"],
+      hint: "2. PPTX Slayt 3: Hasar veya zarar kapasitesin",
+      explanation: "2. PPTX Slayt 3: Hasar veya zarar kapasitesine toksisite denir."
+    },
+    {
+      q: "Çalışmaya başlamadan önce kişinin niteliklerinin belirlenmesi ve bu niteliklere uyan bir işe yerleştirilmesi (uygun işe yerleştirme) amacıyla yapılan muayeneye _______ muayenesi denir.",
+      answers: ["işe giriş","ise giris","başlangıç"],
+      hint: "2. PPTX Slayt 11: Uygun işe yerleştirme amacı",
+      explanation: "2. PPTX Slayt 11: Uygun işe yerleştirme amacıyla işe giriş muayenesi yapılır."
+    },
+    {
+      q: "Sağlık Gözetimi ders notlarına göre akciğer hastalığı olanlar tozlu işlerde, karaciğer hastalığı olanlar solventlerle, _______ içenler ise asbestle çalışılan yerlerde çalıştırılmamalıdır.",
+      answers: ["sigara","tütün"],
+      hint: "2. PPTX Slayt 13: Sigara içenler asbestle çal",
+      explanation: "2. PPTX Slayt 13: Sigara içenler asbestle çalışılan yerlerde uygun değildir."
+    },
+    {
+      q: "Tehlikeli ve çok tehlikeli işlerde çocuklar, mesleki eğitim almamış işçiler ve _______ yaşını doldurmamış genç işçiler çalıştırılamaz.",
+      answers: ["16","on altı","onaltı"],
+      hint: "2. PPTX Slayt 16: 16 yaşını doldurmamış genç ",
+      explanation: "2. PPTX Slayt 16: 16 yaşını doldurmamış genç işçiler tehlikeli ve çok tehlikeli işlerde çalıştırılamaz."
+    },
+    {
+      q: "Sağlık sorunlarını erken yakalamada (sekonder koruma) yapılan aralıklı kontrol muayeneleri; kurşun ve civa ile çalışanlarda her _______ ayda bir, arsenik ile çalışanlarda 6 ayda bir yapılır.",
+      answers: ["3","üç","uc"],
+      hint: "2. PPTX Slayt 18: Kurşun ve civa ile çalışanl",
+      explanation: "2. PPTX Slayt 18: Kurşun ve civa ile çalışanlarda her 3 ayda bir yapılır."
+    },
+    {
+      q: "Herhangi bir sağlık sorunu nedeniyle _______ gün işten ayrı kalmak zorunda olan işçilere işe başlamadan önce \"Hastalık Sonu İşe Dönüş Muayenesi\" yapılır.",
+      answers: ["21","yirmi bir","yirmibir"],
+      hint: "2. PPTX Slayt 19: 21 gün işten ayrı kalan işç",
+      explanation: "2. PPTX Slayt 19: 21 gün işten ayrı kalan işçilere işe dönüş muayenesi yapılır."
+    },
+    {
+      q: "İşyeri ortamında hiçbir zaman ulaşılmaması veya aşılmaması gereken, aşılması durumunda akut toksik belirtilere yol açan kritik tavan düzeye _______ (Müsaade Edilen Azami Konsantrasyon) değeri denir.",
+      answers: ["mak","mac"],
+      hint: "2. PPTX Slayt 22-23: Hiçbir zaman aşılmaması ",
+      explanation: "2. PPTX Slayt 22-23: Hiçbir zaman aşılmaması gereken kritik düzey MAK (MAC) değeridir."
+    },
+    {
+      q: "Günde 8, haftada 40 saatlik çalışmada çalışanlara zararlı etki göstermeden çalışılabilecek ortalama konsantrasyonu ifade eden değere _______ (Eşik Sınır Değer / TLV) denir.",
+      answers: ["esd","tlv","eşik sınır değer"],
+      hint: "2. PPTX Slayt 24-25: Ortalama konsantrasyon s",
+      explanation: "2. PPTX Slayt 24-25: Ortalama konsantrasyon sınırına ESD (TLV) denir."
+    },
+    {
+      q: "Sağlık gözetimine ait çalışanların kişisel sağlık dosyaları, işten ayrılma tarihinden itibaren en az _______ yıl süreyle saklanmak zorundadır.",
+      answers: ["15","on beş","onbeş"],
+      hint: "2. PPTX Slayt 41: Kişisel sağlık dosyaları iş",
+      explanation: "2. PPTX Slayt 41: Kişisel sağlık dosyaları işten ayrılma tarihinden itibaren 15 yıl saklanır."
+    },
+    {
+      q: "Olay yerinde, sağlık görevlileri gelinceye kadar tıbbi araç-gereç aranmaksızın eldeki olanaklarla yapılan İLAÇSIZ uygulamalara _______ denir.",
+      answers: ["ilk yardım","ilkyardım","ilkyardim"],
+      hint: "3. PPTX Slayt 3-5: İlaçsız müdahaleye ilk yar",
+      explanation: "3. PPTX Slayt 3-5: İlaçsız müdahaleye ilk yardım denir."
+    },
+    {
+      q: "İlk yardımda temel uygulamalar KBK harfleriyle kodlanır: _______, Bildirme (112) ve Kurtarma (Müdahale).",
+      answers: ["koruma"],
+      hint: "3. PPTX Slayt 7: KBK = Koruma, Bildirme, Kurt",
+      explanation: "3. PPTX Slayt 7: KBK = Koruma, Bildirme, Kurtarma."
+    },
+    {
+      q: "Tüm sözlü ve ağrılı uyaranlara karşı hastanın hiçbir tepki vermediği 3. derece en ağır bilinç kaybı tablosuna _______ denir.",
+      answers: ["koma"],
+      hint: "3. PPTX Slayt 27: Tüm uyaranlara tepkisiz 3. ",
+      explanation: "3. PPTX Slayt 27: Tüm uyaranlara tepkisiz 3. derece bilinç kaybı komadır."
+    },
+    {
+      q: "Sağlıklı bir yetişkinde dakikadaki normal solunum sayısı 12–20 iken, dakikadaki normal nabız sayısı _______–100 arasındadır.",
+      answers: ["60","altmış"],
+      hint: "3. PPTX Slayt 28-29: Yetişkin normal nabız sa",
+      explanation: "3. PPTX Slayt 28-29: Yetişkin normal nabız sayısı 60-100/dk'dır."
+    },
+    {
+      q: "0–1 yaş arası bebeklerde nabız değerlendirmesi en sık kolun iç yüzündeki _______ arterden (kol atardamarından) 3 parmakla 5 saniye süreyle yapılır.",
+      answers: ["brakial","kol","brakiyal"],
+      hint: "3. PPTX Slayt 35 & 46: Bebeklerde nabız braki",
+      explanation: "3. PPTX Slayt 35 & 46: Bebeklerde nabız brakial arterden (kol atardamarından) alınır."
+    },
+    {
+      q: "İlk değerlendirme sonucu bilinci kapalı ancak solunumu ve nabzı OLAN hasta/yaralıya hava yolunun açık kalması için yan yatış şeklinde _______ pozisyonu verilir.",
+      answers: ["koma","derlenme","yarı yüzükoyun yan"],
+      hint: "3. PPTX Slayt 46: Bilinci kapalı ama solunumu",
+      explanation: "3. PPTX Slayt 46: Bilinci kapalı ama solunumu/nabzı olana koma pozisyonu verilir."
+    },
+    {
+      q: "Oluşmasında çalışma ortamı ve şeklinin diğer faktörlerle birlikte kolaylaştırıcı/ağırlaştırıcı rol oynadığı (KKH, KOAH, KİSH gibi) kompleks etyolojili hastalıklara _______ ilgili hastalıklar denir.",
+      answers: ["işle","isle","iş ile"],
+      hint: "4. PPTX Slayt 5-9: KKH, KOAH ve KİSH işle ilg",
+      explanation: "4. PPTX Slayt 5-9: KKH, KOAH ve KİSH işle ilgili hastalıklardır."
+    },
+    {
+      q: "Çalışanın meslek hastalığına sebep olan işinden fiilen ayrıldığı tarih ile hastalığın ortaya çıktığı tarih arasında geçen en uzun süreye _______ süresi denir.",
+      answers: ["yükümlülük","yukumluluk"],
+      hint: "4. PPTX Slayt 12 & 32: İşten ayrıldıktan sonr",
+      explanation: "4. PPTX Slayt 12 & 32: İşten ayrıldıktan sonra geçen en uzun süre yükümlülük süresidir."
+    },
+    {
+      q: "Meslek hastalığı teşhisi konulabilmesi için çalışanın sigortalılık süresinin sona ermesi ile hastalığın ortaya çıkması arasında geçebilecek en uzun yasal süreye ________ süresi denir.",
+      answers: ["yükümlülük","yukumluluk"],
+      hint: "SGK mevzuatındaki yasal hak düşürücü süre",
+      explanation: "Yükümlülük süresi, maruziyet bittikten sonra hastalığın meslekle bağının kurulabileceği yasal azami süredir."
+    },
+    {
+      q: "Mevzuatımızda Pnömokonyozun meslek hastalığı sayılabilmesi için işçinin tozlu ortamda en az _______ yıl çalışmış olması (maruz kalım süresi) şarttır.",
+      answers: ["3","üç","uc"],
+      hint: "4. PPTX Slayt 34: Pnömokonyoz maruz kalım sür",
+      explanation: "4. PPTX Slayt 34: Pnömokonyoz maruz kalım süresi en az 3 yıldır."
+    },
+    {
+      q: "Pamuk tozuna maruz kalan tekstil işçilerinde \"Pazartesi sabahları artan nefes darlığı\" ile karakterize mesleki solunum sistemi hastalığına _______ denir.",
+      answers: ["bisinozis","bissinozis"],
+      hint: "4. PPTX Slayt 21: Pazartesi sabahı artan nefe",
+      explanation: "4. PPTX Slayt 21: Pazartesi sabahı artan nefes darlığı Bisinozis için tipiktir."
+    },
+    {
+      q: "Pnömokonyoz çeşitlerinden biri olan ve pamuk, keten, kenevir tozu solunması sonucu 'Pazartesi Ateşi' adıyla bilinen meslek hastalığına ________ denir.",
+      answers: ["bisinozis","byssinosis"],
+      hint: "Tekstil işçilerinde görülen toz hastalığı",
+      explanation: "Bisinozis, pamuk lifi tozlarına maruz kalan tekstil işçilerinde tipik olarak hafta başında göğüs sıkışmasıyla başlayan hastalıktır."
+    },
+    {
+      q: "14 Ekim dersine göre kalp atımlarıyla uyumlu olarak kesik kesik fışkırır tarzda ve parlak kırmızı renkte akan kanama türü _______ kanamasıdır.",
+      answers: ["atardamar","arter","arteriyel"],
+      hint: "14 Ekim dersi: Parlak kırmızı ve fışkırır tar",
+      explanation: "14 Ekim dersi: Parlak kırmızı ve fışkırır tarzda kanama atardamar kanamasıdır."
+    },
+    {
+      q: "Kanama, yanık veya aşırı kusma/ishal sonucu vücutta dolaşan kan/sıvı hacminin azalmasına bağlı gelişen şok tablosuna _______ şok denir.",
+      answers: ["hipovolemik"],
+      hint: "14 Ekim dersi dk 23:34: Kan/sıvı hacmi azalma",
+      explanation: "14 Ekim dersi dk 23:34: Kan/sıvı hacmi azalmasına bağlı şok hipovolemik şoktur."
+    },
+    {
+      q: "Şok pozisyonunda hasta/yaralı düz bir zemine sırtüstü yatırılır ve bacakları yaklaşık _______ cm yukarı kaldırılarak desteklenir.",
+      answers: ["30","otuz"],
+      hint: "14 Ekim dersi dk 21:45: Şok pozisyonunda baca",
+      explanation: "14 Ekim dersi dk 21:45: Şok pozisyonunda bacaklar 30 cm kaldırılır."
+    },
+    {
+      q: "Turnike (İspanyol sargısı) uygulamasında alttaki dokunun kangren/nekroz olmasını önlemek için ilk 1 saatte _______ dakikada bir 5–10 saniye gevşetilir ve toplamda 2 saatten uzun tutulmaz.",
+      answers: ["20","15-20","yirmi"],
+      hint: "14 Ekim dersi dk 30:37: İlk bir saatte 20 dak",
+      explanation: "14 Ekim dersi dk 30:37: İlk bir saatte 20 dakikada bir (ikinci saatte 10 dakikada bir) gevşetilir."
+    },
+    {
+      q: "Burun kanamasında yapılan en büyük hata başı geriye eğmektir; doğrusu hastayı oturtup başını _______ doğru eğerek burun kanatlarına 5 dakika bası uygulamaktır.",
+      answers: ["öne","one","ön tarafa"],
+      hint: "14 Ekim dersi dk 42:39: Burun kanamasında baş",
+      explanation: "14 Ekim dersi dk 42:39: Burun kanamasında baş öne eğilir."
+    }
 ];

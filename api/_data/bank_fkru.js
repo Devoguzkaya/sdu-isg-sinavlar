@@ -271,39 +271,214 @@ export const fkruConceptGroups = [
 ];
 
 export const fkruExtraFill = [
-  { q: 'Kişilere, işyerinin fiziki bütünlüğüne veya ekipmanlara zarar verme potansiyeli olduğu halde zarar vermeyen ve iş kazalarının habercisi olan olaylara _______ olay denir.', a: 'ramak kala', alts: ['ramakkala'], exp: 'Bölüm 1 Slayt 15: Zarar verme potansiyeli olduğu halde zarar vermeyen olaylara ramak kala olay denir.' },
-  { q: 'Yapılan işin gerekleri işçinin bilgi ve becerisiyle çatıştığında (nicel aşırı yük, nitel düşük yük) ve sosyal destek yetersiz olduğunda ortaya çıkan risklere _______ risk unsurları denir.', a: 'psikososyal', alts: ['psiko-sosyal'], exp: 'Bölüm 1 Slayt 45: Nicel aşırı yük ve nitel düşük yük psikososyal risk unsurlarıdır.' },
-  { q: 'Biyolojik risk etmenlerinde enfeksiyon zincirinin son halkası, kişisel savunma mekanizmaları veya stres/beslenme yetersizliği nedeniyle etkilenen _______ (çalışan) halkasıdır.', a: 'duyarlı', alts: ['duyarli', 'konakçı', 'çalışan'], exp: 'Bölüm 1 Slayt 50: Enfeksiyon zincirinin son halkası Duyarlı (Çalışan)\'dır.' },
-  { q: 'Sesin 20°C sıcaklıktaki havada yayılma hızı _______ m/sn iken, 20°C sudaki yayılma hızı 1410 m/sn\'dir.', a: '340', alts: ['üç yüz kırk'], exp: 'Bölüm 1 Slayt 59: 20°C havada sesin hızı 340 m/sn\'dir.' },
-  { q: 'Frekansı 20 Hz\'den düşük olan seslere _______ sesler, 20 Hz ile 20 kHz arasına işitilebilen sesler, 20 kHz\'den yüksek olanlara ise ultrasonik sesler denir.', a: 'subsonik', alts: ['infrasonik'], exp: 'Bölüm 1 Slayt 64: 20 Hz altı sesler subsonik seslerdir.' },
-  { q: 'İnsan kulağı için işitme eşiği 0 dB iken, ağrı eşiği düzeyindeki ses şiddeti _______ dB\'dir.', a: '140', alts: ['yüz kırk'], exp: 'Bölüm 1 Slayt 65: İşitme eşiği 0 dB, ağrı eşiği 140 dB\'dir.' },
-  { q: 'Bir işyerinde _______ metre uzaklıktaki bir kişiyle konuşmak için sesi yükseltmek gerekiyorsa, o işyerinde zararlı düzeyde gürültü var demektir.', a: '1', alts: ['bir'], exp: 'Bölüm 1 Slayt 67: 1 metre uzaklıktaki kişiyle konuşmak için sesi yükseltmek gerekiyorsa zararlı gürültü vardır.' },
-  { q: 'Gürültü Yönetmeliğine göre En Düşük Maruziyet Eylem Değeri 80 dB(A), En Yüksek Maruziyet Eylem Değeri 85 dB(A) ve Maruziyet Sınır Değeri _______ dB(A)\'dır.', a: '87', alts: ['seksen yedi'], exp: 'Bölüm 1 Slayt 22 & 68: Maruziyet sınır değeri 87 dB(A)\'dır.' },
-  { q: 'Gürültü Yönetmeliğine göre çalışanın kullandığı kişisel kulak koruyucu donanımların (KKD) koruyucu etkisi sadece maruziyet _______ değerleri (87 dB) uygulanırken dikkate alınır; eylem değerlerinde dikkate alınmaz.', a: 'sınır', alts: ['sinir'], exp: 'Bölüm 1 Slayt 22: KKD koruyucu etkisi maruziyet sınır değerlerinde dikkate alınır.' },
-  { q: 'Aynı (özdeş) iki gürültü kaynağının bulunduğu bir ortamda toplam gürültü düzeyi, birinci ses kaynağının düzeyine +_______ dB eklenerek bulunur.', a: '3', alts: ['üç', 'uc'], exp: 'Bölüm 1 Slayt 69: Toplam Gürültü Düzeyi = Birinci Ses Kaynağı + 3 dB.' },
-  { q: 'İnsanlarda günlük konuşma frekansı 500–2000 Hz aralığı iken, gürültüye bağlı işitme kayıplarında ilk etkilenen frekans aralığı _______ Hz aralığıdır.', a: '4000-4500', alts: ['4000', '4500', '4000 - 4500'], exp: 'Bölüm 1 Slayt 74: İşitme kayıplarında ilk etkilenen frekans aralığı 4000-4500 Hz\'dir.' },
-  { q: 'El-kol titreşiminde 8 saatlik günlük maruziyet eylem değeri 2,5 m/s² iken, maruziyet sınır değeri _______ m/s²\'dir.', a: '5', alts: ['5,0', '5.0', 'beş'], exp: 'Titreşim Yönetmeliği: El-kol titreşimi sınır değeri 5,0 m/s²\'dir.' },
-  { q: 'Bütün vücut titreşiminde 8 saatlik günlük maruziyet eylem değeri 0,5 m/s² iken, maruziyet sınır değeri _______ m/s²\'dir.', a: '1,15', alts: ['1.15'], exp: 'Titreşim Yönetmeliği: Bütün vücut titreşimi sınır değeri 1,15 m/s²\'dir.' },
-  { q: 'Titreşim Yönetmeliğinin özel koşullarına göre deniz taşımacılığında _______ Hz\'in üzerindeki titreşimler değerlendirmeye alınır.', a: '1', alts: ['bir'], exp: 'Bölüm 1 Slayt 35 & 41: Deniz taşımacılığında 1 Hz\'in üzerindeki titreşimler değerlendirilir.' },
-  { q: 'Otomobil, uçak ve gemi seyahatlerinde merkezi sinir sistemini etkileyerek bulantı, kusma ve soğuk terlemeye yol açan çok düşük frekanslı titreşimler frekansı _______ Hz\'den küçük olan titreşimlerdir.', a: '2', alts: ['iki'], exp: 'Bölüm 1 Slayt 89: Çok düşük frekanslı titreşimler (f < 2 Hz) hareket hastalığına yol açar.' },
-  { q: 'İşçi sağlığı bakımından önemli olan mekanik titreşim, frekans bantlarına ayrılarak _______ detektörü ile ölçülür.', a: 'vibrasyon', alts: ['titreşim', 'ivmeölçer'], exp: 'Bölüm 1 Slayt 91: Titreşim vibrasyon detektörü ile ölçülür.' },
-  { q: 'Bölüm 1 Slayt 94\'e göre normalde _______ N/cm² kadar basınç değişimi organizmada rahatsızlık hissi dışında sağlık sorunu yaratmaz.', a: '4,5', alts: ['4.5'], exp: 'Bölüm 1 Slayt 94: Normalde 4,5 N/cm² kadar basınç değişimi sağlık sorunu yaratmaz.' },
-  { q: 'Basınç değişikliği nedeniyle görülen akut olaylarda yükümlülük süresi _______ gün, diğer (kronik) olaylarda ise yükümlülük süresi 10 yıldır.', a: '3', alts: ['üç', 'uc'], exp: 'Bölüm 1 Slayt 94: Akut olaylarda yükümlülük süresi 3 gün, diğer olaylarda 10 yıldır.' },
-  { q: 'Dalgıç odalarında kişi başına saatte en az _______ m³ hava sağlanmalı ve havadaki karbondioksit (CO2) miktarı %0,1\'i geçmemelidir.', a: '40', alts: ['kırk', 'kirk'], exp: 'Bölüm 1 Slayt 96: Dalgıç odalarında kişi başına saatte en az 40 m³ hava sağlanmalıdır.' },
-  { q: 'Bir dalgıç _______ metreden fazla derinliğe bir günde iki defadan fazla dalamaz ve bu iki dalma arasında en az 5 saat geçmelidir.', a: '22', alts: ['yirmi iki'], exp: 'Bölüm 1 Slayt 96: 22 metreden fazla derinliğe günde iki defadan fazla dalınamaz.' },
-  { q: '1 m³ havadaki su buharı miktarına mutlak nem; aynı sıcaklıkta doymuş havadaki mutlak nemin yüzdesine ise _______ nem denir ve sıcaklık arttıkça bu oran azalır.', a: 'bağıl', alts: ['bagil', 'nispi'], exp: 'Bölüm 1 Slayt 106: Bağıl nem sıcaklık arttıkça azalır.' },
-  { q: 'Bir işyerinde bağıl nem %30–80 aralığında olmalı ve ortamdaki nem _______ ya da Psikrometre ile ölçülmelidir.', a: 'higrometre', alts: [], exp: 'Bölüm 1 Slayt 113: Ortamdaki nem Higrometre ya da Psikrometre ile ölçülür.' },
-  { q: 'İşyerinde termal konforun bozulmaması ve ısı stresi oluşmaması için hava akım hızı saniyede _______ metreyi (m/sn) aşmamalıdır.', a: '0,3-0,5', alts: ['0,5', '0.5', '0,3', '0.3-0.5'], exp: 'Bölüm 1 Slayt 113: Hava akım hızı saniyede 0,3-0,5 metreyi aşmamalıdır.' },
-  { q: 'Termal konforda hava akım hızı Anemometre ile ölçülürken, ılık/sıcak yüzeylerden yayılan radyant ısı _______ termometre ile ölçülür.', a: 'glob', alts: ['glop', 'kara küre'], exp: 'Bölüm 1 Slayt 113: Radyant ısı Glop (Glob) termometre ile ölçülür.' },
-  { q: 'İnsanların vücutlarının ısı dengesini koruyamadıkları aşırı sıcak veya aşırı soğuk termal bölgeye _______ bölgesi denir.', a: 'bunalım', alts: ['bunalim'], exp: 'Bölüm 1 Slayt 110: Termal konfor sınırları dışındaki bölgeye bunalım bölgesi denir.' },
-  { q: 'Elektromanyetik spektrumun insan gözü tarafından algılanabilen kısmı olan görünür ışık genellikle _______ nanometre (nm) dalga boyu aralığındadır.', a: '400-700', alts: ['400 - 700'], exp: 'Bölüm 1 Slayt 116: Görünür ışık 400-700 nm aralığındadır.' },
-  { q: 'Işık çalışılan bölgeye doğrudan geliyorsa direkt aydınlatma, başka bir yüzeye çarpıp yansıyarak geliyorsa _______ (dolaylı) aydınlatma denir.', a: 'endirekt', alts: ['dolaylı'], exp: 'Bölüm 1 Slayt 118 & 121: Başka yüzeye çarpıp geliyorsa endirekt aydınlatmadır.' },
-  { q: 'İşyerlerinde doğal aydınlatma için pencerelerin işyeri taban yüzeyinin en az _______ oranında ışık almasını sağlayacak büyüklükte olması şarttır.', a: '1/10', alts: ['%10', 'onda bir'], exp: 'Bölüm 1 Slayt 123: İşyeri taban yüzeyinin en az 1/10\'u oranında pencere olmalıdır.' },
-  { q: 'İnsanın bilgi (enformasyon) algılamasında en önemli duyu organı göz olup, bütün algılamanın %_______ ile %90\'ı göz kanalıyla gerçekleşir.', a: '80', alts: ['seksen', '80-90'], exp: 'Bölüm 1 Slayt 124: Algılamanın %80 ile %90\'ı göz kanalıyla gerçekleşir.' },
-  { q: 'Birim yüzeye düşen ışık akısına (Işık akısı / toplam alan) aydınlatma şiddeti denir; birimi _______ (Lux) ve ölçüm aleti Lüksmetredir.', a: 'lüks', alts: ['lüx', 'lux', 'luks'], exp: 'Bölüm 1 Slayt 129: Aydınlatma şiddeti birimi Lüks (Lüx), ölçen alet Lüksmetredir.' },
-  { q: 'Havada yaklaşık 5 cm gidebilen ve bir kağıt tabakasını veya alüminyum levhayı geçemeyen, ancak solunduğunda veya yutulduğunda hücrelere çok zararlı olan ağır parçacık radyasyonu _______ ışınlarıdır.', a: 'alfa', alts: ['alpha'], exp: 'Bölüm 1 Slayt 138: Kağıt tabakasını geçemeyen ağır parçacık alfa ışınlarıdır.' },
-  { q: 'Radyasyon tespitinde bulunduğu yerdeki anlık radyasyon doz hızını ölçen cihazlara _______ (doz hızı ölçer), belli bir zaman aralığındaki toplam dozu ölçenlere ise dozimetre denir.', a: 'surveymetre', alts: ['surveymetreler'], exp: 'Bölüm 1 Slayt 139: Doz hızı ölçerlere surveymetre denir.' },
-  { q: 'Kimyasal Maddeler Yönetmeliğine göre merkezi, kişinin kulaklarını birleştiren çizginin orta noktası olan _______ cm yarıçaplı kürenin başın ön kısmında kalan yarısına "Solunum bölgesi" denir.', a: '30', alts: ['otuz'], exp: 'Bölüm 2 Slayt 5: Solunum bölgesi 30 cm yarıçaplı kürenin başın ön kısmında kalan yarısıdır.' },
-  { q: '0°C\'den düşük parlama noktası ve 35°C\'den düşük kaynama noktasına sahip sıvı hâldeki kimyasallar _______ kolay alevlenir madde olarak sınıflandırılır.', a: 'çok', alts: ['cok'], exp: 'Bölüm 2 Slayt 51: Parlama noktası <0°C ve kaynama noktası <35°C olanlar çok kolay alevlenir maddedir.' },
-  { q: 'Çevre dostu, sürdürülebilir ve insan sağlığına daha az zarar veren kimyasal maddelerin ve süreçlerin tasarlanmasına _______ kimya denir.', a: 'yeşil', alts: ['yesil'], exp: 'Bölüm 2 Slayt 133: Çevre dostu sürdürülebilir kimya yaklaşımına Yeşil Kimya denir.' }
+    {
+      q: "İşyerlerinde gürültüye bağlı işitme kaybının erken evrede tespiti için çalışanlara uygulanan işitme testine ve elde edilen grafiğe ________ denir.",
+      answers: ["odyogram","odyometri","isitme testi"],
+      hint: "Kulak işitme ölçüm testi ve grafiği",
+      explanation: "Odyometrik testler, gürültülü ortamlarda çalışan personelin işitme eşiğini frekans bazında periyodik olarak kaydeder."
+    },
+    {
+      q: "Yapılan işin gerekleri işçinin bilgi ve becerisiyle çatıştığında (nicel aşırı yük, nitel düşük yük) ve sosyal destek yetersiz olduğunda ortaya çıkan risklere _______ risk unsurları denir.",
+      answers: ["psikososyal","psiko-sosyal"],
+      hint: "Bölüm 1 Slayt 45: Nicel aşırı yük ve nitel dü",
+      explanation: "Bölüm 1 Slayt 45: Nicel aşırı yük ve nitel düşük yük psikososyal risk unsurlarıdır."
+    },
+    {
+      q: "Biyolojik risk etmenlerinde enfeksiyon zincirinin son halkası, kişisel savunma mekanizmaları veya stres/beslenme yetersizliği nedeniyle etkilenen _______ (çalışan) halkasıdır.",
+      answers: ["duyarlı","duyarli","konakçı","çalışan"],
+      hint: "Bölüm 1 Slayt 50: Enfeksiyon zincirinin son h",
+      explanation: "Bölüm 1 Slayt 50: Enfeksiyon zincirinin son halkası Duyarlı (Çalışan)'dır."
+    },
+    {
+      q: "Sesin 20°C sıcaklıktaki havada yayılma hızı _______ m/sn iken, 20°C sudaki yayılma hızı 1410 m/sn'dir.",
+      answers: ["340","üç yüz kırk"],
+      hint: "Bölüm 1 Slayt 59: 20°C havada sesin hızı 340 ",
+      explanation: "Bölüm 1 Slayt 59: 20°C havada sesin hızı 340 m/sn'dir."
+    },
+    {
+      q: "Frekansı 20 Hz'den düşük olan seslere _______ sesler, 20 Hz ile 20 kHz arasına işitilebilen sesler, 20 kHz'den yüksek olanlara ise ultrasonik sesler denir.",
+      answers: ["subsonik","infrasonik"],
+      hint: "Bölüm 1 Slayt 64: 20 Hz altı sesler subsonik ",
+      explanation: "Bölüm 1 Slayt 64: 20 Hz altı sesler subsonik seslerdir."
+    },
+    {
+      q: "İnsan kulağı için işitme eşiği 0 dB iken, ağrı eşiği düzeyindeki ses şiddeti _______ dB'dir.",
+      answers: ["140","yüz kırk"],
+      hint: "Bölüm 1 Slayt 65: İşitme eşiği 0 dB, ağrı eşi",
+      explanation: "Bölüm 1 Slayt 65: İşitme eşiği 0 dB, ağrı eşiği 140 dB'dir."
+    },
+    {
+      q: "Bir işyerinde _______ metre uzaklıktaki bir kişiyle konuşmak için sesi yükseltmek gerekiyorsa, o işyerinde zararlı düzeyde gürültü var demektir.",
+      answers: ["1","bir"],
+      hint: "Bölüm 1 Slayt 67: 1 metre uzaklıktaki kişiyle",
+      explanation: "Bölüm 1 Slayt 67: 1 metre uzaklıktaki kişiyle konuşmak için sesi yükseltmek gerekiyorsa zararlı gürültü vardır."
+    },
+    {
+      q: "Gürültü Yönetmeliğine göre En Düşük Maruziyet Eylem Değeri 80 dB(A), En Yüksek Maruziyet Eylem Değeri 85 dB(A) ve Maruziyet Sınır Değeri _______ dB(A)'dır.",
+      answers: ["87","seksen yedi"],
+      hint: "Bölüm 1 Slayt 22 & 68: Maruziyet sınır değeri",
+      explanation: "Bölüm 1 Slayt 22 & 68: Maruziyet sınır değeri 87 dB(A)'dır."
+    },
+    {
+      q: "Gürültü Yönetmeliğine göre işverenin ortamda gürültüyü azaltıcı teknik tedbirleri almasını ve çalışanların kulak koruyucu donanım takmasını ZORUNLU kılan En Yüksek Maruziyet Eylem Değeri ________ dB(A)'dır.",
+      answers: ["85","seksen beş","seksen bes"],
+      hint: "Kulaklık takmanın ZORUNLU olduğu eylem eşiği",
+      explanation: "En yüksek maruziyet eylem değeri 85 dB(A)'dır ve bu değerde kulaklık kullanımı zorunludur."
+    },
+    {
+      q: "Aynı (özdeş) iki gürültü kaynağının bulunduğu bir ortamda toplam gürültü düzeyi, birinci ses kaynağının düzeyine +_______ dB eklenerek bulunur.",
+      answers: ["3","üç","uc"],
+      hint: "Bölüm 1 Slayt 69: Toplam Gürültü Düzeyi = Bir",
+      explanation: "Bölüm 1 Slayt 69: Toplam Gürültü Düzeyi = Birinci Ses Kaynağı + 3 dB."
+    },
+    {
+      q: "İnsanlarda günlük konuşma frekansı 500–2000 Hz aralığı iken, gürültüye bağlı işitme kayıplarında ilk etkilenen frekans aralığı _______ Hz aralığıdır.",
+      answers: ["4000-4500","4000","4500","4000 - 4500"],
+      hint: "Bölüm 1 Slayt 74: İşitme kayıplarında ilk etk",
+      explanation: "Bölüm 1 Slayt 74: İşitme kayıplarında ilk etkilenen frekans aralığı 4000-4500 Hz'dir."
+    },
+    {
+      q: "El-kol titreşiminde 8 saatlik günlük maruziyet eylem değeri 2,5 m/s² iken, maruziyet sınır değeri _______ m/s²'dir.",
+      answers: ["5","5,0","5.0","beş"],
+      hint: "Titreşim Yönetmeliği: El-kol titreşimi sınır ",
+      explanation: "Titreşim Yönetmeliği: El-kol titreşimi sınır değeri 5,0 m/s²'dir."
+    },
+    {
+      q: "Bütün vücut titreşiminde 8 saatlik günlük maruziyet eylem değeri 0,5 m/s² iken, maruziyet sınır değeri _______ m/s²'dir.",
+      answers: ["1,15","1.15"],
+      hint: "Titreşim Yönetmeliği: Bütün vücut titreşimi s",
+      explanation: "Titreşim Yönetmeliği: Bütün vücut titreşimi sınır değeri 1,15 m/s²'dir."
+    },
+    {
+      q: "Titreşim Yönetmeliğinin özel koşullarına göre deniz taşımacılığında _______ Hz'in üzerindeki titreşimler değerlendirmeye alınır.",
+      answers: ["1","bir"],
+      hint: "Bölüm 1 Slayt 35 & 41: Deniz taşımacılığında ",
+      explanation: "Bölüm 1 Slayt 35 & 41: Deniz taşımacılığında 1 Hz'in üzerindeki titreşimler değerlendirilir."
+    },
+    {
+      q: "Otomobil, uçak ve gemi seyahatlerinde merkezi sinir sistemini etkileyerek bulantı, kusma ve soğuk terlemeye yol açan çok düşük frekanslı titreşimler frekansı _______ Hz'den küçük olan titreşimlerdir.",
+      answers: ["2","iki"],
+      hint: "Bölüm 1 Slayt 89: Çok düşük frekanslı titreşi",
+      explanation: "Bölüm 1 Slayt 89: Çok düşük frekanslı titreşimler (f < 2 Hz) hareket hastalığına yol açar."
+    },
+    {
+      q: "Çalışma ortamında termal konforu değerlendirirken hava sıcaklığı, bağıl nem ve hava akım hızının yanı sıra çevredeki sıcak yüzeylerden yayılan ________ ısı da glob termometre ile ölçülür.",
+      answers: ["radyant","ışınım","isinim"],
+      hint: "Yüzeylerden ışıma yoluyla yayılan ısı",
+      explanation: "Radyant ısı (ışıma ısısı), glob termometre ile ortam sıcaklığından ayrı olarak tespit edilir."
+    },
+    {
+      q: "Bölüm 1 Slayt 94'e göre normalde _______ N/cm² kadar basınç değişimi organizmada rahatsızlık hissi dışında sağlık sorunu yaratmaz.",
+      answers: ["4,5","4.5"],
+      hint: "Bölüm 1 Slayt 94: Normalde 4,5 N/cm² kadar ba",
+      explanation: "Bölüm 1 Slayt 94: Normalde 4,5 N/cm² kadar basınç değişimi sağlık sorunu yaratmaz."
+    },
+    {
+      q: "Basınç değişikliği nedeniyle görülen akut olaylarda yükümlülük süresi _______ gün, diğer (kronik) olaylarda ise yükümlülük süresi 10 yıldır.",
+      answers: ["3","üç","uc"],
+      hint: "Bölüm 1 Slayt 94: Akut olaylarda yükümlülük s",
+      explanation: "Bölüm 1 Slayt 94: Akut olaylarda yükümlülük süresi 3 gün, diğer olaylarda 10 yıldır."
+    },
+    {
+      q: "Dalgıç odalarında kişi başına saatte en az _______ m³ hava sağlanmalı ve havadaki karbondioksit (CO2) miktarı %0,1'i geçmemelidir.",
+      answers: ["40","kırk","kirk"],
+      hint: "Bölüm 1 Slayt 96: Dalgıç odalarında kişi başı",
+      explanation: "Bölüm 1 Slayt 96: Dalgıç odalarında kişi başına saatte en az 40 m³ hava sağlanmalıdır."
+    },
+    {
+      q: "Bir dalgıç _______ metreden fazla derinliğe bir günde iki defadan fazla dalamaz ve bu iki dalma arasında en az 5 saat geçmelidir.",
+      answers: ["22","yirmi iki"],
+      hint: "Bölüm 1 Slayt 96: 22 metreden fazla derinliğe",
+      explanation: "Bölüm 1 Slayt 96: 22 metreden fazla derinliğe günde iki defadan fazla dalınamaz."
+    },
+    {
+      q: "1 m³ havadaki su buharı miktarına mutlak nem; aynı sıcaklıkta doymuş havadaki mutlak nemin yüzdesine ise _______ nem denir ve sıcaklık arttıkça bu oran azalır.",
+      answers: ["bağıl","bagil","nispi"],
+      hint: "Bölüm 1 Slayt 106: Bağıl nem sıcaklık arttıkç",
+      explanation: "Bölüm 1 Slayt 106: Bağıl nem sıcaklık arttıkça azalır."
+    },
+    {
+      q: "Bir işyerinde bağıl nem %30–80 aralığında olmalı ve ortamdaki nem _______ ya da Psikrometre ile ölçülmelidir.",
+      answers: ["higrometre"],
+      hint: "Bölüm 1 Slayt 113: Ortamdaki nem Higrometre y",
+      explanation: "Bölüm 1 Slayt 113: Ortamdaki nem Higrometre ya da Psikrometre ile ölçülür."
+    },
+    {
+      q: "İşyerinde termal konforun bozulmaması ve ısı stresi oluşmaması için hava akım hızı saniyede _______ metreyi (m/sn) aşmamalıdır.",
+      answers: ["0,3-0,5","0,5","0.5","0,3","0.3-0.5"],
+      hint: "Bölüm 1 Slayt 113: Hava akım hızı saniyede 0,",
+      explanation: "Bölüm 1 Slayt 113: Hava akım hızı saniyede 0,3-0,5 metreyi aşmamalıdır."
+    },
+    {
+      q: "Termal konforda hava akım hızı Anemometre ile ölçülürken, ılık/sıcak yüzeylerden yayılan radyant ısı _______ termometre ile ölçülür.",
+      answers: ["glob","glop","kara küre"],
+      hint: "Bölüm 1 Slayt 113: Radyant ısı Glop (Glob) te",
+      explanation: "Bölüm 1 Slayt 113: Radyant ısı Glop (Glob) termometre ile ölçülür."
+    },
+    {
+      q: "İnsanların vücutlarının ısı dengesini koruyamadıkları aşırı sıcak veya aşırı soğuk termal bölgeye _______ bölgesi denir.",
+      answers: ["bunalım","bunalim"],
+      hint: "Bölüm 1 Slayt 110: Termal konfor sınırları dı",
+      explanation: "Bölüm 1 Slayt 110: Termal konfor sınırları dışındaki bölgeye bunalım bölgesi denir."
+    },
+    {
+      q: "Elektromanyetik spektrumun insan gözü tarafından algılanabilen kısmı olan görünür ışık genellikle _______ nanometre (nm) dalga boyu aralığındadır.",
+      answers: ["400-700","400 - 700"],
+      hint: "Bölüm 1 Slayt 116: Görünür ışık 400-700 nm ar",
+      explanation: "Bölüm 1 Slayt 116: Görünür ışık 400-700 nm aralığındadır."
+    },
+    {
+      q: "Işık çalışılan bölgeye doğrudan geliyorsa direkt aydınlatma, başka bir yüzeye çarpıp yansıyarak geliyorsa _______ (dolaylı) aydınlatma denir.",
+      answers: ["endirekt","dolaylı"],
+      hint: "Bölüm 1 Slayt 118 & 121: Başka yüzeye çarpıp ",
+      explanation: "Bölüm 1 Slayt 118 & 121: Başka yüzeye çarpıp geliyorsa endirekt aydınlatmadır."
+    },
+    {
+      q: "İşyerlerinde doğal aydınlatma için pencerelerin işyeri taban yüzeyinin en az _______ oranında ışık almasını sağlayacak büyüklükte olması şarttır.",
+      answers: ["1/10","%10","onda bir"],
+      hint: "Bölüm 1 Slayt 123: İşyeri taban yüzeyinin en ",
+      explanation: "Bölüm 1 Slayt 123: İşyeri taban yüzeyinin en az 1/10'u oranında pencere olmalıdır."
+    },
+    {
+      q: "İnsanın bilgi (enformasyon) algılamasında en önemli duyu organı göz olup, bütün algılamanın %_______ ile %90'ı göz kanalıyla gerçekleşir.",
+      answers: ["80","seksen","80-90"],
+      hint: "Bölüm 1 Slayt 124: Algılamanın %80 ile %90'ı ",
+      explanation: "Bölüm 1 Slayt 124: Algılamanın %80 ile %90'ı göz kanalıyla gerçekleşir."
+    },
+    {
+      q: "Birim yüzeye düşen ışık akısına (Işık akısı / toplam alan) aydınlatma şiddeti denir; birimi _______ (Lux) ve ölçüm aleti Lüksmetredir.",
+      answers: ["lüks","lüx","lux","luks"],
+      hint: "Bölüm 1 Slayt 129: Aydınlatma şiddeti birimi ",
+      explanation: "Bölüm 1 Slayt 129: Aydınlatma şiddeti birimi Lüks (Lüx), ölçen alet Lüksmetredir."
+    },
+    {
+      q: "Elektromanyetik spektrumda dalga boyu görünür ışıktan daha kısa olan, cilde temas ettiğinde bronzlaşma ve uzun vadede cilt kanseri riski doğuran ışınlara ultraviyole (________) ışınları denir.",
+      answers: ["UV","morötesi","mor otesi","uv"],
+      hint: "Güneş ışığında da bulunan morötesi ışın kısaltması",
+      explanation: "Ultraviyole (UV) ışınları optik radyasyon grubunda yer alır ve göz ile cilt için zararlıdır."
+    },
+    {
+      q: "Radyasyon tespitinde bulunduğu yerdeki anlık radyasyon doz hızını ölçen cihazlara _______ (doz hızı ölçer), belli bir zaman aralığındaki toplam dozu ölçenlere ise dozimetre denir.",
+      answers: ["surveymetre","surveymetreler"],
+      hint: "Bölüm 1 Slayt 139: Doz hızı ölçerlere surveym",
+      explanation: "Bölüm 1 Slayt 139: Doz hızı ölçerlere surveymetre denir."
+    },
+    {
+      q: "Kimyasal Maddeler Yönetmeliğine göre merkezi, kişinin kulaklarını birleştiren çizginin orta noktası olan _______ cm yarıçaplı kürenin başın ön kısmında kalan yarısına \"Solunum bölgesi\" denir.",
+      answers: ["30","otuz"],
+      hint: "Bölüm 2 Slayt 5: Solunum bölgesi 30 cm yarıça",
+      explanation: "Bölüm 2 Slayt 5: Solunum bölgesi 30 cm yarıçaplı kürenin başın ön kısmında kalan yarısıdır."
+    },
+    {
+      q: "0°C'den düşük parlama noktası ve 35°C'den düşük kaynama noktasına sahip sıvı hâldeki kimyasallar _______ kolay alevlenir madde olarak sınıflandırılır.",
+      answers: ["çok","cok"],
+      hint: "Bölüm 2 Slayt 51: Parlama noktası <0°C ve kay",
+      explanation: "Bölüm 2 Slayt 51: Parlama noktası <0°C ve kaynama noktası <35°C olanlar çok kolay alevlenir maddedir."
+    },
+    {
+      q: "Çevre dostu, sürdürülebilir ve insan sağlığına daha az zarar veren kimyasal maddelerin ve süreçlerin tasarlanmasına _______ kimya denir.",
+      answers: ["yeşil","yesil"],
+      hint: "Bölüm 2 Slayt 133: Çevre dostu sürdürülebilir",
+      explanation: "Bölüm 2 Slayt 133: Çevre dostu sürdürülebilir kimya yaklaşımına Yeşil Kimya denir."
+    }
 ];
