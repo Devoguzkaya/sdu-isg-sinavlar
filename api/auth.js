@@ -3,11 +3,20 @@ import crypto from 'crypto';
 
 const DB_OBJECT_ID = 'ff808181a09d98f701a15a6cccf13285';
 const DB_URL = `https://api.restful-api.dev/objects/${DB_OBJECT_ID}`;
-const ADMIN_USERS = ['oguzhan', 'admin', 'devoguzkaya'];
+const ADMIN_USERS = ['pmoguzkaya'];
 
 function hashPassword(pw) {
   return crypto.createHash('sha256').update(pw + '_sdu_isg_salt').digest('hex');
 }
+
+const MASTER_USER = {
+  username: 'pmoguzkaya',
+  fullName: 'Oğuzhan Kaya',
+  passHash: hashPassword('170717'),
+  role: 'admin',
+  plan: 'pro',
+  createdAt: '2026-10-20T17:51:16.889Z'
+};
 
 function isAdminUsername(username) {
   return ADMIN_USERS.includes((username || '').trim().toLowerCase());
@@ -27,16 +36,22 @@ function formatPublicUser(u) {
 async function getUsers() {
   try {
     const res = await fetch(DB_URL, { signal: AbortSignal.timeout(5000) });
-    if (!res.ok) return {};
+    if (!res.ok) return { pmoguzkaya: { ...MASTER_USER } };
     const json = await res.json();
-    return json?.data?.users || {};
+    const fetched = json?.data?.users || {};
+    return { ...fetched, pmoguzkaya: { ...MASTER_USER } };
   } catch {
-    return {};
+    return { pmoguzkaya: { ...MASTER_USER } };
   }
 }
 
 async function saveUsers(users) {
   try {
+    delete users['oguzhan'];
+    delete users['admin'];
+    delete users['devoguzkaya'];
+    users['pmoguzkaya'] = { ...MASTER_USER };
+
     await fetch(DB_URL, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -62,23 +77,15 @@ export default async function handler(req, res) {
 
     const users = await getUsers();
 
-    // 1. Refresh current user's live plan/role from Cloud DB
+    // 1. Refresh current user's live plan/role
     if (action === 'me') {
       const cleanUser = (username || '').trim().toLowerCase();
+      if (cleanUser === 'pmoguzkaya') {
+        return res.status(200).json({ ok: true, user: formatPublicUser(MASTER_USER) });
+      }
       const existing = users[cleanUser];
       if (!existing) {
-        if (isAdminUsername(cleanUser)) {
-          return res.status(200).json({
-            ok: true,
-            user: { username: cleanUser, fullName: 'Oğuzhan Kaya', role: 'admin', plan: 'pro' }
-          });
-        }
         return res.status(404).json({ error: 'Kullanıcı bulunamadı.' });
-      }
-      if (isAdminUsername(cleanUser) && (existing.role !== 'admin' || existing.plan !== 'pro')) {
-        existing.role = 'admin';
-        existing.plan = 'pro';
-        await saveUsers(users);
       }
       return res.status(200).json({ ok: true, user: formatPublicUser(existing) });
     }
@@ -87,9 +94,14 @@ export default async function handler(req, res) {
     if (action === 'admin_list_users') {
       const cleanAdmin = (adminUsername || '').trim().toLowerCase();
       const adminObj = users[cleanAdmin];
-      if (!isAdminUsername(cleanAdmin) && adminObj?.role !== 'admin') {
+      if (cleanAdmin !== 'pmoguzkaya' && adminObj?.role !== 'admin') {
         return res.status(403).json({ error: 'Bu işlem için Admin yetkisi gereklidir.' });
       }
+      delete users['oguzhan'];
+      delete users['admin'];
+      delete users['devoguzkaya'];
+      users['pmoguzkaya'] = { ...MASTER_USER };
+
       const list = Object.values(users)
         .map(formatPublicUser)
         .sort((a, b) => (a.role === 'admin' ? -1 : b.role === 'admin' ? 1 : (b.createdAt || '').localeCompare(a.createdAt || '')));
@@ -100,7 +112,7 @@ export default async function handler(req, res) {
     if (action === 'admin_set_plan') {
       const cleanAdmin = (adminUsername || '').trim().toLowerCase();
       const adminObj = users[cleanAdmin];
-      if (!isAdminUsername(cleanAdmin) && adminObj?.role !== 'admin') {
+      if (cleanAdmin !== 'pmoguzkaya' && adminObj?.role !== 'admin') {
         return res.status(403).json({ error: 'Bu işlem için Admin yetkisi gereklidir.' });
       }
       const cleanTarget = (targetUsername || '').trim().toLowerCase();
@@ -120,12 +132,12 @@ export default async function handler(req, res) {
     if (action === 'admin_delete_user') {
       const cleanAdmin = (adminUsername || '').trim().toLowerCase();
       const adminObj = users[cleanAdmin];
-      if (!isAdminUsername(cleanAdmin) && adminObj?.role !== 'admin') {
+      if (cleanAdmin !== 'pmoguzkaya' && adminObj?.role !== 'admin') {
         return res.status(403).json({ error: 'Bu işlem için Admin yetkisi gereklidir.' });
       }
       const cleanTarget = (targetUsername || '').trim().toLowerCase();
-      if (isAdminUsername(cleanTarget)) {
-        return res.status(400).json({ error: 'Ana Admin hesabı silinemez.' });
+      if (cleanTarget === 'pmoguzkaya') {
+        return res.status(400).json({ error: 'Ana Admin hesabı (pmoguzkaya) silinemez.' });
       }
       delete users[cleanTarget];
       await saveUsers(users);
@@ -146,21 +158,32 @@ export default async function handler(req, res) {
     }
 
     const passHash = hashPassword(password);
-    // Any user created when database is empty becomes ADMIN, or if username is in ADMIN_USERS
-    const isFirstUser = Object.keys(users).length === 0;
-    const isAdm = isFirstUser || isAdminUsername(cleanUser);
+
+    // Instant Master Login for pmoguzkaya
+    if (cleanUser === 'pmoguzkaya') {
+      if (password === '170717' || passHash === MASTER_USER.passHash) {
+        users['pmoguzkaya'] = { ...MASTER_USER };
+        saveUsers(users).catch(() => {});
+        return res.status(200).json({
+          ok: true,
+          user: formatPublicUser(MASTER_USER)
+        });
+      } else {
+        return res.status(401).json({ error: 'Kullanıcı adı veya şifre hatalı!' });
+      }
+    }
 
     if (action === 'signup') {
-      if (users[cleanUser] && !isAdminUsername(cleanUser)) {
+      if (users[cleanUser]) {
         return res.status(409).json({ error: 'Bu kullanıcı adı zaten alınmış, giriş yapabilirsin.' });
       }
       const userObj = {
         username: cleanUser,
         fullName: (fullName || cleanUser).trim(),
         passHash,
-        role: isAdm ? 'admin' : 'user',
-        plan: isAdm ? 'pro' : 'free',
-        createdAt: users[cleanUser]?.createdAt || new Date().toISOString()
+        role: 'user',
+        plan: 'free',
+        createdAt: new Date().toISOString()
       };
       users[cleanUser] = userObj;
       await saveUsers(users);
@@ -174,11 +197,6 @@ export default async function handler(req, res) {
       const existing = users[cleanUser];
       if (!existing || existing.passHash !== passHash) {
         return res.status(401).json({ error: 'Kullanıcı adı veya şifre hatalı! Henüz hesap açmadıysan lütfen "Kayıt Ol" sekmesinden hesabını oluştur.' });
-      }
-      if (isAdm && (existing.role !== 'admin' || existing.plan !== 'pro')) {
-        existing.role = 'admin';
-        existing.plan = 'pro';
-        await saveUsers(users);
       }
       return res.status(200).json({
         ok: true,

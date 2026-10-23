@@ -40,7 +40,7 @@ import {
 } from 'lucide-react';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
-const ADMIN_USERNAMES = ['oguzhan', 'admin', 'devoguzkaya'];
+const ADMIN_USERNAMES = ['pmoguzkaya'];
 
 function createEmptyCourseMap(courses) {
   const init = {};
