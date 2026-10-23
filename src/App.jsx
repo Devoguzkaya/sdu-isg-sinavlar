@@ -157,7 +157,7 @@ export default function App() {
 
   // 1. Fetch sanitized questions from Backend (/api/questions)
   useEffect(() => {
-    fetch('/api/questions')
+    fetch('/api/questions?t=' + Date.now(), { cache: 'no-store' })
       .then((r) => r.json())
       .then((data) => {
         if (data?.courses) {
