@@ -42,7 +42,16 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       const states = await getSyncStates();
-      states[rawUser] = body;
+      const current = states[rawUser] || {};
+      const mergedUser = { ...current };
+      for (const cId in body) {
+        if (!mergedUser[cId]) mergedUser[cId] = { mc: {}, fill: {} };
+        mergedUser[cId] = {
+          mc: { ...(mergedUser[cId]?.mc || {}), ...(body[cId]?.mc || {}) },
+          fill: { ...(mergedUser[cId]?.fill || {}), ...(body[cId]?.fill || {}) }
+        };
+      }
+      states[rawUser] = mergedUser;
       await saveSyncStates(states);
       return res.status(200).json({ configured: true, user: rawUser, saved: true, updatedAt: new Date().toISOString() });
     }

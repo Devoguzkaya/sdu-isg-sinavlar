@@ -121,8 +121,32 @@ export default function App() {
   const userKey = currentUser?.username || 'guest';
   const localStoreKey = `sdu_isg_react_vize_v3_${userKey}`;
 
-  // User's selected options & typed fill strings
-  const [answers, setAnswers] = useState({});
+  // User's selected options & typed fill strings (Loaded IMMEDIATELY from localStorage)
+  const [answers, setAnswers] = useState(() => {
+    try {
+      const u = localStorage.getItem('sdu_isg_auth_user_v2');
+      const parsedU = u ? JSON.parse(u) : null;
+      const k = parsedU?.username || 'pmoguzkaya';
+      const saved =
+        localStorage.getItem(`sdu_isg_react_vize_v3_${k}`) ||
+        localStorage.getItem('sdu_isg_master_answers_v1') ||
+        localStorage.getItem('sdu_isg_react_vize_v3_pmoguzkaya') ||
+        localStorage.getItem('sdu_isg_react_vize_v3_guest');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return {};
+  });
+
+  const persistAnswers = (updater) => {
+    setAnswers((prev) => {
+      const next = typeof updater === 'function' ? updater(prev) : updater;
+      try {
+        localStorage.setItem(localStoreKey, JSON.stringify(next));
+        localStorage.setItem('sdu_isg_master_answers_v1', JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
+  };
   // Backend-evaluated feedback per question (only populated after answering/submitting)
   const [feedback, setFeedback] = useState({});
 
@@ -259,53 +283,50 @@ export default function App() {
         const res = await r.json();
         if (res.feedback) setFeedback(res.feedback);
         if (revealCourseId && res.updatedUserAnswers) {
-          setAnswers(res.updatedUserAnswers);
+          persistAnswers(res.updatedUserAnswers);
         }
       }
     } catch (e) {}
   };
 
-  // 2. Load user's saved answers from Cloud (/api/sync) + evaluate them on Backend
+  // 2. Load user's saved answers: LocalStorage (instant) + Cloud (/api/sync) (merged)
   useEffect(() => {
-    if (!currentUser || courses.length === 0) return;
-    setCloudReady(false);
+    if (courses.length === 0) return;
 
-    let initialAns = createEmptyCourseMap(courses);
-    try {
-      const localSaved = localStorage.getItem(localStoreKey);
-      if (localSaved) {
-        initialAns = { ...initialAns, ...JSON.parse(localSaved) };
-      }
-    } catch (e) {}
-    setAnswers(initialAns);
+    // Immediately evaluate what is already in local state
+    evaluateAllOnBackend(answers);
 
     async function loadUserCloud() {
       try {
         const r = await fetch(`/api/sync?user=${encodeURIComponent(userKey)}`);
         if (r.ok) {
           const res = await r.json();
-          if (res && res.configured) {
-            if (res.data && Object.keys(res.data).length > 0) {
-              initialAns = { ...createEmptyCourseMap(courses), ...res.data };
-              setAnswers(initialAns);
-            }
+          if (res && res.configured && res.data) {
+            persistAnswers((cur) => {
+              const merged = { ...cur };
+              for (const cId in res.data) {
+                if (!merged[cId]) merged[cId] = { mc: {}, fill: {} };
+                merged[cId] = {
+                  mc: { ...(res.data[cId]?.mc || {}), ...(merged[cId]?.mc || {}) },
+                  fill: { ...(res.data[cId]?.fill || {}), ...(merged[cId]?.fill || {}) }
+                };
+              }
+              evaluateAllOnBackend(merged);
+              return merged;
+            });
             setCloudStatus('synced');
           }
         }
       } catch (e) {}
       setCloudReady(true);
-      evaluateAllOnBackend(initialAns);
     }
+
     loadUserCloud();
-  }, [currentUser?.username, userKey, courses.length]);
+  }, [userKey, courses.length]);
 
-  // 3. Auto-save user's answers to localStorage + Cloud (/api/sync)
+  // 3. Auto-save user's answers to Cloud (/api/sync) in background
   useEffect(() => {
-    if (!currentUser || !cloudReady || courses.length === 0) return;
-    try {
-      localStorage.setItem(localStoreKey, JSON.stringify(answers));
-    } catch (e) {}
-
+    if (!cloudReady || courses.length === 0) return;
     setCloudStatus('saving');
     const timer = setTimeout(async () => {
       try {
@@ -318,7 +339,7 @@ export default function App() {
       } catch (e) {}
     }, 600);
     return () => clearTimeout(timer);
-  }, [answers, cloudReady, currentUser, userKey]);
+  }, [answers, cloudReady, userKey]);
 
   // Handle Login / Signup via Backend (/api/auth)
   const handleAuthSubmit = async (e) => {
@@ -472,7 +493,7 @@ export default function App() {
       return;
     }
     const cId = activeCourse.id;
-    setAnswers((prev) => ({
+    persistAnswers((prev) => ({
       ...prev,
       [cId]: {
         ...prev[cId],
@@ -516,7 +537,7 @@ export default function App() {
       return;
     }
     const cId = activeCourse.id;
-    setAnswers((prev) => ({
+    persistAnswers((prev) => ({
       ...prev,
       [cId]: {
         ...prev[cId],
@@ -554,7 +575,7 @@ export default function App() {
       });
       if (r.ok) {
         const res = await r.json();
-        setAnswers((prev) => ({
+        persistAnswers((prev) => ({
           ...prev,
           [cId]: {
             ...prev[cId],
@@ -590,7 +611,7 @@ export default function App() {
   const handleResetCurrentView = () => {
     const cId = activeCourse.id;
     if (activeTestIdx === 'all' && isPro) {
-      setAnswers((prev) => ({
+      persistAnswers((prev) => ({
         ...prev,
         [cId]: { mc: {}, fill: {} }
       }));
@@ -602,7 +623,7 @@ export default function App() {
       const tIdx = activeTestIdx === 'all' ? 0 : activeTestIdx;
       const mcStart = tIdx * 10;
       const fillStart = tIdx * 5;
-      setAnswers((prev) => {
+      persistAnswers((prev) => {
         const nextMc = { ...(prev[cId]?.mc || {}) };
         const nextFill = { ...(prev[cId]?.fill || {}) };
         for (let i = mcStart; i < mcStart + 10; i++) delete nextMc[i];
